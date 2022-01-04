@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white dark:bg-zinc-900 selection:bg-zinc-500/20 dark:selection:bg-zinc-400/20;
+}
+
+* {
+  @apply focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40;
+}
+
+@layer base {
+  html,
+  body {
+    @apply min-h-screen;
+  }
+
+  body {
+    @apply flex flex-col;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  [data-reactroot] {
+    @apply contents;
+
+    > * {
+      @apply flex-none w-full;
+    }
+  }
+
+  a,
+  option,
+  label,
+  *[role="button"],
+  button:not([disabled]),
+  input:not([disabled]),
+  textarea:not([disabled]),
+  select:not([disabled]) {
+    @apply touch-manipulation;
+  }
+}
+
+@layer utilities {
+  .focusable {
+    @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring;
+  }
+}
+
+@layer components {
+  .content {
+    @apply mx-auto max-w-screen-md px-5-safe;
+  }
+}
