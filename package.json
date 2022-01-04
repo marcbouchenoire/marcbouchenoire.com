@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "My personal website and portfolio.",
   "author": "Marc Bouchenoire",
+  "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
   "prettier": "@marcbouchenoire/prettier-config",
