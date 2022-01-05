@@ -3,6 +3,7 @@ import { wrap } from "../utils/wrap"
 
 const SECONDS_PER_DAY = 86400
 const BEATS_PER_DAY = 1000
+const DEFAULT_TIME = "000.00"
 
 /**
  * Convert a date into an internet time string.
@@ -26,7 +27,7 @@ function getInternetTime(date = new Date()) {
  * Get an automatically updating internet time string.
  */
 export function useInternetTime() {
-  const [time, setTime] = useState<string | undefined>(undefined)
+  const [time, setTime] = useState<string | undefined>(DEFAULT_TIME)
 
   useEffect(() => {
     setTime(getInternetTime())

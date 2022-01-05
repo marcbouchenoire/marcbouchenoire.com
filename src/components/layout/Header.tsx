@@ -1,9 +1,10 @@
 import clsx from "clsx"
-import { AnimatePresence, Transition, Variants, motion } from "framer-motion"
+import { Transition, Variants, motion } from "framer-motion"
 import { ComponentProps } from "react"
 import { useInternetTime } from "../../hooks/use-internet-time"
 import { useSystemTheme } from "../../hooks/use-system-theme"
 import { springiest } from "../../transitions"
+import { Counter } from "../miscellaneous/Counter"
 
 const themeTransition: Transition = {
   default: springiest,
@@ -11,17 +12,6 @@ const themeTransition: Transition = {
     type: "spring",
     duration: springiest.duration - springiest.duration / 2,
     bounce: 0
-  }
-}
-
-const timeVariants: Variants = {
-  hidden: {
-    scale: 0.8,
-    opacity: 0
-  },
-  visible: {
-    scale: 1,
-    opacity: 1
   }
 }
 
@@ -54,26 +44,15 @@ export function Header({ className, ...props }: ComponentProps<"header">) {
     <header className={clsx(className, "pt-6 lg:pt-8")} {...props}>
       <div className="flex items-center text-zinc-700 dark:text-zinc-100">
         <p>
-          <AnimatePresence>
-            {time && (
-              <motion.a
-                animate="visible"
-                className="group inline-block text-sm font-semibold rounded-sm focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40 transition duration-100 focusable"
-                exit="hidden"
-                href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
-                initial="hidden"
-                rel="noreferrer"
-                target="_blank"
-                transition={springiest}
-                variants={timeVariants}
-              >
-                <span className="font-normal text-zinc-400">@</span>
-                <span className="underline decoration-transparent group-hover:decoration-zinc-500/30 group-focus:!decoration-transparent dark:group-hover:decoration-zinc-400/30 decoration-2 underline-offset-2">
-                  {time}
-                </span>
-              </motion.a>
-            )}
-          </AnimatePresence>
+          <a
+            className="inline-flex items-center text-sm font-semibold rounded-sm focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40 hover:opacity-60 transition focusable"
+            href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <span className="font-normal text-zinc-400">@</span>
+            <Counter value={time} />
+          </a>
         </p>
         <div className="ml-auto">
           <button
