@@ -14,12 +14,12 @@ function getInternetTime(date = new Date()) {
     date.getUTCSeconds() +
     (date.getUTCMinutes() * 60 + (date.getUTCHours() + 1) * 3600)
   const beats = wrap(
-    Math.round((seconds / SECONDS_PER_DAY) * BEATS_PER_DAY),
+    (seconds / SECONDS_PER_DAY) * BEATS_PER_DAY,
     0,
     BEATS_PER_DAY
   )
 
-  return String(beats)
+  return beats.toFixed(2)
 }
 
 /**
