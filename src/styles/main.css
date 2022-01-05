@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes wavy {
+  from {
+    transform: translateY(-4%);
+  }
+
+  to {
+    transform: translateY(4%);
+  }
+}
+
 body {
   @apply bg-white dark:bg-zinc-900 selection:bg-zinc-500/20 dark:selection:bg-zinc-400/20;
 }
@@ -51,5 +61,14 @@ body {
 @layer components {
   .content {
     @apply mx-auto max-w-screen-md px-5-safe;
+  }
+}
+
+.delightful {
+  span[data-character] {
+    @apply inline-block relative;
+
+    animation: 0.8s ease-in-out calc(var(--character) * -0.1s) infinite
+      alternate both wavy;
   }
 }

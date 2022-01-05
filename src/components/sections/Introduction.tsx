@@ -2,6 +2,7 @@ import clsx from "clsx"
 import Image from "next/image"
 import { ComponentProps } from "react"
 import portrait from "../../../public/portrait.jpg"
+import { Characters } from "../miscellaneous/Characters"
 
 /**
  * An introduction section with a short bio.
@@ -33,8 +34,11 @@ export function Introduction({
       </div>
       <div className="my-10 max-w-prose text-zinc-500 dark:text-zinc-350">
         <p className="my-4 leading-loose">
-          Designing and building <em>delightful</em> products, interfaces,
-          and&nbsp;interactions.
+          Designing and building{" "}
+          <em className="delightful">
+            <Characters>delightful</Characters>
+          </em>{" "}
+          products, interfaces, and&nbsp;interactions.
         </p>
         <p className="my-4 leading-loose">
           I’m currently living in Amsterdam and working at{" "}
