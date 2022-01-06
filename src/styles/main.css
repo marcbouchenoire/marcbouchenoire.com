@@ -4,11 +4,11 @@
 
 @keyframes wavy {
   from {
-    transform: translateY(-4%);
+    transform: translateY(-3%);
   }
 
   to {
-    transform: translateY(4%);
+    transform: translateY(3%);
   }
 }
 
