@@ -3,7 +3,7 @@ import { AnimatePresence, Variants, motion } from "framer-motion"
 import { ComponentProps, useMemo } from "react"
 import { springier } from "../../transitions"
 
-const CHARACTERS = [".", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+const CHARACTERS = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "."]
 const COLUMN_HEIGHT = `${CHARACTERS.length}em`
 const STAGGER_CHARACTER_DELAY = 0.1
 
@@ -36,10 +36,12 @@ const variants: Variants = {
  *
  * @param props - A set of `motion.span` props.
  * @param [props.character] - The active character.
+ * @param [props.transition] - A Framer Motion transition.
  * @param [props.className] - A list of one or more classes.
  */
 function CounterCharacters({
   character,
+  transition,
   className,
   ...props
 }: CounterCharactersProps) {
@@ -47,25 +49,30 @@ function CounterCharacters({
     () => Math.abs(CHARACTERS.indexOf(character)),
     [character]
   )
-  const y = useMemo(() => `${(-index / CHARACTERS.length) * 100}%`, [index])
+  const y = useMemo(
+    () => `${((CHARACTERS.length - index - 1) / CHARACTERS.length) * 100}%`,
+    [index]
+  )
 
   return (
     <motion.span
-      animate="visible"
+      animate={{ opacity: 1, width: character === "." ? "0.5ch" : "1ch" }}
       aria-hidden
-      className="inline-block relative flex-none w-[1ch] text-center pointer-events-none select-none"
+      className="inline-block relative flex-none text-center pointer-events-none select-none"
       exit="hidden"
       initial="hidden"
-      transition={{
-        ease: "easeInOut"
-      }}
+      transition={transition}
       variants={variants}
     >
       <motion.span
         animate={{ opacity: 1, y }}
-        className={clsx(className, "inline-flex absolute inset-0 flex-col")}
+        className={clsx(
+          className,
+          "inline-flex absolute bottom-0 left-0 flex-col w-full"
+        )}
         initial="hidden"
         style={{ height: COLUMN_HEIGHT }}
+        transition={transition}
         variants={variants}
         {...props}
       >
@@ -111,12 +118,12 @@ export function Counter({ value = "", className, ...props }: CounterProps) {
           ))}
         </AnimatePresence>
         <span aria-label={value} className="absolute text-transparent">
-          <span>{value}</span>
           {characters.map((character, index) => (
             <span
               aria-hidden
-              className="inline-block w-[1ch] text-center"
+              className="inline-block text-center"
               key={index}
+              style={{ width: character === "." ? "0.5ch" : "1ch" }}
             >
               {character}
             </span>
