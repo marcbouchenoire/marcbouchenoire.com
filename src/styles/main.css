@@ -56,6 +56,10 @@ body {
   .focusable {
     @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring;
   }
+
+  .link {
+    @apply transition focusable rounded-sm underline focus:decoration-transparent decoration-2 underline-offset-2 decoration-zinc-600/20 dark:decoration-white/20 selection:decoration-zinc-600/20 dark:selection:decoration-white/20 hover:decoration-zinc-600/40 dark:hover:decoration-white/40;
+  }
 }
 
 @layer components {

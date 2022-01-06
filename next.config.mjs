@@ -1,7 +1,25 @@
-export default {
-  cleanUrls: true,
-  trailingSlash: false,
-  eslint: {
-    ignoreDuringBuilds: true
+import path from "path"
+import { writeJsonFileSync } from "write-json-file"
+
+const DATA_PATH = path.resolve("./src/data.json")
+
+/**
+ * Create a static data object.
+ */
+function getData() {
+  return {
+    date: String(new Date().getFullYear())
+  }
+}
+
+export default () => {
+  writeJsonFileSync(DATA_PATH, getData())
+
+  return {
+    cleanUrls: true,
+    trailingSlash: false,
+    eslint: {
+      ignoreDuringBuilds: true
+    }
   }
 }

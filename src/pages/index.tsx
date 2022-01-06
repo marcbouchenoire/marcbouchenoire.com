@@ -5,7 +5,7 @@ import { Introduction } from "../components/sections/Introduction"
  */
 function Page() {
   return (
-    <main>
+    <main className="flex-1 pb-12 md:pb-16 lg:pb-20">
       <Introduction className="content" />
     </main>
   )
