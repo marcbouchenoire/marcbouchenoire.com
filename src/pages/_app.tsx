@@ -32,6 +32,10 @@ function App({ Component, pageProps }: AppProps) {
           content="A detail-obsessed Design Engineer, designing and building delightful products."
           property="og:description"
         />
+        <meta
+          content="https://marcbouchenoire.com/meta.png"
+          property="og:image"
+        />
         <meta content="https://marcbouchenoire.com" property="twitter:url" />
         <meta content="@marcbouchenoire" property="twitter:creator" />
         <meta content="Marc Bouchenoire" property="twitter:title" />
@@ -39,6 +43,11 @@ function App({ Component, pageProps }: AppProps) {
           content="A detail-obsessed Design Engineer, designing and building delightful products."
           property="twitter:description"
         />
+        <meta
+          content="https://marcbouchenoire.com/meta.png"
+          property="twitter:image"
+        />
+        <link href="/favicon.png" rel="icon" sizes="any" type="image/png" />
       </Head>
       <Header className="content" />
       <Component {...pageProps} />
