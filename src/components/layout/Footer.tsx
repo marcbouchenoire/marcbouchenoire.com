@@ -23,11 +23,9 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
       <hr className="w-full border-t dark:border-zinc-800 border-zinc-150" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
-          <Emoji /> {date}{" "}
-          <span className="hidden sm:inline">
-            <span className="text-zinc-300 dark:text-zinc-600">—</span> Marc
-            Bouchenoire
-          </span>
+          <Emoji /> <span className="hidden sm:inline">{date} </span>
+          <span className="text-zinc-300 dark:text-zinc-600">—</span> he
+          <span className="text-zinc-300 dark:text-zinc-600">/</span>they
         </span>
         <a
           className="inline-flex gap-1.5 items-center ml-auto link"
