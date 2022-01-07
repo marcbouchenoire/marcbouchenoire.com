@@ -1,6 +1,7 @@
 import { ComponentProps, useEffect, useState } from "react"
 
 const EMOJI = [
+  "👀",
   "⛺",
   "✨",
   "🌈",
@@ -16,7 +17,6 @@ const EMOJI = [
   "🎉",
   "🎨",
   "🏝️",
-  "👀",
   "👋",
   "👒",
   "📚",
@@ -50,7 +50,7 @@ function getRandomEmoji(exclude?: string) {
  * @param props - A set of `span` props.
  */
 export function Emoji(props: ComponentProps<"span">) {
-  const [emoji, setEmoji] = useState(getRandomEmoji)
+  const [emoji, setEmoji] = useState(EMOJI[0])
 
   useEffect(() => {
     const interval = window.setInterval(() => {
