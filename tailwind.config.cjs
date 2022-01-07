@@ -79,7 +79,7 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans]
       },
       maxWidth: {
-        prose: "60ch"
+        prose: "58ch"
       },
       transitionProperty: {
         DEFAULT:
