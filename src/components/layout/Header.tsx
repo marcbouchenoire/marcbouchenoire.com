@@ -45,7 +45,7 @@ export function Header({ className, ...props }: ComponentProps<"header">) {
       <div className="flex items-center text-zinc-700 dark:text-zinc-100">
         <p>
           <a
-            className="inline-flex items-center font-semibold rounded-sm focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40 hover:opacity-60 transition focusable"
+            className="inline-flex items-center font-semibold rounded-sm hover:opacity-60 transition focusable"
             href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
             rel="noreferrer"
             target="_blank"
