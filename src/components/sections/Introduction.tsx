@@ -17,15 +17,17 @@ export function Introduction({
   return (
     <section className={clsx(className, "mt-12 md:mt-16 lg:mt-20")} {...props}>
       <div>
-        <Image
-          alt="Portrait of Marc Bouchenoire"
-          className="overflow-hidden rounded-full"
-          height="80"
-          layout="fixed"
-          src={portrait}
-          width="80"
-        />
-        <h1 className="mt-4 mb-1 text-2xl font-semibold text-zinc-800 dark:text-white">
+        <div className="portrait">
+          <Image
+            alt="Portrait of Marc Bouchenoire"
+            className="overflow-hidden rounded-full"
+            height="80"
+            layout="fixed"
+            src={portrait}
+            width="80"
+          />
+        </div>
+        <h1 className="mt-5 mb-1 text-2xl font-semibold text-zinc-800 dark:text-white">
           Marc Bouchenoire
         </h1>
         <p className="text-lg text-zinc-400 dark:text-zinc-450">

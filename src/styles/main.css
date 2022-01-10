@@ -64,11 +64,13 @@ body {
   }
 }
 
-.delightful {
-  span[data-character] {
-    @apply inline-block relative;
+.portrait span {
+  vertical-align: top;
+}
 
-    animation: 0.8s ease-in-out calc(var(--character) * -0.1s) infinite
-      alternate both wavy;
-  }
+.delightful span[data-character] {
+  @apply inline-block relative;
+
+  animation: 0.8s ease-in-out calc(var(--character) * -0.1s) infinite alternate
+    both wavy;
 }
