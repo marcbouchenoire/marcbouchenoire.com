@@ -13,7 +13,7 @@
 }
 
 body {
-  @apply bg-white dark:bg-zinc-900 selection:bg-primary-500/20 dark:selection:bg-primary-400/20;
+  @apply bg-white dark:bg-zinc-900 selection:bg-primary-500/30 dark:selection:bg-primary-400/40;
 }
 
 @layer base {
