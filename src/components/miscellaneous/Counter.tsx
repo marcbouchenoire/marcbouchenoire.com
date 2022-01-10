@@ -4,7 +4,7 @@ import { ComponentProps, useMemo } from "react"
 import { springier } from "../../transitions"
 
 const CHARACTERS = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "."]
-const COLUMN_HEIGHT = `${CHARACTERS.length}em`
+const COLUMN_HEIGHT = `${CHARACTERS.length * 2}em`
 const STAGGER_CHARACTER_DELAY = 0.1
 
 export interface CounterProps extends ComponentProps<"span"> {
@@ -56,11 +56,12 @@ function CounterCharacters({
 
   return (
     <motion.span
-      animate={{ opacity: 1, width: character === "." ? "0.5ch" : "1ch" }}
+      animate="visible"
       aria-hidden
       className="inline-block relative flex-none text-center pointer-events-none select-none"
       exit="hidden"
       initial="hidden"
+      style={{ width: character === "." ? "0.5ch" : "1ch" }}
       transition={transition}
       variants={variants}
     >
@@ -77,7 +78,7 @@ function CounterCharacters({
         {...props}
       >
         {CHARACTERS.map((character) => (
-          <span className="flex-none h-[1em]" key={character}>
+          <span className="h-[2em] leading-[2em]" key={character}>
             {character}
           </span>
         ))}
@@ -104,7 +105,7 @@ export function Counter({ value = "", className, ...props }: CounterProps) {
       )}
       {...props}
     >
-      <span className="inline-flex overflow-hidden relative h-[1em]">
+      <span className="inline-flex overflow-hidden relative h-[2em] -mt-[0.5em] counter">
         <AnimatePresence>
           {characters.map((character, index) => (
             <CounterCharacters
@@ -117,7 +118,10 @@ export function Counter({ value = "", className, ...props }: CounterProps) {
             />
           ))}
         </AnimatePresence>
-        <span aria-label={value} className="absolute text-transparent">
+        <span
+          aria-label={value}
+          className="absolute h-[2em] leading-[2em] text-transparent"
+        >
           {characters.map((character, index) => (
             <span
               aria-hidden
