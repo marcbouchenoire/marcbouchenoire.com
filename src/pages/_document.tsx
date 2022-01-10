@@ -10,7 +10,22 @@ class Document extends NextDocument {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link
+            as="font"
+            crossOrigin="anonymous"
+            href="/fonts/inter/inter.woff2"
+            rel="preload"
+            type="font/woff2"
+          />
+          <link
+            as="font"
+            crossOrigin="anonymous"
+            href="/fonts/inter/inter-italic.woff2"
+            rel="preload"
+            type="font/woff2"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
