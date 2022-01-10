@@ -12,7 +12,7 @@
 
 ## Installation
 
-Clone the repository and install dependencies.
+Clone this repository, then install all dependencies.
 
 ```bash
 yarn
