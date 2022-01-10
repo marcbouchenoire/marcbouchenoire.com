@@ -1,6 +1,7 @@
 import { ComponentProps, useEffect, useState } from "react"
 
 const EMOJI = [
+  "🤹",
   "👀",
   "⛺",
   "✨",
