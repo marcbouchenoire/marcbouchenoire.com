@@ -12,24 +12,21 @@
   }
 }
 
-body {
-  @apply bg-white dark:bg-zinc-900 selection:bg-primary-500/30 dark:selection:bg-primary-400/40;
-}
-
 @layer base {
   html,
-  body {
+  body,
+  [data-reactroot] {
     @apply min-h-screen;
   }
 
   body {
-    @apply flex flex-col;
+    @apply bg-white dark:bg-zinc-900 selection:bg-primary-500/30 dark:selection:bg-primary-400/40;
 
     -webkit-tap-highlight-color: transparent;
   }
 
   [data-reactroot] {
-    @apply contents;
+    @apply flex flex-col;
 
     > * {
       @apply flex-none w-full;
