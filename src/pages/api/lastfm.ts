@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 const API = "https://ws.audioscrobbler.com/2.0"
 const USERNAME = "marcbouchenoire"
+const STALE_DURATION = 240
+const FRESH_DURATION = STALE_DURATION / 2
 
 const query = new URLSearchParams({
   api_key: process.env.LASTFM_API_TOKEN as string,
@@ -145,6 +147,10 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
   const data: Partial<Response> = await response.json()
 
   if (response.ok) {
+    res.setHeader(
+      "Cache-Control",
+      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+    )
     res.status(200).json(data.recenttracks?.track?.[0])
   } else {
     res.status(response.status).json(data)
