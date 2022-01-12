@@ -2,6 +2,8 @@ import { XMLParser } from "fast-xml-parser"
 import { NextApiRequest, NextApiResponse } from "next"
 
 const FEED = "https://letterboxd.com/marcbouchenoire/rss/"
+const STALE_DURATION = 86400
+const FRESH_DURATION = STALE_DURATION / 2
 
 interface Movie {
   /**
@@ -90,6 +92,10 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
     const parser = new XMLParser()
     const { rss }: XMLParserValue<Response> = parser.parse(data)
 
+    res.setHeader(
+      "Cache-Control",
+      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+    )
     res.status(200).json(rss.channel.item.slice(-1)[0])
   } catch {
     res.status(500).send(undefined)
