@@ -25,6 +25,18 @@ class Document extends NextDocument {
             rel="preload"
             type="font/woff2"
           />
+          <link
+            as="fetch"
+            crossOrigin="anonymous"
+            href="/api/lastfm"
+            rel="preload"
+          />
+          <link
+            as="fetch"
+            crossOrigin="anonymous"
+            href="/api/letterboxd"
+            rel="preload"
+          />
         </Head>
         <body>
           <Main />
