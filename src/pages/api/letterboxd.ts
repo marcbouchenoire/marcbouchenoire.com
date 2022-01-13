@@ -132,7 +132,10 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
     const { rss }: XMLParserDocument<LetterboxdResponse> =
       parser.parse(response)
 
-    const film = rss.channel.item.slice(-1)[0]
+    const films = rss.channel.item.sort((a, b) =>
+      b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
+    )
+    const film = films[0]
     const [poster] =
       film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
 
