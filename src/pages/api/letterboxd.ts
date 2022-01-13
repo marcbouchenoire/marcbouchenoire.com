@@ -1,11 +1,24 @@
 import { XMLParser } from "fast-xml-parser"
+import { decode } from "html-entities"
 import { NextApiRequest, NextApiResponse } from "next"
 
-const FEED = "https://letterboxd.com/marcbouchenoire/rss/"
+const LETTERBOXD_FEED = "https://letterboxd.com/marcbouchenoire/rss/"
 const STALE_DURATION = 86400
 const FRESH_DURATION = STALE_DURATION / 2
 
-interface Movie {
+interface XMLParserDocument<T> {
+  /**
+   * A parsed RSS document.
+   */
+  rss: T
+}
+
+interface FilmEntry {
+  /**
+   * The film entry's description.
+   */
+  description: string
+
   /**
    * A unique identifer.
    */
@@ -40,9 +53,14 @@ interface Movie {
    * The film's Letterboxd URL.
    */
   link: string
+
+  /**
+   * The film entry's title.
+   */
+  title: string
 }
 
-interface Response {
+interface LetterboxdResponse {
   /**
    * A parsed RSS feed.
    */
@@ -55,7 +73,7 @@ interface Response {
     /**
      * The feed's content.
      */
-    item: Movie[]
+    item: FilmEntry[]
 
     /**
      * The feed's URL.
@@ -69,11 +87,31 @@ interface Response {
   }
 }
 
-interface XMLParserValue<T> {
+export interface Response {
   /**
-   * A parsed RSS document.
+   * The date at which the song was listened to.
    */
-  rss: T
+  date: string
+
+  /**
+   * The film's poster.
+   */
+  poster: string
+
+  /**
+   * The film's attributed rating.
+   */
+  rating?: number
+
+  /**
+   * The film's title.
+   */
+  title: string
+
+  /**
+   * The film's release year.
+   */
+  year: number
 }
 
 /**
@@ -83,20 +121,32 @@ interface XMLParserValue<T> {
  * @param res - An API route response.
  */
 export default async function route(req: NextApiRequest, res: NextApiResponse) {
-  const response = await fetch(FEED)
-  const data = await response.text()
-
   try {
-    if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
+    const response = await fetch(LETTERBOXD_FEED).then((response) => {
+      if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
+
+      return response.text()
+    })
 
     const parser = new XMLParser()
-    const { rss }: XMLParserValue<Response> = parser.parse(data)
+    const { rss }: XMLParserDocument<LetterboxdResponse> =
+      parser.parse(response)
+
+    const film = rss.channel.item.slice(-1)[0]
+    const [poster] =
+      film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
 
     res.setHeader(
       "Cache-Control",
       `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
     )
-    res.status(200).json(rss.channel.item.slice(-1)[0])
+    res.status(200).json({
+      title: decode(film["letterboxd:filmTitle"]),
+      year: film["letterboxd:filmYear"],
+      rating: film["letterboxd:memberRating"],
+      date: film["letterboxd:watchedDate"],
+      poster
+    })
   } catch {
     res.status(500).send(undefined)
   }
