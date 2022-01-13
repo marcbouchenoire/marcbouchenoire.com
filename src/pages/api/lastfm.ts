@@ -1,42 +1,107 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
-const API = "https://ws.audioscrobbler.com/2.0"
-const USERNAME = "marcbouchenoire"
+const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
+const MUSICBRAINZ_API = "https://musicbrainz.org/ws/2"
+const LASTFM_USERNAME = "marcbouchenoire"
+const LASTFM_ENDPOINT = `${LASTFM_API}?method=user.getRecentTracks&api_key=${process.env.LASTFM_API_TOKEN}&format=json&user=${LASTFM_USERNAME}&limit=1`
+const MUSICBRAINZ_ENDPOINT = (mbid: string) => {
+  return `${MUSICBRAINZ_API}/release/${mbid}?fmt=json`
+}
 const STALE_DURATION = 240
 const FRESH_DURATION = STALE_DURATION / 2
 
-const query = new URLSearchParams({
-  api_key: process.env.LASTFM_API_TOKEN as string,
-  format: "json",
-  method: "user.getRecentTracks",
-  user: USERNAME,
-  limit: "1"
-})
+type Boolean = "0" | "1"
 
-const ENDPOINT = `${API}?${query.toString()}`
-
-interface TextValue {
+interface Text<T = string> {
   /**
    * The value's content.
    */
-  "#text": string
+  "#text": T
 }
 
-interface MusicBrainzValue extends TextValue {
+interface MusicBrainzID extends Text {
   /**
    * A MusicBrainz identifier.
    */
   mbid: string
 }
 
-interface Attributes {
+interface Image extends Text {
+  /**
+   * The image's size.
+   */
+  size: "extralarge" | "large" | "medium" | "small"
+}
+
+interface TrackDate extends Text {
+  /**
+   * A Unix timestamp.
+   */
+  uts: string
+}
+
+interface RecentTrackAttributes {
+  /**
+   * Whether the track is currently playing.
+   */
+  nowplaying: string
+}
+
+interface RecentTrack {
+  /**
+   * A list of track-specific attributes.
+   */
+  "@attr"?: RecentTrackAttributes
+
+  /**
+   * The album the track is featured in.
+   */
+  album: MusicBrainzID
+
+  /**
+   * The track's artist.
+   */
+  artist: MusicBrainzID
+
+  /**
+   * The date at which the track was listened to.
+   */
+  date?: TrackDate
+
+  /**
+   * A cover art image in various sizes.
+   */
+  image: Image[]
+
+  /**
+   * The track's MusicBrainz identifier.
+   */
+  mbid: string
+
+  /**
+   * The track's name.
+   */
+  name: string
+
+  /**
+   * Whether a preview is available for streaming.
+   */
+  streamable: Boolean
+
+  /**
+   * The track's Last.fm URL.
+   */
+  url: string
+}
+
+interface RecentTracksAttributes {
   /**
    * The current page index.
    */
   page: string
 
   /**
-   * THe amount of tracks per page.
+   * The amount of tracks per page.
    */
   perPage: string
 
@@ -51,89 +116,57 @@ interface Attributes {
   totalPages: string
 }
 
-interface TrackAttributes {
+interface RecentTracks {
   /**
-   * Whether the track is currently playing.
+   * A list of response-specific attributes.
    */
-  nowplaying: string
+  "@attr": RecentTracksAttributes
+
+  /**
+   * A list of tracks.
+   */
+  track: RecentTrack[]
 }
 
-interface TrackDate extends TextValue {
+interface LastFmResponse {
   /**
-   * A Unix timestamp.
+   * The response's main content.
    */
-  uts: string
+  recenttracks: RecentTracks
 }
 
-interface TrackImage extends TextValue {
+interface MusicBrainzResponse {
   /**
-   * The image's size.
+   * The release's release date.
    */
-  size: "extralarge" | "large" | "medium" | "small"
+  date?: string
 }
 
-interface Track {
+export interface Response {
   /**
-   * A list of track-specific attributes.
+   * The song's artist.
    */
-  "@attr"?: TrackAttributes
+  artist: string
 
   /**
-   * The album the track is featured in.
+   * The song's cover art.
    */
-  album: MusicBrainzValue
+  cover: string
 
   /**
-   * The track's artist.
+   * The date at which the song was listened to.
    */
-  artist: MusicBrainzValue
+  date?: string
 
   /**
-   * The date at which the track was listened to.
+   * The song's title.
    */
-  date?: TrackDate
+  title: string
 
   /**
-   * A cover art image in various sizes.
+   * The song's release year.
    */
-  image: TrackImage[]
-
-  /**
-   * The track's MusicBrainz identifier.
-   */
-  mbid: string
-
-  /**
-   * The track's name.
-   */
-  name: string
-
-  /**
-   * Whether a track is streamable.
-   */
-  streamable: 0 | 1
-
-  /**
-   * The track's Last.fm URL.
-   */
-  url: string
-}
-
-interface Response {
-  /**
-   * The response's body content.
-   */
-  recenttracks: {
-    /**
-     * A list of response-specific attributes.
-     */
-    "@attr": Attributes
-
-    /**
-     * A list of tracks.
-     */
-    track: Track[]
-  }
+  year?: number
 }
 
 /**
@@ -143,16 +176,47 @@ interface Response {
  * @param res - An API route response.
  */
 export default async function route(req: NextApiRequest, res: NextApiResponse) {
-  const response = await fetch(ENDPOINT)
-  const data: Partial<Response> = await response.json()
+  try {
+    const response: LastFmResponse = await fetch(LASTFM_ENDPOINT).then(
+      (response) => {
+        if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
 
-  if (response.ok) {
+        return response.json()
+      }
+    )
+
+    const song = response.recenttracks?.track?.[0]
+    const mbid = song.album.mbid
+    let year: number | undefined
+
+    if (mbid) {
+      const release: MusicBrainzResponse = await fetch(
+        MUSICBRAINZ_ENDPOINT(mbid)
+      ).then((response) => {
+        if (!response.ok) return {}
+
+        return response.json()
+      })
+
+      if (release.date) {
+        const date = new Date(release.date)
+
+        year = date.getFullYear()
+      }
+    }
+
     res.setHeader(
       "Cache-Control",
       `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
     )
-    res.status(200).json(data.recenttracks?.track?.[0])
-  } else {
-    res.status(response.status).json(data)
+    res.status(200).json({
+      title: song.name,
+      artist: song.artist["#text"],
+      year,
+      date: song.date?.uts,
+      cover: song.image.find((image) => image.size === "large")?.["#text"]
+    })
+  } catch {
+    res.status(500).send(undefined)
   }
 }
