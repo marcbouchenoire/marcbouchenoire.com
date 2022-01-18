@@ -1,0 +1,13 @@
+import useSWR from "swr"
+import { Response } from "../pages/api/github/repository/[...repository]"
+
+/**
+ * Fetch a specific GitHub repository.
+ *
+ * @param repository - The repository's full name.
+ */
+export function useRepository(repository: string): Partial<Response> {
+  const { data } = useSWR<Response>(`/api/github/repository/${repository}`)
+
+  return data ?? {}
+}
