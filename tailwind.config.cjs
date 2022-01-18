@@ -78,8 +78,13 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans]
       },
-      maxWidth: {
-        prose: "58ch"
+      fontSize: {
+        "2xs": [
+          "0.65rem",
+          {
+            lineHeight: 1
+          }
+        ]
       },
       transitionProperty: {
         DEFAULT:
