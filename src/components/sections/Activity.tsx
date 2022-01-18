@@ -235,10 +235,7 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
 export function Activity(props: ComponentProps<"section">) {
   return (
     <section {...props}>
-      <small className="font-semibold tracking-widest text-zinc-400 uppercase dark:text-zinc-450 text-2xs">
-        Media
-      </small>
-      <h2 className="mt-1 mb-0.5 text-xl font-bold text-zinc-800 dark:text-white">
+      <h2 className="mb-2 text-xl font-bold text-zinc-800 dark:text-white">
         Activity
       </h2>
       <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
