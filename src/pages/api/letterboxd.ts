@@ -3,8 +3,8 @@ import { decode } from "html-entities"
 import { NextApiRequest, NextApiResponse } from "next"
 
 const LETTERBOXD_FEED = "https://letterboxd.com/marcbouchenoire/rss/"
-const STALE_DURATION = 86400
-const FRESH_DURATION = STALE_DURATION / 2
+export const STALE_DURATION = 86400
+export const FRESH_DURATION = STALE_DURATION / 2
 
 interface XMLParserDocument<T> {
   /**
