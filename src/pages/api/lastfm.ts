@@ -156,7 +156,7 @@ export interface Response {
   /**
    * The date at which the song was listened to.
    */
-  date?: string
+  date?: number
 
   /**
    * The song's title.
@@ -213,7 +213,7 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       title: song.name,
       artist: song.artist["#text"],
       year,
-      date: song.date?.uts,
+      date: song.date?.uts ? Number(song.date?.uts) : undefined,
       cover: song.image.find((image) => image.size === "large")?.["#text"]
     })
   } catch {
