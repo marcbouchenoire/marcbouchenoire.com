@@ -43,6 +43,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        dimmmensions: {
+          400: "#b488fb",
+          500: "#9a59f6"
+        },
         dribbble: {
           400: "#f377a9",
           500: "#ea4c89"
@@ -59,9 +63,17 @@ module.exports = {
           800: "#075985",
           900: "#0c4a6e"
         },
+        symbolist: {
+          400: "#f8719d",
+          500: "#f1437b"
+        },
         twitter: {
           400: "#53bcf9",
           500: "#1da1f2"
+        },
+        typometer: {
+          400: "#22d3ee",
+          500: "#06b6d4"
         },
         zinc: {
           150: "#ececee",
@@ -86,6 +98,10 @@ module.exports = {
           }
         ]
       },
+      maxWidth: ({ theme }) => ({
+        "screen-md-8": `calc(${theme("screens.md")} + ${theme("spacing.16")})`,
+        "screen-md-16": `calc(${theme("screens.md")} + ${theme("spacing.32")})`
+      }),
       transitionProperty: {
         DEFAULT:
           "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, text-decoration-color"

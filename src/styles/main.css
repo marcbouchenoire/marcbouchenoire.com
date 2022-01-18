@@ -77,6 +77,20 @@
   }
 }
 
+:not(pre) > code {
+  @apply relative whitespace-nowrap font-semibold text-sm;
+
+  margin: 0 0.4em;
+
+  &::before {
+    @apply absolute z-negative bg-zinc-100 dark:bg-zinc-750;
+
+    border-radius: 0.4em;
+    content: "";
+    inset: -0.25em -0.4em -0.3em;
+  }
+}
+
 .counter {
   mask-image: linear-gradient(
     0deg,
