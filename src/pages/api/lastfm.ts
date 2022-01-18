@@ -7,8 +7,8 @@ const LASTFM_ENDPOINT = `${LASTFM_API}?method=user.getRecentTracks&api_key=${pro
 const MUSICBRAINZ_ENDPOINT = (mbid: string) => {
   return `${MUSICBRAINZ_API}/release/${mbid}?fmt=json`
 }
-const STALE_DURATION = 240
-const FRESH_DURATION = STALE_DURATION / 2
+export const STALE_DURATION = 60
+export const FRESH_DURATION = STALE_DURATION / 2
 
 type Boolean = "0" | "1"
 
