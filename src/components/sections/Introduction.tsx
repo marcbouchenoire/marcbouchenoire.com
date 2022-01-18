@@ -1,4 +1,3 @@
-import clsx from "clsx"
 import Image from "next/image"
 import { ComponentProps } from "react"
 import portrait from "../../../public/portrait.jpg"
@@ -8,14 +7,10 @@ import { Characters } from "../miscellaneous/Characters"
  * An introduction section with a short bio.
  *
  * @param props - A set of `section` props.
- * @param [props.className] - A list of one or more classes.
  */
-export function Introduction({
-  className,
-  ...props
-}: ComponentProps<"section">) {
+export function Introduction(props: ComponentProps<"section">) {
   return (
-    <section className={clsx(className, "mt-12 md:mt-16 lg:mt-20")} {...props}>
+    <section {...props}>
       <div>
         <div className="portrait">
           <Image
@@ -34,7 +29,7 @@ export function Introduction({
           Detail-obsessed Design Engineer
         </p>
       </div>
-      <div className="my-10 max-w-prose text-zinc-500 dark:text-zinc-350">
+      <div className="my-10 max-w-[58ch] text-zinc-500 dark:text-zinc-350">
         <p className="my-4 leading-loose">
           Designing and building{" "}
           <em className="delightful">
