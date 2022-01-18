@@ -1,5 +1,7 @@
 import clsx from "clsx"
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable-line import/no-duplicates
+import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicates
+import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
 import { ComponentProps, useMemo } from "react"
 import { useLatestFilm } from "../../hooks/use-latest-film"
 import { useLatestSong } from "../../hooks/use-latest-song"
@@ -21,7 +23,13 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
   const relativeDate = useMemo(() => {
     if (!absoluteDate) return
 
-    return capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+    if (isToday(absoluteDate)) {
+      return "Today"
+    } else if (isYesterday(absoluteDate)) {
+      return "Yesterday"
+    } else {
+      return capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+    }
   }, [absoluteDate])
 
   return (
@@ -142,7 +150,9 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
   const relativeDate = useMemo(() => {
     if (!absoluteDate) return
 
-    return capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+    return isYesterday(absoluteDate)
+      ? "Yesterday"
+      : capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
   }, [absoluteDate])
 
   return (
