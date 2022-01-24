@@ -152,7 +152,7 @@ export function Work(props: ComponentProps<"section">) {
                     </>
                   }
                 >
-                  <div className="image relative aspect-[920/560]">
+                  <div className="image relative aspect-[920/560] bg-black">
                     <Image
                       alt="The Framer Motion website"
                       height="460"
