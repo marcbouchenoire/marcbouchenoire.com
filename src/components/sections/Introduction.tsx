@@ -48,7 +48,7 @@ export function Introduction(props: ComponentProps<"section">) {
             Framer
           </a>
           —focusing on the marketing&nbsp;site and its design&nbsp;system.
-          Previously, I worked on{" "}
+          Before that, I worked on{" "}
           <a
             className="font-medium text-zinc-800 hover:text-amber-500 focus:text-amber-500 dark:text-white dark:hover:text-amber-400 dark:focus:text-amber-400 underline decoration-amber-500 hover:decoration-amber-500/30 dark:decoration-amber-400 dark:hover:decoration-amber-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-amber-500/40 dark:focus:ring-amber-400/40 transition duration-100 focusable"
             href="https://www.sketch.com/apps/"
@@ -74,8 +74,8 @@ export function Introduction(props: ComponentProps<"section">) {
             target="_blank"
           >
             Awkward
-          </a>
-          . Before that, I graduated from{" "}
+          </a>{" "}
+          and graduated from{" "}
           <a
             className="font-medium text-zinc-800 hover:text-rose-500 focus:text-rose-500 dark:text-white dark:hover:text-rose-400 dark:focus:text-rose-400 underline decoration-rose-500 hover:decoration-rose-500/30 dark:decoration-rose-400 dark:hover:decoration-rose-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-rose-500/40 dark:focus:ring-rose-400/40 transition duration-100 focusable"
             href="https://en.lecolededesign.com/"
