@@ -2,10 +2,25 @@ import clsx from "clsx"
 import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable-line import/no-duplicates
 import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicates
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
+import { AnimatePresence, Transition, Variants, motion } from "framer-motion"
 import { ComponentProps, useMemo } from "react"
 import { useLatestFilm } from "../../hooks/use-latest-film"
 import { useLatestSong } from "../../hooks/use-latest-song"
 import { capitalize } from "../../utils/capitalize"
+
+const variants: Variants = {
+  hidden: {
+    opacity: 0
+  },
+  visible: {
+    opacity: 1
+  }
+}
+
+const fade: Transition = {
+  ease: "easeInOut",
+  duration: 0.6
+}
 
 /**
  * Display the latest film I watched from Letterboxd.
@@ -48,13 +63,22 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
             fillRule="evenodd"
           />
         </svg>
-        {poster && (
-          <img
-            alt={title}
-            className="absolute inset-0 h-full w-full object-cover"
-            src={poster}
-          />
-        )}
+        <AnimatePresence>
+          {poster && (
+            <motion.img
+              alt={title}
+              animate="visible"
+              className="absolute h-full w-full object-cover"
+              exit="hidden"
+              initial="hidden"
+              key={title}
+              loading="lazy"
+              src={poster}
+              transition={fade}
+              variants={variants}
+            />
+          )}
+        </AnimatePresence>
       </div>
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
@@ -169,13 +193,22 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
             fill="currentColor"
           />
         </svg>
-        {cover && (
-          <img
-            alt={`${title} by ${artist}`}
-            className="absolute h-full w-full object-cover"
-            src={cover}
-          />
-        )}
+        <AnimatePresence>
+          {cover && (
+            <motion.img
+              alt={`${title} by ${artist}`}
+              animate="visible"
+              className="absolute h-full w-full object-cover"
+              exit="hidden"
+              initial="hidden"
+              key={`${artist} ${title}`}
+              loading="lazy"
+              src={cover}
+              transition={fade}
+              variants={variants}
+            />
+          )}
+        </AnimatePresence>
       </div>
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
