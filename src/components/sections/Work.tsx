@@ -29,17 +29,17 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
       )}
       {...props}
     >
-      <div className="flex relative flex-none items-center px-3 h-8">
+      <div className="grid relative flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] gap-2 items-center px-3 h-8">
         <div className="flex gap-1.5">
           <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
           <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
           <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
         </div>
         {url && (
-          <div className="flex absolute inset-0 justify-center items-center">
-            <div className="flex justify-center items-center w-[50%] h-5 leading-none text-center text-black/40 dark:text-white/40 truncate bg-black/5 dark:bg-white/10 rounded select-none text-3xs">
+          <div className="flex justify-center items-center px-3 h-5 text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/10 rounded select-none text-3xs">
+            <span className="max-w-full leading-none text-center truncate">
               {url}
-            </div>
+            </span>
           </div>
         )}
       </div>
