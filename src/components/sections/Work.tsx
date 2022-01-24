@@ -25,7 +25,7 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
     <div
       className={clsx(
         className,
-        "overflow-hidden w-full bg-white/80 dark:bg-zinc-800/80 rounded-lg backdrop-blur-xl backdrop-saturate-200 shadow-floaty dark:highlight-invert"
+        "overflow-hidden w-full bg-white supports-backdrop:bg-white/80 dark:supports-backdrop:bg-zinc-800/80 dark:bg-zinc-800 rounded-lg backdrop-blur-xl backdrop-saturate-200 shadow-floaty dark:highlight-invert"
       )}
       {...props}
     >
@@ -60,7 +60,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
     <div
       className={clsx(
         className,
-        "aspect-[425/862] relative before:absolute before:inset-0 bg-white/80 dark:bg-zinc-800/80 rounded-[15.294%/7.541%] before:rounded-[inherit] backdrop-blur-xl backdrop-saturate-200 before:shadow-phone dark:before:shadow-phone-invert shadow-floaty dark:highlight-invert"
+        "aspect-[425/862] relative before:absolute before:inset-0 bg-white supports-backdrop:bg-white/80 dark:supports-backdrop:bg-zinc-800/80 dark:bg-zinc-800 rounded-[15.294%/7.541%] before:rounded-[inherit] backdrop-blur-xl backdrop-saturate-200 before:shadow-phone dark:before:shadow-phone-invert shadow-floaty dark:highlight-invert"
       )}
       {...props}
     >
