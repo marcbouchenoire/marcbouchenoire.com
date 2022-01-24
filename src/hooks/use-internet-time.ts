@@ -3,6 +3,7 @@ import { wrap } from "../utils/wrap"
 
 const SECONDS_PER_DAY = 86400
 const BEATS_PER_DAY = 1000
+const MILLISECONDS_PER_BEAT = SECONDS_PER_DAY / 100
 const DEFAULT_TIME = "000.00"
 
 /**
@@ -20,7 +21,7 @@ function getInternetTime(date = new Date()) {
     BEATS_PER_DAY
   )
 
-  return beats.toFixed(2)
+  return beats.toFixed(2).padStart(6, "0")
 }
 
 /**
@@ -34,7 +35,7 @@ export function useInternetTime() {
 
     const interval = window.setInterval(() => {
       setTime(getInternetTime())
-    }, 1000)
+    }, MILLISECONDS_PER_BEAT)
 
     return () => {
       window.clearInterval(interval)
