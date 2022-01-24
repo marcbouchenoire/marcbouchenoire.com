@@ -8,7 +8,7 @@ import { Work } from "../components/sections/Work"
  */
 function Page() {
   return (
-    <main className="flex-1 pb-12 md:pb-16 lg:pb-20">
+    <main className="flex-1 pb-16 md:pb-20 lg:pb-24">
       <Introduction className="mt-12 md:mt-16 lg:mt-20 content" />
       <Work className="mt-16 md:mt-20 lg:mt-24" />
       <Projects className="mt-16 md:mt-20 lg:mt-24" />
