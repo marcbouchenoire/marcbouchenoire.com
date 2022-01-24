@@ -20,7 +20,7 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
       )}
       {...props}
     >
-      <hr className="w-full border-t dark:border-zinc-800 border-zinc-150" />
+      <hr className="w-full border-t border-zinc-150 dark:border-zinc-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
           <Emoji /> <span className="hidden sm:inline">{date} </span>
@@ -28,7 +28,7 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
           <span className="text-zinc-300 dark:text-zinc-600">/</span>they
         </span>
         <a
-          className="inline-flex gap-1.5 items-center ml-auto link"
+          className="link ml-auto inline-flex items-center gap-1.5"
           href="https://github.com/marcbouchenoire/marcbouchenoire.com"
           rel="noreferrer"
           target="_blank"
@@ -49,7 +49,7 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
           </svg>
           <span>
             <span>marcbouchenoire.com</span>
-            <span className="hidden sm:inline dark:text-zinc-450 text-zinc-350">
+            <span className="hidden text-zinc-350 dark:text-zinc-450 sm:inline">
               #{commit}
             </span>
           </span>

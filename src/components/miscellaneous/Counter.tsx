@@ -58,7 +58,7 @@ function CounterCharacters({
     <motion.span
       animate="visible"
       aria-hidden
-      className="inline-block relative flex-none text-center pointer-events-none select-none"
+      className="pointer-events-none relative inline-block flex-none select-none text-center"
       exit="hidden"
       initial="hidden"
       style={{ width: character === "." ? "0.5ch" : "1ch" }}
@@ -69,7 +69,7 @@ function CounterCharacters({
         animate={{ opacity: 1, y }}
         className={clsx(
           className,
-          "inline-flex absolute bottom-0 left-0 flex-col w-full"
+          "absolute bottom-0 left-0 inline-flex w-full flex-col"
         )}
         initial="hidden"
         style={{ height: COLUMN_HEIGHT }}
@@ -105,7 +105,7 @@ export function Counter({ value = "", className, ...props }: CounterProps) {
       )}
       {...props}
     >
-      <span className="inline-flex overflow-hidden relative h-[2em] -mt-[0.5em] counter">
+      <span className="counter relative -mt-[0.5em] inline-flex h-[2em] overflow-hidden">
         <AnimatePresence>
           {characters.map((character, index) => (
             <CounterCharacters

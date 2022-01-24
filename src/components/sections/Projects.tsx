@@ -36,15 +36,15 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
     <div
       className={clsx(
         className,
-        "flex relative flex-col p-6 rounded-lg border dark:border-zinc-800 sm:p-8 border-zinc-150"
+        "relative flex flex-col rounded-lg border border-zinc-150 p-6 dark:border-zinc-800 sm:p-8"
       )}
       {...props}
     >
-      <div className="flex items-center mb-8 text-zinc-400">
-        <small className="flex gap-4 items-center font-semibold tracking-widest leading-tight uppercase text-2xs">
+      <div className="mb-8 flex items-center text-zinc-400">
+        <small className="flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
           <span className="flex items-center">
             <svg
-              className="flex-none mr-1 -ml-px"
+              className="mr-1 -ml-px flex-none"
               height="20"
               role="presentation"
               width="20"
@@ -73,7 +73,7 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
           </span>
           <span className="flex items-center">
             <svg
-              className="flex-none mr-1 -ml-px"
+              className="mr-1 -ml-px flex-none"
               height="20"
               role="presentation"
               width="20"
@@ -91,7 +91,7 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
         </small>
         <a
           aria-label="View on GitHub"
-          className="flex-none ml-auto hover:text-zinc-600 dark:hover:text-zinc-100 rounded-full transition focusable"
+          className="focusable ml-auto flex-none rounded-full transition hover:text-zinc-600 dark:hover:text-zinc-100"
           href={`https://github.com/${repository}`}
           rel="noreferrer"
           target="_blank"
@@ -131,7 +131,7 @@ export function Projects(props: ComponentProps<"section">) {
         <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
           A selection of personal—and{" "}
           <a
-            className="text-zinc-800 dark:text-white link"
+            className="link text-zinc-800 dark:text-white"
             href="https://github.com/marcbouchenoire"
             rel="noreferrer"
             target="_blank"
@@ -141,7 +141,7 @@ export function Projects(props: ComponentProps<"section">) {
           —projects.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-5 mt-8 sm:grid-cols-2 sm:gap-8 content lg:max-w-screen-md-8">
+      <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
         <Project repository="marcbouchenoire/dimmmensions">
           <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
             <svg
@@ -186,7 +186,7 @@ export function Projects(props: ComponentProps<"section">) {
             A collection of dimensions from iOS and iPadOS&nbsp;devices.
           </p>
           <a
-            className="flex justify-center items-center py-2 px-2.5 mt-4 font-medium text-white dark:text-zinc-900 selection:bg-white/30 dark:selection:bg-zinc-900/30 rounded-md shadow-lg transition cursor-pointer dark:hover:bg-dimmmensions-400/80 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 dark:hover:shadow-dimmmensions-400/5 bg-dimmmensions-500 dark:bg-dimmmensions-400 shadow-dimmmensions-500/10 dark:shadow-dimmmensions-400/10 focus:ring-dimmmensions-500/40 dark:focus:ring-dimmmensions-400/40 focusable"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dimmmensions-500/10 transition selection:bg-white/30 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 focus:ring-dimmmensions-500/40 dark:bg-dimmmensions-400 dark:text-zinc-900 dark:shadow-dimmmensions-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-400/80 dark:hover:shadow-dimmmensions-400/5 dark:focus:ring-dimmmensions-400/40"
             href="https://dimmmensions.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -228,7 +228,7 @@ export function Projects(props: ComponentProps<"section">) {
             A collection of every symbol from SF&nbsp;Symbols.
           </p>
           <a
-            className="flex justify-center items-center py-2 px-2.5 mt-4 font-medium text-white dark:text-zinc-900 selection:bg-white/30 dark:selection:bg-zinc-900/30 rounded-md shadow-lg transition cursor-pointer dark:hover:bg-symbolist-400/80 hover:bg-symbolist-500/80 hover:shadow-symbolist-500/5 dark:hover:shadow-symbolist-400/5 bg-symbolist-500 dark:bg-symbolist-400 shadow-symbolist-500/10 dark:shadow-symbolist-400/10 focus:ring-symbolist-500/40 dark:focus:ring-symbolist-400/40 focusable"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-symbolist-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-symbolist-500/10 transition selection:bg-white/30 hover:bg-symbolist-500/80 hover:shadow-symbolist-500/5 focus:ring-symbolist-500/40 dark:bg-symbolist-400 dark:text-zinc-900 dark:shadow-symbolist-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-symbolist-400/80 dark:hover:shadow-symbolist-400/5 dark:focus:ring-symbolist-400/40"
             href="https://symbolist.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -294,7 +294,7 @@ export function Projects(props: ComponentProps<"section">) {
             Measure text asynchronously.
           </p>
           <a
-            className="flex justify-center items-center py-2 px-2.5 mt-4 font-medium text-white dark:text-zinc-900 selection:bg-white/30 dark:selection:bg-zinc-900/30 rounded-md shadow-lg transition cursor-pointer dark:hover:bg-typometer-400/80 hover:bg-typometer-500/80 hover:shadow-typometer-500/5 dark:hover:shadow-typometer-400/5 bg-typometer-500 dark:bg-typometer-400 shadow-typometer-500/10 dark:shadow-typometer-400/10 focus:ring-typometer-500/40 dark:focus:ring-typometer-400/40 focusable"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-typometer-500/10 transition selection:bg-white/30 hover:bg-typometer-500/80 hover:shadow-typometer-500/5 focus:ring-typometer-500/40 dark:bg-typometer-400 dark:text-zinc-900 dark:shadow-typometer-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-typometer-400/80 dark:hover:shadow-typometer-400/5 dark:focus:ring-typometer-400/40"
             href="https://typometer.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"

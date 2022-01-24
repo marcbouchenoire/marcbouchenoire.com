@@ -40,7 +40,7 @@ export function Introduction(props: ComponentProps<"section">) {
         <p className="my-4 leading-loose">
           I’m currently living in Amsterdam and working at{" "}
           <a
-            className="font-medium text-zinc-800 hover:text-sky-500 focus:text-sky-500 dark:text-white dark:hover:text-sky-400 dark:focus:text-sky-400 underline decoration-sky-500 hover:decoration-sky-500/30 dark:decoration-sky-400 dark:hover:decoration-sky-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-sky-500/40 dark:focus:ring-sky-400/40 transition duration-100 focusable"
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-sky-500 decoration-2 underline-offset-2 transition duration-100 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40 dark:text-white dark:decoration-sky-400 dark:hover:text-sky-400 dark:hover:decoration-sky-400/30 dark:focus:text-sky-400 dark:focus:ring-sky-400/40"
             href="https://www.framer.com/"
             rel="noreferrer"
             target="_blank"
@@ -50,7 +50,7 @@ export function Introduction(props: ComponentProps<"section">) {
           —focusing on the marketing&nbsp;site and its design&nbsp;system.
           Before that, I worked on{" "}
           <a
-            className="font-medium text-zinc-800 hover:text-amber-500 focus:text-amber-500 dark:text-white dark:hover:text-amber-400 dark:focus:text-amber-400 underline decoration-amber-500 hover:decoration-amber-500/30 dark:decoration-amber-400 dark:hover:decoration-amber-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-amber-500/40 dark:focus:ring-amber-400/40 transition duration-100 focusable"
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-amber-500 decoration-2 underline-offset-2 transition duration-100 hover:text-amber-500 hover:decoration-amber-500/30 focus:text-amber-500 focus:ring-amber-500/40 dark:text-white dark:decoration-amber-400 dark:hover:text-amber-400 dark:hover:decoration-amber-400/30 dark:focus:text-amber-400 dark:focus:ring-amber-400/40"
             href="https://www.sketch.com/apps/"
             rel="noreferrer"
             target="_blank"
@@ -59,7 +59,7 @@ export function Introduction(props: ComponentProps<"section">) {
           </a>{" "}
           and{" "}
           <a
-            className="font-medium text-zinc-800 hover:text-lime-500 focus:text-lime-500 dark:text-white dark:hover:text-lime-400 dark:focus:text-lime-400 underline decoration-lime-500 hover:decoration-lime-500/30 dark:decoration-lime-400 dark:hover:decoration-lime-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-lime-500/40 dark:focus:ring-lime-400/40 transition duration-100 focusable"
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-lime-500 decoration-2 underline-offset-2 transition duration-100 hover:text-lime-500 hover:decoration-lime-500/30 focus:text-lime-500 focus:ring-lime-500/40 dark:text-white dark:decoration-lime-400 dark:hover:text-lime-400 dark:hover:decoration-lime-400/30 dark:focus:text-lime-400 dark:focus:ring-lime-400/40"
             href="https://www.sketch.com/apps/"
             rel="noreferrer"
             target="_blank"
@@ -68,7 +68,7 @@ export function Introduction(props: ComponentProps<"section">) {
           </a>{" "}
           at{" "}
           <a
-            className="font-medium text-zinc-800 hover:text-violet-500 focus:text-violet-500 dark:text-white dark:hover:text-violet-400 dark:focus:text-violet-400 underline decoration-violet-500 hover:decoration-violet-500/30 dark:decoration-violet-400 dark:hover:decoration-violet-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-violet-500/40 dark:focus:ring-violet-400/40 transition duration-100 focusable"
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-violet-500 decoration-2 underline-offset-2 transition duration-100 hover:text-violet-500 hover:decoration-violet-500/30 focus:text-violet-500 focus:ring-violet-500/40 dark:text-white dark:decoration-violet-400 dark:hover:text-violet-400 dark:hover:decoration-violet-400/30 dark:focus:text-violet-400 dark:focus:ring-violet-400/40"
             href="https://www.awkward.co/"
             rel="noreferrer"
             target="_blank"
@@ -77,7 +77,7 @@ export function Introduction(props: ComponentProps<"section">) {
           </a>{" "}
           and graduated from{" "}
           <a
-            className="font-medium text-zinc-800 hover:text-rose-500 focus:text-rose-500 dark:text-white dark:hover:text-rose-400 dark:focus:text-rose-400 underline decoration-rose-500 hover:decoration-rose-500/30 dark:decoration-rose-400 dark:hover:decoration-rose-400/30 decoration-2 underline-offset-2 rounded-sm focus:ring-rose-500/40 dark:focus:ring-rose-400/40 transition duration-100 focusable"
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-rose-500 decoration-2 underline-offset-2 transition duration-100 hover:text-rose-500 hover:decoration-rose-500/30 focus:text-rose-500 focus:ring-rose-500/40 dark:text-white dark:decoration-rose-400 dark:hover:text-rose-400 dark:hover:decoration-rose-400/30 dark:focus:text-rose-400 dark:focus:ring-rose-400/40"
             href="https://en.lecolededesign.com/"
             rel="noreferrer"
             target="_blank"
@@ -88,9 +88,9 @@ export function Introduction(props: ComponentProps<"section">) {
           immersive&nbsp;interfaces.
         </p>
       </div>
-      <div className="flex flex-wrap gap-4 mt-8 text-center">
+      <div className="mt-8 flex flex-wrap gap-4 text-center">
         <a
-          className="flex flex-none gap-2 justify-center items-center py-2 px-2.5 font-medium text-white dark:text-zinc-900 selection:bg-white/30 dark:selection:bg-zinc-900/30 rounded-md shadow-lg transition cursor-pointer sm:px-3 sm:pl-2.5 sm:w-auto dark:hover:bg-twitter-400/80 hover:bg-twitter-500/80 hover:shadow-twitter-500/5 dark:hover:shadow-twitter-400/5 bg-twitter-500 dark:bg-twitter-400 shadow-twitter-500/10 dark:shadow-twitter-400/10 focus:ring-twitter-500/40 dark:focus:ring-twitter-400/40 focusable"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-twitter-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-twitter-500/10 transition selection:bg-white/30 hover:bg-twitter-500/80 hover:shadow-twitter-500/5 focus:ring-twitter-500/40 dark:bg-twitter-400 dark:text-zinc-900 dark:shadow-twitter-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-twitter-400/80 dark:hover:shadow-twitter-400/5 dark:focus:ring-twitter-400/40 sm:w-auto sm:px-3 sm:pl-2.5"
           href="https://twitter.com/marcbouchenoire"
           rel="noreferrer"
           target="_blank"
@@ -111,7 +111,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden sm:inline">Twitter</span>
         </a>
         <a
-          className="flex flex-none gap-2 justify-center items-center py-2 px-2.5 font-medium text-white dark:text-zinc-900 selection:bg-white/30 bg-indigo-500 hover:bg-indigo-500/80 dark:selection:bg-zinc-900/30 dark:bg-indigo-400 dark:hover:bg-indigo-400/80 rounded-md focus:ring-indigo-500/40 dark:focus:ring-indigo-400/40 shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/5 dark:shadow-indigo-400/10 dark:hover:shadow-indigo-400/5 transition cursor-pointer sm:px-3 sm:pl-2.5 sm:w-auto focusable"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-indigo-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-indigo-500/10 transition selection:bg-white/30 hover:bg-indigo-500/80 hover:shadow-indigo-500/5 focus:ring-indigo-500/40 dark:bg-indigo-400 dark:text-zinc-900 dark:shadow-indigo-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-indigo-400/80 dark:hover:shadow-indigo-400/5 dark:focus:ring-indigo-400/40 sm:w-auto sm:px-3 sm:pl-2.5"
           href="https://github.com/marcbouchenoire"
           rel="noreferrer"
           target="_blank"
@@ -132,7 +132,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden sm:inline">GitHub</span>
         </a>
         <a
-          className="flex flex-none gap-2 justify-center items-center py-2 px-2.5 font-medium text-white dark:text-zinc-900 selection:bg-white/30 dark:selection:bg-zinc-900/30 rounded-md shadow-lg transition cursor-pointer sm:px-3 sm:pl-2.5 sm:w-auto focusable dark:hover:bg-dribbble-400/80 hover:bg-dribbble-500/80 hover:shadow-dribbble-500/5 dark:hover:shadow-dribbble-400/5 bg-dribbble-500 dark:bg-dribbble-400 shadow-dribbble-500/10 dark:shadow-dribbble-400/10 focus:ring-dribbble-500/40 dark:focus:ring-dribbble-400/40"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-dribbble-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dribbble-500/10 transition selection:bg-white/30 hover:bg-dribbble-500/80 hover:shadow-dribbble-500/5 focus:ring-dribbble-500/40 dark:bg-dribbble-400 dark:text-zinc-900 dark:shadow-dribbble-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dribbble-400/80 dark:hover:shadow-dribbble-400/5 dark:focus:ring-dribbble-400/40 sm:w-auto sm:px-3 sm:pl-2.5"
           href="https://dribbble.com/marcbouchenoire"
           rel="noreferrer"
           target="_blank"
@@ -153,7 +153,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden sm:inline">Dribbble</span>
         </a>
         <a
-          className="flex flex-none gap-2 justify-center items-center py-2 px-2.5 font-medium text-white dark:text-zinc-900 selection:bg-white/30 bg-lime-500 hover:bg-lime-500/80 dark:selection:bg-zinc-900/30 dark:bg-lime-400 dark:hover:bg-lime-400/80 rounded-md focus:ring-lime-500/40 dark:focus:ring-lime-400/40 shadow-lg shadow-lime-500/10 hover:shadow-lime-500/5 dark:shadow-lime-400/10 dark:hover:shadow-lime-400/5 transition cursor-pointer sm:px-3 sm:pl-2.5 sm:w-auto focusable"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-lime-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-lime-500/10 transition selection:bg-white/30 hover:bg-lime-500/80 hover:shadow-lime-500/5 focus:ring-lime-500/40 dark:bg-lime-400 dark:text-zinc-900 dark:shadow-lime-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-lime-400/80 dark:hover:shadow-lime-400/5 dark:focus:ring-lime-400/40 sm:w-auto sm:px-3 sm:pl-2.5"
           href="mailto:mail@marcbouchenoire.com"
         >
           <svg

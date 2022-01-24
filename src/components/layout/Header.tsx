@@ -45,7 +45,7 @@ export function Header({ className, ...props }: ComponentProps<"header">) {
       <div className="flex items-center text-zinc-700 dark:text-zinc-100">
         <p>
           <a
-            className="inline-flex items-center font-semibold rounded-sm hover:opacity-60 transition cursor-help focusable"
+            className="focusable inline-flex cursor-help items-center rounded-sm font-semibold transition hover:opacity-60"
             href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
             rel="noreferrer"
             target="_blank"
@@ -57,7 +57,7 @@ export function Header({ className, ...props }: ComponentProps<"header">) {
         <div className="ml-auto">
           <button
             aria-label="Toggle Theme"
-            className="p-1.5 bg-transparent hover:bg-zinc-500/10 dark:hover:bg-zinc-400/20 rounded-md transition focusable"
+            className="focusable rounded-md bg-transparent p-1.5 transition hover:bg-zinc-500/10 dark:hover:bg-zinc-400/20"
             onClick={toggleTheme}
           >
             <svg
