@@ -242,71 +242,26 @@ export function Activity(props: ComponentProps<"section">) {
         I <del>occasionally</del>{" "}
         <a
           className="text-zinc-800 dark:text-white link"
+          href="https://www.last.fm/user/marcbouchenoire"
+          rel="noreferrer"
+          target="_blank"
+        >
+          listen to things
+        </a>{" "}
+        and{" "}
+        <a
+          className="text-zinc-800 dark:text-white link"
           href="https://letterboxd.com/marcbouchenoire/"
           rel="noreferrer"
           target="_blank"
         >
           watch films
-        </a>{" "}
-        and listen to{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/indie"
-          rel="noreferrer"
-          target="_blank"
-        >
-          indie
         </a>
-        ,{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/electronic"
-          rel="noreferrer"
-          target="_blank"
-        >
-          electronic
-        </a>
-        ,{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/alternative+rock"
-          rel="noreferrer"
-          target="_blank"
-        >
-          alternative rock
-        </a>
-        ,{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/alternative+rnb"
-          rel="noreferrer"
-          target="_blank"
-        >
-          alternative R&B
-        </a>
-        ,{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/city+pop"
-          rel="noreferrer"
-          target="_blank"
-        >
-          city pop
-        </a>
-        ,{" "}
-        <a
-          className="text-zinc-800 dark:text-white link"
-          href="https://www.last.fm/tag/ambient"
-          rel="noreferrer"
-          target="_blank"
-        >
-          ambient
-        </a>
-        …
+        .
       </p>
       <div className="flex flex-col gap-8 mt-8">
-        <Film className="min-w-0" />
         <Song className="min-w-0" />
+        <Film className="min-w-0" />
       </div>
     </section>
   )
