@@ -23,7 +23,10 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
       <hr className="w-full border-t border-zinc-150 dark:border-zinc-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
-          <Emoji /> <span className="hidden sm:inline">{date} </span>
+          <Emoji />{" "}
+          <time className="hidden sm:inline" dateTime={String(date)}>
+            {date}{" "}
+          </time>
           <span className="text-zinc-300 dark:text-zinc-600">—</span> he
           <span className="text-zinc-300 dark:text-zinc-600">/</span>they
         </span>

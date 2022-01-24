@@ -23,7 +23,7 @@ export function Characters({
   const characters = useMemo(() => [...children], [children])
 
   return (
-    <span aria-label={children}>
+    <span aria-label={children} role="text">
       {characters.map((character, index) => (
         <span
           aria-hidden
