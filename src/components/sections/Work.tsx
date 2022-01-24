@@ -157,6 +157,7 @@ export function Work(props: ComponentProps<"section">) {
                       alt="The Framer Motion website"
                       height="460"
                       layout="fixed"
+                      priority
                       src={motionVisual}
                       width="280"
                     />
