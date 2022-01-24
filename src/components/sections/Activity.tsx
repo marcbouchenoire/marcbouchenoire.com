@@ -34,9 +34,9 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
 
   return (
     <div className={clsx(className, "flex gap-4")} {...props}>
-      <div className="aspect-[2/3] overflow-hidden relative flex-none h-20 bg-zinc-100 dark:bg-zinc-800 rounded highlight dark:highlight-invert">
+      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
         <svg
-          className="absolute w-full h-full text-zinc-300 dark:text-zinc-600"
+          className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
           role="presentation"
           viewBox="0 0 52 78"
           xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +51,15 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
         {poster && (
           <img
             alt={title}
-            className="object-cover absolute inset-0 w-full h-full"
+            className="absolute inset-0 h-full w-full object-cover"
             src={poster}
           />
         )}
       </div>
-      <div className="flex flex-col justify-center min-w-0">
-        <small className="flex items-center font-semibold tracking-widest leading-tight text-lime-500 dark:text-lime-400 uppercase text-2xs">
+      <div className="flex min-w-0 flex-col justify-center">
+        <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
           <svg
-            className="flex-none mr-1 -ml-px"
+            className="mr-1 -ml-px flex-none"
             height="20"
             role="presentation"
             width="20"
@@ -80,16 +80,16 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
             <span className="truncate">Nothing watched</span>
           )}
         </small>
-        <p className="flex items-center mt-1 mb-1.5">
+        <p className="mt-1 mb-1.5 flex items-center">
           <span
-            className="font-semibold text-zinc-700 dark:text-zinc-100 truncate"
+            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
             {title ?? "…"}
           </span>{" "}
           {year && (
             <time
-              className="inline-block flex-none p-1 ml-1.5 text-xs font-medium leading-none text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 rounded translate-y-px"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
               dateTime={String(year)}
             >
               {year}
@@ -98,7 +98,7 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
         </p>
         <div
           aria-label={`${rating ?? 0} out of 5`}
-          className="relative -ml-px w-[96px] h-[20px]"
+          className="relative -ml-px h-[20px] w-[96px]"
           role="img"
         >
           <svg
@@ -157,9 +157,9 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
 
   return (
     <div className={clsx(className, "flex gap-4")} {...props}>
-      <div className="aspect-square overflow-hidden relative flex-none h-20 bg-zinc-100 dark:bg-zinc-800 rounded highlight dark:highlight-invert">
+      <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
         <svg
-          className="absolute w-full h-full text-zinc-300 dark:text-zinc-600"
+          className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
           role="presentation"
           viewBox="0 0 78 78"
           xmlns="http://www.w3.org/2000/svg"
@@ -172,15 +172,15 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
         {cover && (
           <img
             alt={`${title} by ${artist}`}
-            className="object-cover absolute w-full h-full"
+            className="absolute h-full w-full object-cover"
             src={cover}
           />
         )}
       </div>
-      <div className="flex flex-col justify-center min-w-0">
-        <small className="flex items-center font-semibold tracking-widest leading-tight text-rose-500 dark:text-rose-400 uppercase text-2xs">
+      <div className="flex min-w-0 flex-col justify-center">
+        <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
           <svg
-            className="flex-none mr-1 -ml-px"
+            className="mr-1 -ml-px flex-none"
             height="20"
             role="presentation"
             width="20"
@@ -203,23 +203,23 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
             </span>
           )}
         </small>
-        <p className="flex items-center my-1">
+        <p className="my-1 flex items-center">
           <span
-            className="font-semibold text-zinc-700 dark:text-zinc-100 truncate"
+            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
             {title ?? "…"}
           </span>{" "}
           {year && (
             <time
-              className="inline-block flex-none p-1 ml-1.5 text-xs font-medium leading-none text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 rounded translate-y-px"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
               dateTime={String(year)}
             >
               {year}
             </time>
           )}
         </p>
-        <p className="text-zinc-500 dark:text-zinc-400 truncate" title={artist}>
+        <p className="truncate text-zinc-500 dark:text-zinc-400" title={artist}>
           {artist ?? "…"}
         </p>
       </div>
@@ -241,7 +241,7 @@ export function Activity(props: ComponentProps<"section">) {
       <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
         I <del>occasionally</del>{" "}
         <a
-          className="text-zinc-800 dark:text-white link"
+          className="link text-zinc-800 dark:text-white"
           href="https://www.last.fm/user/marcbouchenoire"
           rel="noreferrer"
           target="_blank"
@@ -250,7 +250,7 @@ export function Activity(props: ComponentProps<"section">) {
         </a>{" "}
         and{" "}
         <a
-          className="text-zinc-800 dark:text-white link"
+          className="link text-zinc-800 dark:text-white"
           href="https://letterboxd.com/marcbouchenoire/"
           rel="noreferrer"
           target="_blank"
@@ -259,7 +259,7 @@ export function Activity(props: ComponentProps<"section">) {
         </a>
         .
       </p>
-      <div className="flex flex-col gap-8 mt-8">
+      <div className="mt-8 flex flex-col gap-8">
         <Song className="min-w-0" />
         <Film className="min-w-0" />
       </div>

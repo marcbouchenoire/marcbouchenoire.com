@@ -30,7 +30,7 @@
   }
 
   body {
-    @apply bg-white dark:bg-zinc-900 selection:bg-primary-500/30 dark:selection:bg-primary-400/40;
+    @apply bg-white selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
 
     -webkit-tap-highlight-color: transparent;
   }
@@ -39,7 +39,7 @@
     @apply flex flex-col;
 
     > * {
-      @apply flex-none w-full;
+      @apply w-full flex-none;
     }
   }
 
@@ -61,7 +61,7 @@
   }
 
   .highlight::after {
-    @apply absolute inset-0 pointer-events-none z-10;
+    @apply pointer-events-none absolute inset-0 z-10;
 
     border-radius: inherit;
     box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
@@ -69,7 +69,7 @@
   }
 
   .highlight-invert::after {
-    @apply absolute inset-0 pointer-events-none z-10;
+    @apply pointer-events-none absolute inset-0 z-10;
 
     border-radius: inherit;
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
@@ -77,11 +77,11 @@
   }
 
   .link {
-    @apply transition focusable rounded-sm underline focus:decoration-transparent decoration-2 underline-offset-2 decoration-zinc-600/20 dark:decoration-white/20 selection:decoration-zinc-600/20 dark:selection:decoration-white/20 hover:decoration-zinc-600/40 dark:hover:decoration-white/40;
+    @apply focusable rounded-sm underline decoration-zinc-600/20 decoration-2 underline-offset-2 transition selection:decoration-zinc-600/20 hover:decoration-zinc-600/40 focus:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
   }
 
   .link-invert {
-    @apply decoration-white/20 dark:decoration-zinc-600/20 selection:decoration-white/20 dark:selection:decoration-zinc-600/20 hover:decoration-white/40 dark:hover:decoration-zinc-600/40;
+    @apply decoration-white/20 selection:decoration-white/20 hover:decoration-white/40 dark:decoration-zinc-600/20 dark:selection:decoration-zinc-600/20 dark:hover:decoration-zinc-600/40;
   }
 
   .perspective {
@@ -96,11 +96,11 @@
 }
 
 .image > span {
-  @apply !absolute !w-full !h-full;
+  @apply !absolute !h-full !w-full;
 }
 
 :not(pre) > code {
-  @apply relative whitespace-nowrap font-semibold text-sm;
+  @apply relative whitespace-nowrap text-sm font-semibold;
 
   margin: 0 0.4em;
 
@@ -128,7 +128,7 @@
 }
 
 .delightful span[data-character] {
-  @apply inline-block relative;
+  @apply relative inline-block;
 
   animation: 0.8s ease-in-out calc(var(--character) * -0.1s) infinite alternate
     both wavy;

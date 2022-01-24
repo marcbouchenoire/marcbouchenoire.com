@@ -25,19 +25,19 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
     <div
       className={clsx(
         className,
-        "overflow-hidden w-full bg-white supports-backdrop:bg-white/80 dark:supports-backdrop:bg-zinc-800/80 dark:bg-zinc-800 rounded-lg backdrop-blur-xl backdrop-saturate-200 shadow-floaty dark:highlight-invert"
+        "dark:highlight-invert w-full overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-xl backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
       )}
       {...props}
     >
-      <div className="grid relative flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] gap-2 items-center px-3 h-8">
+      <div className="relative grid h-8 flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] items-center gap-2 px-3">
         <div className="flex gap-1.5">
-          <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
-          <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
-          <div className="aspect-square w-2.5 bg-black/10 dark:bg-white/20 rounded-full" />
+          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
+          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
+          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
         </div>
         {url && (
-          <div className="flex justify-center items-center px-3 h-5 text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/10 rounded select-none text-3xs">
-            <span className="max-w-full leading-none text-center truncate">
+          <div className="flex h-5 select-none items-center justify-center rounded bg-black/5 px-3 text-3xs text-black/40 dark:bg-white/10 dark:text-white/40">
+            <span className="max-w-full truncate text-center leading-none">
               {url}
             </span>
           </div>
@@ -60,7 +60,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
     <div
       className={clsx(
         className,
-        "aspect-[425/862] relative before:absolute before:inset-0 bg-white supports-backdrop:bg-white/80 dark:supports-backdrop:bg-zinc-800/80 dark:bg-zinc-800 rounded-[15.294%/7.541%] before:rounded-[inherit] backdrop-blur-xl backdrop-saturate-200 before:shadow-phone dark:before:shadow-phone-invert shadow-floaty dark:highlight-invert"
+        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-xl backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-zinc-800/80"
       )}
       {...props}
     >
@@ -70,7 +70,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
           </clipPath>
         </svg>
-        <div className="[clip-path:url(#phone)] absolute inset-0">
+        <div className="absolute inset-0 [clip-path:url(#phone)]">
           {children}
         </div>
       </div>
@@ -86,7 +86,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
 export function Work(props: ComponentProps<"section">) {
   return (
     <section {...props}>
-      <div className="mb-8 content">
+      <div className="content mb-8">
         <h2 className="mb-2 text-xl font-bold text-zinc-800 dark:text-white">
           Work
         </h2>
@@ -95,7 +95,7 @@ export function Work(props: ComponentProps<"section">) {
         </p>
       </div>
       <div className="content lg:max-w-screen-md-12">
-        <div className="flex relative before:absolute before:inset-0 before:z-0 flex-col mb-5 bg-sky-500 dark:bg-sky-400 before:bg-gradient-to-tl before:from-cyan-400/60 dark:before:from-cyan-300/60 before:to-cyan-400/0 dark:before:to-cyan-300/0 rounded-lg before:rounded-[inherit] shadow-xl shadow-sky-500/10 dark:shadow-sky-400/10 sm:flex-row sm:mb-8 lg:mb-10">
+        <div className="relative mb-5 flex flex-col rounded-lg bg-sky-500 shadow-xl shadow-sky-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-cyan-400/60 before:to-cyan-400/0 dark:bg-sky-400 dark:shadow-sky-400/10 dark:before:from-cyan-300/60 dark:before:to-cyan-300/0 sm:mb-8 sm:flex-row lg:mb-10">
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-sky-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-sky-900">
               Framer.com
@@ -107,13 +107,13 @@ export function Work(props: ComponentProps<"section">) {
               to orchestrate scroll animations and&nbsp;effects.
             </p>
           </div>
-          <div className="flex relative flex-1 justify-center items-center p-12 pt-0 pb-16 sm:basis-1/3 sm:p-0 sm:-mr-12 lg:basis-1/2 lg:-mr-12">
-            <div className="flex z-20 items-center w-full max-w-sm sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20 perspective">
+          <div className="relative flex flex-1 items-center justify-center p-12 pt-0 pb-16 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
+            <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
               <Browser className="transform-framer" url="framer.com">
-                <div className="aspect-[920/560] relative">
+                <div className="relative aspect-[920/560]">
                   <video
                     autoPlay
-                    className="object-cover absolute inset-0"
+                    className="absolute inset-0 object-cover"
                     loop
                     muted
                     playsInline
@@ -126,7 +126,7 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="flex relative before:absolute before:inset-0 before:z-0 flex-col my-5 bg-purple-500 dark:bg-purple-400 before:bg-gradient-to-tl before:from-pink-400/60 dark:before:from-pink-300/60 before:to-pink-400/0 dark:before:to-pink-300/0 rounded-lg before:rounded-[inherit] shadow-xl shadow-purple-500/10 dark:shadow-purple-400/10 sm:flex-row-reverse sm:my-8 lg:my-10">
+        <div className="relative my-5 flex flex-col rounded-lg bg-purple-500 shadow-xl shadow-purple-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-pink-400/60 before:to-pink-400/0 dark:bg-purple-400 dark:shadow-purple-400/10 dark:before:from-pink-300/60 dark:before:to-pink-300/0 sm:my-8 sm:flex-row-reverse lg:my-10">
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-purple-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-purple-900">
               Framer Motion
@@ -138,11 +138,11 @@ export function Work(props: ComponentProps<"section">) {
               animations and gestures using interactive&nbsp;examples.
             </p>
           </div>
-          <div className="flex relative flex-1 justify-center items-center p-12 pt-0 sm:aspect-auto sm:basis-1/3 sm:p-0 sm:-ml-12 lg:basis-1/2">
-            <div className="aspect-[4/3] relative z-20 w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
-              <div className="absolute inset-0 perspective">
+          <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
+            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <div className="perspective absolute inset-0">
                 <Browser
-                  className="absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%] transform-motion-secondary"
+                  className="transform-motion-secondary absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%]"
                   url={
                     <>
                       framer.com
@@ -152,7 +152,7 @@ export function Work(props: ComponentProps<"section">) {
                     </>
                   }
                 >
-                  <div className="aspect-[920/560] relative image">
+                  <div className="image relative aspect-[920/560]">
                     <Image
                       alt="The Framer Motion website"
                       height="460"
@@ -163,9 +163,9 @@ export function Work(props: ComponentProps<"section">) {
                   </div>
                 </Browser>
               </div>
-              <div className="absolute inset-0 perspective">
+              <div className="perspective absolute inset-0">
                 <Browser
-                  className="absolute right-0 bottom-0 w-[80%] lg:-bottom-2 transform-motion-primary"
+                  className="transform-motion-primary absolute right-0 bottom-0 w-[80%] lg:-bottom-2"
                   url={
                     <>
                       framer.com
@@ -175,10 +175,10 @@ export function Work(props: ComponentProps<"section">) {
                     </>
                   }
                 >
-                  <div className="aspect-[920/560] relative">
+                  <div className="relative aspect-[920/560]">
                     <video
                       autoPlay
-                      className="object-cover absolute inset-0"
+                      className="absolute inset-0 object-cover"
                       loop
                       muted
                       playsInline
@@ -192,7 +192,7 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="flex relative before:absolute before:inset-0 before:z-0 flex-col mt-5 bg-orange-500 dark:bg-orange-300 before:bg-gradient-to-tl before:from-amber-400/60 dark:before:from-amber-300/60 before:to-amber-400/0 dark:before:to-amber-300/0 rounded-lg before:rounded-[inherit] shadow-xl shadow-orange-500/10 dark:shadow-orange-400/10 sm:flex-row sm:mt-8 lg:mt-10">
+        <div className="relative mt-5 flex flex-col rounded-lg bg-orange-500 shadow-xl shadow-orange-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-amber-400/60 before:to-amber-400/0 dark:bg-orange-300 dark:shadow-orange-400/10 dark:before:from-amber-300/60 dark:before:to-amber-300/0 sm:mt-8 sm:flex-row lg:mt-10">
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-orange-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-orange-900">
               Sketch Elements
@@ -204,10 +204,10 @@ export function Work(props: ComponentProps<"section">) {
               customization—showcasing advanced Symbols use&nbsp;cases.
             </p>
           </div>
-          <div className="flex relative z-20 flex-1 justify-center items-center sm:basis-1/3 sm:-mr-12 perspective">
-            <div className="aspect-square grid grid-cols-[1.2fr_1fr] gap-8 mx-12 mt-0 mb-24 w-full max-w-sm sm:absolute sm:m-0 sm:max-w-none lg:-top-20 lg:grid-cols-[1fr_1.2fr] transform-elements">
-              <Phone className="self-end -mb-12">
-                <div className="absolute inset-0 elements image">
+          <div className="perspective relative z-20 flex flex-1 items-center justify-center sm:-mr-12 sm:basis-1/3">
+            <div className="transform-elements mx-12 mt-0 mb-24 grid aspect-square w-full max-w-sm grid-cols-[1.2fr_1fr] gap-8 sm:absolute sm:m-0 sm:max-w-none lg:-top-20 lg:grid-cols-[1fr_1.2fr]">
+              <Phone className="-mb-12 self-end">
+                <div className="elements image absolute inset-0">
                   <Image
                     alt="A food app interface"
                     height="346"
@@ -218,7 +218,7 @@ export function Work(props: ComponentProps<"section">) {
                 </div>
               </Phone>
               <Phone>
-                <div className="absolute inset-0 elements elements-offset image">
+                <div className="elements elements-offset image absolute inset-0">
                   <Image
                     alt="A music app interface"
                     height="346"
