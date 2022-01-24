@@ -139,52 +139,56 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="flex relative flex-1 justify-center items-center p-12 pt-0 sm:aspect-auto sm:basis-1/3 sm:p-0 sm:-ml-12 lg:basis-1/2">
-            <div className="aspect-[4/3] z-20 w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7] perspective">
-              <Browser
-                className="absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%] transform-motion-secondary"
-                url={
-                  <>
-                    framer.com
-                    <span className="text-black/20 dark:text-white/20">
-                      /motion
-                    </span>
-                  </>
-                }
-              >
-                <div className="aspect-[920/560] relative image">
-                  <Image
-                    alt="The Framer Motion website"
-                    height="460"
-                    layout="fixed"
-                    src={motionVisual}
-                    width="280"
-                  />
-                </div>
-              </Browser>
-              <Browser
-                className="absolute right-0 bottom-0 w-[80%] lg:-bottom-2 transform-motion-primary"
-                url={
-                  <>
-                    framer.com
-                    <span className="text-black/20 dark:text-white/20">
-                      /motion
-                    </span>
-                  </>
-                }
-              >
-                <div className="aspect-[920/560] relative">
-                  <video
-                    autoPlay
-                    className="object-cover absolute inset-0"
-                    loop
-                    muted
-                    playsInline
-                    poster="/visuals/framer-motion.jpg"
-                    preload="metadata"
-                    src="/visuals/framer-motion.mp4"
-                  />
-                </div>
-              </Browser>
+            <div className="aspect-[4/3] relative z-20 w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <div className="absolute inset-0 perspective">
+                <Browser
+                  className="absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%] transform-motion-secondary"
+                  url={
+                    <>
+                      framer.com
+                      <span className="text-black/20 dark:text-white/20">
+                        /motion
+                      </span>
+                    </>
+                  }
+                >
+                  <div className="aspect-[920/560] relative image">
+                    <Image
+                      alt="The Framer Motion website"
+                      height="460"
+                      layout="fixed"
+                      src={motionVisual}
+                      width="280"
+                    />
+                  </div>
+                </Browser>
+              </div>
+              <div className="absolute inset-0 perspective">
+                <Browser
+                  className="absolute right-0 bottom-0 w-[80%] lg:-bottom-2 transform-motion-primary"
+                  url={
+                    <>
+                      framer.com
+                      <span className="text-black/20 dark:text-white/20">
+                        /motion
+                      </span>
+                    </>
+                  }
+                >
+                  <div className="aspect-[920/560] relative">
+                    <video
+                      autoPlay
+                      className="object-cover absolute inset-0"
+                      loop
+                      muted
+                      playsInline
+                      poster="/visuals/framer-motion.jpg"
+                      preload="metadata"
+                      src="/visuals/framer-motion.mp4"
+                    />
+                  </div>
+                </Browser>
+              </div>
             </div>
           </div>
         </div>
