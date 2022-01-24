@@ -90,6 +90,7 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
           </span>
         </small>
         <a
+          aria-label="View on GitHub"
           className="flex-none ml-auto hover:text-zinc-600 dark:hover:text-zinc-100 rounded-full transition focusable"
           href={`https://github.com/${repository}`}
           rel="noreferrer"
