@@ -149,6 +149,13 @@
     theme("colors.blue.500")
   );
   background-size: 100% 800%;
+
+  &::before {
+    @apply absolute bottom-0 w-full bg-white;
+
+    height: 10%;
+    content: "";
+  }
 }
 
 .elements-offset {
