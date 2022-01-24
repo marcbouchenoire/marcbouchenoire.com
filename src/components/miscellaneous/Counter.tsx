@@ -121,6 +121,7 @@ export function Counter({ value = "", className, ...props }: CounterProps) {
         <span
           aria-label={value}
           className="absolute h-[2em] leading-[2em] text-transparent"
+          role="timer"
         >
           {characters.map((character, index) => (
             <span
