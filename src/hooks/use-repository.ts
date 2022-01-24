@@ -1,4 +1,4 @@
-import useSWR from "swr"
+import useSWR from "swr/immutable"
 import { Response } from "../pages/api/github/repository/[...repository]"
 
 /**
@@ -7,7 +7,9 @@ import { Response } from "../pages/api/github/repository/[...repository]"
  * @param repository - The repository's full name.
  */
 export function useRepository(repository: string): Partial<Response> {
-  const { data } = useSWR<Response>(`/api/github/repository/${repository}`)
+  const { data } = useSWR<Response>(`/api/github/repository/${repository}`, {
+    revalidateIfStale: true
+  })
 
   return data ?? {}
 }
