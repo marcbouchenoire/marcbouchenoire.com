@@ -42,6 +42,14 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      boxShadow: {
+        floaty:
+          "0px 0px 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
+        phone:
+          "inset 1px 1px 8px rgba(255, 255, 255, 0.6), inset -1px -1px 8px rgba(0, 0, 0, 0.06)",
+        "phone-invert":
+          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.4)"
+      },
       colors: {
         dimmmensions: {
           400: "#b488fb",
@@ -87,6 +95,9 @@ module.exports = {
           950: "#121215"
         }
       },
+      dropShadow: {
+        phone: "0 1px 4px rgba(0, 0, 0, 0.06)"
+      },
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans]
       },
@@ -96,10 +107,17 @@ module.exports = {
           {
             lineHeight: 1
           }
+        ],
+        "3xs": [
+          "0.55rem",
+          {
+            lineHeight: 1
+          }
         ]
       },
       maxWidth: ({ theme }) => ({
         "screen-md-8": `calc(${theme("screens.md")} + ${theme("spacing.16")})`,
+        "screen-md-12": `calc(${theme("screens.md")} + ${theme("spacing.24")})`,
         "screen-md-16": `calc(${theme("screens.md")} + ${theme("spacing.32")})`
       }),
       transitionProperty: {
