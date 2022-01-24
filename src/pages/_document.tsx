@@ -28,13 +28,13 @@ class Document extends NextDocument {
           <link
             as="fetch"
             crossOrigin="anonymous"
-            href="/api/lastfm"
+            href="/api/lastfm/latest"
             rel="preload"
           />
           <link
             as="fetch"
             crossOrigin="anonymous"
-            href="/api/letterboxd"
+            href="/api/letterboxd/latest"
             rel="preload"
           />
         </Head>
