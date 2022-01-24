@@ -64,7 +64,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
       )}
       {...props}
     >
-      <div className="absolute inset-y-[2.9%] inset-x-[5.882%] drop-shadow-phone">
+      <div className="absolute top-[2.6%] right-[6.35%] bottom-[3.2%] left-[5.4%] drop-shadow-phone">
         <svg className="absolute" height="0" role="presentation" width="0">
           <clipPath clipPathUnits="objectBoundingBox" id="phone">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
