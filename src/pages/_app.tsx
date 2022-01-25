@@ -62,6 +62,7 @@ function App({ Component, pageProps }: AppProps) {
             />
             <meta content="@marcbouchenoire" property="twitter:creator" />
             <meta content="Marc Bouchenoire" property="twitter:title" />
+            <meta content="photo" name="twitter:card" />
             <meta
               content="A detail-obsessed Design Engineer, designing and building delightful products."
               property="twitter:description"
