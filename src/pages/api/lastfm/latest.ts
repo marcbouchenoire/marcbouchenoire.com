@@ -159,6 +159,11 @@ export interface Response {
   date?: number
 
   /**
+   * Whether the song is currently playing.
+   */
+  playing: boolean
+
+  /**
    * The song's title.
    */
   title: string
@@ -186,6 +191,7 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
     )
 
     const song = response.recenttracks?.track?.[0]
+    const date = song.date?.uts ? Number(song.date?.uts) : undefined
     const mbid = song.album.mbid
     let year: number | undefined
 
@@ -213,8 +219,9 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       title: song.name,
       artist: song.artist["#text"],
       year,
-      date: song.date?.uts ? Number(song.date?.uts) : undefined,
-      cover: song.image.find((image) => image.size === "large")?.["#text"]
+      date,
+      cover: song.image.find((image) => image.size === "large")?.["#text"],
+      playing: song["@attr"]?.nowplaying ?? !date
     })
   } catch {
     res.status(500).send(undefined)
