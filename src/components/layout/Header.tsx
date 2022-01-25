@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { Transition, Variants, motion } from "framer-motion"
+import { Transition, Variants, m as motion } from "framer-motion"
 import { ComponentProps } from "react"
 import { useInternetTime } from "../../hooks/use-internet-time"
 import { useSystemTheme } from "../../hooks/use-system-theme"

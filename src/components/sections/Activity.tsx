@@ -2,7 +2,12 @@ import clsx from "clsx"
 import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable-line import/no-duplicates
 import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicates
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
-import { AnimatePresence, Transition, Variants, motion } from "framer-motion"
+import {
+  AnimatePresence,
+  Transition,
+  Variants,
+  m as motion
+} from "framer-motion"
 import { ComponentProps, useMemo } from "react"
 import { useLatestFilm } from "../../hooks/use-latest-film"
 import { useLatestSong } from "../../hooks/use-latest-song"
