@@ -22,6 +22,16 @@
   }
 }
 
+@keyframes skeleton {
+  from {
+    background-position: 200% 0%;
+  }
+
+  to {
+    background-position: -200% 0%;
+  }
+}
+
 @layer base {
   html,
   body,
@@ -92,6 +102,28 @@
 @layer components {
   .content {
     @apply mx-auto max-w-screen-md px-5-safe;
+  }
+
+  .skeleton {
+    animation: 6s linear infinite skeleton;
+    background: linear-gradient(
+      -90deg,
+      theme("colors.zinc.100"),
+      theme("colors.zinc.200"),
+      theme("colors.zinc.200"),
+      theme("colors.zinc.100")
+    );
+    background-size: 400% 100%;
+
+    .dark & {
+      background-image: linear-gradient(
+        -90deg,
+        theme("colors.zinc.700"),
+        theme("colors.zinc.800"),
+        theme("colors.zinc.800"),
+        theme("colors.zinc.700")
+      );
+    }
   }
 }
 

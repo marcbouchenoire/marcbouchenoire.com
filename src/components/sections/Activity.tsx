@@ -7,6 +7,7 @@ import { ComponentProps, useMemo } from "react"
 import { useLatestFilm } from "../../hooks/use-latest-film"
 import { useLatestSong } from "../../hooks/use-latest-song"
 import { capitalize } from "../../utils/capitalize"
+import { Skeleton } from "../miscellaneous/Skeleton"
 
 const variants: Variants = {
   hidden: {
@@ -109,7 +110,7 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
             className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
-            {title ?? "…"}
+            {title ?? <Skeleton className="w-32" />}
           </span>{" "}
           {year && (
             <time
@@ -241,7 +242,7 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
             className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
-            {title ?? "…"}
+            {title ?? <Skeleton className="w-40" />}
           </span>{" "}
           {year && (
             <time
@@ -253,7 +254,7 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
           )}
         </p>
         <p className="truncate text-zinc-500 dark:text-zinc-400" title={artist}>
-          {artist ?? "…"}
+          {artist ?? <Skeleton className="w-28" />}
         </p>
       </div>
     </div>

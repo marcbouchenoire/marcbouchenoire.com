@@ -3,6 +3,7 @@ import formatDistanceStrict from "date-fns/formatDistanceStrict"
 import { ComponentProps, useMemo } from "react"
 import { useRepository } from "../../hooks/use-repository"
 import { capitalize } from "../../utils/capitalize"
+import { Skeleton } from "../miscellaneous/Skeleton"
 
 interface ProjectProps extends ComponentProps<"div"> {
   /**
@@ -68,7 +69,7 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
                 {relativeDate}
               </time>
             ) : (
-              <span className="truncate">…</span>
+              <Skeleton className="h-[1.2em] w-16" />
             )}
           </span>
           <span className="flex items-center">
@@ -86,7 +87,7 @@ function Project({ children, repository, className, ...props }: ProjectProps) {
                 fillRule="evenodd"
               />
             </svg>
-            <span>{stars ?? "…"}</span>
+            <span>{stars ?? <Skeleton className="h-[1.2em] w-10" />}</span>
           </span>
         </small>
         <a
