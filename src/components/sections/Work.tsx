@@ -25,7 +25,7 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert w-full overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-xl backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
+        "dark:highlight-invert w-full overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
       )}
       {...props}
     >
@@ -60,11 +60,11 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-xl backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-zinc-800/80"
+        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-zinc-800/80"
       )}
       {...props}
     >
-      <div className="absolute top-[2.6%] right-[6.35%] bottom-[3.2%] left-[5.4%] drop-shadow-phone">
+      <div className="absolute top-[2.7%] right-[6.35%] bottom-[3.1%] left-[5.4%] drop-shadow-phone">
         <svg className="absolute" height="0" role="presentation" width="0">
           <clipPath clipPathUnits="objectBoundingBox" id="phone">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
