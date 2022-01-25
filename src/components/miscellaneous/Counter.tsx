@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { AnimatePresence, Variants, motion } from "framer-motion"
+import { AnimatePresence, Variants, m as motion } from "framer-motion"
 import { ComponentProps, useMemo } from "react"
 import { springier } from "../../transitions"
 

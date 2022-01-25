@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation } from "framer-motion"
 import { ThemeProvider } from "next-themes"
 import { AppProps } from "next/app"
 import Head from "next/head"
@@ -25,50 +26,58 @@ async function json(url: string) {
  */
 function App({ Component, pageProps }: AppProps) {
   return (
-    <SWRConfig
-      value={{
-        fetcher: json
-      }}
-    >
-      <ThemeProvider attribute="class" disableTransitionOnChange>
-        <Head>
-          <title>Marc Bouchenoire</title>
-          <meta content="Marc Bouchenoire" name="title" />
-          <meta content="Marc Bouchenoire" name="author" />
-          <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
-          <meta
-            content="A detail-obsessed Design Engineer, designing and building delightful products."
-            name="description"
-          />
-          <meta content="website" property="og:type" />
-          <meta content="https://marcbouchenoire.com" property="og:url" />
-          <meta content="Marc Bouchenoire" property="og:title" />
-          <meta
-            content="A detail-obsessed Design Engineer, designing and building delightful products."
-            property="og:description"
-          />
-          <meta
-            content="https://marcbouchenoire.com/meta.png"
-            property="og:image"
-          />
-          <meta content="https://marcbouchenoire.com" property="twitter:url" />
-          <meta content="@marcbouchenoire" property="twitter:creator" />
-          <meta content="Marc Bouchenoire" property="twitter:title" />
-          <meta
-            content="A detail-obsessed Design Engineer, designing and building delightful products."
-            property="twitter:description"
-          />
-          <meta
-            content="https://marcbouchenoire.com/meta.png"
-            property="twitter:image"
-          />
-          <link href="/favicon.png" rel="icon" sizes="any" type="image/png" />
-        </Head>
-        <Header className="content" />
-        <Component {...pageProps} />
-        <Footer className="content pb-0-safe" />
-      </ThemeProvider>
-    </SWRConfig>
+    <LazyMotion features={domAnimation}>
+      <SWRConfig
+        value={{
+          fetcher: json
+        }}
+      >
+        <ThemeProvider attribute="class" disableTransitionOnChange>
+          <Head>
+            <title>Marc Bouchenoire</title>
+            <meta content="Marc Bouchenoire" name="title" />
+            <meta content="Marc Bouchenoire" name="author" />
+            <meta
+              content="initial-scale=1, viewport-fit=cover"
+              name="viewport"
+            />
+            <meta
+              content="A detail-obsessed Design Engineer, designing and building delightful products."
+              name="description"
+            />
+            <meta content="website" property="og:type" />
+            <meta content="https://marcbouchenoire.com" property="og:url" />
+            <meta content="Marc Bouchenoire" property="og:title" />
+            <meta
+              content="A detail-obsessed Design Engineer, designing and building delightful products."
+              property="og:description"
+            />
+            <meta
+              content="https://marcbouchenoire.com/meta.png"
+              property="og:image"
+            />
+            <meta
+              content="https://marcbouchenoire.com"
+              property="twitter:url"
+            />
+            <meta content="@marcbouchenoire" property="twitter:creator" />
+            <meta content="Marc Bouchenoire" property="twitter:title" />
+            <meta
+              content="A detail-obsessed Design Engineer, designing and building delightful products."
+              property="twitter:description"
+            />
+            <meta
+              content="https://marcbouchenoire.com/meta.png"
+              property="twitter:image"
+            />
+            <link href="/favicon.png" rel="icon" sizes="any" type="image/png" />
+          </Head>
+          <Header className="content" />
+          <Component {...pageProps} />
+          <Footer className="content pb-0-safe" />
+        </ThemeProvider>
+      </SWRConfig>
+    </LazyMotion>
   )
 }
 
