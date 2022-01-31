@@ -140,9 +140,9 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
-              <div className="perspective absolute inset-0">
+              <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-secondary absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%]"
+                  className="transform-motion-secondary pointer-events-auto absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%]"
                   url={
                     <>
                       framer.com
@@ -164,9 +164,9 @@ export function Work(props: ComponentProps<"section">) {
                   </div>
                 </Browser>
               </div>
-              <div className="perspective absolute inset-0">
+              <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-primary absolute right-0 bottom-0 w-[80%] lg:-bottom-2"
+                  className="transform-motion-primary pointer-events-auto absolute right-0 bottom-0 w-[80%] lg:-bottom-2"
                   url={
                     <>
                       framer.com
