@@ -233,6 +233,98 @@ export function Work(props: ComponentProps<"section">) {
           </div>
         </div>
       </div>
+      <div className="content mt-12 sm:mt-24">
+        <h3 className="mb-6 text-lg font-semibold text-zinc-800 dark:text-white">
+          Résumé
+        </h3>
+        <ul className="text-sm">
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://www.framer.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Framer
+            </a>
+            <span className="truncate">Design Engineer</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2021</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center" />
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://www.framer.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Framer
+            </a>
+            <span className="truncate">Product Designer</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2019</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2021</span>
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://www.framer.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Framer
+            </a>
+            <span className="truncate">Product Design Intern</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2019</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2019</span>
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://www.awkward.co/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Awkward
+            </a>
+            <span className="truncate">Product Design Intern</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2017</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2018</span>
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://www.azendoo.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Azendoo
+            </a>
+            <span className="truncate">Product Design Intern</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2016</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2016</span>
+            </span>
+          </li>
+        </ul>
+      </div>
     </section>
   )
 }
