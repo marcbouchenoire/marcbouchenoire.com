@@ -2,7 +2,10 @@ import { XMLParser } from "fast-xml-parser"
 import { decode } from "html-entities"
 import { NextApiRequest, NextApiResponse } from "next"
 
-const LETTERBOXD_FEED = "https://letterboxd.com/marcbouchenoire/rss/"
+const LETTERBOXD_USERNAME = "marcbouchenoire"
+const LETTERBOXD_URL = "https://letterboxd.com"
+const LETTERBOXD_FEED = `${LETTERBOXD_URL}/${LETTERBOXD_USERNAME}/rss/`
+const LETTERBOXD_FILM_URL = (film: string) => `${LETTERBOXD_URL}/film/${film}/`
 export const STALE_DURATION = 3600
 export const FRESH_DURATION = STALE_DURATION / 2
 
@@ -109,6 +112,11 @@ export interface Response {
   title: string
 
   /**
+   * The film's Letterboxd URL.
+   */
+  url: string
+
+  /**
    * The film's release year.
    */
   year: number
@@ -138,6 +146,7 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
     const film = films[0]
     const [poster] =
       film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
+    const [, slug] = film.link.match(/film\/([^/]*)\/?/) ?? []
 
     res.setHeader(
       "Cache-Control",
@@ -148,7 +157,8 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       year: film["letterboxd:filmYear"],
       rating: film["letterboxd:memberRating"],
       date: film["letterboxd:watchedDate"],
-      poster
+      poster,
+      url: LETTERBOXD_FILM_URL(slug)
     })
   } catch {
     res.status(500).send(undefined)

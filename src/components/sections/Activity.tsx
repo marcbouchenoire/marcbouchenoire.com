@@ -31,11 +31,11 @@ const fade: Transition = {
 /**
  * Display the latest film I watched from Letterboxd.
  *
- * @param props - A set of `div` props.
+ * @param props - A set of `a` props.
  * @param [props.className] - A list of one or more classes.
  */
-export function Film({ className, ...props }: ComponentProps<"div">) {
-  const { date, poster, rating, title, year } = useLatestFilm()
+export function Film({ className, ...props }: ComponentProps<"a">) {
+  const { date, poster, rating, title, year, url } = useLatestFilm()
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -54,7 +54,16 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
   }, [absoluteDate])
 
   return (
-    <div className={clsx(className, "flex gap-4")} {...props}>
+    <a
+      className={clsx(
+        className,
+        "focusable flex gap-4 rounded ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-zinc-900 dark:focus:ring-lime-400/40"
+      )}
+      href={url}
+      rel="noreferrer"
+      target="_blank"
+      {...props}
+    >
       <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
         <svg
           className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
@@ -160,18 +169,18 @@ export function Film({ className, ...props }: ComponentProps<"div">) {
           </svg>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 
 /**
  * Display the latest song I listened to from Last.fm.
  *
- * @param props - A set of `div` props.
+ * @param props - A set of `a` props.
  * @param [props.className] - A list of one or more classes.
  */
-export function Song({ className, ...props }: ComponentProps<"div">) {
-  const { artist, cover, date, title, year, playing } = useLatestSong()
+export function Song({ className, ...props }: ComponentProps<"a">) {
+  const { artist, cover, date, title, year, playing, url } = useLatestSong()
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -186,7 +195,16 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
   }, [absoluteDate])
 
   return (
-    <div className={clsx(className, "flex gap-4")} {...props}>
+    <a
+      className={clsx(
+        className,
+        "focusable flex gap-4 rounded ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+      )}
+      href={url}
+      rel="noreferrer"
+      target="_blank"
+      {...props}
+    >
       <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
         <svg
           className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
@@ -331,7 +349,7 @@ export function Song({ className, ...props }: ComponentProps<"div">) {
           {artist ?? <Skeleton className="w-28" />}
         </p>
       </div>
-    </div>
+    </a>
   )
 }
 
@@ -368,8 +386,8 @@ export function Activity(props: ComponentProps<"section">) {
         .
       </p>
       <div className="mt-8 flex flex-col gap-8">
-        <Song className="min-w-0" />
-        <Film className="min-w-0" />
+        <Song className="w-max min-w-0" />
+        <Film className="w-max min-w-0" />
       </div>
     </section>
   )
