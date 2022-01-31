@@ -169,6 +169,11 @@ export interface Response {
   title: string
 
   /**
+   * The song's Last.fm URL.
+   */
+  url: string
+
+  /**
    * The song's release year.
    */
   year?: number
@@ -220,6 +225,7 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       artist: song.artist["#text"],
       year,
       date,
+      url: song.url,
       cover: song.image.find((image) => image.size === "large")?.["#text"],
       playing: song["@attr"]?.nowplaying ?? !date
     })
