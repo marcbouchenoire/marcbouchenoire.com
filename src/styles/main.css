@@ -182,11 +182,25 @@
   );
   background-size: 100% 800%;
 
-  &::before {
-    @apply absolute bottom-0 w-full bg-white;
+  span {
+    @apply z-10;
+  }
 
+  &::before,
+  &::after {
+    @apply absolute bottom-0 z-0 bg-white;
+
+    width: 20%;
     height: 10%;
     content: "";
+  }
+
+  &::before {
+    @apply left-0;
+  }
+
+  &::after {
+    @apply right-0;
   }
 }
 
