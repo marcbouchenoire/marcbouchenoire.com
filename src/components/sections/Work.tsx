@@ -292,6 +292,26 @@ export function Work(props: ComponentProps<"section">) {
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
             <a
               className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://en.lecolededesign.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              L’École de Design
+            </a>
+            <span className="truncate">
+              Master’s degree
+              <span className="hidden sm:inline"> in Immersive Design</span>
+            </span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2017</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2019</span>
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
               href="https://www.awkward.co/"
               rel="noreferrer"
               target="_blank"
@@ -321,6 +341,26 @@ export function Work(props: ComponentProps<"section">) {
               <span className="inline-block w-10 text-center">2016</span>
               <span className="text-zinc-300 dark:text-zinc-550">—</span>
               <span className="inline-block w-10 text-center">2016</span>
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://en.lecolededesign.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              L’École de Design
+            </a>
+            <span className="truncate">
+              Bachelor’s degree
+              <span className="hidden sm:inline"> in Interaction Design</span>
+            </span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2014</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center">2017</span>
             </span>
           </li>
         </ul>
