@@ -241,6 +241,23 @@ export function Work(props: ComponentProps<"section">) {
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
             <a
               className="link focusable font-medium text-zinc-800 dark:text-white"
+              href="https://liveblocks.io/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Liveblocks
+            </a>
+            <span className="truncate">Design Engineer</span>
+            <span className="wave flex-1" />
+            <span className="-mr-1 whitespace-nowrap font-medium">
+              <span className="inline-block w-10 text-center">2022</span>
+              <span className="text-zinc-300 dark:text-zinc-550">—</span>
+              <span className="inline-block w-10 text-center" />
+            </span>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
+              className="link focusable font-medium text-zinc-800 dark:text-white"
               href="https://www.framer.com/"
               rel="noreferrer"
               target="_blank"
@@ -252,7 +269,7 @@ export function Work(props: ComponentProps<"section">) {
             <span className="-mr-1 whitespace-nowrap font-medium">
               <span className="inline-block w-10 text-center">2021</span>
               <span className="text-zinc-300 dark:text-zinc-550">—</span>
-              <span className="inline-block w-10 text-center" />
+              <span className="inline-block w-10 text-center">2022</span>
             </span>
           </li>
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">

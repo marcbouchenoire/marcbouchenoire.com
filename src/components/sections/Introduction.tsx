@@ -41,22 +41,30 @@ export function Introduction(props: ComponentProps<"section">) {
         <p className="my-4 leading-loose">
           I’m currently living in Amsterdam and working at{" "}
           <a
+            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-orange-500 decoration-2 underline-offset-2 transition duration-100 hover:text-orange-500 hover:decoration-orange-500/30 focus:text-orange-500 focus:ring-orange-500/40 dark:text-white dark:decoration-orange-400 dark:hover:text-orange-400 dark:hover:decoration-orange-400/30 dark:focus:text-orange-400 dark:focus:ring-orange-400/40"
+            href="https://www.framer.com/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Liveblocks
+          </a>
+          . I previously worked at{" "}
+          <a
             className="focusable rounded-sm font-medium text-zinc-800 underline decoration-sky-500 decoration-2 underline-offset-2 transition duration-100 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40 dark:text-white dark:decoration-sky-400 dark:hover:text-sky-400 dark:hover:decoration-sky-400/30 dark:focus:text-sky-400 dark:focus:ring-sky-400/40"
             href="https://www.framer.com/"
             rel="noreferrer"
             target="_blank"
           >
             Framer
-          </a>
-          —focusing on the marketing&nbsp;site and its design&nbsp;system.
-          Before that, I worked on{" "}
+          </a>{" "}
+          and on Sketch{" "}
           <a
             className="focusable rounded-sm font-medium text-zinc-800 underline decoration-amber-500 decoration-2 underline-offset-2 transition duration-100 hover:text-amber-500 hover:decoration-amber-500/30 focus:text-amber-500 focus:ring-amber-500/40 dark:text-white dark:decoration-amber-400 dark:hover:text-amber-400 dark:hover:decoration-amber-400/30 dark:focus:text-amber-400 dark:focus:ring-amber-400/40"
             href="https://www.sketch.com/apps/"
             rel="noreferrer"
             target="_blank"
           >
-            Sketch&nbsp;Cloud
+            Cloud
           </a>{" "}
           and{" "}
           <a
@@ -75,8 +83,8 @@ export function Introduction(props: ComponentProps<"section">) {
             target="_blank"
           >
             Awkward
-          </a>{" "}
-          and graduated from{" "}
+          </a>
+          . Before that, I graduated from{" "}
           <a
             className="focusable rounded-sm font-medium text-zinc-800 underline decoration-rose-500 decoration-2 underline-offset-2 transition duration-100 hover:text-rose-500 hover:decoration-rose-500/30 focus:text-rose-500 focus:ring-rose-500/40 dark:text-white dark:decoration-rose-400 dark:hover:text-rose-400 dark:hover:decoration-rose-400/30 dark:focus:text-rose-400 dark:focus:ring-rose-400/40"
             href="https://en.lecolededesign.com/"
@@ -85,7 +93,7 @@ export function Introduction(props: ComponentProps<"section">) {
           >
             L’École&nbsp;de&nbsp;Design
           </a>{" "}
-          with a master’s degree in interaction design—exploring
+          with a master’s degree in interaction&nbsp;design—exploring
           immersive&nbsp;interfaces.
         </p>
       </div>
