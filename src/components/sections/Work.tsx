@@ -360,6 +360,42 @@ export function Work(props: ComponentProps<"section">) {
           </li>
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
             <a
+              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-zinc-500/10 text-zinc-500 transition hover:bg-zinc-500/20 focus:ring-zinc-500/40 dark:bg-zinc-400/20 dark:text-zinc-400 dark:hover:bg-zinc-400/30 dark:focus:ring-zinc-400/40"
+              href="https://www.awkward.co/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                className="h-full w-full"
+                viewBox="0 0 56 56"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="m15.232 36.917-2.23-17.74a.34.34 0 0 1 .028-.183.356.356 0 0 1 .12-.144.375.375 0 0 1 .368-.036l10.065 4.484a.377.377 0 0 0 .306 0l16.595-7.267a.379.379 0 0 1 .348.025.343.343 0 0 1 .168.295v23.305a.357.357 0 0 1-.163.285.374.374 0 0 1-.336.035l-17.028-6.563a.377.377 0 0 0-.306 0l-7.413 3.773a.378.378 0 0 1-.46-.116.346.346 0 0 1-.062-.153Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </a>
+            <div className="flex min-w-0 flex-col justify-center">
+              <p className="mb-1 flex items-center">
+                <span className="truncate font-semibold text-zinc-700 dark:text-zinc-100">
+                  Awkward
+                </span>
+                <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                  2018
+                </span>
+              </p>
+              <p className="flex items-center truncate">
+                <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
+                  Product Design Intern
+                </span>
+              </p>
+            </div>
+          </li>
+          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+            <a
               className="focusable aspect-square w-12 cursor-pointer rounded-md bg-rose-500/10 text-rose-500 transition hover:bg-rose-500/20 focus:ring-rose-500/40 dark:bg-rose-400/20 dark:text-rose-400 dark:hover:bg-rose-400/30 dark:focus:ring-rose-400/40"
               href="https://en.lecolededesign.com/"
               rel="noreferrer"
@@ -399,97 +435,7 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </li>
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
-            <a
-              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-zinc-500/10 text-zinc-500 transition hover:bg-zinc-500/20 focus:ring-zinc-500/40 dark:bg-zinc-400/20 dark:text-zinc-400 dark:hover:bg-zinc-400/30 dark:focus:ring-zinc-400/40"
-              href="https://www.awkward.co/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <svg
-                className="h-full w-full"
-                viewBox="0 0 56 56"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="m15.232 36.917-2.23-17.74a.34.34 0 0 1 .028-.183.356.356 0 0 1 .12-.144.375.375 0 0 1 .368-.036l10.065 4.484a.377.377 0 0 0 .306 0l16.595-7.267a.379.379 0 0 1 .348.025.343.343 0 0 1 .168.295v23.305a.357.357 0 0 1-.163.285.374.374 0 0 1-.336.035l-17.028-6.563a.377.377 0 0 0-.306 0l-7.413 3.773a.378.378 0 0 1-.46-.116.346.346 0 0 1-.062-.153Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </a>
-            <div className="flex min-w-0 flex-col justify-center">
-              <p className="mb-1 flex items-center">
-                <span className="truncate font-semibold text-zinc-700 dark:text-zinc-100">
-                  Awkward
-                </span>
-                <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                  2018
-                </span>
-              </p>
-              <p className="flex items-center truncate">
-                <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
-                  Product Design Intern
-                </span>
-              </p>
-            </div>
-          </li>
-          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
-            <a
-              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-sky-500/10 text-sky-500 transition hover:bg-sky-500/20 focus:ring-sky-500/40 dark:bg-sky-400/20 dark:text-sky-400 dark:hover:bg-sky-400/30 dark:focus:ring-sky-400/40"
-              href="https://www.azendoo.com/en/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <svg
-                className="h-full w-full"
-                viewBox="0 0 56 56"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="M42 27.818v13.273a.91.91 0 0 1-1.58.614h-.002l-3.02-3.328A13.949 13.949 0 0 1 28 42c-7.732 0-14-6.268-14-14s6.268-14 14-14c7.671 0 13.901 6.17 13.999 13.818H42Zm-18.158-.213 2.013 2.014 6.408-6.409a1.657 1.657 0 0 1 2.342.003c.647.647.648 1.696.002 2.341l-7.598 7.6c-.29.29-.661.448-1.04.477a1.717 1.717 0 0 1-1.448-.488l-3.109-3.108a1.719 1.719 0 1 1 2.43-2.43Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </a>
-            <div className="flex min-w-0 flex-col justify-center">
-              <p className="mb-1 flex items-center">
-                <span className="truncate font-semibold text-zinc-700 dark:text-zinc-100">
-                  Azendoo
-                </span>
-                <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                  2016
-                </span>
-              </p>
-              <p className="flex items-center truncate">
-                <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
-                  Product Design Intern
-                </span>
-              </p>
-            </div>
-          </li>
-          <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
-            <a
-              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-rose-500/10 text-rose-500 transition hover:bg-rose-500/20 focus:ring-rose-500/40 dark:bg-rose-400/20 dark:text-rose-400 dark:hover:bg-rose-400/30 dark:focus:ring-rose-400/40"
-              href="https://en.lecolededesign.com/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <svg
-                className="h-full w-full"
-                viewBox="0 0 56 56"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="M14 43V28.09L32.667 13v14.727L14 43Zm9.333 0v-5.299l11.129-9.105v-9.502L42 13v14.727L23.333 43Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </a>
+            <div className="aspect-square w-12" />
             <div className="flex min-w-0 flex-col justify-center">
               <p className="mb-1 flex items-center">
                 <span className="truncate font-semibold text-zinc-700 dark:text-zinc-100">
