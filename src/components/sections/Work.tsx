@@ -360,7 +360,7 @@ export function Work(props: ComponentProps<"section">) {
           </li>
           <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
             <a
-              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-zinc-500/10 text-zinc-500 transition hover:bg-zinc-500/20 focus:ring-zinc-500/40 dark:bg-zinc-400/20 dark:text-zinc-400 dark:hover:bg-zinc-400/30 dark:focus:ring-zinc-400/40"
+              className="focusable aspect-square w-12 cursor-pointer rounded-md bg-violet-500/10 text-violet-500 transition hover:bg-violet-500/20 focus:ring-violet-500/40 dark:bg-violet-400/20 dark:text-violet-400 dark:hover:bg-violet-400/30 dark:focus:ring-violet-400/40"
               href="https://www.awkward.co/"
               rel="noreferrer"
               target="_blank"
@@ -408,7 +408,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 <path
                   clipRule="evenodd"
-                  d="M14 43V28.09L32.667 13v14.727L14 43Zm9.333 0v-5.299l11.129-9.105v-9.502L42 13v14.727L23.333 43Z"
+                  d="M14 43V28.09L33 13v7.148L42 13v14.727L23 43v-7.234L14 43Z"
                   fill="currentColor"
                   fillRule="evenodd"
                 />
