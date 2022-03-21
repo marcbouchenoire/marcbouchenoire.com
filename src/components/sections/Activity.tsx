@@ -121,7 +121,7 @@ export function Film({ className, ...props }: ComponentProps<"a">) {
         </small>
         <p className="mt-1 mb-1.5 flex items-center">
           <span
-            className="flex-1 truncate font-semibold text-zinc-700 dark:text-zinc-100"
+            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
             {title ?? <Skeleton className="w-32" />}
@@ -331,7 +331,7 @@ export function Song({ className, ...props }: ComponentProps<"a">) {
         </small>
         <p className="my-1 flex items-center">
           <span
-            className="flex-1 truncate font-semibold text-zinc-700 dark:text-zinc-100"
+            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
           >
             {title ?? <Skeleton className="w-40" />}
