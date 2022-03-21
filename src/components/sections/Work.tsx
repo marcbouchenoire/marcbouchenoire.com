@@ -79,7 +79,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
 }
 
 /**
- * A section displaying my latest listens and watches.
+ * A section displaying a selection of projects.
  *
  * @param props - A set of `section` props.
  */
