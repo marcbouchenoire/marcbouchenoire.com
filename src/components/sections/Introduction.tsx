@@ -42,7 +42,7 @@ export function Introduction(props: ComponentProps<"section">) {
           I’m currently living in Amsterdam and working at{" "}
           <a
             className="focusable rounded-sm font-medium text-zinc-800 underline decoration-orange-500 decoration-2 underline-offset-2 transition duration-100 hover:text-orange-500 hover:decoration-orange-500/30 focus:text-orange-500 focus:ring-orange-500/40 dark:text-white dark:decoration-orange-400 dark:hover:text-orange-400 dark:hover:decoration-orange-400/30 dark:focus:text-orange-400 dark:focus:ring-orange-400/40"
-            href="https://www.framer.com/"
+            href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
