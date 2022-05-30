@@ -42,6 +42,7 @@ function join(strings: string[]) {
  */
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const film = await getLatestFilm()
+  const dark = "dark" in req.query
 
   if (film) {
     let date: string
@@ -84,13 +85,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
             theme.fontSize.base[0]
           }; }`,
-          `#poster-background { fill: ${theme.colors.zinc["100"]}; }`,
-          `#poster-placeholder { fill: ${theme.colors.zinc["300"]}; }`,
-          `#date { color: ${theme.colors.lime["500"]}; font-size: ${theme.fontSize["2xs"][0]}; text-transform: uppercase; letter-spacing: ${theme.letterSpacing.widest}; }`,
+          `#poster-background { fill: ${
+            theme.colors.zinc[dark ? "800" : "100"]
+          }; }`,
+          `#poster-placeholder { fill: ${
+            theme.colors.zinc[dark ? "600" : "300"]
+          }; }`,
+          `#date { color: ${
+            theme.colors.lime[dark ? "400" : "500"]
+          }; font-size: ${
+            theme.fontSize["2xs"][0]
+          }; text-transform: uppercase; letter-spacing: ${
+            theme.letterSpacing.widest
+          }; }`,
           `#date, #title { font-weight: ${theme.fontWeight.semibold}; }`,
-          `#title { color: ${theme.colors.zinc["700"]}; }`,
-          `#rating-background { fill: ${theme.colors.zinc["200"]}; }`,
-          `#rating-fill { fill: ${theme.colors.zinc["600"]}; }`
+          `#title { color: ${theme.colors.zinc[dark ? "100" : "700"]}; }`,
+          `#rating-background { fill: ${theme.colors.zinc["200"]}; opacity: ${
+            dark ? 0.3 : 1
+          }; }`,
+          `#rating-fill { fill: ${theme.colors.zinc[dark ? "300" : "600"]}; }`
         ]),
         s("g", { "clip-path": "url(#poster-mask)" }, [
           s("use", {
@@ -114,7 +127,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           }),
           s("use", {
             href: "#poster",
-            stroke: "rgb(0 0 0 / 6%)",
+            stroke: "rgb(255 255 255 / 8%)",
             "stroke-width": 2
           })
         ]),
