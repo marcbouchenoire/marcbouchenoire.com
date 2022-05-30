@@ -34,6 +34,7 @@ function join(strings: string[]) {
  */
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const song = await getLatestSong()
+  const dark = "dark" in req.query
 
   if (song) {
     let date: string
@@ -73,12 +74,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
             theme.fontSize.base[0]
           }; }`,
-          `#cover-background { fill: ${theme.colors.zinc["100"]}; }`,
-          `#cover-placeholder { fill: ${theme.colors.zinc["300"]}; }`,
-          `#date { color: ${theme.colors.rose["500"]}; font-size: ${theme.fontSize["2xs"][0]}; text-transform: uppercase; letter-spacing: ${theme.letterSpacing.widest}; }`,
+          `#cover-background { fill: ${
+            theme.colors.zinc[dark ? "800" : "100"]
+          }; }`,
+          `#cover-placeholder { fill: ${
+            theme.colors.zinc[dark ? "600" : "300"]
+          }; }`,
+          `#date { color: ${
+            theme.colors.rose[dark ? "400" : "500"]
+          }; font-size: ${
+            theme.fontSize["2xs"][0]
+          }; text-transform: uppercase; letter-spacing: ${
+            theme.letterSpacing.widest
+          }; }`,
           `#date, #title { font-weight: ${theme.fontWeight.semibold}; }`,
-          `#title { color: ${theme.colors.zinc["700"]}; }`,
-          `#artist { color: ${theme.colors.zinc["500"]}; }`
+          `#title { color: ${theme.colors.zinc[dark ? "100" : "700"]}; }`,
+          `#artist { color: ${theme.colors.zinc[dark ? "400" : "500"]}; }`
         ]),
         s("g", { "clip-path": "url(#cover-mask)" }, [
           s("use", {
@@ -100,7 +111,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           }),
           s("use", {
             href: "#cover",
-            stroke: "rgb(0 0 0 / 6%)",
+            stroke: "rgb(255 255 255 / 8%)",
             "stroke-width": 2
           })
         ]),
