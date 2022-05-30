@@ -180,12 +180,9 @@ export interface Response {
 }
 
 /**
- * An API route fetching the latest song I listened to from Last.fm.
- *
- * @param req - An API route request.
- * @param res - An API route response.
+ * Fetch the latest song I listened to from Last.fm.
  */
-export default async function route(req: NextApiRequest, res: NextApiResponse) {
+export async function getLatestSong(): Promise<Response | undefined> {
   try {
     const response: LastFmResponse = await fetch(LASTFM_ENDPOINT).then(
       (response) => {
@@ -216,20 +213,38 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       }
     }
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.status(200).json({
+    return {
       title: song.name,
       artist: song.artist["#text"],
       year,
       date,
       url: song.url,
-      cover: song.image.find((image) => image.size === "large")?.["#text"],
-      playing: song["@attr"]?.nowplaying ?? !date
-    })
+      cover: song.image.find((image) => image.size === "large")?.[
+        "#text"
+      ] as string,
+      playing: Boolean(song["@attr"]?.nowplaying) ?? !date
+    }
   } catch {
+    return
+  }
+}
+
+/**
+ * An API route fetching the latest song I listened to from Last.fm.
+ *
+ * @param req - An API route request.
+ * @param res - An API route response.
+ */
+export default async function route(req: NextApiRequest, res: NextApiResponse) {
+  const song = await getLatestSong()
+
+  if (song) {
+    res.setHeader(
+      "Cache-Control",
+      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+    )
+    res.status(200).json(song)
+  } else {
     res.status(500).send(undefined)
   }
 }

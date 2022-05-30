@@ -123,12 +123,9 @@ export interface Response {
 }
 
 /**
- * An API route fetching the latest film I watched from Letterboxd.
- *
- * @param req - An API route request.
- * @param res - An API route response.
+ * Fetch the latest film I watched from Letterboxd.
  */
-export default async function route(req: NextApiRequest, res: NextApiResponse) {
+export async function getLatestFilm(): Promise<Response | undefined> {
   try {
     const response = await fetch(LETTERBOXD_FEED).then((response) => {
       if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
@@ -140,27 +137,42 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
     const { rss }: XMLParserDocument<LetterboxdResponse> =
       parser.parse(response)
 
-    const films = rss.channel.item.sort((a, b) =>
+    const [film] = rss.channel.item.sort((a, b) =>
       b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
     )
-    const film = films[0]
     const [poster] =
       film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
     const [, slug] = film.link.match(/film\/([^/]*)\/?/) ?? []
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.status(200).json({
+    return {
       title: decode(film["letterboxd:filmTitle"]),
       year: film["letterboxd:filmYear"],
       rating: film["letterboxd:memberRating"],
       date: film["letterboxd:watchedDate"],
       poster,
       url: LETTERBOXD_FILM_URL(slug)
-    })
+    }
   } catch {
+    return
+  }
+}
+
+/**
+ * An API route fetching the latest film I watched from Letterboxd.
+ *
+ * @param req - An API route request.
+ * @param res - An API route response.
+ */
+export default async function route(req: NextApiRequest, res: NextApiResponse) {
+  const film = await getLatestFilm()
+
+  if (film) {
+    res.setHeader(
+      "Cache-Control",
+      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+    )
+    res.status(200).json(film)
+  } else {
     res.status(500).send(undefined)
   }
 }
