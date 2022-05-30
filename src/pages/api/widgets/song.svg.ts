@@ -6,11 +6,13 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import resolveConfig from "tailwindcss/resolveConfig"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
 import { capitalize } from "src/utils/capitalize"
+import { truncate } from "src/utils/truncate"
 import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
 const PADDING = 16
+const LABEL_LENGTH = 30
 const COVER_WIDTH = HEIGHT
 const COVER_HEIGHT = HEIGHT
 const COVER_PLACEHOLDER_WIDTH = 32
@@ -236,7 +238,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               fill: "currentColor",
               transform: "translate(0, 44)"
             },
-            [song.title]
+            [truncate(song.title, LABEL_LENGTH)]
           ),
           s(
             "text",
@@ -245,7 +247,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               fill: "currentColor",
               transform: "translate(0, 72)"
             },
-            [song.artist]
+            [truncate(song.artist, LABEL_LENGTH)]
           )
         ])
       ]

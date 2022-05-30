@@ -11,11 +11,13 @@ import {
   getLatestFilm
 } from "../letterboxd/latest"
 import { capitalize } from "src/utils/capitalize"
+import { truncate } from "src/utils/truncate"
 import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
 const PADDING = 16
+const LABEL_LENGTH = 35
 const POSTER_ASPECT_RATIO = 2 / 3
 const POSTER_WIDTH = Math.round(HEIGHT * POSTER_ASPECT_RATIO)
 const POSTER_HEIGHT = HEIGHT
@@ -139,7 +141,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               fill: "currentColor",
               transform: "translate(0, 44)"
             },
-            [film.title]
+            [truncate(film.title, LABEL_LENGTH)]
           ),
           s("g", { transform: "translate(-2, 57)" }, [
             s("use", {
