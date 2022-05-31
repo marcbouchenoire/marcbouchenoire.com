@@ -6,6 +6,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import resolveConfig from "tailwindcss/resolveConfig"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
 import { capitalize } from "src/utils/capitalize"
+import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
 import tailwindConfig from "tailwind.config.cjs"
 
@@ -37,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const dark = "dark" in req.query
 
   if (song) {
+    const cover = await encodeImage(song.cover)
     let date: string
 
     if (song.date) {
@@ -104,7 +106,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }, ${COVER_HEIGHT / 2 - COVER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: song.cover,
+            href: cover,
             width: COVER_WIDTH,
             height: COVER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"

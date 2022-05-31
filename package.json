@@ -48,6 +48,7 @@
     "hast-util-to-html": "^8.0.3",
     "hastscript": "^7.0.2",
     "html-entities": "^2.3.2",
+    "image-type": "^4.1.0",
     "next": "^12.1.5",
     "next-themes": "^0.1.1",
     "react": "^18.0.0",
