@@ -11,6 +11,7 @@ import {
   getLatestFilm
 } from "../letterboxd/latest"
 import { capitalize } from "src/utils/capitalize"
+import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
 import tailwindConfig from "tailwind.config.cjs"
 
@@ -45,8 +46,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const dark = "dark" in req.query
 
   if (film) {
-    let date: string
+    const poster = await encodeImage(film.poster)
     const absoluteDate = new Date(film.date)
+    let date: string
 
     if (isToday(absoluteDate)) {
       date = "Today"
@@ -120,7 +122,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }, ${POSTER_HEIGHT / 2 - POSTER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: film.poster,
+            href: poster,
             width: POSTER_WIDTH,
             height: POSTER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"
