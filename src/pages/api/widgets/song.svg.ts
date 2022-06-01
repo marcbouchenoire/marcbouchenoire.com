@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const dark = "dark" in req.query
 
   if (song) {
-    const cover = await encodeImage(song.cover)
+    const cover = await encodeImage(song.cover, { height: COVER_HEIGHT })
     let date: string
 
     if (song.date) {
