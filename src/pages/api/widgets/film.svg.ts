@@ -129,7 +129,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           }),
           s("use", {
             href: "#poster",
-            stroke: "rgb(255 255 255 / 8%)",
+            stroke: dark ? "rgb(255 255 255 / 8%)" : "rgb(0 0 0 / 6%)",
             "stroke-width": 2
           })
         ]),
