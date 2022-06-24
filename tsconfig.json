@@ -1,5 +1,5 @@
 {
-  "include": ["next-env.d.ts", "declarations.d.ts", "patches.d.ts", "src"],
+  "include": ["next-env.d.ts", "declarations.d.ts", "src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
