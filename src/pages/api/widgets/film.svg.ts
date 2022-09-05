@@ -3,7 +3,7 @@ import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicat
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextRequest } from "next/server"
 import {
   FRESH_DURATION,
   STALE_DURATION,
@@ -11,7 +11,6 @@ import {
 } from "../letterboxd/latest"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
-import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
 
 const WIDTH = 380
@@ -31,15 +30,13 @@ const RATING_HEIGHT = 20
 /**
  * An API route generating an SVG of the latest film I watched.
  *
- * @param req - An API route request.
- * @param res - An API route response.
+ * @param request - An API route request.
  */
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (request: NextRequest) => {
   const film = await getLatestFilm()
-  const dark = "dark" in req.query
+  const dark = request.nextUrl.searchParams.get("dark") !== null
 
   if (film) {
-    const poster = await encodeImage(film.poster, { height: POSTER_HEIGHT })
     const absoluteDate = new Date(film.date)
     let date: string
 
@@ -113,7 +110,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }, ${POSTER_HEIGHT / 2 - POSTER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: poster,
+            href: film.poster,
             width: POSTER_WIDTH,
             height: POSTER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"
@@ -165,13 +162,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ]
     )
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.setHeader("Content-Type", "image/svg+xml")
-    res.status(200).send(toHtml(svg, { space: "svg" }))
+    return new Response(toHtml(svg, { space: "svg" }), {
+      status: 200,
+      headers: {
+        "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`,
+        "Content-Type": "image/svg+xml"
+      }
+    })
   } else {
-    res.status(500).send(undefined)
+    return new Response(undefined, { status: 500 })
   }
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }

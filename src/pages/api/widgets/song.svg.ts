@@ -2,11 +2,10 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextRequest } from "next/server"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
-import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
 
 const WIDTH = 380
@@ -23,15 +22,13 @@ const ICON_SIZE = 20
 /**
  * An API route generating an SVG of the latest song I listened to.
  *
- * @param req - An API route request.
- * @param res - An API route response.
+ * @param request - An API route request.
  */
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (request: NextRequest) => {
   const song = await getLatestSong()
-  const dark = "dark" in req.query
+  const dark = request.nextUrl.searchParams.get("dark") !== null
 
   if (song) {
-    const cover = await encodeImage(song.cover, { height: COVER_HEIGHT })
     let date: string
 
     if (song.date) {
@@ -97,7 +94,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             }, ${COVER_HEIGHT / 2 - COVER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: cover,
+            href: song.cover,
             width: COVER_WIDTH,
             height: COVER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"
@@ -257,13 +254,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ]
     )
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.setHeader("Content-Type", "image/svg+xml")
-    res.status(200).send(toHtml(svg, { space: "svg" }))
+    return new Response(toHtml(svg, { space: "svg" }), {
+      status: 200,
+      headers: {
+        "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`,
+        "Content-Type": "image/svg+xml"
+      }
+    })
   } else {
-    res.status(500).send(undefined)
+    return new Response(undefined, { status: 500 })
   }
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }
