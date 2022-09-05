@@ -27,7 +27,6 @@ export default () => {
   writeJsonFileSync(DATA_PATH, getData())
 
   return {
-    cleanUrls: true,
     trailingSlash: false,
     eslint: {
       ignoreDuringBuilds: true
