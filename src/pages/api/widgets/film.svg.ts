@@ -4,16 +4,15 @@ import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextApiRequest, NextApiResponse } from "next"
-import resolveConfig from "tailwindcss/resolveConfig"
 import {
   FRESH_DURATION,
   STALE_DURATION,
   getLatestFilm
 } from "../letterboxd/latest"
+import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
-import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
@@ -28,12 +27,6 @@ const POSTER_RADIUS = 4
 const ICON_SIZE = 20
 const RATING_WIDTH = 96
 const RATING_HEIGHT = 20
-
-const { theme } = resolveConfig(tailwindConfig)
-
-function join(strings: string[]) {
-  return strings.join(", ")
-}
 
 /**
  * An API route generating an SVG of the latest film I watched.
@@ -84,9 +77,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           s("clipPath", { id: "rating-mask" }, [s("use", { href: "#rating" })])
         ]),
         s("style", [
-          `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
-            theme.fontSize.base[0]
-          }; }`,
+          `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#poster-background { fill: ${
             theme.colors.zinc[dark ? "800" : "100"]
           }; }`,
@@ -96,7 +87,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `#date { color: ${
             theme.colors.lime[dark ? "400" : "500"]
           }; font-size: ${
-            theme.fontSize["2xs"][0]
+            theme.fontSize["2xs"]
           }; text-transform: uppercase; letter-spacing: ${
             theme.letterSpacing.widest
           }; }`,

@@ -3,12 +3,11 @@ import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextApiRequest, NextApiResponse } from "next"
-import resolveConfig from "tailwindcss/resolveConfig"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
+import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
-import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
@@ -20,12 +19,6 @@ const COVER_PLACEHOLDER_WIDTH = 32
 const COVER_PLACEHOLDER_HEIGHT = 42
 const COVER_RADIUS = 4
 const ICON_SIZE = 20
-
-const { theme } = resolveConfig(tailwindConfig)
-
-function join(strings: string[]) {
-  return strings.join(", ")
-}
 
 /**
  * An API route generating an SVG of the latest song I listened to.
@@ -73,9 +66,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           s("clipPath", { id: "cover-mask" }, [s("use", { href: "#cover" })])
         ]),
         s("style", [
-          `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
-            theme.fontSize.base[0]
-          }; }`,
+          `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#cover-background { fill: ${
             theme.colors.zinc[dark ? "800" : "100"]
           }; }`,
@@ -85,7 +76,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `#date { color: ${
             theme.colors.rose[dark ? "400" : "500"]
           }; font-size: ${
-            theme.fontSize["2xs"][0]
+            theme.fontSize["2xs"]
           }; text-transform: uppercase; letter-spacing: ${
             theme.letterSpacing.widest
           }; }`,
