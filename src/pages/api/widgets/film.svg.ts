@@ -37,6 +37,11 @@ export default async (request: NextRequest) => {
   const dark = request.nextUrl.searchParams.get("dark") !== null
 
   if (film) {
+    const poster = await fetch(
+      `${request.nextUrl.origin}/api/image/base64/${encodeURIComponent(
+        film.poster
+      )}`
+    ).then((response) => response.text())
     const absoluteDate = new Date(film.date)
     let date: string
 
@@ -110,7 +115,7 @@ export default async (request: NextRequest) => {
             }, ${POSTER_HEIGHT / 2 - POSTER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: film.poster,
+            href: poster ?? film.poster,
             width: POSTER_WIDTH,
             height: POSTER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"

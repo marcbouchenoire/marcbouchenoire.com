@@ -29,6 +29,11 @@ export default async (request: NextRequest) => {
   const dark = request.nextUrl.searchParams.get("dark") !== null
 
   if (song) {
+    const cover = await fetch(
+      `${request.nextUrl.origin}/api/image/base64/${encodeURIComponent(
+        song.cover
+      )}`
+    ).then((response) => response.text())
     let date: string
 
     if (song.date) {
@@ -94,7 +99,7 @@ export default async (request: NextRequest) => {
             }, ${COVER_HEIGHT / 2 - COVER_PLACEHOLDER_HEIGHT / 2})`
           }),
           s("image", {
-            href: song.cover,
+            href: cover ?? song.cover,
             width: COVER_WIDTH,
             height: COVER_HEIGHT,
             preserveAspectRatio: "xMidYMid slice"
