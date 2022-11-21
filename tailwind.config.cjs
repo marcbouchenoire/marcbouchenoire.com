@@ -59,6 +59,10 @@ module.exports = {
           400: "#f377a9",
           500: "#ea4c89"
         },
+        mastodon: {
+          400: "#7475ff",
+          500: "#595aff"
+        },
         primary: {
           50: "#f0f9ff",
           100: "#e0f2fe",
