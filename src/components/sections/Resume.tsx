@@ -5,7 +5,7 @@ import { ComponentProps } from "react"
  *
  * @param props - A set of `section` props.
  */
-export function Résumé(props: ComponentProps<"section">) {
+export function Resume(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <h2 className="mb-2 text-xl font-bold text-zinc-800 dark:text-white">

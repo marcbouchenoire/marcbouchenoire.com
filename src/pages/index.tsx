@@ -1,7 +1,7 @@
 import { Activity } from "../components/sections/Activity"
 import { Introduction } from "../components/sections/Introduction"
 import { Projects } from "../components/sections/Projects"
-import { Résumé } from "../components/sections/Résumé"
+import { Resume } from "../components/sections/Resume"
 import { Work } from "../components/sections/Work"
 
 /**
@@ -13,7 +13,7 @@ function Page() {
       <Introduction className="content mt-12 md:mt-16 lg:mt-20" />
       <Work className="mt-16 md:mt-20 lg:mt-24" />
       <Projects className="mt-16 md:mt-20 lg:mt-24" />
-      <Résumé className="content mt-16 md:mt-20 lg:mt-24" />
+      <Resume className="content mt-16 md:mt-20 lg:mt-24" />
       <Activity className="content mt-16 md:mt-20 lg:mt-24" />
     </main>
   )

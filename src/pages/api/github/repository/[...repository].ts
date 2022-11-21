@@ -94,7 +94,7 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
   try {
     const {
       repository: [user, repository]
-    } = req.query
+    } = req.query as Record<string, string[]>
     const response: GitHubResponse = await fetch(
       GITHUB_ENDPOINT(user, repository),
       { headers: GITHUB_HEADERS }
