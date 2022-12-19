@@ -17,7 +17,6 @@ export function Introduction(props: ComponentProps<"section">) {
             alt="Portrait of Marc Bouchenoire"
             className="overflow-hidden rounded-full"
             height="80"
-            layout="fixed"
             priority
             src={portrait}
             width="80"

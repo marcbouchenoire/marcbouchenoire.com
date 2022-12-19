@@ -156,7 +156,6 @@ export function Work(props: ComponentProps<"section">) {
                     <Image
                       alt="The Framer Motion website"
                       height="460"
-                      layout="fixed"
                       priority
                       src={motionVisual}
                       width="280"
@@ -212,7 +211,6 @@ export function Work(props: ComponentProps<"section">) {
                   <Image
                     alt="A food app interface"
                     height="346"
-                    layout="fixed"
                     src={elementsFoodVisual}
                     width="160"
                   />
@@ -223,7 +221,6 @@ export function Work(props: ComponentProps<"section">) {
                   <Image
                     alt="A music app interface"
                     height="346"
-                    layout="fixed"
                     src={elementsMusicVisual}
                     width="160"
                   />
