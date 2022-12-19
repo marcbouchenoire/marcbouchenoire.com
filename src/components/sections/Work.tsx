@@ -113,7 +113,7 @@ export function Work(props: ComponentProps<"section">) {
                 <div className="relative aspect-[920/560] bg-black">
                   <video
                     autoPlay
-                    className="absolute inset-0 h-full object-cover"
+                    className="absolute h-full w-full object-cover"
                     loop
                     muted
                     playsInline
@@ -152,9 +152,10 @@ export function Work(props: ComponentProps<"section">) {
                     </>
                   }
                 >
-                  <div className="image relative aspect-[920/560] bg-black">
+                  <div className="relative aspect-[920/560] bg-black">
                     <Image
                       alt="The Framer Motion website"
+                      className="absolute h-full w-full object-cover"
                       height="460"
                       priority
                       src={motionVisual}
@@ -178,7 +179,7 @@ export function Work(props: ComponentProps<"section">) {
                   <div className="relative aspect-[920/560] bg-black">
                     <video
                       autoPlay
-                      className="absolute inset-0 h-full object-cover"
+                      className="absolute h-full w-full object-cover"
                       loop
                       muted
                       playsInline
@@ -207,24 +208,22 @@ export function Work(props: ComponentProps<"section">) {
           <div className="perspective relative z-20 flex flex-1 items-center justify-center sm:-mr-12 sm:basis-1/3">
             <div className="transform-elements mx-12 mt-0 mb-24 grid aspect-square w-full max-w-sm grid-cols-[1.2fr_1fr] gap-8 sm:absolute sm:m-0 sm:max-w-none lg:-top-20 lg:grid-cols-[1fr_1.2fr]">
               <Phone className="-mb-12 self-end">
-                <div className="elements image absolute inset-0">
-                  <Image
-                    alt="A food app interface"
-                    height="346"
-                    src={elementsFoodVisual}
-                    width="160"
-                  />
-                </div>
+                <Image
+                  alt="A food app interface"
+                  className="elements absolute h-full w-full object-cover"
+                  height="346"
+                  src={elementsFoodVisual}
+                  width="160"
+                />
               </Phone>
               <Phone>
-                <div className="elements elements-offset image absolute inset-0">
-                  <Image
-                    alt="A music app interface"
-                    height="346"
-                    src={elementsMusicVisual}
-                    width="160"
-                  />
-                </div>
+                <Image
+                  alt="A music app interface"
+                  className="elements elements-offset absolute h-full w-full object-cover"
+                  height="346"
+                  src={elementsMusicVisual}
+                  width="160"
+                />
               </Phone>
             </div>
           </div>

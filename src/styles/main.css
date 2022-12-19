@@ -129,10 +129,6 @@
   }
 }
 
-.image > span {
-  @apply !absolute !h-full !w-full;
-}
-
 :not(pre) > code {
   @apply relative whitespace-nowrap text-sm font-semibold;
 
