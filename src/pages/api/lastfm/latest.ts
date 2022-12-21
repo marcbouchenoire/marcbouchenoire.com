@@ -151,7 +151,7 @@ export interface Response {
   /**
    * The song's cover art.
    */
-  cover: string
+  cover?: string
 
   /**
    * The date at which the song was listened to.
@@ -219,9 +219,7 @@ export async function getLatestSong(): Promise<Response | undefined> {
       year,
       date,
       url: song.url,
-      cover: song.image.find((image) => image.size === "large")?.[
-        "#text"
-      ] as string,
+      cover: song.image.find((image) => image.size === "large")?.["#text"],
       playing: Boolean(song["@attr"]?.nowplaying) ?? !date
     }
   } catch {

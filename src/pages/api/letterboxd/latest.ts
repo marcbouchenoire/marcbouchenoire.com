@@ -99,7 +99,7 @@ export interface Response {
   /**
    * The film's poster.
    */
-  poster: string
+  poster?: string
 
   /**
    * The film's attributed rating.
