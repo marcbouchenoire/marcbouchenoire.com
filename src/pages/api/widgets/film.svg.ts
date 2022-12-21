@@ -46,7 +46,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const dark = "dark" in req.query
 
   if (film) {
-    const poster = await encodeImage(film.poster, { height: POSTER_HEIGHT })
+    const poster = film.poster
+      ? await encodeImage(film.poster, { height: POSTER_HEIGHT })
+      : undefined
     const absoluteDate = new Date(film.date)
     let date: string
 
