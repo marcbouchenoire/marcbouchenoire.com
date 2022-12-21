@@ -3,17 +3,16 @@ import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicat
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import type { NextApiRequest, NextApiResponse } from "next"
-import resolveConfig from "tailwindcss/resolveConfig"
+import { NextRequest } from "next/server"
 import {
   FRESH_DURATION,
   STALE_DURATION,
   getLatestFilm
 } from "../letterboxd/latest"
+import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
-import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
@@ -29,26 +28,16 @@ const ICON_SIZE = 20
 const RATING_WIDTH = 96
 const RATING_HEIGHT = 20
 
-const { theme } = resolveConfig(tailwindConfig)
-
-function join(strings: string[]) {
-  return strings.join(", ")
-}
-
 /**
- * An API route generating an SVG of the latest film I watched.
+ * Generate an SVG image of the latest film I watched.
  *
- * @param req - An API route request.
- * @param res - An API route response.
+ * @param [dark] - Whether to generate a dark variant.
  */
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export async function generateLatestFilmWidget(dark?: boolean) {
   const film = await getLatestFilm()
-  const dark = "dark" in req.query
 
   if (film) {
-    const poster = film.poster
-      ? await encodeImage(film.poster, { height: POSTER_HEIGHT })
-      : undefined
+    const poster = film.poster ? await encodeImage(film.poster) : undefined
     const absoluteDate = new Date(film.date)
     let date: string
 
@@ -86,9 +75,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           s("clipPath", { id: "rating-mask" }, [s("use", { href: "#rating" })])
         ]),
         s("style", [
-          `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
-            theme.fontSize.base[0]
-          }; }`,
+          `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#poster-background { fill: ${
             theme.colors.zinc[dark ? "800" : "100"]
           }; }`,
@@ -98,7 +85,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `#date { color: ${
             theme.colors.lime[dark ? "400" : "500"]
           }; font-size: ${
-            theme.fontSize["2xs"][0]
+            theme.fontSize["2xs"]
           }; text-transform: uppercase; letter-spacing: ${
             theme.letterSpacing.widest
           }; }`,
@@ -176,13 +163,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ]
     )
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.setHeader("Content-Type", "image/svg+xml")
-    res.status(200).send(toHtml(svg, { space: "svg" }))
+    return toHtml(svg, { space: "svg" })
   } else {
-    res.status(500).send(undefined)
+    return
   }
+}
+
+/**
+ * An Edge API route generating an SVG image of the latest film I watched.
+ *
+ * @param req - An Edge API route request.
+ */
+export default async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const svg = await generateLatestFilmWidget(searchParams.get("dark") !== null)
+
+  return svg
+    ? new Response(svg, {
+        headers: {
+          "Content-Type": "image/svg+xml",
+          "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+        }
+      })
+    : new Response(undefined, { status: 500 })
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }

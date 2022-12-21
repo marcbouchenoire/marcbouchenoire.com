@@ -1,16 +1,16 @@
-import sharp, { ResizeOptions } from "sharp"
+import { toBase64 } from "fast-base64"
 
 /**
- * Fetch an image, resize it and encode it as a JPEG base64 data URI.
+ * Fetch an image and encode it as a base64 data URI.
  *
  * @param url - The image's URL.
- * @param [options] - An optional set of resizing settings.
  */
-export async function encodeImage(url: string, options: ResizeOptions = {}) {
-  const image = await fetch(url)
-    .then((response) => response.arrayBuffer())
-    .then((arrayBuffer) => sharp(Buffer.from(arrayBuffer)))
-  const resized = await image.resize(options).jpeg().toBuffer()
+export async function encodeImage(url: string) {
+  const response = await fetch(url)
+  const buffer = await response.arrayBuffer()
+  const array = new Uint8Array(buffer)
+  const mime = response.headers.get("content-type") as string
+  const base64 = await toBase64(array)
 
-  return `data:image/jpeg;base64,${resized.toString("base64")}`
+  return `data:${mime};base64,${base64}`
 }
