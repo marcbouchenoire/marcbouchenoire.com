@@ -2,13 +2,12 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable
 import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import type { NextApiRequest, NextApiResponse } from "next"
-import resolveConfig from "tailwindcss/resolveConfig"
+import { NextRequest } from "next/server"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
+import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
 import { truncate } from "src/utils/truncate"
-import tailwindConfig from "tailwind.config.cjs"
 
 const WIDTH = 380
 const HEIGHT = 80
@@ -21,26 +20,16 @@ const COVER_PLACEHOLDER_HEIGHT = 42
 const COVER_RADIUS = 4
 const ICON_SIZE = 20
 
-const { theme } = resolveConfig(tailwindConfig)
-
-function join(strings: string[]) {
-  return strings.join(", ")
-}
-
 /**
- * An API route generating an SVG of the latest song I listened to.
+ * Generate an SVG image of the latest song I listened to.
  *
- * @param req - An API route request.
- * @param res - An API route response.
+ * @param [dark] - Whether to generate a dark variant.
  */
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export async function generateLatestSongWidget(dark?: boolean) {
   const song = await getLatestSong()
-  const dark = "dark" in req.query
 
   if (song) {
-    const cover = song.cover
-      ? await encodeImage(song.cover, { height: COVER_HEIGHT })
-      : undefined
+    const cover = song.cover ? await encodeImage(song.cover) : undefined
     let date: string
 
     if (song.date) {
@@ -75,9 +64,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           s("clipPath", { id: "cover-mask" }, [s("use", { href: "#cover" })])
         ]),
         s("style", [
-          `:root { font-family: ${join(theme.fontFamily.sans)}; font-size: ${
-            theme.fontSize.base[0]
-          }; }`,
+          `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#cover-background { fill: ${
             theme.colors.zinc[dark ? "800" : "100"]
           }; }`,
@@ -87,7 +74,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           `#date { color: ${
             theme.colors.rose[dark ? "400" : "500"]
           }; font-size: ${
-            theme.fontSize["2xs"][0]
+            theme.fontSize["2xs"]
           }; text-transform: uppercase; letter-spacing: ${
             theme.letterSpacing.widest
           }; }`,
@@ -268,13 +255,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ]
     )
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.setHeader("Content-Type", "image/svg+xml")
-    res.status(200).send(toHtml(svg, { space: "svg" }))
+    return toHtml(svg, { space: "svg" })
   } else {
-    res.status(500).send(undefined)
+    return
   }
+}
+
+/**
+ * An Edge API route generating an SVG image of the latest song I listened to.
+ *
+ * @param req - An Edge API route request.
+ */
+export default async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url)
+  const svg = await generateLatestSongWidget(searchParams.get("dark") !== null)
+
+  return svg
+    ? new Response(svg, {
+        headers: {
+          "Content-Type": "image/svg+xml",
+          "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+        }
+      })
+    : new Response(undefined, { status: 500 })
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }
