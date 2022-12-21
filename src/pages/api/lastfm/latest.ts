@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextResponse } from "next/server"
 
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
 const MUSICBRAINZ_API = "https://musicbrainz.org/ws/2"
@@ -228,21 +228,20 @@ export async function getLatestSong(): Promise<Response | undefined> {
 }
 
 /**
- * An API route fetching the latest song I listened to from Last.fm.
- *
- * @param req - An API route request.
- * @param res - An API route response.
+ * An Edge API route fetching the latest song I listened to from Last.fm.
  */
-export default async function route(req: NextApiRequest, res: NextApiResponse) {
+export default async function route() {
   const song = await getLatestSong()
 
-  if (song) {
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.status(200).json(song)
-  } else {
-    res.status(500).send(undefined)
-  }
+  return song
+    ? NextResponse.json(song, {
+        headers: {
+          "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+        }
+      })
+    : new Response(undefined, { status: 500 })
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }

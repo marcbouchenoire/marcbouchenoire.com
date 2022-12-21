@@ -1,6 +1,6 @@
 import { XMLParser } from "fast-xml-parser"
 import { decode } from "html-entities"
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextResponse } from "next/server"
 
 const LETTERBOXD_USERNAME = "marcbouchenoire"
 const LETTERBOXD_URL = "https://letterboxd.com"
@@ -158,21 +158,20 @@ export async function getLatestFilm(): Promise<Response | undefined> {
 }
 
 /**
- * An API route fetching the latest film I watched from Letterboxd.
- *
- * @param req - An API route request.
- * @param res - An API route response.
+ * An Edge API route fetching the latest film I watched from Letterboxd.
  */
-export default async function route(req: NextApiRequest, res: NextApiResponse) {
+export default async function route() {
   const film = await getLatestFilm()
 
-  if (film) {
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
-    )
-    res.status(200).json(film)
-  } else {
-    res.status(500).send(undefined)
-  }
+  return film
+    ? NextResponse.json(film, {
+        headers: {
+          "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+        }
+      })
+    : new Response(undefined, { status: 500 })
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }

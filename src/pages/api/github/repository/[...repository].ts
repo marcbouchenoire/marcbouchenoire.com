@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next"
+import { NextRequest, NextResponse } from "next/server"
 
 const GITHUB_API = "https://api.github.com"
 const GITHUB_ENDPOINT = (user: string, repository: string) => {
@@ -85,16 +85,15 @@ export interface Response {
 }
 
 /**
- * An API route fetching a specific GitHub repository.
+ * An Edge API route fetching a specific GitHub repository.
  *
- * @param req - An API route request.
- * @param res - An API route response.
+ * @param req - An Edge API route request.
  */
-export default async function route(req: NextApiRequest, res: NextApiResponse) {
+export default async function route(req: NextRequest) {
   try {
-    const {
-      repository: [user, repository]
-    } = req.query as Record<string, string[]>
+    const { searchParams } = new URL(req.url)
+    const [user, repository] = searchParams.getAll("repository")
+
     const response: GitHubResponse = await fetch(
       GITHUB_ENDPOINT(user, repository),
       { headers: GITHUB_HEADERS }
@@ -104,20 +103,27 @@ export default async function route(req: NextApiRequest, res: NextApiResponse) {
       return response.json()
     })
 
-    res.setHeader(
-      "Cache-Control",
-      `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+    return NextResponse.json(
+      {
+        created: response.created_at,
+        updated: response.updated_at,
+        pushed: response.pushed_at,
+        forks: response.forks_count,
+        issues: response.open_issues_count,
+        stars: response.stargazers_count,
+        watchers: response.watchers_count
+      },
+      {
+        headers: {
+          "Cache-Control": `public, s-maxage=${FRESH_DURATION}, max-age=${FRESH_DURATION}, stale-while-revalidate=${STALE_DURATION}`
+        }
+      }
     )
-    res.status(200).json({
-      created: response.created_at,
-      updated: response.updated_at,
-      pushed: response.pushed_at,
-      forks: response.forks_count,
-      issues: response.open_issues_count,
-      stars: response.stargazers_count,
-      watchers: response.watchers_count
-    })
   } catch {
-    res.status(500).send(undefined)
+    return new Response(undefined, { status: 500 })
   }
+}
+
+export const config = {
+  runtime: "experimental-edge"
 }
