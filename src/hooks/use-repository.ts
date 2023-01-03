@@ -1,5 +1,5 @@
 import useSWR from "swr/immutable"
-import { Response } from "../pages/api/github/repository/[...repository]"
+import { Response } from "../pages/api/github/repository/[user]/[repository]"
 
 /**
  * Fetch a specific GitHub repository.

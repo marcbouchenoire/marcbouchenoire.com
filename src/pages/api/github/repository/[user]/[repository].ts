@@ -89,7 +89,12 @@ export interface Response {
 export default async function route(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const [user, repository] = searchParams.getAll("repository")
+    const user = searchParams.get("user")
+    const repository = searchParams.get("repository")
+
+    if (!user || !repository) {
+      throw new Error() // eslint-disable-line unicorn/error-message
+    }
 
     const response: GitHubResponse = await fetch(
       GITHUB_ENDPOINT(user, repository),
