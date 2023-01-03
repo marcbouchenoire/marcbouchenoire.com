@@ -172,10 +172,10 @@ export async function generateLatestFilmWidget(dark?: boolean) {
 /**
  * An Edge API route generating an SVG image of the latest film I watched.
  *
- * @param req - An Edge API route request.
+ * @param request - An Edge API route request.
  */
-export default async (req: NextRequest) => {
-  const { searchParams } = new URL(req.url)
+export default async (request: NextRequest) => {
+  const { searchParams } = new URL(request.url)
   const svg = await generateLatestFilmWidget(searchParams.get("dark") !== null)
 
   return svg

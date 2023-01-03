@@ -152,7 +152,9 @@ export async function getLatestFilm(): Promise<Response | undefined> {
       poster,
       url: LETTERBOXD_FILM_URL(slug)
     }
-  } catch {
+  } catch (error) {
+    console.error(error)
+
     return
   }
 }

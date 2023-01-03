@@ -222,7 +222,9 @@ export async function getLatestSong(): Promise<Response | undefined> {
       cover: song.image.find((image) => image.size === "large")?.["#text"],
       playing: Boolean(song["@attr"]?.nowplaying) ?? !date
     }
-  } catch {
+  } catch (error) {
+    console.error(error)
+
     return
   }
 }

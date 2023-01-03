@@ -4,9 +4,6 @@ const GITHUB_API = "https://api.github.com"
 const GITHUB_ENDPOINT = (user: string, repository: string) => {
   return `${GITHUB_API}/repos/${user}/${repository}`
 }
-const GITHUB_HEADERS = new Headers({
-  Authorization: `Token ${process.env.GITHUB_ACCESS_TOKEN}`
-})
 export const STALE_DURATION = 3600
 export const FRESH_DURATION = STALE_DURATION / 2
 
@@ -87,16 +84,20 @@ export interface Response {
 /**
  * An Edge API route fetching a specific GitHub repository.
  *
- * @param req - An Edge API route request.
+ * @param request - An Edge API route request.
  */
-export default async function route(req: NextRequest) {
+export default async function route(request: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url)
+    const { searchParams } = new URL(request.url)
     const [user, repository] = searchParams.getAll("repository")
 
     const response: GitHubResponse = await fetch(
       GITHUB_ENDPOINT(user, repository),
-      { headers: GITHUB_HEADERS }
+      {
+        headers: {
+          Authorization: `Token ${process.env.GITHUB_ACCESS_TOKEN}`
+        }
+      }
     ).then((response) => {
       if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
 
@@ -119,7 +120,9 @@ export default async function route(req: NextRequest) {
         }
       }
     )
-  } catch {
+  } catch (error) {
+    console.error(error)
+
     return new Response(undefined, { status: 500 })
   }
 }
