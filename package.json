@@ -38,7 +38,8 @@
     "lint:eslint": "eslint '**/*.{cjs,mjs,ts,tsx}' --fix",
     "lint:prettier": "yarn prettier '**/*.{cjs,mjs,ts,tsx,json,md,yml,css}'",
     "lint:stylelint": "stylelint '**/*.css' --fix",
-    "lint:tsc": "tsc --project tsconfig.json"
+    "lint:tsc": "tsc --project tsconfig.json",
+    "postinstall": "node src/scripts/postinstall.mjs"
   },
   "dependencies": {
     "clsx": "^1.2.1",

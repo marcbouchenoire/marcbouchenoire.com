@@ -50,9 +50,16 @@ function getTheme() {
   }
 }
 
-export default () => {
+/**
+ * Store various things as static files.
+ */
+export function storeStaticFiles() {
   writeJsonFileSync(DATA_PATH, getData())
   writeJsonFileSync(THEME_PATH, getTheme())
+}
+
+export default () => {
+  storeStaticFiles()
 
   return {
     trailingSlash: false,
