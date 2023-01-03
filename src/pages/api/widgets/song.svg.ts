@@ -264,10 +264,10 @@ export async function generateLatestSongWidget(dark?: boolean) {
 /**
  * An Edge API route generating an SVG image of the latest song I listened to.
  *
- * @param req - An Edge API route request.
+ * @param request - An Edge API route request.
  */
-export default async (req: NextRequest) => {
-  const { searchParams } = new URL(req.url)
+export default async (request: NextRequest) => {
+  const { searchParams } = new URL(request.url)
   const svg = await generateLatestSongWidget(searchParams.get("dark") !== null)
 
   return svg
