@@ -101,8 +101,16 @@ export function Work(props: ComponentProps<"section">) {
               Framer.com
             </h3>
             <p className="leading-relaxed text-sky-100 dark:text-sky-900/80">
-              As part of the site team, I worked on many aspects of framer.com.
-              From rewriting it from the ground up using Next.js and SCSS
+              As part of the site team, I worked on many aspects of{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus:ring-sky-900/20"
+                href="https://www.framer.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                framer.com
+              </a>
+              . From rewriting it from the ground up using Next.js and SCSS
               modules, to building things like unified search and custom hooks
               to orchestrate scroll animations and&nbsp;effects.
             </p>
@@ -132,10 +140,19 @@ export function Work(props: ComponentProps<"section">) {
               Framer Motion
             </h3>
             <p className="leading-relaxed text-purple-100 dark:text-purple-900/80">
-              I worked on Framer Motion’s initial public release and its
-              subsequent redesign. From drafting its branding to designing and
-              building its landing page—teaching concepts like declarative
-              animations and gestures using interactive&nbsp;examples.
+              I worked on{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-purple-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-purple-100/50 focus:ring-purple-100/30 dark:decoration-purple-900/20 dark:hover:decoration-purple-900/40 dark:focus:ring-purple-900/20"
+                href="https://www.framer.com/motion"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Framer Motion
+              </a>
+              ’s initial public release and its subsequent redesign. From
+              drafting its branding to designing and building its landing
+              page—teaching concepts like declarative animations and gestures
+              using interactive&nbsp;examples.
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
