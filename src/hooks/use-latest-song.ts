@@ -1,5 +1,6 @@
 import useSWR from "swr"
-import { FRESH_DURATION, Response } from "../pages/api/lastfm/latest"
+import type { Response } from "../pages/api/lastfm/latest"
+import { FRESH_DURATION } from "../pages/api/lastfm/latest"
 
 /**
  * Fetch the latest song I listened to from Last.fm.

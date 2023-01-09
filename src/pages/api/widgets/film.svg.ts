@@ -1,9 +1,7 @@
-import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable-line import/no-duplicates
-import isToday from "date-fns/isToday" // eslint-disable-line import/no-duplicates
-import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
+import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import { NextRequest } from "next/server"
+import type { NextRequest } from "next/server"
 import {
   FRESH_DURATION,
   STALE_DURATION,

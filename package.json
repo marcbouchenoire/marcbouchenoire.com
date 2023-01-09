@@ -57,9 +57,9 @@
     "swr": "^2.0.0"
   },
   "devDependencies": {
-    "@marcbouchenoire/eslint-config": "^2.7.0",
+    "@marcbouchenoire/eslint-config": "^2.8.1",
     "@marcbouchenoire/prettier-config": "^1.1.0",
-    "@marcbouchenoire/stylelint-config": "^1.4.0",
+    "@marcbouchenoire/stylelint-config": "^1.5.0",
     "@tailwindcss/typography": "^0.5.8",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",

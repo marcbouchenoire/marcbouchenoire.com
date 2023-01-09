@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
+import { NextResponse } from "next/server"
 
 const GITHUB_API = "https://api.github.com"
 const GITHUB_ENDPOINT = (user: string, repository: string) => {
@@ -93,7 +94,7 @@ export default async function route(request: NextRequest) {
     const repository = searchParams.get("repository")
 
     if (!user || !repository) {
-      throw new Error() // eslint-disable-line unicorn/error-message
+      throw new Error(`"${user}/${repository}" isn't a valid repository.`)
     }
 
     const response: GitHubResponse = await fetch(
@@ -104,7 +105,11 @@ export default async function route(request: NextRequest) {
         }
       }
     ).then((response) => {
-      if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
+      if (!response.ok) {
+        throw new Error(
+          `There was an error while fetching "${user}/${repository}".`
+        )
+      }
 
       return response.json()
     })

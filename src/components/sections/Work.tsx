@@ -1,6 +1,6 @@
-import clsx from "clsx"
+import { clsx } from "clsx"
 import Image from "next/image"
-import { ComponentProps, ReactNode } from "react"
+import type { ComponentProps, ReactNode } from "react"
 import elementsFoodVisual from "../../../public/visuals/elements-food.png"
 import elementsMusicVisual from "../../../public/visuals/elements-music.png"
 import motionVisual from "../../../public/visuals/framer-motion-archive.png"

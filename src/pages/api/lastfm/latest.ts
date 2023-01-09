@@ -186,7 +186,9 @@ export async function getLatestSong(): Promise<Response | undefined> {
   try {
     const response: LastFmResponse = await fetch(LASTFM_ENDPOINT).then(
       (response) => {
-        if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
+        if (!response.ok) {
+          throw new Error("There was an error while querying the Last.fm API.")
+        }
 
         return response.json()
       }
