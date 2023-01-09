@@ -2,7 +2,7 @@
 
 🤹 My personal website and portfolio.
 
-[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/marcbouchenoire.com/CI)](https://github.com/marcbouchenoire/marcbouchenoire.com/actions/workflows/ci.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/marcbouchenoire/marcbouchenoire.com/.github/workflows/ci.yml)](https://github.com/marcbouchenoire/marcbouchenoire.com/actions/workflows/ci.yml)
 [![license](https://img.shields.io/github/license/marcbouchenoire/marcbouchenoire.com?color=%23f81)](https://github.com/marcbouchenoire/marcbouchenoire.com/blob/main/LICENSE)
 
 - 📚 Built with [Next.js](https://nextjs.org), [React](https://reactjs.org), and [TypeScript](https://www.typescriptlang.org)
