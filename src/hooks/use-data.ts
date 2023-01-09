@@ -1,5 +1,5 @@
-import data from "../data.json" // eslint-disable-line import/no-unresolved
-import { Data } from "../types"
+import data from "../data.json"
+import type { Data } from "../types"
 
 /**
  * Fetch a static data object.

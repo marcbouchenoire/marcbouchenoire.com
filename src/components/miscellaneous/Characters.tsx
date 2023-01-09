@@ -1,4 +1,5 @@
-import { CSSProperties, ComponentProps, useMemo } from "react"
+import type { CSSProperties, ComponentProps } from "react"
+import { useMemo } from "react"
 
 export interface CharactersProps
   extends Omit<ComponentProps<"span">, "children"> {

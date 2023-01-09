@@ -1,5 +1,5 @@
-import clsx from "clsx"
-import { ComponentProps } from "react"
+import { clsx } from "clsx"
+import type { ComponentProps } from "react"
 import { useData } from "../../hooks/use-data"
 import { Emoji } from "../miscellaneous/Emoji"
 

@@ -1,8 +1,7 @@
-import formatDistanceToNow from "date-fns/formatDistanceToNow" // eslint-disable-line import/no-duplicates
-import isYesterday from "date-fns/isYesterday" // eslint-disable-line import/no-duplicates
+import { formatDistanceToNow, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
-import { NextRequest } from "next/server"
+import type { NextRequest } from "next/server"
 import { FRESH_DURATION, STALE_DURATION, getLatestSong } from "../lastfm/latest"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"

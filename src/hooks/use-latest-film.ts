@@ -1,5 +1,5 @@
 import useSWR from "swr/immutable"
-import { Response } from "../pages/api/letterboxd/latest"
+import type { Response } from "../pages/api/letterboxd/latest"
 
 /**
  * Fetch the latest film I watched from Letterboxd.

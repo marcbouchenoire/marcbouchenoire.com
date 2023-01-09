@@ -128,7 +128,11 @@ export interface Response {
 export async function getLatestFilm(): Promise<Response | undefined> {
   try {
     const response = await fetch(LETTERBOXD_FEED).then((response) => {
-      if (!response.ok) throw new Error() // eslint-disable-line unicorn/error-message
+      if (!response.ok) {
+        throw new Error(
+          "There was an error while fetching the Letterboxd feed."
+        )
+      }
 
       return response.text()
     })

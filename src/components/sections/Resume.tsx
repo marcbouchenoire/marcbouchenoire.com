@@ -1,4 +1,4 @@
-import { ComponentProps } from "react"
+import type { ComponentProps } from "react"
 
 /**
  * A section listing roles and degrees.

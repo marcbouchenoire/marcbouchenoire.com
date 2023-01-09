@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ComponentProps } from "react"
+import type { ComponentProps } from "react"
 import portrait from "../../../public/portrait.jpg"
 import { Characters } from "../miscellaneous/Characters"
 

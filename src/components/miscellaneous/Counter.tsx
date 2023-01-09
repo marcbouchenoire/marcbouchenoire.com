@@ -1,6 +1,8 @@
-import clsx from "clsx"
-import { AnimatePresence, Variants, m as motion } from "framer-motion"
-import { ComponentProps, useMemo } from "react"
+import { clsx } from "clsx"
+import type { Variants } from "framer-motion"
+import { AnimatePresence, m as motion } from "framer-motion"
+import type { ComponentProps } from "react"
+import { useMemo } from "react"
 import { springier } from "../../transitions"
 
 const CHARACTERS = ["9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "."]
