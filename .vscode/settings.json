@@ -8,8 +8,7 @@
   "editor.formatOnSave": true,
   "eslint.validate": ["typescript", "typescriptreact"],
   "files.exclude": {
-    "node_modules": true,
-    "yarn.lock": true
+    "node_modules": true
   },
   "prettier.ignorePath": ".gitignore",
   "stylelint.enable": true
