@@ -10,19 +10,19 @@
   "nano-staged": {
     "**/*.{cjs,mjs}": [
       "eslint --fix",
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "**/*.{ts,tsx}": [
       "eslint --fix",
       "tsatsiki --project tsconfig.json next-env.d.ts declarations.d.ts",
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "**/*.css": [
       "stylelint --fix",
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "**/*.{json,md,yml}": [
-      "yarn prettier"
+      "pnpm prettier"
     ]
   },
   "husky": {
@@ -34,9 +34,9 @@
     "dev": "next dev",
     "build": "next build",
     "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
-    "lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:tsc && yarn lint:prettier",
+    "lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc && pnpm lint:prettier",
     "lint:eslint": "eslint '**/*.{cjs,mjs,ts,tsx}' --fix",
-    "lint:prettier": "yarn prettier '**/*.{cjs,mjs,ts,tsx,json,md,yml,css}'",
+    "lint:prettier": "pnpm prettier '**/*.{cjs,mjs,ts,tsx,json,md,yml,css}'",
     "lint:stylelint": "stylelint '**/*.css' --fix",
     "lint:tsc": "tsc --project tsconfig.json",
     "postinstall": "node src/scripts/postinstall.mjs"

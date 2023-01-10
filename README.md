@@ -15,11 +15,11 @@
 Clone this repository, then install all dependencies.
 
 ```bash
-yarn
+pnpm
 ```
 
 Start Next.js in development mode.
 
 ```bash
-yarn dev
+pnpm dev
 ```
