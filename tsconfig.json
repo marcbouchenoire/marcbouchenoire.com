@@ -1,5 +1,10 @@
 {
-  "include": ["next-env.d.ts", "declarations.d.ts", "src"],
+  "include": [
+    "next-env.d.ts",
+    "declarations.d.ts",
+    "src",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
@@ -21,6 +26,11 @@
     "noImplicitReturns": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }

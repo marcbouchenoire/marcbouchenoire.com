@@ -138,5 +138,5 @@ export default async function route(request: NextRequest) {
 }
 
 export const config = {
-  runtime: "experimental-edge"
+  runtime: "edge"
 }

@@ -68,7 +68,7 @@ export function Resume(props: ComponentProps<"section">) {
             </p>
             <p className="flex items-center truncate">
               <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
-              Senior Design Engineer
+                Senior Design Engineer
               </span>
             </p>
           </div>
