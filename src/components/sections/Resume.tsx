@@ -17,7 +17,7 @@ export function Resume(props: ComponentProps<"section">) {
       <ul className="mt-8">
         <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-orange-500/10 text-orange-500 transition hover:bg-orange-500/20 focus:ring-orange-500/40 dark:bg-orange-400/20 dark:text-orange-400 dark:hover:bg-orange-400/30 dark:focus:ring-orange-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-violet-500/10 text-violet-500 transition hover:bg-violet-500/20 focus:ring-violet-500/40 dark:bg-violet-400/20 dark:text-violet-400 dark:hover:bg-violet-400/30 dark:focus:ring-violet-400/40"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
@@ -41,7 +41,7 @@ export function Resume(props: ComponentProps<"section">) {
                 Liveblocks
               </span>
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                2022
+                2023
                 <span className="mx-0.5 text-zinc-350 dark:text-zinc-550">
                   —
                 </span>
@@ -50,7 +50,25 @@ export function Resume(props: ComponentProps<"section">) {
             </p>
             <p className="flex items-center truncate">
               <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
-                Design Engineer
+                Staff Design Engineer
+              </span>
+            </p>
+          </div>
+        </li>
+        <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
+          <div className="aspect-square w-12" />
+          <div className="flex min-w-0 flex-col justify-center">
+            <p className="mb-1 flex items-center">
+              <span className="truncate font-semibold text-zinc-700 dark:text-zinc-100">
+                Liveblocks
+              </span>
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                2022
+              </span>
+            </p>
+            <p className="flex items-center truncate">
+              <span className="flex-1 truncate text-zinc-500 dark:text-zinc-400">
+                Senior Design Engineer
               </span>
             </p>
           </div>
@@ -137,7 +155,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-zinc-500 dark:text-zinc-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-violet-500/10 text-violet-500 transition hover:bg-violet-500/20 focus:ring-violet-500/40 dark:bg-violet-400/20 dark:text-violet-400 dark:hover:bg-violet-400/30 dark:focus:ring-violet-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-lime-500/10 text-lime-500 transition hover:bg-lime-500/20 focus:ring-lime-500/40 dark:bg-lime-400/20 dark:text-lime-400 dark:hover:bg-lime-400/30 dark:focus:ring-lime-400/40"
             href="https://www.awkward.co/"
             rel="noreferrer"
             target="_blank"

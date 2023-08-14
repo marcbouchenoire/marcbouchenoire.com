@@ -75,17 +75,17 @@
   .highlight::after {
     @apply pointer-events-none absolute inset-0 z-10;
 
+    content: "";
     border-radius: inherit;
     box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
-    content: "";
   }
 
   .highlight-invert::after {
     @apply pointer-events-none absolute inset-0 z-10;
 
+    content: "";
     border-radius: inherit;
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
-    content: "";
   }
 
   .link {
@@ -107,7 +107,6 @@
   }
 
   .skeleton {
-    animation: 6s linear infinite skeleton;
     background: linear-gradient(
       -90deg,
       theme("colors.zinc.100"),
@@ -116,6 +115,7 @@
       theme("colors.zinc.100")
     );
     background-size: 400% 100%;
+    animation: 6s linear infinite skeleton;
 
     .dark & {
       background-image: linear-gradient(
@@ -137,9 +137,9 @@
   &::before {
     @apply absolute z-negative bg-zinc-100 dark:bg-zinc-750;
 
-    border-radius: 0.4em;
     content: "";
     inset: -0.25em -0.4em -0.3em;
+    border-radius: 0.4em;
   }
 }
 
@@ -191,7 +191,6 @@
 }
 
 .elements {
-  animation: 20s linear infinite both scroll;
   background: linear-gradient(
     0deg,
     theme("colors.violet.500"),
@@ -205,6 +204,7 @@
     theme("colors.blue.500")
   );
   background-size: 100% 800%;
+  animation: 20s linear infinite both scroll;
 
   span {
     @apply z-10;
@@ -214,9 +214,9 @@
   &::after {
     @apply absolute bottom-0 z-0 bg-white;
 
+    content: "";
     width: 20%;
     height: 10%;
-    content: "";
   }
 
   &::before {
