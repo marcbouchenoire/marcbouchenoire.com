@@ -2,7 +2,6 @@
 node_modules
 .next
 .env.local
-data.json
 theme.json
 *.tsbuildinfo
 *.log

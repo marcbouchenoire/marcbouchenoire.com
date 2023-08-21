@@ -35,19 +35,14 @@
 /* stylelint-disable selector-id-pattern */
 @layer base {
   html,
-  body,
-  #__next {
+  body {
     @apply min-h-screen max-w-full overflow-x-hidden;
   }
 
   body {
-    @apply bg-white selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
+    @apply flex flex-col font-sans bg-white selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
 
     -webkit-tap-highlight-color: transparent;
-  }
-
-  #__next {
-    @apply flex flex-col;
 
     > * {
       @apply w-full;
