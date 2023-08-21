@@ -1,7 +1,16 @@
 import { clsx } from "clsx"
+import { execa } from "execa"
 import type { ComponentProps } from "react"
-import { useData } from "../../hooks/use-data"
 import { Emoji } from "../miscellaneous/Emoji"
+
+/**
+ * Get the latest commit's short hash.
+ */
+async function getLatestCommit() {
+  const { stdout } = await execa("git", ["rev-parse", "--short", "HEAD"])
+
+  return stdout
+}
 
 /**
  * A footer section with credits.
@@ -9,8 +18,12 @@ import { Emoji } from "../miscellaneous/Emoji"
  * @param props - A set of `footer` props.
  * @param [props.className] - A list of one or more classes.
  */
-export function Footer({ className, ...props }: ComponentProps<"footer">) {
-  const { commit, date } = useData()
+export async function Footer({
+  className,
+  ...props
+}: ComponentProps<"footer">) {
+  const commit = await getLatestCommit()
+  const year = String(new Date().getFullYear())
 
   return (
     <footer
@@ -24,8 +37,8 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
       <div className="flex items-center py-6 lg:py-8">
         <span>
           <Emoji />{" "}
-          <time className="hidden sm:inline" dateTime={String(date)}>
-            {date}{" "}
+          <time className="hidden sm:inline" dateTime={String(year)}>
+            {year}{" "}
           </time>
           <span className="text-zinc-300 dark:text-zinc-600">—</span> he
           <span className="text-zinc-300 dark:text-zinc-600">/</span>they
