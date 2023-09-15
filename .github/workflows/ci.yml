@@ -16,15 +16,9 @@ jobs:
     steps:
       - name: Checkout commit
         uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: "7"
-      - name: Prepare Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "pnpm"
+      - name: Use Bun
+        uses: oven-sh/setup-bun@v1
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
       - name: Lint files
-        run: pnpm lint
+        run: bun run lint
