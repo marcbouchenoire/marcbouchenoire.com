@@ -27,58 +27,6 @@ export function Projects(props: ComponentProps<"section">) {
         </p>
       </div>
       <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
-        <ProjectCard repository="marcbouchenoire/dimmmensions">
-          <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
-            <svg
-              aria-label="Dimmmensions"
-              className="inline-block h-[1em] -translate-y-1"
-              viewBox="0 0 652 80"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M55 76c0 2 1 3 2 3h12c1 0 3-1 3-3l9-48c1-1 0-3-2-3H68c-2 0-3 1-3 3L55 76ZM72 17l4 1c2 0 5-1 7-3a9 9 0 0 0 4-6 7 7 0 0 0-2-7l-7-2-7 2a9 9 0 0 0-4 6 7 7 0 0 0 2 7l3 2Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M31 76c0 2 1 3 2 3h12c1 0 3-1 3-3L62 4l-2-2H49l-4 2-5 30-5-7-9-3c-4 0-8 1-12 4-3 2-6 5-8 9L2 49l-1 7v12c1 3 2 6 5 9 3 2 6 3 10 3a19 19 0 0 0 16-8l-1 4Zm-6-37h3a8 8 0 0 1 9 6v4l-1 6-4 7a9 9 0 0 1-7 4 6 6 0 0 1-6-4c-2-2-2-5-1-7l1-5c0-3 1-6 3-8l3-3Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-              <path
-                d="M463 79c-1 0-2-1-2-3l9-48c1-2 2-3 4-3h11l2 3-9 48c-1 2-2 3-4 3h-11ZM481 18a10 10 0 0 1-7-3 7 7 0 0 1-1-7 9 9 0 0 1 3-6l8-2 6 2a7 7 0 0 1 2 7 9 9 0 0 1-4 6c-2 2-4 3-7 3ZM93 79c1 0 3-1 3-3l5-26 2-6 4-4 5-1c2 0 3 0 4 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l6-26 2-7 4-3 4-1c3 0 4 0 5 2v7l-5 28c-1 2 0 3 2 3h11c2 0 3-1 3-3l5-26v-1l3-6 4-3 4-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 5-27 2-6 4-3 5-1 4 2v8l-5 27c0 2 1 3 2 3h11c2 0 3-1 3-3l6-27 2-6 4-3 4-1 5 2v8l-6 27c0 2 1 3 3 3h11c1 0 3-1 3-3l5-27 3-6 3-3 5-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 6-32V34l-5-7c-2-2-5-3-9-3l-9 2c-4 2-7 4-9 7-1-2-2-4-5-6-2-2-5-3-8-3l-10 2-9 7-4-6-9-3-10 2-8 7-5-6c-2-2-5-3-8-3l-10 2c-4 2-7 4-9 7l-4-6-9-3-10 2-9 7a13 13 0 0 0-13-9 18 18 0 0 0-16 10l1-6-2-3H92c-2 0-3 1-3 3L79 76c0 2 1 3 2 3h12Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M341 63c2 0 3 1 2 2-2 5-5 9-9 11-4 3-10 4-15 4-4 0-9-1-13-3l-8-8c-2-4-2-9-1-14l1-7c2-8 5-13 10-18 5-4 11-6 18-6 5 0 10 1 13 4 4 2 6 5 8 9v13l-1 7h-33v3l2 5 6 1 4-1 2-1 3-1h11Zm-26-16h17l-1-7-6-2a8 8 0 0 0-6 2l-4 7Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-              <path
-                d="M363 79c2 0 3-1 4-3l5-25 2-7 4-4 5-1c2 0 4 0 5 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l7-32-1-10c0-3-2-5-4-7l-9-3a20 20 0 0 0-17 10l1-6-2-3h-11c-2 0-3 1-4 3l-9 48c0 2 1 3 2 3h11ZM560 76c0 2-2 3-3 3h-12c-1 0-2-1-2-3l10-48c0-2 1-3 3-3h11l2 3-1 6c2-3 5-6 8-7l9-3c3 0 7 1 9 3l5 7v10l-6 32c-1 2-2 3-4 3h-11c-1 0-2-1-2-3l5-28v-7c-1-2-2-2-5-2a10 10 0 0 0-9 5l-2 7-5 25ZM433 38l4-1 4 1 2 2 2 2h12l2-2c0-5-2-8-5-11-4-3-9-5-16-5l-11 2-8 5c-3 3-4 6-5 10s0 7 2 10 6 5 11 7l8 1 4 2a3 3 0 0 1 0 2 4 4 0 0 1-2 4l-5 1-6-2a5 5 0 0 1-1-2l-3-2h-11l-2 2c0 5 2 9 5 12 4 3 10 4 17 4l12-2 9-5c2-3 4-6 4-9 1-5 0-8-2-11s-6-5-12-6l-7-2-4-1a3 3 0 0 1 0-3 4 4 0 0 1 2-3ZM630 37l-4 1a4 4 0 0 0-2 3 3 3 0 0 0 1 3l3 1 7 2c6 1 10 3 12 6s3 6 2 11c0 3-2 6-4 9l-9 5-11 2c-8 0-13-1-18-4-3-3-5-7-5-12l2-2h11c2 0 2 1 3 2v1l2 1 5 2 6-1a4 4 0 0 0 2-4 3 3 0 0 0-1-2l-4-2-8-1-11-7c-2-3-2-6-2-10 1-4 2-7 5-10l8-5 11-2c7 0 12 2 16 5 3 3 5 6 5 11l-2 2h-12l-2-2-1-2-5-1Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M498 77a31 31 0 0 0 26 1l10-8 5-11 2-9c1-4 0-9-1-13-2-4-5-7-9-9-4-3-8-4-13-4l-12 3a25 25 0 0 0-15 19l-2 7c-1 6-1 10 1 14 1 4 4 7 8 10Zm12-36c2-2 5-2 7-2a7 7 0 0 1 6 2c1 2 2 4 1 7l-1 7-3 8c-2 2-4 3-8 3l-6-3-1-8 2-8 3-6Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-            </svg>
-          </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
-            A collection of dimensions from iOS and iPadOS&nbsp;devices.
-          </p>
-          <a
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dimmmensions-500/10 transition selection:bg-white/30 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 focus:ring-dimmmensions-500/40 dark:bg-dimmmensions-400 dark:text-zinc-900 dark:shadow-dimmmensions-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-400/80 dark:hover:shadow-dimmmensions-400/5 dark:focus:ring-dimmmensions-400/40"
-            href="https://dimmmensions.marcbouchenoire.com"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Learn more
-          </a>
-        </ProjectCard>
         <ProjectCard repository="marcbouchenoire/symbolist">
           <h3 className="mb-2 font-semibold text-symbolist-500 dark:text-symbolist-400">
             <svg
@@ -181,6 +129,58 @@ export function Projects(props: ComponentProps<"section">) {
           <a
             className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-typometer-500/10 transition selection:bg-white/30 hover:bg-typometer-500/80 hover:shadow-typometer-500/5 focus:ring-typometer-500/40 dark:bg-typometer-400 dark:text-zinc-900 dark:shadow-typometer-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-typometer-400/80 dark:hover:shadow-typometer-400/5 dark:focus:ring-typometer-400/40"
             href="https://typometer.marcbouchenoire.com"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Learn more
+          </a>
+        </ProjectCard>
+        <ProjectCard repository="marcbouchenoire/dimmmensions">
+          <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
+            <svg
+              aria-label="Dimmmensions"
+              className="inline-block h-[1em] -translate-y-1"
+              viewBox="0 0 652 80"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M55 76c0 2 1 3 2 3h12c1 0 3-1 3-3l9-48c1-1 0-3-2-3H68c-2 0-3 1-3 3L55 76ZM72 17l4 1c2 0 5-1 7-3a9 9 0 0 0 4-6 7 7 0 0 0-2-7l-7-2-7 2a9 9 0 0 0-4 6 7 7 0 0 0 2 7l3 2Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M31 76c0 2 1 3 2 3h12c1 0 3-1 3-3L62 4l-2-2H49l-4 2-5 30-5-7-9-3c-4 0-8 1-12 4-3 2-6 5-8 9L2 49l-1 7v12c1 3 2 6 5 9 3 2 6 3 10 3a19 19 0 0 0 16-8l-1 4Zm-6-37h3a8 8 0 0 1 9 6v4l-1 6-4 7a9 9 0 0 1-7 4 6 6 0 0 1-6-4c-2-2-2-5-1-7l1-5c0-3 1-6 3-8l3-3Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+              <path
+                d="M463 79c-1 0-2-1-2-3l9-48c1-2 2-3 4-3h11l2 3-9 48c-1 2-2 3-4 3h-11ZM481 18a10 10 0 0 1-7-3 7 7 0 0 1-1-7 9 9 0 0 1 3-6l8-2 6 2a7 7 0 0 1 2 7 9 9 0 0 1-4 6c-2 2-4 3-7 3ZM93 79c1 0 3-1 3-3l5-26 2-6 4-4 5-1c2 0 3 0 4 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l6-26 2-7 4-3 4-1c3 0 4 0 5 2v7l-5 28c-1 2 0 3 2 3h11c2 0 3-1 3-3l5-26v-1l3-6 4-3 4-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 5-27 2-6 4-3 5-1 4 2v8l-5 27c0 2 1 3 2 3h11c2 0 3-1 3-3l6-27 2-6 4-3 4-1 5 2v8l-6 27c0 2 1 3 3 3h11c1 0 3-1 3-3l5-27 3-6 3-3 5-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 6-32V34l-5-7c-2-2-5-3-9-3l-9 2c-4 2-7 4-9 7-1-2-2-4-5-6-2-2-5-3-8-3l-10 2-9 7-4-6-9-3-10 2-8 7-5-6c-2-2-5-3-8-3l-10 2c-4 2-7 4-9 7l-4-6-9-3-10 2-9 7a13 13 0 0 0-13-9 18 18 0 0 0-16 10l1-6-2-3H92c-2 0-3 1-3 3L79 76c0 2 1 3 2 3h12Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M341 63c2 0 3 1 2 2-2 5-5 9-9 11-4 3-10 4-15 4-4 0-9-1-13-3l-8-8c-2-4-2-9-1-14l1-7c2-8 5-13 10-18 5-4 11-6 18-6 5 0 10 1 13 4 4 2 6 5 8 9v13l-1 7h-33v3l2 5 6 1 4-1 2-1 3-1h11Zm-26-16h17l-1-7-6-2a8 8 0 0 0-6 2l-4 7Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+              <path
+                d="M363 79c2 0 3-1 4-3l5-25 2-7 4-4 5-1c2 0 4 0 5 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l7-32-1-10c0-3-2-5-4-7l-9-3a20 20 0 0 0-17 10l1-6-2-3h-11c-2 0-3 1-4 3l-9 48c0 2 1 3 2 3h11ZM560 76c0 2-2 3-3 3h-12c-1 0-2-1-2-3l10-48c0-2 1-3 3-3h11l2 3-1 6c2-3 5-6 8-7l9-3c3 0 7 1 9 3l5 7v10l-6 32c-1 2-2 3-4 3h-11c-1 0-2-1-2-3l5-28v-7c-1-2-2-2-5-2a10 10 0 0 0-9 5l-2 7-5 25ZM433 38l4-1 4 1 2 2 2 2h12l2-2c0-5-2-8-5-11-4-3-9-5-16-5l-11 2-8 5c-3 3-4 6-5 10s0 7 2 10 6 5 11 7l8 1 4 2a3 3 0 0 1 0 2 4 4 0 0 1-2 4l-5 1-6-2a5 5 0 0 1-1-2l-3-2h-11l-2 2c0 5 2 9 5 12 4 3 10 4 17 4l12-2 9-5c2-3 4-6 4-9 1-5 0-8-2-11s-6-5-12-6l-7-2-4-1a3 3 0 0 1 0-3 4 4 0 0 1 2-3ZM630 37l-4 1a4 4 0 0 0-2 3 3 3 0 0 0 1 3l3 1 7 2c6 1 10 3 12 6s3 6 2 11c0 3-2 6-4 9l-9 5-11 2c-8 0-13-1-18-4-3-3-5-7-5-12l2-2h11c2 0 2 1 3 2v1l2 1 5 2 6-1a4 4 0 0 0 2-4 3 3 0 0 0-1-2l-4-2-8-1-11-7c-2-3-2-6-2-10 1-4 2-7 5-10l8-5 11-2c7 0 12 2 16 5 3 3 5 6 5 11l-2 2h-12l-2-2-1-2-5-1Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M498 77a31 31 0 0 0 26 1l10-8 5-11 2-9c1-4 0-9-1-13-2-4-5-7-9-9-4-3-8-4-13-4l-12 3a25 25 0 0 0-15 19l-2 7c-1 6-1 10 1 14 1 4 4 7 8 10Zm12-36c2-2 5-2 7-2a7 7 0 0 1 6 2c1 2 2 4 1 7l-1 7-3 8c-2 2-4 3-8 3l-6-3-1-8 2-8 3-6Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+            </svg>
+          </h3>
+          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+            A collection of dimensions from iOS and iPadOS&nbsp;devices.
+          </p>
+          <a
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dimmmensions-500/10 transition selection:bg-white/30 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 focus:ring-dimmmensions-500/40 dark:bg-dimmmensions-400 dark:text-zinc-900 dark:shadow-dimmmensions-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-400/80 dark:hover:shadow-dimmmensions-400/5 dark:focus:ring-dimmmensions-400/40"
+            href="https://dimmmensions.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
           >
