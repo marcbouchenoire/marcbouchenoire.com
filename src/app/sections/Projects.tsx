@@ -27,58 +27,6 @@ export function Projects(props: ComponentProps<"section">) {
         </p>
       </div>
       <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
-        <ProjectCard repository="marcbouchenoire/dimmmensions">
-          <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
-            <svg
-              aria-label="Dimmmensions"
-              className="inline-block h-[1em] -translate-y-1"
-              viewBox="0 0 652 80"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M55 76c0 2 1 3 2 3h12c1 0 3-1 3-3l9-48c1-1 0-3-2-3H68c-2 0-3 1-3 3L55 76ZM72 17l4 1c2 0 5-1 7-3a9 9 0 0 0 4-6 7 7 0 0 0-2-7l-7-2-7 2a9 9 0 0 0-4 6 7 7 0 0 0 2 7l3 2Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M31 76c0 2 1 3 2 3h12c1 0 3-1 3-3L62 4l-2-2H49l-4 2-5 30-5-7-9-3c-4 0-8 1-12 4-3 2-6 5-8 9L2 49l-1 7v12c1 3 2 6 5 9 3 2 6 3 10 3a19 19 0 0 0 16-8l-1 4Zm-6-37h3a8 8 0 0 1 9 6v4l-1 6-4 7a9 9 0 0 1-7 4 6 6 0 0 1-6-4c-2-2-2-5-1-7l1-5c0-3 1-6 3-8l3-3Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-              <path
-                d="M463 79c-1 0-2-1-2-3l9-48c1-2 2-3 4-3h11l2 3-9 48c-1 2-2 3-4 3h-11ZM481 18a10 10 0 0 1-7-3 7 7 0 0 1-1-7 9 9 0 0 1 3-6l8-2 6 2a7 7 0 0 1 2 7 9 9 0 0 1-4 6c-2 2-4 3-7 3ZM93 79c1 0 3-1 3-3l5-26 2-6 4-4 5-1c2 0 3 0 4 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l6-26 2-7 4-3 4-1c3 0 4 0 5 2v7l-5 28c-1 2 0 3 2 3h11c2 0 3-1 3-3l5-26v-1l3-6 4-3 4-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 5-27 2-6 4-3 5-1 4 2v8l-5 27c0 2 1 3 2 3h11c2 0 3-1 3-3l6-27 2-6 4-3 4-1 5 2v8l-6 27c0 2 1 3 3 3h11c1 0 3-1 3-3l5-27 3-6 3-3 5-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 6-32V34l-5-7c-2-2-5-3-9-3l-9 2c-4 2-7 4-9 7-1-2-2-4-5-6-2-2-5-3-8-3l-10 2-9 7-4-6-9-3-10 2-8 7-5-6c-2-2-5-3-8-3l-10 2c-4 2-7 4-9 7l-4-6-9-3-10 2-9 7a13 13 0 0 0-13-9 18 18 0 0 0-16 10l1-6-2-3H92c-2 0-3 1-3 3L79 76c0 2 1 3 2 3h12Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M341 63c2 0 3 1 2 2-2 5-5 9-9 11-4 3-10 4-15 4-4 0-9-1-13-3l-8-8c-2-4-2-9-1-14l1-7c2-8 5-13 10-18 5-4 11-6 18-6 5 0 10 1 13 4 4 2 6 5 8 9v13l-1 7h-33v3l2 5 6 1 4-1 2-1 3-1h11Zm-26-16h17l-1-7-6-2a8 8 0 0 0-6 2l-4 7Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-              <path
-                d="M363 79c2 0 3-1 4-3l5-25 2-7 4-4 5-1c2 0 4 0 5 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l7-32-1-10c0-3-2-5-4-7l-9-3a20 20 0 0 0-17 10l1-6-2-3h-11c-2 0-3 1-4 3l-9 48c0 2 1 3 2 3h11ZM560 76c0 2-2 3-3 3h-12c-1 0-2-1-2-3l10-48c0-2 1-3 3-3h11l2 3-1 6c2-3 5-6 8-7l9-3c3 0 7 1 9 3l5 7v10l-6 32c-1 2-2 3-4 3h-11c-1 0-2-1-2-3l5-28v-7c-1-2-2-2-5-2a10 10 0 0 0-9 5l-2 7-5 25ZM433 38l4-1 4 1 2 2 2 2h12l2-2c0-5-2-8-5-11-4-3-9-5-16-5l-11 2-8 5c-3 3-4 6-5 10s0 7 2 10 6 5 11 7l8 1 4 2a3 3 0 0 1 0 2 4 4 0 0 1-2 4l-5 1-6-2a5 5 0 0 1-1-2l-3-2h-11l-2 2c0 5 2 9 5 12 4 3 10 4 17 4l12-2 9-5c2-3 4-6 4-9 1-5 0-8-2-11s-6-5-12-6l-7-2-4-1a3 3 0 0 1 0-3 4 4 0 0 1 2-3ZM630 37l-4 1a4 4 0 0 0-2 3 3 3 0 0 0 1 3l3 1 7 2c6 1 10 3 12 6s3 6 2 11c0 3-2 6-4 9l-9 5-11 2c-8 0-13-1-18-4-3-3-5-7-5-12l2-2h11c2 0 2 1 3 2v1l2 1 5 2 6-1a4 4 0 0 0 2-4 3 3 0 0 0-1-2l-4-2-8-1-11-7c-2-3-2-6-2-10 1-4 2-7 5-10l8-5 11-2c7 0 12 2 16 5 3 3 5 6 5 11l-2 2h-12l-2-2-1-2-5-1Z"
-                fill="currentColor"
-              />
-              <path
-                clipRule="evenodd"
-                d="M498 77a31 31 0 0 0 26 1l10-8 5-11 2-9c1-4 0-9-1-13-2-4-5-7-9-9-4-3-8-4-13-4l-12 3a25 25 0 0 0-15 19l-2 7c-1 6-1 10 1 14 1 4 4 7 8 10Zm12-36c2-2 5-2 7-2a7 7 0 0 1 6 2c1 2 2 4 1 7l-1 7-3 8c-2 2-4 3-8 3l-6-3-1-8 2-8 3-6Z"
-                fill="currentColor"
-                fillRule="evenodd"
-              />
-            </svg>
-          </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
-            A collection of dimensions from iOS and iPadOS&nbsp;devices.
-          </p>
-          <a
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dimmmensions-500/10 transition selection:bg-white/30 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 focus:ring-dimmmensions-500/40 dark:bg-dimmmensions-400 dark:text-zinc-900 dark:shadow-dimmmensions-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-400/80 dark:hover:shadow-dimmmensions-400/5 dark:focus:ring-dimmmensions-400/40"
-            href="https://dimmmensions.marcbouchenoire.com"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Learn more
-          </a>
-        </ProjectCard>
         <ProjectCard repository="marcbouchenoire/symbolist">
           <h3 className="mb-2 font-semibold text-symbolist-500 dark:text-symbolist-400">
             <svg
@@ -187,9 +135,77 @@ export function Projects(props: ComponentProps<"section">) {
             Learn more
           </a>
         </ProjectCard>
+        <ProjectCard repository="marcbouchenoire/dimmmensions">
+          <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
+            <svg
+              aria-label="Dimmmensions"
+              className="inline-block h-[1em] -translate-y-1"
+              viewBox="0 0 652 80"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M55 76c0 2 1 3 2 3h12c1 0 3-1 3-3l9-48c1-1 0-3-2-3H68c-2 0-3 1-3 3L55 76ZM72 17l4 1c2 0 5-1 7-3a9 9 0 0 0 4-6 7 7 0 0 0-2-7l-7-2-7 2a9 9 0 0 0-4 6 7 7 0 0 0 2 7l3 2Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M31 76c0 2 1 3 2 3h12c1 0 3-1 3-3L62 4l-2-2H49l-4 2-5 30-5-7-9-3c-4 0-8 1-12 4-3 2-6 5-8 9L2 49l-1 7v12c1 3 2 6 5 9 3 2 6 3 10 3a19 19 0 0 0 16-8l-1 4Zm-6-37h3a8 8 0 0 1 9 6v4l-1 6-4 7a9 9 0 0 1-7 4 6 6 0 0 1-6-4c-2-2-2-5-1-7l1-5c0-3 1-6 3-8l3-3Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+              <path
+                d="M463 79c-1 0-2-1-2-3l9-48c1-2 2-3 4-3h11l2 3-9 48c-1 2-2 3-4 3h-11ZM481 18a10 10 0 0 1-7-3 7 7 0 0 1-1-7 9 9 0 0 1 3-6l8-2 6 2a7 7 0 0 1 2 7 9 9 0 0 1-4 6c-2 2-4 3-7 3ZM93 79c1 0 3-1 3-3l5-26 2-6 4-4 5-1c2 0 3 0 4 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l6-26 2-7 4-3 4-1c3 0 4 0 5 2v7l-5 28c-1 2 0 3 2 3h11c2 0 3-1 3-3l5-26v-1l3-6 4-3 4-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 5-27 2-6 4-3 5-1 4 2v8l-5 27c0 2 1 3 2 3h11c2 0 3-1 3-3l6-27 2-6 4-3 4-1 5 2v8l-6 27c0 2 1 3 3 3h11c1 0 3-1 3-3l5-27 3-6 3-3 5-1 4 2 1 8-6 27c0 2 1 3 2 3h12l3-3 6-32V34l-5-7c-2-2-5-3-9-3l-9 2c-4 2-7 4-9 7-1-2-2-4-5-6-2-2-5-3-8-3l-10 2-9 7-4-6-9-3-10 2-8 7-5-6c-2-2-5-3-8-3l-10 2c-4 2-7 4-9 7l-4-6-9-3-10 2-9 7a13 13 0 0 0-13-9 18 18 0 0 0-16 10l1-6-2-3H92c-2 0-3 1-3 3L79 76c0 2 1 3 2 3h12Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M341 63c2 0 3 1 2 2-2 5-5 9-9 11-4 3-10 4-15 4-4 0-9-1-13-3l-8-8c-2-4-2-9-1-14l1-7c2-8 5-13 10-18 5-4 11-6 18-6 5 0 10 1 13 4 4 2 6 5 8 9v13l-1 7h-33v3l2 5 6 1 4-1 2-1 3-1h11Zm-26-16h17l-1-7-6-2a8 8 0 0 0-6 2l-4 7Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+              <path
+                d="M363 79c2 0 3-1 4-3l5-25 2-7 4-4 5-1c2 0 4 0 5 2v7l-5 28c0 2 1 3 2 3h11c2 0 3-1 3-3l7-32-1-10c0-3-2-5-4-7l-9-3a20 20 0 0 0-17 10l1-6-2-3h-11c-2 0-3 1-4 3l-9 48c0 2 1 3 2 3h11ZM560 76c0 2-2 3-3 3h-12c-1 0-2-1-2-3l10-48c0-2 1-3 3-3h11l2 3-1 6c2-3 5-6 8-7l9-3c3 0 7 1 9 3l5 7v10l-6 32c-1 2-2 3-4 3h-11c-1 0-2-1-2-3l5-28v-7c-1-2-2-2-5-2a10 10 0 0 0-9 5l-2 7-5 25ZM433 38l4-1 4 1 2 2 2 2h12l2-2c0-5-2-8-5-11-4-3-9-5-16-5l-11 2-8 5c-3 3-4 6-5 10s0 7 2 10 6 5 11 7l8 1 4 2a3 3 0 0 1 0 2 4 4 0 0 1-2 4l-5 1-6-2a5 5 0 0 1-1-2l-3-2h-11l-2 2c0 5 2 9 5 12 4 3 10 4 17 4l12-2 9-5c2-3 4-6 4-9 1-5 0-8-2-11s-6-5-12-6l-7-2-4-1a3 3 0 0 1 0-3 4 4 0 0 1 2-3ZM630 37l-4 1a4 4 0 0 0-2 3 3 3 0 0 0 1 3l3 1 7 2c6 1 10 3 12 6s3 6 2 11c0 3-2 6-4 9l-9 5-11 2c-8 0-13-1-18-4-3-3-5-7-5-12l2-2h11c2 0 2 1 3 2v1l2 1 5 2 6-1a4 4 0 0 0 2-4 3 3 0 0 0-1-2l-4-2-8-1-11-7c-2-3-2-6-2-10 1-4 2-7 5-10l8-5 11-2c7 0 12 2 16 5 3 3 5 6 5 11l-2 2h-12l-2-2-1-2-5-1Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M498 77a31 31 0 0 0 26 1l10-8 5-11 2-9c1-4 0-9-1-13-2-4-5-7-9-9-4-3-8-4-13-4l-12 3a25 25 0 0 0-15 19l-2 7c-1 6-1 10 1 14 1 4 4 7 8 10Zm12-36c2-2 5-2 7-2a7 7 0 0 1 6 2c1 2 2 4 1 7l-1 7-3 8c-2 2-4 3-8 3l-6-3-1-8 2-8 3-6Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+            </svg>
+          </h3>
+          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+            A collection of dimensions from iOS and iPadOS&nbsp;devices.
+          </p>
+          <a
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dimmmensions-500/10 transition selection:bg-white/30 hover:bg-dimmmensions-500/80 hover:shadow-dimmmensions-500/5 focus:ring-dimmmensions-500/40 dark:bg-dimmmensions-400 dark:text-zinc-900 dark:shadow-dimmmensions-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-400/80 dark:hover:shadow-dimmmensions-400/5 dark:focus:ring-dimmmensions-400/40"
+            href="https://dimmmensions.marcbouchenoire.com"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Learn more
+          </a>
+        </ProjectCard>
         <ProjectCard repository="marcbouchenoire/tsatsiki">
           <h3 className="mb-2 font-semibold text-lime-500 dark:text-lime-400">
-            Tsatsiki
+            <svg
+              aria-label="Dimmmensions"
+              className="inline-block h-[1em] -translate-y-1"
+              viewBox="0 0 404 99"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M330 96.5a2 2 0 0 0 2-2v-14l7.5-8 13.2 22a4 4 0 0 0 3.4 2H374c1.2 0 1.9-1.3 1.3-2.3l-22-36.4L375 35.2c1-1 .3-2.5-1-2.5h-19.5a4 4 0 0 0-3 1.3L332 55.6V2a2 2 0 0 0-2-2h-15.7a2 2 0 0 0-2 2v92.5c0 1.1.9 2 2 2H330Zm-39.2-73.9a11.1 11.1 0 0 1-11.3-11.3 10.7 10.7 0 0 1 3.3-8 11 11 0 0 1 8-3.1 10.8 10.8 0 0 1 7.8 3.2 10.7 10.7 0 0 1 3.3 8 10.9 10.9 0 0 1-3.3 8 10.7 10.7 0 0 1-7.8 3.2Zm-7.8 74a2 2 0 0 1-2-2v-60c0-1.1 1-2 2-2h15.8a2 2 0 0 1 2 2v60a2 2 0 0 1-2 2H283ZM47.8 76.3a2 2 0 0 0-2 2A19.5 19.5 0 0 0 53.3 92c5 4 11.6 6 20 6 5.1.2 10.1-.7 14.8-2.5 4-1.6 7.5-4.2 10-7.7 2.4-3.4 3.7-7.5 3.6-11.7 0-5.2-1.4-9-4.2-11.8a24.2 24.2 0 0 0-12-5.7l-12-2.5c-4.6-1-6.9-3-6.9-5.6a5 5 0 0 1 2-4.2 8.2 8.2 0 0 1 5.3-1.6 6.8 6.8 0 0 1 7.3 5.1c.3 1.2 1.2 2.2 2.3 2.2H98c1 0 2-.9 2-2a20.2 20.2 0 0 0-12.1-17A35.4 35.4 0 0 0 61 33c-3.8 1.5-7.1 4-9.6 7.2A18.3 18.3 0 0 0 48 51.5c0 5.6 1.4 9.8 4.3 12.7 3 2.8 7.3 5 13.2 6.2L77.3 73c2.4.5 4 1.2 4.7 2.1a4.5 4.5 0 0 1-1.1 6.8c-1.6 1-3.8 1.5-6.8 1.5s-5.3-.6-7-1.9a7 7 0 0 1-2.3-3.3c-.3-1-1.1-2-2.2-2H47.8Zm171.7 0a2 2 0 0 0-2 2A19.5 19.5 0 0 0 225 92c5 4 11.7 6 20.1 6 5 .2 10-.7 14.7-2.5 4-1.6 7.5-4.2 10-7.7 2.4-3.4 3.7-7.5 3.6-11.7 0-5.2-1.4-9-4.2-11.8a24.1 24.1 0 0 0-12-5.6l-12-2.6c-4.6-1-6.9-2.9-6.9-5.6a5 5 0 0 1 2-4.2 8.2 8.2 0 0 1 5.4-1.6 6.8 6.8 0 0 1 7.2 5.1c.3 1.2 1.2 2.2 2.4 2.2h14.5c1 0 2-.9 1.9-2a20.2 20.2 0 0 0-12-17 35.4 35.4 0 0 0-26.8-.2c-3.8 1.5-7.1 4-9.6 7.2a18.3 18.3 0 0 0-3.5 11.4c0 5.6 1.4 9.8 4.3 12.7 3 2.9 7.3 5 13.2 6.2L249 73c2.4.5 4 1.2 4.7 2.1.6.8 1 1.8 1 2.9a4.7 4.7 0 0 1-2.1 4c-1.6 1-3.8 1.5-6.8 1.5s-5.3-.7-7-2a7 7 0 0 1-2.3-3.3c-.3-1-1.1-2-2.2-2h-14.8Zm172.4-53.7a11.1 11.1 0 0 1-11.3-11.3 10.7 10.7 0 0 1 3.3-8 11 11 0 0 1 8-3.1 10.9 10.9 0 0 1 7.9 3.2 10.7 10.7 0 0 1 3.2 8 10.9 10.9 0 0 1-3.3 8 10.7 10.7 0 0 1-7.8 3.2Zm-7.8 74a2 2 0 0 1-2-2v-60c0-1.1 1-2 2-2H400a2 2 0 0 1 2 2v60a2 2 0 0 1-2 2h-16ZM173.7 32.5H184V14.7c0-1.1.9-2 2-2h15.7a2 2 0 0 1 2 2v17.8h10.1a2 2 0 0 1 2 2V47a2 2 0 0 1-2 2h-10.1v45.6a2 2 0 0 1-2 2H186a2 2 0 0 1-2-2V49h-10.2a2 2 0 0 1-2-2V34.5c0-1 1-2 2-2Zm-161.5 0H2a2 2 0 0 0-2 2V47c0 1 .9 2 2 2h10.2v45.6c0 1.1.9 2 2 2h15.7a2 2 0 0 0 2-2V49H42a2 2 0 0 0 2-2V34.5a2 2 0 0 0-2-2H31.9V14.7a2 2 0 0 0-2-2H14.2a2 2 0 0 0-2 2v17.8Z"
+                fill="currentColor"
+              />
+              <path
+                clipRule="evenodd"
+                d="M128.7 98.2c-6.7 0-12-1.9-16-5.6-4-3.7-6-8.7-6-15 0-5.8 2-10.5 6-14 4.1-3.5 10-5.5 17.7-6.1l17.9-1.4v-1c0-1.9-.4-3.7-1.3-5.4a8.2 8.2 0 0 0-3.6-3.2c-2-.7-4-1.1-6-1-4.2 0-7.3.7-9.5 2.3a7.7 7.7 0 0 0-3.1 4.5c-.3 1.1-1.1 2.1-2.3 2.1h-12.3c-1 0-2-.8-2-2a21.7 21.7 0 0 1 14.3-19c5-2 10.5-3 16-3 6.2 0 11.4 1.2 15.8 3.4 4.2 2.1 7.6 5.5 9.8 9.7a33 33 0 0 1 3.4 15.6v35.4a2 2 0 0 1-2 2h-13.7a2 2 0 0 1-2-1.7l-1-6.7c-1 2.9-3.4 5.3-7.2 7.2-4 2-8.4 3-12.9 2.9ZM149 72.9c.2-1 .3-2.4.3-3.5 0-.7-.7-.9-1.3-.5-1.8 1.4-3.7 1.2-5.5 1l-2.5-.6-2.7-.7c-5.1-.8-9.2 1.2-10 6.4l-.1 1.2c0 .4.4.7.8.4 2.7-1.8 5.2-1.7 7.5-1.5 2.2 0 4.3.2 6.4-1.3.4-.3.7 0 .5.4-1.4 2.4-4 2.5-6.8 2.6-2.6 0-5.4.1-8 1.8-1.2.9-3.7 3.1-4 4.6-.1.9.4 1.7 1.2 1.8.4 0 .8 0 1-.6.8-1.6 1.6-2.9 2.7-4a8.8 8.8 0 0 0 6.3 3.8c7.3 1.2 13-3.4 14.2-11.3Z"
+                fill="currentColor"
+                fillRule="evenodd"
+              />
+            </svg>
           </h3>
           <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
             Run <code>tsc</code> with both a configuration and
