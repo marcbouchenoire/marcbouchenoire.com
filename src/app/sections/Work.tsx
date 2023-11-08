@@ -25,7 +25,7 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert w-full overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
+        "dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
       )}
       {...props}
     >
@@ -117,7 +117,7 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 pb-16 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
             <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
-              <Browser className="transform-framer" url="framer.com">
+              <Browser className="transform-framer w-full" url="framer.com">
                 <div className="relative aspect-[920/560] bg-black">
                   <video
                     autoPlay
