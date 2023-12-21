@@ -14,7 +14,7 @@ export interface CharactersProps
  *
  * @param props - A set of `span` props applied to each character.
  * @param [props.children] - A string of characters to split.
- * @param [props.style] - An set of inline styles.
+ * @param [props.style] - A set of inline styles.
  */
 export function Characters({
   children = "",

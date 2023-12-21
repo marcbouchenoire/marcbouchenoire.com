@@ -5,14 +5,19 @@ import type { Transition, Variants } from "framer-motion"
 import { motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useSystemTheme } from "src/hooks/use-system-theme"
-import { springiest } from "src/transitions"
+
+const TRANSITION_DURATION = 0.6
 
 const transition: Transition = {
-  default: springiest,
+  default: {
+    type: "spring",
+    duration: TRANSITION_DURATION,
+    bounce: 0.6
+  },
   opacity: {
     type: "spring",
-    duration: springiest.duration - springiest.duration / 2,
-    bounce: 0
+    bounce: 0,
+    duration: TRANSITION_DURATION / 2
   }
 }
 
@@ -26,7 +31,7 @@ const variants: Variants = {
     opacity: 1,
     transition: {
       ...transition,
-      delay: springiest.duration / 2
+      delay: TRANSITION_DURATION / 2
     }
   }
 }
