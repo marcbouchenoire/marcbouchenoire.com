@@ -60,6 +60,15 @@ interface FilmEntry {
   title: string
 }
 
+interface UnknownEntry {
+  [key: string]: unknown | undefined
+
+  /**
+   * The date at which the film was watched.
+   */
+  "letterboxd:watchedDate"?: never
+}
+
 interface LetterboxdResponse {
   /**
    * A parsed RSS feed.
@@ -73,7 +82,7 @@ interface LetterboxdResponse {
     /**
      * The feed's content.
      */
-    item: FilmEntry[]
+    item: (FilmEntry | UnknownEntry)[]
 
     /**
      * The feed's URL.
@@ -138,9 +147,11 @@ export async function getLatestFilm(): Promise<Response | undefined> {
     const { rss }: XMLParserDocument<LetterboxdResponse> =
       parser.parse(response)
 
-    const [film] = rss.channel.item.sort((a, b) =>
-      b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
-    )
+    const [film] = rss.channel.item
+      .filter((item): item is FilmEntry => "letterboxd:watchedDate" in item)
+      .sort((a, b) =>
+        b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
+      )
     const [poster] =
       film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
     const [, slug] = film.link.match(/film\/([^/]*)\/?/) ?? []
