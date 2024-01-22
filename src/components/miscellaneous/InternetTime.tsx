@@ -93,9 +93,10 @@ function Digit({
   })
   const y = useTransform(offsetSpring, (offset) => offset * 100)
   const yPercentage = useMotionTemplate`${y}%`
-  const rotateX = useTransform(y, [-100, 100], [-60, 60])
-  const originY = useTransform(y, [-100, 0], [1, 0.5])
   const opacity = useTransform(y, [-100, 0, 100], [0, 1, 0])
+  const scale = useTransform(y, [-100, 0, 100], [0.5, 1, 0.5])
+  const blur = useTransform(y, [-100, 0, 100], [5, 0, 5])
+  const filter = useMotionTemplate`blur(${blur}px)`
 
   useEffect(() => {
     if (Math.abs(offset) <= 2) {
@@ -113,9 +114,9 @@ function Digit({
       )}
       style={{
         y: yPercentage,
-        rotateX,
-        originY,
         opacity,
+        scale,
+        filter,
         ...style
       }}
       transition={{
