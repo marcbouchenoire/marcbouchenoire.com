@@ -76,6 +76,10 @@ module.exports = {
           800: "#075985",
           900: "#0c4a6e"
         },
+        splatoon: {
+          400: "#ff7fbd",
+          500: "#f7499e"
+        },
         symbolist: {
           400: "#f8719d",
           500: "#f1437b"

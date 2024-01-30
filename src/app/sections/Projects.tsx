@@ -1,5 +1,12 @@
-import type { ComponentProps } from "react"
-import { ProjectCard } from "../../components/miscellaneous/ProjectCard"
+import Image from "next/image"
+import { type ComponentProps, Suspense } from "react"
+import splatoon from "../../../public/projects/splatoon.png"
+import { GitHubProjectCard } from "../../components/miscellaneous/GitHubProjectCard"
+import {
+  ProjectCard,
+  ProjectCardDate
+} from "src/components/miscellaneous/ProjectCard"
+import { Skeleton } from "src/components/utils/Skeleton"
 
 /**
  * A section displaying personal projects.
@@ -14,7 +21,7 @@ export function Projects(props: ComponentProps<"section">) {
           Projects
         </h2>
         <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
-          A selection of personal—and{" "}
+          A selection of personal—and often{" "}
           <a
             className="link text-zinc-800 dark:text-white"
             href="https://github.com/marcbouchenoire"
@@ -27,7 +34,7 @@ export function Projects(props: ComponentProps<"section">) {
         </p>
       </div>
       <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
-        <ProjectCard repository="marcbouchenoire/symbolist">
+        <GitHubProjectCard repository="marcbouchenoire/symbolist">
           <h3 className="mb-2 font-semibold text-symbolist-500 dark:text-symbolist-400">
             <svg
               aria-label="Symbolist"
@@ -68,8 +75,8 @@ export function Projects(props: ComponentProps<"section">) {
           >
             Learn more
           </a>
-        </ProjectCard>
-        <ProjectCard repository="marcbouchenoire/typometer">
+        </GitHubProjectCard>
+        <GitHubProjectCard repository="marcbouchenoire/typometer">
           <h3 className="mb-2 font-semibold text-typometer-500 dark:text-typometer-400">
             <svg
               aria-label="Typometer"
@@ -134,8 +141,8 @@ export function Projects(props: ComponentProps<"section">) {
           >
             Learn more
           </a>
-        </ProjectCard>
-        <ProjectCard repository="marcbouchenoire/dimmmensions">
+        </GitHubProjectCard>
+        <GitHubProjectCard repository="marcbouchenoire/dimmmensions">
           <h3 className="mb-2 font-semibold text-dimmmensions-500 dark:text-dimmmensions-400">
             <svg
               aria-label="Dimmmensions"
@@ -186,8 +193,83 @@ export function Projects(props: ComponentProps<"section">) {
           >
             Learn more
           </a>
+        </GitHubProjectCard>
+        <ProjectCard>
+          <div className="mb-8 flex items-center text-zinc-400">
+            <small className="flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
+              <span className="flex items-center">
+                <svg
+                  className="mr-1 -ml-px flex-none"
+                  height="20"
+                  role="presentation"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  />
+                  <path
+                    clipRule="evenodd"
+                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  />
+                </svg>
+                <Suspense fallback={<Skeleton className="h-[1.2em] w-16" />}>
+                  <ProjectCardDate date="2024-01-22" />
+                </Suspense>
+              </span>
+            </small>
+            <a
+              aria-label="View on GitHub"
+              className="focusable ml-auto flex-none rounded-full transition hover:text-zinc-600 dark:hover:text-zinc-100"
+              href="https://github.com/raycast/extensions/tree/main/extensions/splatoon/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                height="24"
+                role="presentation"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M12 2C6.475 2 2 6.47 2 11.988c0 4.42 2.862 8.153 6.838 9.476.5.087.687-.212.687-.474 0-.238-.013-1.024-.013-1.86C7 19.59 6.35 18.517 6.15 17.955c-.113-.287-.6-1.174-1.025-1.411-.35-.187-.85-.65-.013-.662.788-.012 1.35.724 1.538 1.024.9 1.51 2.338 1.086 2.912.824.088-.65.35-1.086.638-1.336-2.225-.25-4.55-1.111-4.55-4.931 0-1.087.387-1.986 1.025-2.685-.1-.25-.45-1.273.1-2.646 0 0 .837-.263 2.75 1.023a9.29 9.29 0 0 1 2.5-.337c.85 0 1.7.113 2.5.337 1.912-1.298 2.75-1.023 2.75-1.023.55 1.373.2 2.397.1 2.646.637.7 1.025 1.586 1.025 2.685 0 3.832-2.337 4.681-4.562 4.931.362.312.675.912.675 1.848 0 1.336-.013 2.41-.013 2.747 0 .262.188.574.688.474C19.137 20.141 22 16.395 22 11.988 22 6.47 17.525 2 12 2Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+          <div className="mt-auto">
+            <h3 className="mb-3 font-semibold text-splatoon-500 dark:text-splatoon-400">
+              <Image
+                alt="Splatoon"
+                className="h-[2.5em] w-[2.5em]"
+                height="128"
+                priority
+                src={splatoon}
+                width="128"
+              />
+            </h3>
+            <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+              A Raycast extension to view Splatoon’s current&nbsp;schedules.
+            </p>
+            <a
+              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-splatoon-500/10 transition selection:bg-white/30 hover:bg-splatoon-500/80 hover:shadow-splatoon-500/5 focus:ring-splatoon-500/40 dark:bg-splatoon-400 dark:text-zinc-900 dark:shadow-splatoon-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-splatoon-400/80 dark:hover:shadow-splatoon-400/5 dark:focus:ring-splatoon-400/40"
+              href="https://www.raycast.com/marcbouchenoire/splatoon"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Learn more
+            </a>
+          </div>
         </ProjectCard>
-        <ProjectCard repository="marcbouchenoire/tsatsiki">
+        <GitHubProjectCard repository="marcbouchenoire/tsatsiki">
           <h3 className="mb-2 font-semibold text-lime-500 dark:text-lime-400">
             <svg
               aria-label="Dimmmensions"
@@ -211,24 +293,31 @@ export function Projects(props: ComponentProps<"section">) {
             Run <code>tsc</code> with both a configuration and
             specific&nbsp;files.
           </p>
-        </ProjectCard>
-        <ProjectCard repository="marcbouchenoire/sketch-constraints">
-          <h3 className="mb-2 font-semibold text-amber-500 dark:text-amber-400">
-            Sketch Constraints
-          </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
-            A plugin that integrates constraints in Sketch to lay
-            out&nbsp;layers.
-          </p>
-        </ProjectCard>
-        <ProjectCard repository="awkward/alembic">
+        </GitHubProjectCard>
+        <GitHubProjectCard repository="awkward/alembic">
           <h3 className="mb-2 font-semibold text-teal-500 dark:text-teal-400">
             Alembic
           </h3>
           <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
-            Extract a color palette from Sketch&nbsp;images.
+            A Sketch plugin to extract a color palette from&nbsp;images.
           </p>
-        </ProjectCard>
+        </GitHubProjectCard>
+        <GitHubProjectCard repository="marcbouchenoire/sketch-constraints">
+          <h3 className="mb-2 font-semibold text-blue-500 dark:text-blue-400">
+            Sketch Constraints
+          </h3>
+          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+            A Sketch plugin that integrates constraints to lay out&nbsp;layers.
+          </p>
+        </GitHubProjectCard>
+        <GitHubProjectCard repository="marcbouchenoire/sketch-maps">
+          <h3 className="mb-2 font-semibold text-amber-500 dark:text-amber-400">
+            Sketch Maps
+          </h3>
+          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+            A Sketch plugin to fill layers with&nbsp;maps.
+          </p>
+        </GitHubProjectCard>
       </div>
     </section>
   )
