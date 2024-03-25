@@ -17,7 +17,7 @@ export function Resume(props: ComponentProps<"section">) {
       <ul className="mt-8">
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-violet-500/10 text-violet-500 transition hover:bg-violet-500/20 focus:ring-violet-500/40 dark:bg-violet-400/20 dark:text-violet-400 dark:hover:bg-violet-400/30 dark:focus:ring-violet-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-liveblocks/10 text-liveblocks transition hover:bg-liveblocks/20 focus:ring-liveblocks/40 dark:bg-liveblocks-dark/20 dark:text-liveblocks-dark dark:hover:bg-liveblocks-dark/30 dark:focus:ring-liveblocks-dark/40"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
@@ -75,7 +75,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-sky-500/10 text-sky-500 transition hover:bg-sky-500/20 focus:ring-sky-500/40 dark:bg-sky-400/20 dark:text-sky-400 dark:hover:bg-sky-400/30 dark:focus:ring-sky-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-framer/10 text-framer transition hover:bg-framer/20 focus:ring-framer/40 dark:bg-framer-dark/20 dark:text-framer-dark dark:hover:bg-framer-dark/30 dark:focus:ring-framer-dark/40"
             href="https://www.framer.com/"
             rel="noreferrer"
             target="_blank"
@@ -155,7 +155,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-lime-500/10 text-lime-500 transition hover:bg-lime-500/20 focus:ring-lime-500/40 dark:bg-lime-400/20 dark:text-lime-400 dark:hover:bg-lime-400/30 dark:focus:ring-lime-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-awkward/10 text-awkward transition hover:bg-awkward/20 focus:ring-awkward/40 dark:bg-awkward-dark/20 dark:text-awkward-dark dark:hover:bg-awkward-dark/30 dark:focus:ring-awkward-dark/40"
             href="https://www.awkward.co/"
             rel="noreferrer"
             target="_blank"
@@ -191,7 +191,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-rose-500/10 text-rose-500 transition hover:bg-rose-500/20 focus:ring-rose-500/40 dark:bg-rose-400/20 dark:text-rose-400 dark:hover:bg-rose-400/30 dark:focus:ring-rose-400/40"
+            className="focusable aspect-square w-12 cursor-pointer rounded-md bg-lecolededesign/10 text-lecolededesign transition hover:bg-lecolededesign/20 focus:ring-lecolededesign/40 dark:bg-lecolededesign-dark/20 dark:text-lecolededesign-dark dark:hover:bg-lecolededesign-dark/30 dark:focus:ring-lecolededesign-dark/40"
             href="https://en.lecolededesign.com/"
             rel="noreferrer"
             target="_blank"

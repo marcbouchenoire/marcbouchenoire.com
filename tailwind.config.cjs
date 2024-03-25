@@ -104,6 +104,22 @@ module.exports = {
         splatoon: {
           DEFAULT: "#f1437b",
           dark: "#f8719d"
+        },
+        liveblocks: {
+          DEFAULT: "#8361ed",
+          dark: "#9b7ef4"
+        },
+        framer: {
+          DEFAULT: "#0099ff",
+          dark: "#33aaff"
+        },
+        awkward: {
+          DEFAULT: "#52525b",
+          dark: "#d4d4d8"
+        },
+        lecolededesign: {
+          DEFAULT: "#d31b2e",
+          dark: "#f4384b"
         }
       },
       dropShadow: {
