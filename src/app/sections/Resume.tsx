@@ -45,7 +45,7 @@ export function Resume(props: ComponentProps<"section">) {
                 <span className="mx-0.5 text-zinc-350 dark:text-zinc-550">
                   —
                 </span>
-                Current
+                Present
               </span>
             </p>
             <p className="flex items-center truncate">
