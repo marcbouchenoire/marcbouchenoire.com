@@ -6,29 +6,6 @@
   "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
-  "nano-staged": {
-    "**/*.{cjs,mjs}": [
-      "eslint --fix",
-      "bun run prettier"
-    ],
-    "**/*.{ts,tsx}": [
-      "eslint --fix",
-      "tsatsiki --project tsconfig.json next-env.d.ts declarations.d.ts",
-      "bun run prettier"
-    ],
-    "**/*.css": [
-      "stylelint --fix",
-      "bun run prettier"
-    ],
-    "**/*.{json,md,yml}": [
-      "bun run prettier"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "nano-staged"
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -66,8 +43,6 @@
     "autoprefixer": "^10.4.15",
     "eslint": "^8.49.0",
     "execa": "^8.0.1",
-    "husky": "4.3.8",
-    "nano-staged": "^0.8.0",
     "postcss": "^8.4.29",
     "postcss-nesting": "^12.0.1",
     "prettier": "^3.0.3",
