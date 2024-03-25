@@ -53,16 +53,16 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-zinc-900 dark:focus:ring-lime-400/40"
+        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
+      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
         <svg
-          className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
+          className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
           viewBox="0 0 52 78"
           xmlns="http://www.w3.org/2000/svg"
@@ -117,14 +117,14 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
         </small>
         <p className="mb-1.5 mt-1 flex items-center">
           <span
-            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
+            className="truncate font-semibold text-gray-700 dark:text-gray-100"
             title={title}
           >
             {title ?? <Skeleton className="w-32" />}
           </span>{" "}
           {year && (
             <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400"
               dateTime={String(year)}
             >
               {year}
@@ -137,7 +137,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
           role="img"
         >
           <svg
-            className="absolute text-zinc-200 dark:text-zinc-700"
+            className="absolute text-gray-200 dark:text-gray-700"
             height="20"
             role="presentation"
             width="96"
@@ -149,7 +149,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
             />
           </svg>
           <svg
-            className="absolute text-zinc-600 dark:text-zinc-300"
+            className="absolute text-gray-600 dark:text-gray-300"
             height="20"
             role="presentation"
             style={{

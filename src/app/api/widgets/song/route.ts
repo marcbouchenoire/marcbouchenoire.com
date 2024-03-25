@@ -65,10 +65,10 @@ async function generateLatestSongWidget(dark?: boolean) {
         s("style", [
           `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#cover-background { fill: ${
-            theme.colors.zinc[dark ? "800" : "100"]
+            theme.colors.gray[dark ? "800" : "100"]
           }; }`,
           `#cover-placeholder { fill: ${
-            theme.colors.zinc[dark ? "600" : "300"]
+            theme.colors.gray[dark ? "600" : "300"]
           }; }`,
           `#date { color: ${
             theme.colors.rose[dark ? "400" : "500"]
@@ -78,8 +78,8 @@ async function generateLatestSongWidget(dark?: boolean) {
             theme.letterSpacing.widest
           }; }`,
           `#date, #title { font-weight: ${theme.fontWeight.semibold}; }`,
-          `#title { color: ${theme.colors.zinc[dark ? "100" : "700"]}; }`,
-          `#artist { color: ${theme.colors.zinc[dark ? "400" : "500"]}; }`
+          `#title { color: ${theme.colors.gray[dark ? "100" : "700"]}; }`,
+          `#artist { color: ${theme.colors.gray[dark ? "400" : "500"]}; }`
         ]),
         s("g", { "clip-path": "url(#cover-mask)" }, [
           s("use", {

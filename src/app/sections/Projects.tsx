@@ -17,13 +17,13 @@ export function Projects(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <div className="content">
-        <h2 className="mb-2 text-xl font-bold text-zinc-800 dark:text-white">
+        <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
           Projects
         </h2>
-        <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
+        <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
           A selection of personal—and often{" "}
           <a
-            className="link text-zinc-800 dark:text-white"
+            className="link text-gray-800 dark:text-white"
             href="https://github.com/marcbouchenoire"
             rel="noreferrer"
             target="_blank"
@@ -64,11 +64,11 @@ export function Projects(props: ComponentProps<"section">) {
               />
             </svg>
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             A collection of every symbol from SF&nbsp;Symbols.
           </p>
           <a
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-symbolist px-2.5 py-2 font-medium text-white shadow-lg shadow-symbolist/10 transition selection:bg-white/30 hover:bg-symbolist/80 hover:shadow-symbolist/5 focus:ring-symbolist/40 dark:bg-symbolist-dark dark:text-zinc-900 dark:shadow-symbolist-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-symbolist-dark/80 dark:hover:shadow-symbolist-dark/5 dark:focus:ring-symbolist-dark/40"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-symbolist px-2.5 py-2 font-medium text-white shadow-lg shadow-symbolist/10 transition selection:bg-white/30 hover:bg-symbolist/80 hover:shadow-symbolist/5 focus:ring-symbolist/40 dark:bg-symbolist-dark dark:text-gray-900 dark:shadow-symbolist-dark/10 dark:selection:bg-gray-900/30 dark:hover:bg-symbolist-dark/80 dark:hover:shadow-symbolist-dark/5 dark:focus:ring-symbolist-dark/40"
             href="https://symbolist.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -130,11 +130,11 @@ export function Projects(props: ComponentProps<"section">) {
               />
             </svg>
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             Measure text asynchronously.
           </p>
           <a
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer px-2.5 py-2 font-medium text-white shadow-lg shadow-typometer/10 transition selection:bg-white/30 hover:bg-typometer/80 hover:shadow-typometer/5 focus:ring-typometer/40 dark:bg-typometer-dark dark:text-zinc-900 dark:shadow-typometer-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-typometer-dark/80 dark:hover:shadow-typometer-dark/5 dark:focus:ring-typometer-dark/40"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer px-2.5 py-2 font-medium text-white shadow-lg shadow-typometer/10 transition selection:bg-white/30 hover:bg-typometer/80 hover:shadow-typometer/5 focus:ring-typometer/40 dark:bg-typometer-dark dark:text-gray-900 dark:shadow-typometer-dark/10 dark:selection:bg-gray-900/30 dark:hover:bg-typometer-dark/80 dark:hover:shadow-typometer-dark/5 dark:focus:ring-typometer-dark/40"
             href="https://typometer.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -182,11 +182,11 @@ export function Projects(props: ComponentProps<"section">) {
               />
             </svg>
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             A collection of dimensions from iOS and iPadOS&nbsp;devices.
           </p>
           <a
-            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions px-2.5 py-2 font-medium text-white shadow-lg shadow-dimmmensions/10 transition selection:bg-white/30 hover:bg-dimmmensions/80 hover:shadow-dimmmensions/5 focus:ring-dimmmensions/40 dark:bg-dimmmensions-dark dark:text-zinc-900 dark:shadow-dimmmensions-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-dark/80 dark:hover:shadow-dimmmensions-dark/5 dark:focus:ring-dimmmensions-dark/40"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions px-2.5 py-2 font-medium text-white shadow-lg shadow-dimmmensions/10 transition selection:bg-white/30 hover:bg-dimmmensions/80 hover:shadow-dimmmensions/5 focus:ring-dimmmensions/40 dark:bg-dimmmensions-dark dark:text-gray-900 dark:shadow-dimmmensions-dark/10 dark:selection:bg-gray-900/30 dark:hover:bg-dimmmensions-dark/80 dark:hover:shadow-dimmmensions-dark/5 dark:focus:ring-dimmmensions-dark/40"
             href="https://dimmmensions.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -195,7 +195,7 @@ export function Projects(props: ComponentProps<"section">) {
           </a>
         </GitHubProjectCard>
         <ProjectCard>
-          <div className="mb-8 flex items-center text-zinc-400">
+          <div className="mb-8 flex items-center text-gray-400">
             <small className="mr-4 flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
               <span className="flex items-center">
                 <svg
@@ -225,7 +225,7 @@ export function Projects(props: ComponentProps<"section">) {
             </small>
             <a
               aria-label="View on GitHub"
-              className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-zinc-600 dark:hover:text-zinc-100"
+              className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-gray-600 dark:hover:text-gray-100"
               href="https://github.com/raycast/extensions/tree/main/extensions/splatoon/"
               rel="noreferrer"
               target="_blank"
@@ -256,11 +256,11 @@ export function Projects(props: ComponentProps<"section">) {
                 width="128"
               />
             </h3>
-            <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+            <p className="leading-relaxed text-gray-500 dark:text-gray-350">
               A Raycast extension to view Splatoon’s current&nbsp;schedules.
             </p>
             <a
-              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon px-2.5 py-2 font-medium text-white shadow-lg shadow-splatoon/10 transition selection:bg-white/30 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus:ring-splatoon/40 dark:bg-splatoon-dark dark:text-zinc-900 dark:shadow-splatoon-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:focus:ring-splatoon-dark/40"
+              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon px-2.5 py-2 font-medium text-white shadow-lg shadow-splatoon/10 transition selection:bg-white/30 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus:ring-splatoon/40 dark:bg-splatoon-dark dark:text-gray-900 dark:shadow-splatoon-dark/10 dark:selection:bg-gray-900/30 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:focus:ring-splatoon-dark/40"
               href="https://www.raycast.com/marcbouchenoire/splatoon"
               rel="noreferrer"
               target="_blank"
@@ -289,7 +289,7 @@ export function Projects(props: ComponentProps<"section">) {
               />
             </svg>
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             Run <code>tsc</code> with both a configuration and
             specific&nbsp;files.
           </p>
@@ -298,7 +298,7 @@ export function Projects(props: ComponentProps<"section">) {
           <h3 className="mb-2 font-semibold text-teal-500 dark:text-teal-400">
             Alembic
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             A Sketch plugin to extract a color palette from&nbsp;images.
           </p>
         </GitHubProjectCard>
@@ -306,7 +306,7 @@ export function Projects(props: ComponentProps<"section">) {
           <h3 className="mb-2 font-semibold text-blue-500 dark:text-blue-400">
             Sketch Constraints
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             A Sketch plugin that integrates constraints to lay out&nbsp;layers.
           </p>
         </GitHubProjectCard>
@@ -314,7 +314,7 @@ export function Projects(props: ComponentProps<"section">) {
           <h3 className="mb-2 font-semibold text-amber-500 dark:text-amber-400">
             Sketch Maps
           </h3>
-          <p className="leading-relaxed text-zinc-500 dark:text-zinc-350">
+          <p className="leading-relaxed text-gray-500 dark:text-gray-350">
             A Sketch plugin to fill layers with&nbsp;maps.
           </p>
         </GitHubProjectCard>

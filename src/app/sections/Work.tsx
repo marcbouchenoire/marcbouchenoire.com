@@ -25,7 +25,7 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:supports-backdrop:bg-zinc-800/80"
+        "dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-gray-800 dark:supports-backdrop:bg-gray-800/80"
       )}
       {...props}
     >
@@ -60,7 +60,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-zinc-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-zinc-800/80"
+        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-gray-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-gray-800/80"
       )}
       {...props}
     >
@@ -87,10 +87,10 @@ export function Work(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <div className="content mb-8">
-        <h2 className="mb-2 text-xl font-bold text-zinc-800 dark:text-white">
+        <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
           Work
         </h2>
-        <p className="max-w-[46ch] leading-relaxed text-zinc-500 dark:text-zinc-350">
+        <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
           A selection of projects I worked on in the past few years.
         </p>
       </div>

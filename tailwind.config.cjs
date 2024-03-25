@@ -52,7 +52,7 @@ module.exports = {
           "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)"
       },
       colors: {
-        zinc: {
+        gray: {
           50: "#fafafa",
           100: "#f4f4f5",
           150: "#ececee",

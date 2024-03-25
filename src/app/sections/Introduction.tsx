@@ -22,14 +22,14 @@ export function Introduction(props: ComponentProps<"section">) {
             width="80"
           />
         </div>
-        <h1 className="mb-1 mt-5 text-2xl font-semibold text-zinc-800 dark:text-white">
+        <h1 className="mb-1 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
         </h1>
-        <p className="text-lg text-zinc-400 dark:text-zinc-450">
+        <p className="text-lg text-gray-400 dark:text-gray-450">
           Detail-obsessed Design Engineer
         </p>
       </div>
-      <div className="my-10 max-w-[56ch] text-zinc-500 dark:text-zinc-350">
+      <div className="my-10 max-w-[56ch] text-gray-500 dark:text-gray-350">
         <p className="my-4 leading-loose">
           Designing and building{" "}
           <em className="delightful">
@@ -38,7 +38,7 @@ export function Introduction(props: ComponentProps<"section">) {
           products, interfaces, and&nbsp;interactions. I’m currently living in
           Amsterdam and working at{" "}
           <a
-            className="link text-zinc-800 dark:text-white"
+            className="link text-gray-800 dark:text-white"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"

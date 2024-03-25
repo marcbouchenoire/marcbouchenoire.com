@@ -191,7 +191,7 @@ export function InternetTime({
       target="_blank"
       {...props}
     >
-      <span className="font-normal text-zinc-400">@</span>
+      <span className="font-normal text-gray-400">@</span>
       <AnimatePresence initial={false} mode="popLayout">
         {isHydrated ? (
           <motion.span

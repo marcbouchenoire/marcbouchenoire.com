@@ -50,7 +50,7 @@
   }
 
   body {
-    @apply flex flex-col bg-white font-sans selection:bg-zinc-500/30 dark:bg-zinc-900 dark:selection:bg-zinc-400/40;
+    @apply flex flex-col bg-white font-sans selection:bg-gray-500/30 dark:bg-gray-900 dark:selection:bg-gray-400/40;
 
     -webkit-tap-highlight-color: transparent;
 
@@ -74,7 +74,7 @@
 
 @layer utilities {
   .focusable {
-    @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40;
+    @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-gray-500/40 dark:focus:ring-gray-400/40;
   }
 
   .highlight::after {
@@ -94,11 +94,11 @@
   }
 
   .link {
-    @apply focusable rounded-sm underline decoration-zinc-600/20 decoration-2 underline-offset-2 transition selection:decoration-zinc-600/20 hover:decoration-zinc-600/40 focus:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
+    @apply focusable rounded-sm underline decoration-gray-600/20 decoration-2 underline-offset-2 transition selection:decoration-gray-600/20 hover:decoration-gray-600/40 focus:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
   }
 
   .link-invert {
-    @apply decoration-white/20 selection:decoration-white/20 hover:decoration-white/40 dark:decoration-zinc-600/20 dark:selection:decoration-zinc-600/20 dark:hover:decoration-zinc-600/40;
+    @apply decoration-white/20 selection:decoration-white/20 hover:decoration-white/40 dark:decoration-gray-600/20 dark:selection:decoration-gray-600/20 dark:hover:decoration-gray-600/40;
   }
 
   .perspective {
@@ -114,10 +114,10 @@
   .skeleton {
     background: linear-gradient(
       -90deg,
-      theme("colors.zinc.100"),
-      theme("colors.zinc.200"),
-      theme("colors.zinc.200"),
-      theme("colors.zinc.100")
+      theme("colors.gray.100"),
+      theme("colors.gray.200"),
+      theme("colors.gray.200"),
+      theme("colors.gray.100")
     );
     background-size: 400% 100%;
     animation: 6s linear infinite skeleton;
@@ -125,10 +125,10 @@
     .dark & {
       background-image: linear-gradient(
         -90deg,
-        theme("colors.zinc.700"),
-        theme("colors.zinc.800"),
-        theme("colors.zinc.800"),
-        theme("colors.zinc.700")
+        theme("colors.gray.700"),
+        theme("colors.gray.800"),
+        theme("colors.gray.800"),
+        theme("colors.gray.700")
       );
     }
   }
@@ -140,7 +140,7 @@
   margin: 0 0.4em;
 
   &::before {
-    @apply absolute z-negative bg-zinc-100 dark:bg-zinc-750;
+    @apply absolute z-negative bg-gray-100 dark:bg-gray-750;
 
     content: "";
     inset: -0.25em -0.4em -0.3em;
@@ -214,7 +214,7 @@
 
   &::before,
   &::after {
-    @apply absolute h-full w-16 max-w-full from-white dark:from-zinc-900;
+    @apply absolute h-full w-16 max-w-full from-white dark:from-gray-900;
 
     content: "";
   }
