@@ -21,7 +21,7 @@ export function Activity(props: ComponentProps<"section">) {
           rel="noreferrer"
           target="_blank"
         >
-          listen to things
+          listen to
         </a>{" "}
         and{" "}
         <a
@@ -30,9 +30,9 @@ export function Activity(props: ComponentProps<"section">) {
           rel="noreferrer"
           target="_blank"
         >
-          watch films
-        </a>
-        .
+          watch
+        </a>{" "}
+        things.
       </p>
       <div className="mt-8 flex flex-col gap-8">
         <LatestSong className="min-w-0 max-w-full" />
