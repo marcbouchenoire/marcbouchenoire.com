@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 @keyframes wavy {
   from {
     transform: translateY(-3%);
@@ -40,7 +50,7 @@
   }
 
   body {
-    @apply flex flex-col bg-white font-sans selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
+    @apply flex flex-col bg-white font-sans selection:bg-zinc-500/30 dark:bg-zinc-900 dark:selection:bg-zinc-400/40;
 
     -webkit-tap-highlight-color: transparent;
 
@@ -64,7 +74,7 @@
 
 @layer utilities {
   .focusable {
-    @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-primary-500/40 dark:focus:ring-primary-400/40;
+    @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-zinc-500/40 dark:focus:ring-zinc-400/40;
   }
 
   .highlight::after {
@@ -135,6 +145,39 @@
     content: "";
     inset: -0.25em -0.4em -0.3em;
     border-radius: 0.4em;
+  }
+}
+
+.aura {
+  mask-image: radial-gradient(farthest-side at center -100%, #000, transparent);
+}
+
+.aura-rainbow {
+  background: conic-gradient(
+    theme("colors.red.500"),
+    theme("colors.pink.500"),
+    theme("colors.violet.500"),
+    theme("colors.blue.500"),
+    theme("colors.sky.500"),
+    theme("colors.teal.500"),
+    theme("colors.lime.500"),
+    theme("colors.amber.500"),
+    theme("colors.red.500")
+  );
+  animation: 10s linear infinite spin;
+
+  .dark & {
+    background: conic-gradient(
+      theme("colors.red.400"),
+      theme("colors.pink.400"),
+      theme("colors.violet.400"),
+      theme("colors.blue.400"),
+      theme("colors.sky.400"),
+      theme("colors.teal.400"),
+      theme("colors.lime.400"),
+      theme("colors.amber.400"),
+      theme("colors.red.400")
+    );
   }
 }
 

@@ -66,6 +66,13 @@ export default function Layout({ children }: PropsWithChildren) {
       </head>
       <body className={inter.variable}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
+          <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
+            <div className="content relative h-full">
+              <div className="aura absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-30 md:left-[-150%] md:w-[400%]">
+                <div className="aura-rainbow absolute left-[-10%] top-[-500%] aspect-square w-[120%]" />
+              </div>
+            </div>
+          </div>
           <Header className="content" />
           {children}
           <Footer className="content pb-0-safe" />
