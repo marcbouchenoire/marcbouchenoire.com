@@ -40,7 +40,7 @@
   }
 
   body {
-    @apply flex flex-col font-sans bg-white selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
+    @apply flex flex-col bg-white font-sans selection:bg-primary-500/30 dark:bg-zinc-900 dark:selection:bg-primary-400/40;
 
     -webkit-tap-highlight-color: transparent;
 

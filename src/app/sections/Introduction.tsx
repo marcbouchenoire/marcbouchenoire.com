@@ -22,7 +22,7 @@ export function Introduction(props: ComponentProps<"section">) {
             width="80"
           />
         </div>
-        <h1 className="mt-5 mb-1 text-2xl font-semibold text-zinc-800 dark:text-white">
+        <h1 className="mb-1 mt-5 text-2xl font-semibold text-zinc-800 dark:text-white">
           Marc Bouchenoire
         </h1>
         <p className="text-lg text-zinc-400 dark:text-zinc-450">
@@ -98,7 +98,7 @@ export function Introduction(props: ComponentProps<"section">) {
       </div>
       <div className="mt-8 flex flex-wrap gap-4 text-center">
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-twitter-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-twitter-500/10 transition selection:bg-white/30 hover:bg-twitter-500/80 hover:shadow-twitter-500/5 focus:ring-twitter-500/40 dark:bg-twitter-400 dark:text-zinc-900 dark:shadow-twitter-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-twitter-400/80 dark:hover:shadow-twitter-400/5 dark:focus:ring-twitter-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-twitter-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-twitter-500/10 transition selection:bg-white/30 hover:bg-twitter-500/80 hover:shadow-twitter-500/5 focus:ring-twitter-500/40 dark:bg-twitter-400 dark:text-zinc-900 dark:shadow-twitter-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-twitter-400/80 dark:hover:shadow-twitter-400/5 dark:focus:ring-twitter-400/40 md:w-auto md:px-3 md:pl-2.5"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -119,7 +119,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden md:inline">Twitter</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-mastodon-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-mastodon-500/10 transition selection:bg-white/30 hover:bg-mastodon-500/80 hover:shadow-mastodon-500/5 focus:ring-mastodon-500/40 dark:bg-mastodon-400 dark:text-zinc-900 dark:shadow-mastodon-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-mastodon-400/80 dark:hover:shadow-mastodon-400/5 dark:focus:ring-mastodon-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-mastodon-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-mastodon-500/10 transition selection:bg-white/30 hover:bg-mastodon-500/80 hover:shadow-mastodon-500/5 focus:ring-mastodon-500/40 dark:bg-mastodon-400 dark:text-zinc-900 dark:shadow-mastodon-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-mastodon-400/80 dark:hover:shadow-mastodon-400/5 dark:focus:ring-mastodon-400/40 md:w-auto md:px-3 md:pl-2.5"
           href="https://mastodon.social/@marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -140,7 +140,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden md:inline">Mastodon</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-purple-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-purple-500/10 transition selection:bg-white/30 hover:bg-purple-500/80 hover:shadow-purple-500/5 focus:ring-purple-500/40 dark:bg-purple-400 dark:text-zinc-900 dark:shadow-purple-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-purple-400/80 dark:hover:shadow-purple-400/5 dark:focus:ring-purple-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-purple-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-purple-500/10 transition selection:bg-white/30 hover:bg-purple-500/80 hover:shadow-purple-500/5 focus:ring-purple-500/40 dark:bg-purple-400 dark:text-zinc-900 dark:shadow-purple-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-purple-400/80 dark:hover:shadow-purple-400/5 dark:focus:ring-purple-400/40 md:w-auto md:px-3 md:pl-2.5"
           href="https://github.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -161,7 +161,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden md:inline">GitHub</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-dribbble-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-dribbble-500/10 transition selection:bg-white/30 hover:bg-dribbble-500/80 hover:shadow-dribbble-500/5 focus:ring-dribbble-500/40 dark:bg-dribbble-400 dark:text-zinc-900 dark:shadow-dribbble-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dribbble-400/80 dark:hover:shadow-dribbble-400/5 dark:focus:ring-dribbble-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-dribbble-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-dribbble-500/10 transition selection:bg-white/30 hover:bg-dribbble-500/80 hover:shadow-dribbble-500/5 focus:ring-dribbble-500/40 dark:bg-dribbble-400 dark:text-zinc-900 dark:shadow-dribbble-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dribbble-400/80 dark:hover:shadow-dribbble-400/5 dark:focus:ring-dribbble-400/40 md:w-auto md:px-3 md:pl-2.5"
           href="https://dribbble.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -182,7 +182,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <span className="hidden md:inline">Dribbble</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-rose-500 py-2 px-2.5 font-medium text-white shadow-lg shadow-rose-500/10 transition selection:bg-white/30 hover:bg-rose-500/80 hover:shadow-rose-500/5 focus:ring-rose-500/40 dark:bg-rose-400 dark:text-zinc-900 dark:shadow-rose-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-rose-400/80 dark:hover:shadow-rose-400/5 dark:focus:ring-rose-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-rose-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-rose-500/10 transition selection:bg-white/30 hover:bg-rose-500/80 hover:shadow-rose-500/5 focus:ring-rose-500/40 dark:bg-rose-400 dark:text-zinc-900 dark:shadow-rose-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-rose-400/80 dark:hover:shadow-rose-400/5 dark:focus:ring-rose-400/40 md:w-auto md:px-3 md:pl-2.5"
           href="mailto:mail@marcbouchenoire.com"
         >
           <svg

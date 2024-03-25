@@ -64,7 +64,7 @@ function Phone({ children, className, ...props }: ComponentProps<"div">) {
       )}
       {...props}
     >
-      <div className="absolute top-[2.7%] right-[6.35%] bottom-[3.1%] left-[5.4%] drop-shadow-phone">
+      <div className="absolute bottom-[3.1%] left-[5.4%] right-[6.35%] top-[2.7%] drop-shadow-phone">
         <svg className="absolute" height="0" role="presentation" width="0">
           <clipPath clipPathUnits="objectBoundingBox" id="phone">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
@@ -115,7 +115,7 @@ export function Work(props: ComponentProps<"section">) {
               to orchestrate scroll animations and&nbsp;effects.
             </p>
           </div>
-          <div className="relative flex flex-1 items-center justify-center p-12 pt-0 pb-16 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
+          <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
             <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
               <Browser className="transform-framer w-full" url="framer.com">
                 <div className="relative aspect-[920/560] bg-black">
@@ -159,7 +159,7 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-secondary pointer-events-auto absolute top-0 left-0 w-[60%] lg:-top-10 lg:w-[80%]"
+                  className="transform-motion-secondary pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
                   url={
                     <>
                       framer.com
@@ -183,7 +183,7 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-primary pointer-events-auto absolute right-0 bottom-0 w-[80%] lg:-bottom-2"
+                  className="transform-motion-primary pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
                   url={
                     <>
                       framer.com
@@ -223,7 +223,7 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="perspective relative z-20 flex flex-1 items-center justify-center sm:-mr-12 sm:basis-1/3">
-            <div className="transform-elements mx-12 mt-0 mb-24 grid aspect-square w-full max-w-sm grid-cols-[1.2fr_1fr] gap-8 sm:absolute sm:m-0 sm:max-w-none lg:-top-20 lg:grid-cols-[1fr_1.2fr]">
+            <div className="transform-elements mx-12 mb-24 mt-0 grid aspect-square w-full max-w-sm grid-cols-[1.2fr_1fr] gap-8 sm:absolute sm:m-0 sm:max-w-none lg:-top-20 lg:grid-cols-[1fr_1.2fr]">
               <Phone className="-mb-12 self-end">
                 <Image
                   alt="A food app interface"

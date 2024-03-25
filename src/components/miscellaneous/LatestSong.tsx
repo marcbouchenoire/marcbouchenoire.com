@@ -88,7 +88,7 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
           <svg
-            className="mr-1 -ml-px flex-none will-change-transform"
+            className="-ml-px mr-1 flex-none will-change-transform"
             fill="currentColor"
             height="20"
             role="presentation"

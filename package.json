@@ -6,7 +6,6 @@
   "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
-  "prettier": "@marcbouchenoire/prettier-config",
   "nano-staged": {
     "**/*.{cjs,mjs}": [
       "eslint --fix",

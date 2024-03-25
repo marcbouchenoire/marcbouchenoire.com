@@ -68,7 +68,7 @@ export function GitHubProjectCard({ children, repository, ...props }: Props) {
         <small className="flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
           <span className="flex items-center">
             <svg
-              className="mr-1 -ml-px flex-none"
+              className="-ml-px mr-1 flex-none"
               height="20"
               role="presentation"
               width="20"
@@ -93,7 +93,7 @@ export function GitHubProjectCard({ children, repository, ...props }: Props) {
           </span>
           <span className="flex items-center">
             <svg
-              className="mr-1 -ml-px flex-none"
+              className="-ml-px mr-1 flex-none"
               height="20"
               role="presentation"
               width="20"

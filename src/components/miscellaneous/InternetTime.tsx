@@ -147,7 +147,7 @@ export function DigitsColumn({
     <span
       className={clsx(
         className,
-        "relative inline-block w-[1ch] h-[1em] translate-y-[-0.125em] will-change-transform"
+        "relative inline-block h-[1em] w-[1ch] translate-y-[-0.125em] will-change-transform"
       )}
       {...props}
     >
@@ -184,7 +184,7 @@ export function InternetTime({
     <motion.a
       className={clsx(
         className,
-        "focusable inline-flex cursor-help items-center rounded-sm font-semibold transition hover:opacity-60 h-[1.25em]"
+        "focusable inline-flex h-[1.25em] cursor-help items-center rounded-sm font-semibold transition hover:opacity-60"
       )}
       href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
       rel="noreferrer"
@@ -202,14 +202,14 @@ export function InternetTime({
             transition={transition}
             variants={variants}
           >
-            <span className="absolute tracking-wide font-medium select-text text-transparent">
+            <span className="absolute select-text font-medium tracking-wide text-transparent">
               {time}
             </span>
-            <span aria-hidden className="inline-block pointer-events-none">
+            <span aria-hidden className="pointer-events-none inline-block">
               <DigitsColumn place={2} value={integers} />
               <DigitsColumn place={1} value={integers} />
               <DigitsColumn place={0} value={integers} />
-              <span className="inline-flex justify-center relative w-[0.25ch] h-[1em]">
+              <span className="relative inline-flex h-[1em] w-[0.25ch] justify-center">
                 .
               </span>
               <DigitsColumn place={1} value={decimals} />

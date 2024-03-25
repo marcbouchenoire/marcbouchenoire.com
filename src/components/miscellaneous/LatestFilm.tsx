@@ -94,7 +94,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
           <svg
-            className="mr-1 -ml-px flex-none"
+            className="-ml-px mr-1 flex-none"
             height="20"
             role="presentation"
             width="20"
@@ -115,7 +115,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
             <span className="truncate">Nothing watched</span>
           )}
         </small>
-        <p className="mt-1 mb-1.5 flex items-center">
+        <p className="mb-1.5 mt-1 flex items-center">
           <span
             className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
             title={title}
