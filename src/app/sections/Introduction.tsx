@@ -29,81 +29,33 @@ export function Introduction(props: ComponentProps<"section">) {
           Detail-obsessed Design Engineer
         </p>
       </div>
-      <div className="my-10 max-w-[58ch] text-zinc-500 dark:text-zinc-350">
+      <div className="my-10 max-w-[56ch] text-zinc-500 dark:text-zinc-350">
         <p className="my-4 leading-loose">
           Designing and building{" "}
           <em className="delightful">
             <Characters>delightful</Characters>
           </em>{" "}
-          products, interfaces, and&nbsp;interactions.
-        </p>
-        <p className="my-4 leading-loose">
-          I’m currently living in Amsterdam and working at{" "}
+          products, interfaces, and&nbsp;interactions. I’m currently living in
+          Amsterdam and working at{" "}
           <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-violet-500 decoration-2 underline-offset-2 transition duration-100 hover:text-violet-500 hover:decoration-violet-500/30 focus:text-violet-500 focus:ring-violet-500/40 dark:text-white dark:decoration-violet-400 dark:hover:text-violet-400 dark:hover:decoration-violet-400/30 dark:focus:text-violet-400 dark:focus:ring-violet-400/40"
+            className="link text-zinc-800 dark:text-white"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             Liveblocks
           </a>
-          . I previously worked at{" "}
-          <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-sky-500 decoration-2 underline-offset-2 transition duration-100 hover:text-sky-500 hover:decoration-sky-500/30 focus:text-sky-500 focus:ring-sky-500/40 dark:text-white dark:decoration-sky-400 dark:hover:text-sky-400 dark:hover:decoration-sky-400/30 dark:focus:text-sky-400 dark:focus:ring-sky-400/40"
-            href="https://www.framer.com/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Framer
-          </a>{" "}
-          and on Sketch{" "}
-          <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-amber-500 decoration-2 underline-offset-2 transition duration-100 hover:text-amber-500 hover:decoration-amber-500/30 focus:text-amber-500 focus:ring-amber-500/40 dark:text-white dark:decoration-amber-400 dark:hover:text-amber-400 dark:hover:decoration-amber-400/30 dark:focus:text-amber-400 dark:focus:ring-amber-400/40"
-            href="https://www.sketch.com/apps/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Cloud
-          </a>{" "}
-          and{" "}
-          <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-amber-500 decoration-2 underline-offset-2 transition duration-100 hover:text-amber-500 hover:decoration-amber-500/30 focus:text-amber-500 focus:ring-amber-500/40 dark:text-white dark:decoration-amber-400 dark:hover:text-amber-400 dark:hover:decoration-amber-400/30 dark:focus:text-amber-400 dark:focus:ring-amber-400/40"
-            href="https://www.sketch.com/apps/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Mirror
-          </a>{" "}
-          at{" "}
-          <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-lime-500 decoration-2 underline-offset-2 transition duration-100 hover:text-lime-500 hover:decoration-lime-500/30 focus:text-lime-500 focus:ring-lime-500/40 dark:text-white dark:decoration-lime-400 dark:hover:text-lime-400 dark:hover:decoration-lime-400/30 dark:focus:text-lime-400 dark:focus:ring-lime-400/40"
-            href="https://www.awkward.co/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            Awkward
-          </a>
-          . Before that, I graduated from{" "}
-          <a
-            className="focusable rounded-sm font-medium text-zinc-800 underline decoration-rose-500 decoration-2 underline-offset-2 transition duration-100 hover:text-rose-500 hover:decoration-rose-500/30 focus:text-rose-500 focus:ring-rose-500/40 dark:text-white dark:decoration-rose-400 dark:hover:text-rose-400 dark:hover:decoration-rose-400/30 dark:focus:text-rose-400 dark:focus:ring-rose-400/40"
-            href="https://en.lecolededesign.com/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            L’École&nbsp;de&nbsp;Design
-          </a>{" "}
-          with a master’s degree in interaction&nbsp;design—exploring
-          immersive&nbsp;interfaces.
+          .
         </p>
       </div>
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          aria-label="Twitter 〰 𝕏"
+          aria-label="Twitter · 𝕏"
           className="focusable text-twitter hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40 -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
-          title="Twitter 〰 𝕏"
+          title="Twitter · 𝕏"
         >
           <svg
             className="[transform:scaleY(-1)]"
