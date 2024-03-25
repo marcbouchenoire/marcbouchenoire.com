@@ -51,7 +51,7 @@ export function Introduction(props: ComponentProps<"section">) {
       <div className="mt-8 flex flex-wrap gap-3">
         <a
           aria-label="Twitter · 𝕏"
-          className="focusable text-twitter hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40 -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-twitter transition hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -74,7 +74,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="Mastodon"
-          className="focusable text-mastodon hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40"
           href="https://mastodon.social/@marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -96,7 +96,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="GitHub"
-          className="focusable text-github hover:text-github/50 hover:shadow-github/5 focus:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus:ring-github-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-github transition hover:text-github/50 hover:shadow-github/5 focus:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus:ring-github-dark/40"
           href="https://github.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -118,7 +118,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="Dribbble"
-          className="focusable text-dribbble hover:text-dribbble/50 hover:shadow-dribbble/5 focus:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus:ring-dribbble-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-dribbble transition hover:text-dribbble/50 hover:shadow-dribbble/5 focus:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus:ring-dribbble-dark/40"
           href="https://dribbble.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"

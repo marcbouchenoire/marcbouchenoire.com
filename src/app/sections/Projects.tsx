@@ -35,7 +35,7 @@ export function Projects(props: ComponentProps<"section">) {
       </div>
       <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
         <GitHubProjectCard repository="marcbouchenoire/symbolist">
-          <h3 className="text-symbolist dark:text-symbolist-dark mb-2 font-semibold">
+          <h3 className="mb-2 font-semibold text-symbolist dark:text-symbolist-dark">
             <svg
               aria-label="Symbolist"
               className="inline-block h-[1em]"
@@ -68,7 +68,7 @@ export function Projects(props: ComponentProps<"section">) {
             A collection of every symbol from SF&nbsp;Symbols.
           </p>
           <a
-            className="focusable bg-symbolist shadow-symbolist/10 hover:bg-symbolist/80 hover:shadow-symbolist/5 focus:ring-symbolist/40 dark:bg-symbolist-dark dark:shadow-symbolist-dark/10 dark:hover:bg-symbolist-dark/80 dark:hover:shadow-symbolist-dark/5 dark:focus:ring-symbolist-dark/40 mt-4 flex cursor-pointer items-center justify-center rounded-md px-2.5 py-2 font-medium text-white shadow-lg transition selection:bg-white/30 dark:text-zinc-900 dark:selection:bg-zinc-900/30"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-symbolist px-2.5 py-2 font-medium text-white shadow-lg shadow-symbolist/10 transition selection:bg-white/30 hover:bg-symbolist/80 hover:shadow-symbolist/5 focus:ring-symbolist/40 dark:bg-symbolist-dark dark:text-zinc-900 dark:shadow-symbolist-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-symbolist-dark/80 dark:hover:shadow-symbolist-dark/5 dark:focus:ring-symbolist-dark/40"
             href="https://symbolist.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -77,7 +77,7 @@ export function Projects(props: ComponentProps<"section">) {
           </a>
         </GitHubProjectCard>
         <GitHubProjectCard repository="marcbouchenoire/typometer">
-          <h3 className="text-typometer dark:text-typometer-dark mb-2 font-semibold">
+          <h3 className="mb-2 font-semibold text-typometer dark:text-typometer-dark">
             <svg
               aria-label="Typometer"
               className="inline-block h-[1em]"
@@ -134,7 +134,7 @@ export function Projects(props: ComponentProps<"section">) {
             Measure text asynchronously.
           </p>
           <a
-            className="focusable bg-typometer shadow-typometer/10 hover:bg-typometer/80 hover:shadow-typometer/5 focus:ring-typometer/40 dark:bg-typometer-dark dark:shadow-typometer-dark/10 dark:hover:bg-typometer-dark/80 dark:hover:shadow-typometer-dark/5 dark:focus:ring-typometer-dark/40 mt-4 flex cursor-pointer items-center justify-center rounded-md px-2.5 py-2 font-medium text-white shadow-lg transition selection:bg-white/30 dark:text-zinc-900 dark:selection:bg-zinc-900/30"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer px-2.5 py-2 font-medium text-white shadow-lg shadow-typometer/10 transition selection:bg-white/30 hover:bg-typometer/80 hover:shadow-typometer/5 focus:ring-typometer/40 dark:bg-typometer-dark dark:text-zinc-900 dark:shadow-typometer-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-typometer-dark/80 dark:hover:shadow-typometer-dark/5 dark:focus:ring-typometer-dark/40"
             href="https://typometer.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -143,7 +143,7 @@ export function Projects(props: ComponentProps<"section">) {
           </a>
         </GitHubProjectCard>
         <GitHubProjectCard repository="marcbouchenoire/dimmmensions">
-          <h3 className="text-dimmmensions dark:text-dimmmensions-dark mb-2 font-semibold">
+          <h3 className="mb-2 font-semibold text-dimmmensions dark:text-dimmmensions-dark">
             <svg
               aria-label="Dimmmensions"
               className="inline-block h-[1em] -translate-y-1"
@@ -186,7 +186,7 @@ export function Projects(props: ComponentProps<"section">) {
             A collection of dimensions from iOS and iPadOS&nbsp;devices.
           </p>
           <a
-            className="focusable bg-dimmmensions shadow-dimmmensions/10 hover:bg-dimmmensions/80 hover:shadow-dimmmensions/5 focus:ring-dimmmensions/40 dark:bg-dimmmensions-dark dark:shadow-dimmmensions-dark/10 dark:hover:bg-dimmmensions-dark/80 dark:hover:shadow-dimmmensions-dark/5 dark:focus:ring-dimmmensions-dark/40 mt-4 flex cursor-pointer items-center justify-center rounded-md px-2.5 py-2 font-medium text-white shadow-lg transition selection:bg-white/30 dark:text-zinc-900 dark:selection:bg-zinc-900/30"
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions px-2.5 py-2 font-medium text-white shadow-lg shadow-dimmmensions/10 transition selection:bg-white/30 hover:bg-dimmmensions/80 hover:shadow-dimmmensions/5 focus:ring-dimmmensions/40 dark:bg-dimmmensions-dark dark:text-zinc-900 dark:shadow-dimmmensions-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dimmmensions-dark/80 dark:hover:shadow-dimmmensions-dark/5 dark:focus:ring-dimmmensions-dark/40"
             href="https://dimmmensions.marcbouchenoire.com"
             rel="noreferrer"
             target="_blank"
@@ -246,7 +246,7 @@ export function Projects(props: ComponentProps<"section">) {
             </a>
           </div>
           <div className="mt-auto">
-            <h3 className="text-splatoon dark:text-splatoon-dark mb-3 font-semibold">
+            <h3 className="mb-3 font-semibold text-splatoon dark:text-splatoon-dark">
               <Image
                 alt="Splatoon"
                 className="h-[2.5em] w-[2.5em]"
@@ -260,7 +260,7 @@ export function Projects(props: ComponentProps<"section">) {
               A Raycast extension to view Splatoon’s current&nbsp;schedules.
             </p>
             <a
-              className="focusable bg-splatoon shadow-splatoon/10 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus:ring-splatoon/40 dark:bg-splatoon-dark dark:shadow-splatoon-dark/10 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:focus:ring-splatoon-dark/40 mt-4 flex cursor-pointer items-center justify-center rounded-md px-2.5 py-2 font-medium text-white shadow-lg transition selection:bg-white/30 dark:text-zinc-900 dark:selection:bg-zinc-900/30"
+              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon px-2.5 py-2 font-medium text-white shadow-lg shadow-splatoon/10 transition selection:bg-white/30 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus:ring-splatoon/40 dark:bg-splatoon-dark dark:text-zinc-900 dark:shadow-splatoon-dark/10 dark:selection:bg-zinc-900/30 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:focus:ring-splatoon-dark/40"
               href="https://www.raycast.com/marcbouchenoire/splatoon"
               rel="noreferrer"
               target="_blank"
