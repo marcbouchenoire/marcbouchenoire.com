@@ -196,7 +196,7 @@ export function Projects(props: ComponentProps<"section">) {
         </GitHubProjectCard>
         <ProjectCard>
           <div className="mb-8 flex items-center text-zinc-400">
-            <small className="flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
+            <small className="mr-4 flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
               <span className="flex items-center">
                 <svg
                   className="-ml-px mr-1 flex-none"
@@ -225,7 +225,7 @@ export function Projects(props: ComponentProps<"section">) {
             </small>
             <a
               aria-label="View on GitHub"
-              className="focusable ml-auto flex-none rounded-full transition hover:text-zinc-600 dark:hover:text-zinc-100"
+              className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-zinc-600 dark:hover:text-zinc-100"
               href="https://github.com/raycast/extensions/tree/main/extensions/splatoon/"
               rel="noreferrer"
               target="_blank"
