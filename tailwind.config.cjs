@@ -52,18 +52,6 @@ module.exports = {
           "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)"
       },
       colors: {
-        dimmmensions: {
-          400: "#b488fb",
-          500: "#9a59f6"
-        },
-        dribbble: {
-          400: "#f377a9",
-          500: "#ea4c89"
-        },
-        mastodon: {
-          400: "#7475ff",
-          500: "#595aff"
-        },
         primary: {
           50: "#f0f9ff",
           100: "#e0f2fe",
@@ -76,32 +64,58 @@ module.exports = {
           800: "#075985",
           900: "#0c4a6e"
         },
-        splatoon: {
-          400: "#ff7fbd",
-          500: "#f7499e"
-        },
-        symbolist: {
-          400: "#f8719d",
-          500: "#f1437b"
+        zinc: {
+          50: "#fafafa",
+          100: "#f4f4f5",
+          150: "#ececee",
+          200: "#e4e4e7",
+          250: "#dcdce0",
+          300: "#d4d4d8",
+          350: "#bbbbc1",
+          400: "#a1a1aa",
+          450: "#898992",
+          500: "#71717a",
+          550: "#62626b",
+          600: "#52525b",
+          650: "#494951",
+          700: "#3f3f46",
+          750: "#333338",
+          800: "#27272a",
+          850: "#202023",
+          900: "#18181b",
+          950: "#09090b"
         },
         twitter: {
-          400: "#53bcf9",
-          500: "#1da1f2"
+          DEFAULT: "#1da1f2",
+          dark: "#53bcf9"
+        },
+        mastodon: {
+          DEFAULT: "#595aff",
+          dark: "#7475ff"
+        },
+        github: {
+          DEFAULT: "#27272a",
+          dark: "#f4f4f5"
+        },
+        dribbble: {
+          DEFAULT: "#ea4c89",
+          dark: "#f377a9"
+        },
+        dimmmensions: {
+          DEFAULT: "#9a59f6",
+          dark: "#b488fb"
+        },
+        symbolist: {
+          DEFAULT: "#f1437b",
+          dark: "#f8719d"
         },
         typometer: {
-          400: "#22d3ee",
-          500: "#06b6d4"
+          DEFAULT: "#06b6d4",
+          dark: "#22d3ee"
         },
-        zinc: {
-          150: "#ececee",
-          250: "#dcdce0",
-          350: "#bbbbc1",
-          450: "#898992",
-          550: "#62626b",
-          650: "#494951",
-          750: "#333338",
-          850: "#202023",
-          950: "#121215"
+        splatoon: {
+          DEFAULT: "#f1437b",
+          dark: "#f8719d"
         }
       },
       dropShadow: {

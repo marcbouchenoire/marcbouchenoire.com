@@ -96,14 +96,17 @@ export function Introduction(props: ComponentProps<"section">) {
           immersive&nbsp;interfaces.
         </p>
       </div>
-      <div className="mt-8 flex flex-wrap gap-4 text-center">
+      <div className="mt-8 flex flex-wrap gap-3">
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-twitter-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-twitter-500/10 transition selection:bg-white/30 hover:bg-twitter-500/80 hover:shadow-twitter-500/5 focus:ring-twitter-500/40 dark:bg-twitter-400 dark:text-zinc-900 dark:shadow-twitter-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-twitter-400/80 dark:hover:shadow-twitter-400/5 dark:focus:ring-twitter-400/40 md:w-auto md:px-3 md:pl-2.5"
+          aria-label="Twitter 〰 𝕏"
+          className="focusable text-twitter hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40 -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
+          title="Twitter 〰 𝕏"
         >
           <svg
+            className="[transform:scaleY(-1)]"
             height="24"
             role="presentation"
             width="24"
@@ -116,13 +119,14 @@ export function Introduction(props: ComponentProps<"section">) {
               fillRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline">Twitter</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-mastodon-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-mastodon-500/10 transition selection:bg-white/30 hover:bg-mastodon-500/80 hover:shadow-mastodon-500/5 focus:ring-mastodon-500/40 dark:bg-mastodon-400 dark:text-zinc-900 dark:shadow-mastodon-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-mastodon-400/80 dark:hover:shadow-mastodon-400/5 dark:focus:ring-mastodon-400/40 md:w-auto md:px-3 md:pl-2.5"
+          aria-label="Mastodon"
+          className="focusable text-mastodon hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
           href="https://mastodon.social/@marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
+          title="Mastodon"
         >
           <svg
             height="24"
@@ -137,13 +141,14 @@ export function Introduction(props: ComponentProps<"section">) {
               fillRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline">Mastodon</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-purple-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-purple-500/10 transition selection:bg-white/30 hover:bg-purple-500/80 hover:shadow-purple-500/5 focus:ring-purple-500/40 dark:bg-purple-400 dark:text-zinc-900 dark:shadow-purple-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-purple-400/80 dark:hover:shadow-purple-400/5 dark:focus:ring-purple-400/40 md:w-auto md:px-3 md:pl-2.5"
+          aria-label="GitHub"
+          className="focusable text-github hover:text-github/50 hover:shadow-github/5 focus:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus:ring-github-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
           href="https://github.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
+          title="GitHub"
         >
           <svg
             height="24"
@@ -158,13 +163,14 @@ export function Introduction(props: ComponentProps<"section">) {
               fillRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline">GitHub</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-dribbble-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-dribbble-500/10 transition selection:bg-white/30 hover:bg-dribbble-500/80 hover:shadow-dribbble-500/5 focus:ring-dribbble-500/40 dark:bg-dribbble-400 dark:text-zinc-900 dark:shadow-dribbble-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-dribbble-400/80 dark:hover:shadow-dribbble-400/5 dark:focus:ring-dribbble-400/40 md:w-auto md:px-3 md:pl-2.5"
+          aria-label="Dribbble"
+          className="focusable text-dribbble hover:text-dribbble/50 hover:shadow-dribbble/5 focus:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus:ring-dribbble-dark/40 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
           href="https://dribbble.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
+          title="Dribbble"
         >
           <svg
             height="24"
@@ -179,13 +185,14 @@ export function Introduction(props: ComponentProps<"section">) {
               fillRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline">Dribbble</span>
         </a>
         <a
-          className="focusable flex flex-none cursor-pointer items-center justify-center gap-2 rounded-md bg-rose-500 px-2.5 py-2 font-medium text-white shadow-lg shadow-rose-500/10 transition selection:bg-white/30 hover:bg-rose-500/80 hover:shadow-rose-500/5 focus:ring-rose-500/40 dark:bg-rose-400 dark:text-zinc-900 dark:shadow-rose-400/10 dark:selection:bg-zinc-900/30 dark:hover:bg-rose-400/80 dark:hover:shadow-rose-400/5 dark:focus:ring-rose-400/40 md:w-auto md:px-3 md:pl-2.5"
+          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-red-500 transition hover:text-red-500/50 hover:shadow-red-500/5 focus:ring-red-500/40 dark:text-red-400 dark:hover:text-red-400/50 dark:focus:ring-red-400/40"
           href="mailto:mail@marcbouchenoire.com"
+          title="Email"
         >
           <svg
+            aria-label="Email"
             height="24"
             role="presentation"
             width="24"
@@ -198,7 +205,6 @@ export function Introduction(props: ComponentProps<"section">) {
               fillRule="evenodd"
             />
           </svg>
-          <span className="hidden md:inline">Email</span>
         </a>
       </div>
     </section>
