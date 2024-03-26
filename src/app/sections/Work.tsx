@@ -3,7 +3,7 @@ import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
 import elementsFoodVisual from "../../../public/visuals/elements-food.png"
 import elementsMusicVisual from "../../../public/visuals/elements-music.png"
-import motionVisual from "../../../public/visuals/framer-motion-archive.png"
+import motionVisual from "../../../public/visuals/framer-motion-secondary.png"
 
 interface BrowserProps extends ComponentProps<"div"> {
   /**
@@ -230,7 +230,46 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
-            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]" />
+            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <div className="perspective pointer-events-none absolute inset-0">
+                <Browser
+                  className="transform-liveblocks-io-secondary pointer-events-auto absolute bottom-0 left-0 w-[75%] lg:-bottom-8"
+                  url="liveblocks.io"
+                >
+                  <div className="relative aspect-[920/560] bg-black">
+                    <video
+                      autoPlay
+                      className="absolute h-full w-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      poster="/visuals/liveblocks-io-secondary.jpg"
+                      preload="metadata"
+                      src="/visuals/liveblocks-io-secondary.mp4"
+                    />
+                  </div>
+                </Browser>
+              </div>
+              <div className="perspective pointer-events-none absolute inset-0">
+                <Browser
+                  className="transform-liveblocks-io-primary pointer-events-auto absolute right-0 top-0 w-[75%] lg:-top-3"
+                  url="liveblocks.io"
+                >
+                  <div className="relative aspect-[920/560] bg-black">
+                    <video
+                      autoPlay
+                      className="absolute h-full w-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      poster="/visuals/liveblocks-io.jpg"
+                      preload="metadata"
+                      src="/visuals/liveblocks-io.mp4"
+                    />
+                  </div>
+                </Browser>
+              </div>
+            </div>
           </div>
         </div>
         <div className="relative mb-5 flex flex-col rounded-lg bg-sky-500 shadow-xl shadow-sky-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-cyan-400/80 before:to-cyan-400/0 dark:bg-sky-400 dark:shadow-sky-400/10 dark:before:from-cyan-300/80 dark:before:to-cyan-300/0 sm:mb-8 sm:flex-row lg:mb-10">
@@ -280,7 +319,7 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
             <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
-              <Browser className="transform-framer w-full" url="framer.com">
+              <Browser className="transform-framer-com w-full" url="framer.com">
                 <div className="relative aspect-[920/560] bg-black">
                   <video
                     autoPlay
@@ -288,9 +327,9 @@ export function Work(props: ComponentProps<"section">) {
                     loop
                     muted
                     playsInline
-                    poster="/visuals/framer.jpg"
+                    poster="/visuals/framer-com.jpg"
                     preload="metadata"
-                    src="/visuals/framer.mp4"
+                    src="/visuals/framer-com.mp4"
                   />
                 </div>
               </Browser>

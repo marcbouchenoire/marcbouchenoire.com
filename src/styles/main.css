@@ -270,7 +270,15 @@
   animation-delay: -2s;
 }
 
-.transform-framer {
+.transform-liveblocks-io-primary {
+  transform: rotateX(18deg) rotateY(-16deg) rotateZ(8deg) translateX(-2%);
+}
+
+.transform-liveblocks-io-secondary {
+  transform: rotateX(26deg) rotateY(22deg) rotateZ(-12deg) translateX(2%);
+}
+
+.transform-framer-com {
   transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
 }
 
