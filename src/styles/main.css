@@ -270,6 +270,55 @@
   animation-delay: -2s;
 }
 
+.thesis-cover::before,
+.thesis-back-cover::before,
+.thesis-back-cover::after {
+  @apply pointer-events-none absolute inset-0 z-10 rounded-[inherit];
+
+  content: "";
+}
+
+.thesis-cover::before,
+.thesis-back-cover::before {
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 12%) 0.5%,
+    rgb(255 255 255 / 20%) 1.5%,
+    rgb(255 255 255 / 10%) 2.5%,
+    rgb(0 0 0 / 5%) 3.5%,
+    rgb(255 255 255 / 14%) 5.5%,
+    transparent 7%,
+    transparent 96%,
+    rgb(255 255 255 / 14%) 100%
+  );
+}
+
+.thesis-back-cover::after {
+  background: linear-gradient(
+    180deg,
+    transparent 94%,
+    rgb(0 0 0 / 20%) 96%,
+    transparent 100%
+  );
+}
+
+.thesis-pages {
+  @apply z-20;
+
+  background-color: #fff;
+  background-image: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 20%) 96%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      transparent,
+      transparent 1px,
+      rgb(0 0 0 / 12%) 1px,
+      rgb(0 0 0 / 12%) 2px
+    );
+}
+
 .transform-liveblocks-io-primary {
   transform: rotateX(18deg) rotateY(-16deg) rotateZ(8deg) translateX(-2%);
 }

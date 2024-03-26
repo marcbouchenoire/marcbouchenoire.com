@@ -4,6 +4,7 @@ import type { ComponentProps, ReactNode } from "react"
 import elementsFoodVisual from "../../../public/visuals/elements-food.png"
 import elementsMusicVisual from "../../../public/visuals/elements-music.png"
 import motionVisual from "../../../public/visuals/framer-motion-secondary.png"
+import thesisVisual from "../../../public/visuals/thesis.png"
 
 interface BrowserProps extends ComponentProps<"div"> {
   /**
@@ -482,7 +483,21 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
-            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]" />
+            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <div className="relative aspect-[1214/1702] w-[30%] rotate-[-6deg]">
+                <div className="thesis-back-cover bg-thesis absolute inset-x-0 bottom-[-5%] top-[5%] rounded-[4.615%/3.297%] shadow-floaty" />
+                <div className="thesis-pages absolute bottom-[-3%] left-[3%] right-0 top-[3%] rounded-[4.615%/3.297%] rounded-bl-[3.077%_2.198%]" />
+                <div className="thesis-cover bg-thesis absolute inset-0 z-20 overflow-hidden rounded-[4.615%/3.297%]">
+                  <Image
+                    alt="The cover of my master’s thesis"
+                    className="absolute h-full w-full"
+                    height="182"
+                    src={thesisVisual}
+                    width="130"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

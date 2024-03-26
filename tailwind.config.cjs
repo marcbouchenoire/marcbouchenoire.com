@@ -120,7 +120,8 @@ module.exports = {
         lecolededesign: {
           DEFAULT: "#d31b2e",
           dark: "#f4384b"
-        }
+        },
+        thesis: "#f17a54"
       },
       dropShadow: {
         phone: "0 1px 4px rgba(0, 0, 0, 0.06)"
