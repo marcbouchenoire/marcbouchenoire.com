@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes spin {
+@keyframes aura {
   from {
-    transform: rotate(0deg);
+    transform: translateY(var(--aura-offset)) rotate(0deg);
   }
 
   to {
-    transform: rotate(-360deg);
+    transform: translateY(var(--aura-offset)) rotate(-360deg);
   }
 }
 
@@ -164,7 +164,7 @@
     theme("colors.amber.500"),
     theme("colors.red.500")
   );
-  animation: 10s linear infinite spin;
+  animation: 10s linear infinite aura;
 
   .dark & {
     background: conic-gradient(
