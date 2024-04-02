@@ -126,7 +126,7 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
             </clipPath>
           </defs>
         </svg>
-        <div className="absolute inset-0 z-10 mix-blend-overlay">
+        <div className="pointer-events-none absolute inset-0 z-10 mix-blend-overlay">
           <Image
             alt=""
             aria-hidden
@@ -136,7 +136,7 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
             width="540"
           />
         </div>
-        <div className="absolute inset-0 z-10 opacity-30">
+        <div className="pointer-events-none absolute inset-0 z-10 opacity-30">
           <Image
             alt=""
             aria-hidden
