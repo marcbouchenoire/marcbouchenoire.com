@@ -1,6 +1,7 @@
 import Image from "next/image"
 import type { ComponentProps } from "react"
 import portrait from "public/portrait.jpg"
+import tofu from "public/tofu.jpg"
 import { Characters } from "src/components/utils/Characters"
 
 /**
@@ -12,15 +13,29 @@ export function Introduction(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <div>
-        <div className="portrait">
-          <Image
-            alt="Portrait of Marc Bouchenoire"
-            className="overflow-hidden rounded-full"
-            height="80"
-            priority
-            src={portrait}
-            width="80"
-          />
+        <div className="relative size-[80px]">
+          <div className="portrait absolute h-full w-full bg-gray-800/10 dark:bg-gray-100/10">
+            <Image
+              alt="Myself"
+              className="absolute inset-0 h-full w-full"
+              height="80"
+              priority
+              src={portrait}
+              title="Myself"
+              width="80"
+            />
+          </div>
+          <div className="absolute bottom-0 right-0 size-[26px] overflow-hidden rounded-full bg-gray-800/10 dark:bg-gray-100/10">
+            <Image
+              alt="Tofu, my cat"
+              className="absolute inset-0 h-full w-full"
+              height="64"
+              priority
+              src={tofu}
+              title="Tofu, my cat"
+              width="64"
+            />
+          </div>
         </div>
         <h1 className="mb-1 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
