@@ -41,11 +41,33 @@ export function Resume(props: ComponentProps<"section">) {
                 Liveblocks
               </span>
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
-                2023
+                2024
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   —
                 </span>
                 Present
+              </span>
+            </p>
+            <p className="flex items-center truncate">
+              <span className="flex-1 truncate text-gray-500 dark:text-gray-400">
+                Senior Staff Design Engineer
+              </span>
+            </p>
+          </div>
+        </li>
+        <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
+          <div className="aspect-square w-12" />
+          <div className="flex min-w-0 flex-col justify-center">
+            <p className="mb-1 flex items-center">
+              <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
+                Liveblocks
+              </span>
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+                2023
+                <span className="mx-0.5 text-gray-350 dark:text-gray-550">
+                  —
+                </span>
+                24
               </span>
             </p>
             <p className="flex items-center truncate">
@@ -64,6 +86,10 @@ export function Resume(props: ComponentProps<"section">) {
               </span>
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2022
+                <span className="mx-0.5 text-gray-350 dark:text-gray-550">
+                  —
+                </span>
+                23
               </span>
             </p>
             <p className="flex items-center truncate">
