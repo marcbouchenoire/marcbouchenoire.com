@@ -36,13 +36,23 @@ export function Introduction(props: ComponentProps<"section">) {
             <Characters>delightful</Characters>
           </em>{" "}
           products, interfaces, and&nbsp;interactions. I’m currently living in
-          Amsterdam and working at{" "}
+          Amsterdam and working on collaborative components—amongst other
+          things—at&nbsp;
           <a
-            className="link text-gray-800 dark:text-white"
+            className="text-liveblocks-deep dark:text-liveblocks-deep-dark group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium focus:outline-none"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute left-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-left-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus:dark:before:opacity-30"
+            >
+              <span className="absolute -left-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
+              <span className="absolute -left-px top-0 origin-top-left -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none  text-white dark:bg-liveblocks-dark">
+                Marc
+              </span>
+            </span>
             Liveblocks
           </a>
           .

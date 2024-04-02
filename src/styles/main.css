@@ -135,7 +135,7 @@
   }
 
   .link {
-    @apply focusable rounded-sm underline decoration-gray-600/20 decoration-2 underline-offset-2 transition selection:decoration-gray-600/20 hover:decoration-gray-600/40 focus:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
+    @apply focusable rounded-sm font-medium underline decoration-gray-600/20 decoration-2 underline-offset-2 transition selection:decoration-gray-600/20 hover:decoration-gray-600/40 focus:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
   }
 
   .link-invert {

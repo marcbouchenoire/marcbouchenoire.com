@@ -107,7 +107,11 @@ module.exports = {
         },
         liveblocks: {
           DEFAULT: "#8361ed",
-          dark: "#9b7ef4"
+          dark: "#9b7ef4",
+          deep: {
+            DEFAULT: "#594b99",
+            dark: "#d3c9f5"
+          }
         },
         framer: {
           DEFAULT: "#0099ff",
