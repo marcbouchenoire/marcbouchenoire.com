@@ -380,50 +380,44 @@
   grid-template-columns: 1fr minmax(0, 2fr) minmax(0, 1fr);
 }
 
-.phone {
-  @apply dark:highlight-invert relative bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone dark:bg-gray-800/80 dark:before:shadow-phone-invert;
+.browser-popup .browser-header {
+  @apply relative grid h-5 flex-none items-center gap-2 px-1.5;
+}
 
+.phone {
   aspect-ratio: 425 / 862;
   border-radius: 15.294% / 7.541%;
 }
 
-.phone-screen-container {
-  @apply absolute drop-shadow-phone;
+.phone-left .phone-screen-container {
+  inset: 2.7% 5.4% 3.1% 6.35%;
+}
 
+.phone-right .phone-screen-container {
   inset: 2.7% 6.35% 3.1% 5.4%;
 }
 
 .phone-screen {
-  @apply absolute inset-0;
-
   clip-path: url("#phone-mask");
 }
 
 .headset {
-  @apply relative drop-shadow-floaty will-change-transform;
-
   aspect-ratio: 960 / 540;
 }
 
 .headset-screen {
-  @apply absolute inset-0;
-
   clip-path: url("#headset-mask");
 }
 
 .book {
-  @apply relative aspect-[1214/1702];
+  aspect-ratio: 1214 / 1702;
 }
 
 .book-cover {
-  @apply absolute inset-0 z-20 overflow-hidden bg-current;
-
   border-radius: 4.615% / 3.297%;
 }
 
 .book-back-cover {
-  @apply absolute bg-current shadow-floaty;
-
   inset: 5% 0 -5%;
   border-radius: 4.615%/3.297%;
 }
@@ -461,8 +455,6 @@
 }
 
 .book-pages {
-  @apply absolute z-20;
-
   inset: 3% 0 -3% 3%;
   border-radius: 4.615% / 3.297%;
   border-bottom-left-radius: 3.077% 2.198%;
@@ -522,6 +514,10 @@
   animation-delay: -2s;
 }
 
+.transform-liveblocks-devtools {
+  transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
+}
+
 .transform-liveblocks-io-primary {
   transform: rotateX(18deg) rotateY(-16deg) rotateZ(8deg) translateX(-2%);
 }
@@ -544,4 +540,16 @@
 
 .transform-elements {
   transform: rotateX(6deg) rotateY(-12deg) rotateZ(4deg) translateX(-2%);
+}
+
+.transform-degree-phone {
+  transform: rotate(-8deg);
+}
+
+.transform-degree-headset {
+  transform: rotate(-6deg);
+}
+
+.transform-degree-thesis {
+  transform: rotate(6deg);
 }
