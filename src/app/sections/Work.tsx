@@ -2,6 +2,7 @@ import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
 import headsetReflections from "public/utilities/headset-reflections.png"
+import degreeVive from "public/visuals/degree-vive.png"
 import elementsFood from "public/visuals/elements-food.png"
 import elementsMusic from "public/visuals/elements-music.png"
 import motion from "public/visuals/framer-motion-secondary.png"
@@ -606,8 +607,18 @@ export function Work(props: ComponentProps<"section">) {
                   src="/visuals/degree-headset.mp4"
                 />
               </Headset>
+              <div className="absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
+                <Image
+                  alt="An HTC Vive VR headset"
+                  className="absolute h-full w-full object-cover"
+                  height="155"
+                  priority
+                  src={degreeVive}
+                  width="200"
+                />
+              </div>
               <Phone
-                className="transform-degree-phone pointer-events-auto absolute right-[20%] top-[56%] w-[12%]"
+                className="transform-degree-phone pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
                 direction="left"
               >
                 <video
