@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes aura {
-  from {
-    transform: translateY(var(--aura-offset)) rotate(0deg);
-  }
-
-  to {
-    transform: translateY(var(--aura-offset)) rotate(-360deg);
-  }
-}
-
 @keyframes wavy {
   from {
     transform: translateY(-3%);
@@ -39,6 +29,57 @@
 
   to {
     background-position: -200% 0%;
+  }
+}
+
+@keyframes aura-rainbow {
+  from {
+    transform: translateY(var(--aura-rainbow-offset)) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(var(--aura-rainbow-offset)) rotate(-360deg);
+  }
+}
+
+@keyframes aura-rays {
+  0% {
+    --aura-rays-1: #000;
+    --aura-rays-2: #000;
+    --aura-rays-3: rgb(0 0 0 / 75%);
+    --aura-rays-4: rgb(0 0 0 / 50%);
+    --aura-rays-5: transparent;
+    --aura-rays-6: transparent;
+  }
+
+  25% {
+    --aura-rays-2: transparent;
+    --aura-rays-3: transparent;
+    --aura-rays-6: rgb(0 0 0 / 75%);
+  }
+
+  50% {
+    --aura-rays-1: #000;
+    --aura-rays-2: #000;
+    --aura-rays-3: rgb(0 0 0 / 75%);
+    --aura-rays-4: rgb(0 0 0 / 50%);
+    --aura-rays-5: transparent;
+    --aura-rays-6: transparent;
+  }
+
+  75% {
+    --aura-rays-1: transparent;
+    --aura-rays-4: transparent;
+    --aura-rays-5: #000;
+  }
+
+  100% {
+    --aura-rays-1: #000;
+    --aura-rays-2: #000;
+    --aura-rays-3: rgb(0 0 0 / 75%);
+    --aura-rays-4: rgb(0 0 0 / 50%);
+    --aura-rays-5: transparent;
+    --aura-rays-6: transparent;
   }
 }
 
@@ -152,6 +193,107 @@
   mask-image: radial-gradient(farthest-side at center -100%, #000, transparent);
 }
 
+@property --aura-rays-1 {
+  syntax: "<color>";
+  initial-value: #000;
+  inherits: true;
+}
+
+@property --aura-rays-2 {
+  syntax: "<color>";
+  initial-value: #000;
+  inherits: true;
+}
+
+@property --aura-rays-3 {
+  syntax: "<color>";
+  initial-value: rgb(0 0 0 / 75%);
+  inherits: true;
+}
+
+@property --aura-rays-4 {
+  syntax: "<color>";
+  initial-value: rgb(0 0 0 / 50%);
+  inherits: true;
+}
+
+@property --aura-rays-5 {
+  syntax: "<color>";
+  initial-value: transparent;
+  inherits: true;
+}
+
+@property --aura-rays-6 {
+  syntax: "<color>";
+  initial-value: transparent;
+  inherits: true;
+}
+
+.aura-rays {
+  mask-image: linear-gradient(
+      50deg,
+      transparent 28%,
+      transparent 32%,
+      #000 36%,
+      transparent 38%,
+      rgb(0 0 0 / 75%) 39%,
+      transparent 47%,
+      transparent 54%,
+      rgb(0 0 0 / 50%) 57%,
+      transparent 58%,
+      #000 62%,
+      transparent 65%,
+      rgb(0 0 0 / 75%) 66%,
+      transparent 68%,
+      transparent 71%
+    ),
+    linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
+  mask-position:
+    60% 0%,
+    0% 0%;
+  mask-size:
+    300% auto,
+    auto;
+
+  /* TODO: Remove when Firefox supports @property (https://caniuse.com/mdn-css_at-rules_property) */
+  @supports not (-moz-appearance: none) {
+    animation: 6s linear infinite aura-rays;
+    mask-image: linear-gradient(
+        50deg,
+        transparent 28%,
+        transparent 32%,
+        var(--aura-rays-1) 36%,
+        var(--aura-rays-5) 38%,
+        var(--aura-rays-3) 39%,
+        transparent 47%,
+        transparent 54%,
+        var(--aura-rays-4) 57%,
+        transparent 58%,
+        var(--aura-rays-2) 62%,
+        var(--aura-rays-6) 65%,
+        var(--aura-rays-3) 66%,
+        transparent 68%,
+        transparent 71%
+      ),
+      linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
+  }
+
+  @media screen(sm) {
+    mask-size:
+      200% auto,
+      auto;
+  }
+
+  @media screen(md) {
+    mask-position:
+      50% 0%,
+      0% 0%;
+    mask-size:
+      110% auto,
+      auto;
+  }
+}
+
 .aura-rainbow {
   background: conic-gradient(
     theme("colors.red.500"),
@@ -164,19 +306,19 @@
     theme("colors.amber.500"),
     theme("colors.red.500")
   );
-  animation: 10s linear infinite aura;
+  animation: 8s linear infinite aura-rainbow;
 
   .dark & {
     background: conic-gradient(
-      theme("colors.red.400"),
-      theme("colors.pink.400"),
-      theme("colors.violet.400"),
-      theme("colors.blue.400"),
-      theme("colors.sky.400"),
-      theme("colors.teal.400"),
-      theme("colors.lime.400"),
-      theme("colors.amber.400"),
-      theme("colors.red.400")
+      theme("colors.red.300"),
+      theme("colors.pink.300"),
+      theme("colors.violet.300"),
+      theme("colors.blue.300"),
+      theme("colors.sky.300"),
+      theme("colors.teal.300"),
+      theme("colors.lime.300"),
+      theme("colors.amber.300"),
+      theme("colors.red.300")
     );
   }
 }

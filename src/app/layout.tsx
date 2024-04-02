@@ -68,8 +68,10 @@ export default function Layout({ children }: PropsWithChildren) {
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
             <div className="content relative h-full">
-              <div className="aura absolute left-[-100%] z-negative flex h-full w-[300%] items-center overflow-hidden opacity-30 [--aura-offset:-20%] sm:[--aura-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]">
-                <div className="aura-rainbow absolute left-[-10%] aspect-square w-[120%]" />
+              <div className="aura absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] dark:opacity-40 sm:[--aura-rainbow-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]">
+                <div className="aura-rays absolute inset-0 flex items-center">
+                  <div className="aura-rainbow absolute left-[-10%] aspect-square w-[120%]" />
+                </div>
               </div>
             </div>
           </div>
