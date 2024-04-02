@@ -217,7 +217,7 @@ export function Work(props: ComponentProps<"section">) {
                 rel="noreferrer"
                 target="_blank"
               >
-                our DevTools extension
+                a custom DevTools extension
               </a>{" "}
               and culminated with{" "}
               <a
@@ -228,9 +228,17 @@ export function Work(props: ComponentProps<"section">) {
               >
                 Comments
               </a>
-              . I worked on defining the React side of our focus on opinionated
-              products, from component APIs to default styles, from hooks to
-              unstyled primitives, and more.
+              . Since then, I’ve been defining the{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://react.dev/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                React
+              </a>{" "}
+              side of our opinionated products, from component APIs to default
+              styles, from hooks to unstyled primitives, and more.
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
