@@ -114,6 +114,13 @@
 /* stylelint-enable selector-id-pattern */
 
 @layer utilities {
+  /* Safari doesn't seem to support multiple drop shadows (see original drop-shadow-floaty in tailwind.config.cjs) */
+  @supports (background: -webkit-named-image(i)) {
+    .drop-shadow-floaty {
+      --tw-drop-shadow: drop-shadow(0 6px 32px rgb(0 0 0 / 22%));
+    }
+  }
+
   .focusable {
     @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-gray-500/40 dark:focus:ring-gray-400/40;
   }
