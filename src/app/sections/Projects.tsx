@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { type ComponentProps, Suspense } from "react"
-import splatoon from "../../../public/projects/splatoon.png"
-import { GitHubProjectCard } from "../../components/miscellaneous/GitHubProjectCard"
+import splatoon from "public/projects/splatoon.png"
+import { GitHubProjectCard } from "src/components/miscellaneous/GitHubProjectCard"
 import {
   ProjectCard,
   ProjectCardDate

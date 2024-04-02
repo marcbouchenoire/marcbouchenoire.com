@@ -1,7 +1,7 @@
 import Image from "next/image"
 import type { ComponentProps } from "react"
-import portrait from "../../../public/portrait.jpg"
-import { Characters } from "../../components/utils/Characters"
+import portrait from "public/portrait.jpg"
+import { Characters } from "src/components/utils/Characters"
 
 /**
  * An introduction section with a short bio.

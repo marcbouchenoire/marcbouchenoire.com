@@ -4,7 +4,7 @@ import type { PropsWithChildren } from "react"
 import { Footer } from "src/components/layout/Footer"
 import { Header } from "src/components/layout/Header"
 import { ThemeProvider } from "src/components/miscellaneous/ThemeProvider"
-import "../styles/main.css"
+import "src/styles/main.css"
 
 const inter = Inter({
   subsets: ["latin"],

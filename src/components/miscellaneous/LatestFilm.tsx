@@ -6,9 +6,9 @@ import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
-import { Skeleton } from "../../components/utils/Skeleton"
-import { useLatestFilm } from "../../hooks/use-latest-film"
-import { capitalize } from "../../utils/capitalize"
+import { Skeleton } from "src/components/utils/Skeleton"
+import { useLatestFilm } from "src/hooks/use-latest-film"
+import { capitalize } from "src/utils/capitalize"
 
 const variants: Variants = {
   hidden: {

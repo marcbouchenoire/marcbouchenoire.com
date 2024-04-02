@@ -1,11 +1,11 @@
 import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
-import headsetReflections from "../../../public/utilities/headset-reflections.png"
-import elementsFood from "../../../public/visuals/elements-food.png"
-import elementsMusic from "../../../public/visuals/elements-music.png"
-import motion from "../../../public/visuals/framer-motion-secondary.png"
-import thesis from "../../../public/visuals/thesis.png"
+import headsetReflections from "public/utilities/headset-reflections.png"
+import elementsFood from "public/visuals/elements-food.png"
+import elementsMusic from "public/visuals/elements-music.png"
+import motion from "public/visuals/framer-motion-secondary.png"
+import thesis from "public/visuals/thesis.png"
 
 interface BrowserProps extends ComponentProps<"div"> {
   /**
