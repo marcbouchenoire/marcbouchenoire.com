@@ -45,7 +45,7 @@ module.exports = {
     extend: {
       boxShadow: {
         floaty:
-          "0px 0px 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
+          "0 0 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
         phone:
           "inset 1px 1px 8px rgba(255, 255, 255, 0.8), inset -1px -1px 8px rgba(0, 0, 0, 0.1)",
         "phone-invert":
@@ -124,6 +124,12 @@ module.exports = {
         thesis: "#f17a54"
       },
       dropShadow: {
+        floaty: [
+          "0 0 2px rgba(0, 0, 0, 0.04)",
+          "0 2px 8px rgba(0, 0, 0, 0.04)",
+          "0 4px 18px rgba(0, 0, 0, 0.06)",
+          "0 8px 42px rgba(0, 0, 0, 0.12)"
+        ],
         phone: "0 1px 4px rgba(0, 0, 0, 0.06)"
       },
       fontFamily: {

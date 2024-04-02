@@ -1,10 +1,11 @@
 import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
-import elementsFoodVisual from "../../../public/visuals/elements-food.png"
-import elementsMusicVisual from "../../../public/visuals/elements-music.png"
-import motionVisual from "../../../public/visuals/framer-motion-secondary.png"
-import thesisVisual from "../../../public/visuals/thesis.png"
+import headsetReflections from "../../../public/utilities/headset-reflections.png"
+import elementsFood from "../../../public/visuals/elements-food.png"
+import elementsMusic from "../../../public/visuals/elements-music.png"
+import motion from "../../../public/visuals/framer-motion-secondary.png"
+import thesis from "../../../public/visuals/thesis.png"
 
 interface BrowserProps extends ComponentProps<"div"> {
   /**
@@ -23,14 +24,8 @@ interface BrowserProps extends ComponentProps<"div"> {
  */
 function Browser({ url, children, className, ...props }: BrowserProps) {
   return (
-    <div
-      className={clsx(
-        className,
-        "dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-gray-800 dark:supports-backdrop:bg-gray-800/80"
-      )}
-      {...props}
-    >
-      <div className="relative grid h-8 flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] items-center gap-2 px-3">
+    <div className={clsx(className, "browser")} {...props}>
+      <div className="browser-header">
         <div className="flex gap-1.5">
           <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
           <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
@@ -58,23 +53,79 @@ function Browser({ url, children, className, ...props }: BrowserProps) {
  */
 function Phone({ children, className, ...props }: ComponentProps<"div">) {
   return (
-    <div
-      className={clsx(
-        className,
-        "dark:highlight-invert relative aspect-[425/862] rounded-[15.294%/7.541%] bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-gray-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-gray-800/80"
-      )}
-      {...props}
-    >
-      <div className="absolute bottom-[3.1%] left-[5.4%] right-[6.35%] top-[2.7%] drop-shadow-phone">
-        <svg className="absolute" height="0" role="presentation" width="0">
-          <clipPath clipPathUnits="objectBoundingBox" id="phone">
+    <div className={clsx(className, "phone")} {...props}>
+      <div className="phone-screen-container">
+        <svg className="absolute" height={0} role="presentation" width={0}>
+          <clipPath clipPathUnits="objectBoundingBox" id="phone-mask">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
           </clipPath>
         </svg>
-        <div className="absolute inset-0 [clip-path:url(#phone)]">
-          {children}
-        </div>
+        <div className="phone-screen">{children}</div>
       </div>
+    </div>
+  )
+}
+
+/**
+ * An Apple Vision Pro-like device.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.children] - The headset's content.
+ * @param [props.className] - A list of one or more classes.
+ */
+function Headset({ children, className, ...props }: ComponentProps<"div">) {
+  return (
+    <div className={clsx(className, "headset")} {...props}>
+      <div className="headset-screen">
+        <svg height={0} role="presentation" width={0}>
+          <defs>
+            <clipPath clipPathUnits="objectBoundingBox" id="headset-mask">
+              <path
+                d="M287.869 8.903C191.158 18.0047 86.3418 41.0677 34.3159 131.736C-22.8049 231.284 -6.31181 382.115 66.6843 468.651C139.6 555.091 259.829 560.268 350.664 498.885C388.88 473.06 431.934 427.8 480.034 427.8C528.093 427.8 571.148 473.079 609.336 498.885C700.171 560.268 820.4 555.091 893.315 468.651C966.311 382.116 982.806 231.283 925.684 131.736C873.657 41.0678 768.842 18.0048 672.131 8.903C545.998 -2.96768 414.002 -2.96766 287.869 8.903Z"
+                transform={`scale(${1 / 960}, ${1 / 540})`}
+              />
+            </clipPath>
+          </defs>
+        </svg>
+        <div className="absolute inset-0 z-10 mix-blend-overlay">
+          <Image
+            alt=""
+            aria-hidden
+            className="absolute h-full w-full"
+            height="960"
+            src={headsetReflections}
+            width="540"
+          />
+        </div>
+        <div className="absolute inset-0 z-10 opacity-30">
+          <Image
+            alt=""
+            aria-hidden
+            className="absolute h-full w-full"
+            height="960"
+            src={headsetReflections}
+            width="540"
+          />
+        </div>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * A book.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.children] - The book's cover.
+ * @param [props.className] - A list of one or more classes.
+ */
+function Book({ children, className, ...props }: ComponentProps<"div">) {
+  return (
+    <div className={clsx(className, "book")} {...props}>
+      <div className="book-back-cover" />
+      <div className="book-pages" />
+      <div className="book-cover">{children}</div>
     </div>
   )
 }
@@ -381,7 +432,7 @@ export function Work(props: ComponentProps<"section">) {
                       className="absolute h-full w-full object-cover"
                       height="460"
                       priority
-                      src={motionVisual}
+                      src={motion}
                       width="280"
                     />
                   </div>
@@ -446,7 +497,7 @@ export function Work(props: ComponentProps<"section">) {
                   alt="A food app interface"
                   className="elements absolute h-full w-full object-cover"
                   height="346"
-                  src={elementsFoodVisual}
+                  src={elementsFood}
                   width="160"
                 />
               </Phone>
@@ -455,7 +506,7 @@ export function Work(props: ComponentProps<"section">) {
                   alt="A music app interface"
                   className="elements elements-offset absolute h-full w-full object-cover"
                   height="346"
-                  src={elementsMusicVisual}
+                  src={elementsMusic}
                   width="160"
                 />
               </Phone>
@@ -484,6 +535,18 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <Headset className="w-[80%] rotate-[-6deg]">
+                <video
+                  autoPlay
+                  className="absolute h-full w-full object-cover"
+                  loop
+                  muted
+                  playsInline
+                  poster="/visuals/degree-headset.jpg"
+                  preload="metadata"
+                  src="/visuals/degree-headset.mp4"
+                />
+              </Headset>
               <Phone className="w-[30%] rotate-[6deg]">
                 <video
                   autoPlay
@@ -496,19 +559,15 @@ export function Work(props: ComponentProps<"section">) {
                   src="/visuals/degree-phone.mp4"
                 />
               </Phone>
-              <div className="relative aspect-[1214/1702] w-[30%] rotate-[-6deg]">
-                <div className="thesis-back-cover bg-thesis absolute inset-x-0 bottom-[-5%] top-[5%] rounded-[4.615%/3.297%] shadow-floaty" />
-                <div className="thesis-pages absolute bottom-[-3%] left-[3%] right-0 top-[3%] rounded-[4.615%/3.297%] rounded-bl-[3.077%_2.198%]" />
-                <div className="thesis-cover bg-thesis absolute inset-0 z-20 overflow-hidden rounded-[4.615%/3.297%]">
-                  <Image
-                    alt="The cover of my master’s thesis"
-                    className="absolute h-full w-full"
-                    height="182"
-                    src={thesisVisual}
-                    width="130"
-                  />
-                </div>
-              </div>
+              <Book className="w-[30%] rotate-[-6deg] text-thesis">
+                <Image
+                  alt="The cover of my master’s thesis"
+                  className="absolute h-full w-full"
+                  height="182"
+                  src={thesis}
+                  width="130"
+                />
+              </Book>
             </div>
           </div>
         </div>

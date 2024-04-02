@@ -228,6 +228,116 @@
   }
 }
 
+.browser {
+  @apply dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-gray-800 dark:supports-backdrop:bg-gray-800/80;
+}
+
+.browser-header {
+  @apply relative grid h-8 flex-none items-center gap-2 px-3;
+
+  grid-template-columns: 1fr minmax(0, 2fr) minmax(0, 1fr);
+}
+
+.phone {
+  @apply dark:highlight-invert relative bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-gray-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-gray-800/80;
+
+  aspect-ratio: 425 / 862;
+  border-radius: 15.294% / 7.541%;
+}
+
+.phone-screen-container {
+  @apply absolute drop-shadow-phone;
+
+  inset: 2.7% 6.35% 3.1% 5.4%;
+}
+
+.phone-screen {
+  @apply absolute inset-0;
+
+  clip-path: url("#phone-mask");
+}
+
+.headset {
+  @apply relative drop-shadow-floaty will-change-transform;
+
+  aspect-ratio: 960 / 540;
+}
+
+.headset-screen {
+  @apply absolute inset-0;
+
+  clip-path: url("#headset-mask");
+}
+
+.book {
+  @apply relative aspect-[1214/1702];
+}
+
+.book-cover {
+  @apply absolute inset-0 z-20 overflow-hidden bg-current;
+
+  border-radius: 4.615% / 3.297%;
+}
+
+.book-back-cover {
+  @apply absolute bg-current shadow-floaty;
+
+  inset: 5% 0 -5%;
+  border-radius: 4.615%/3.297%;
+}
+
+.book-cover::before,
+.book-back-cover::before,
+.book-back-cover::after {
+  @apply pointer-events-none absolute inset-0 z-10 rounded-[inherit];
+
+  content: "";
+}
+
+.book-cover::before,
+.book-back-cover::before {
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 12%) 0.5%,
+    rgb(255 255 255 / 20%) 1.5%,
+    rgb(255 255 255 / 10%) 2.5%,
+    rgb(0 0 0 / 5%) 3.5%,
+    rgb(255 255 255 / 14%) 5.5%,
+    transparent 7%,
+    transparent 96%,
+    rgb(255 255 255 / 14%) 100%
+  );
+}
+
+.book-back-cover::after {
+  background: linear-gradient(
+    180deg,
+    transparent 94%,
+    rgb(0 0 0 / 20%) 96%,
+    transparent 100%
+  );
+}
+
+.book-pages {
+  @apply absolute z-20;
+
+  inset: 3% 0 -3% 3%;
+  border-radius: 4.615% / 3.297%;
+  border-bottom-left-radius: 3.077% 2.198%;
+  background-color: #fff;
+  background-image: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 20%) 96%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      transparent,
+      transparent 1px,
+      rgb(0 0 0 / 12%) 1px,
+      rgb(0 0 0 / 12%) 2px
+    );
+}
+
 .elements {
   background: linear-gradient(
     0deg,
@@ -268,55 +378,6 @@
 
 .elements-offset {
   animation-delay: -2s;
-}
-
-.thesis-cover::before,
-.thesis-back-cover::before,
-.thesis-back-cover::after {
-  @apply pointer-events-none absolute inset-0 z-10 rounded-[inherit];
-
-  content: "";
-}
-
-.thesis-cover::before,
-.thesis-back-cover::before {
-  background: linear-gradient(
-    90deg,
-    rgb(0 0 0 / 12%) 0.5%,
-    rgb(255 255 255 / 20%) 1.5%,
-    rgb(255 255 255 / 10%) 2.5%,
-    rgb(0 0 0 / 5%) 3.5%,
-    rgb(255 255 255 / 14%) 5.5%,
-    transparent 7%,
-    transparent 96%,
-    rgb(255 255 255 / 14%) 100%
-  );
-}
-
-.thesis-back-cover::after {
-  background: linear-gradient(
-    180deg,
-    transparent 94%,
-    rgb(0 0 0 / 20%) 96%,
-    transparent 100%
-  );
-}
-
-.thesis-pages {
-  @apply z-20;
-
-  background-color: #fff;
-  background-image: linear-gradient(
-      180deg,
-      rgb(0 0 0 / 20%) 96%,
-      transparent 100%
-    ),
-    repeating-linear-gradient(
-      transparent,
-      transparent 1px,
-      rgb(0 0 0 / 12%) 1px,
-      rgb(0 0 0 / 12%) 2px
-    );
 }
 
 .transform-liveblocks-io-primary {
