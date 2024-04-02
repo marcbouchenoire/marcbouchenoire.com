@@ -347,7 +347,7 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-secondary pointer-events-auto absolute bottom-0 left-0 w-[75%] lg:-bottom-8"
+                  className="transform-liveblocks-io-secondary pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
@@ -366,7 +366,7 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-primary pointer-events-auto absolute right-0 top-0 w-[75%] lg:-top-3"
+                  className="transform-liveblocks-io-primary pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
