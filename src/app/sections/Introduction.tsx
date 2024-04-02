@@ -35,9 +35,11 @@ export function Introduction(props: ComponentProps<"section">) {
           <em className="delightful">
             <Characters>delightful</Characters>
           </em>{" "}
-          products, interfaces, and&nbsp;interactions. I’m currently living in
-          Amsterdam and working on collaborative components—amongst other
-          things—at&nbsp;
+          products, interfaces, and&nbsp;interactions.
+        </p>
+        <p className="my-4 leading-loose">
+          I’m currently living in Amsterdam and working on collaborative
+          components—amongst other things—at&nbsp;
           <a
             className="text-liveblocks-deep dark:text-liveblocks-deep-dark group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium focus:outline-none"
             href="https://liveblocks.io/"
