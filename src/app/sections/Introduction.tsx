@@ -48,7 +48,7 @@ export function Introduction(props: ComponentProps<"section">) {
           .
         </p>
       </div>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3">
         <a
           aria-label="Twitter · 𝕏"
           className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-twitter transition hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40"
@@ -74,7 +74,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="Mastodon"
-          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40"
           href="https://mastodon.social/@marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -96,7 +96,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="GitHub"
-          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-github transition hover:text-github/50 hover:shadow-github/5 focus:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus:ring-github-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-github transition hover:text-github/50 hover:shadow-github/5 focus:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus:ring-github-dark/40"
           href="https://github.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -118,7 +118,7 @@ export function Introduction(props: ComponentProps<"section">) {
         </a>
         <a
           aria-label="Dribbble"
-          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-dribbble transition hover:text-dribbble/50 hover:shadow-dribbble/5 focus:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus:ring-dribbble-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-dribbble transition hover:text-dribbble/50 hover:shadow-dribbble/5 focus:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus:ring-dribbble-dark/40"
           href="https://dribbble.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -139,7 +139,7 @@ export function Introduction(props: ComponentProps<"section">) {
           </svg>
         </a>
         <a
-          className="focusable flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-red-500 transition hover:text-red-500/50 hover:shadow-red-500/5 focus:ring-red-500/40 dark:text-red-400 dark:hover:text-red-400/50 dark:focus:ring-red-400/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-orange-500 transition hover:text-orange-500/50 hover:shadow-orange-500/5 focus:ring-orange-500/40 dark:text-orange-400 dark:hover:text-orange-400/50 dark:focus:ring-orange-400/40"
           href="mailto:mail@marcbouchenoire.com"
           title="Email"
         >
