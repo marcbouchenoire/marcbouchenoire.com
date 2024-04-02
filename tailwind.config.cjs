@@ -163,14 +163,5 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    plugin(({ addVariant }) => {
-      addVariant(
-        "supports-backdrop",
-        "@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px)))"
-      )
-    }),
-    paddingSafe
-  ]
+  plugins: [require("@tailwindcss/typography"), paddingSafe]
 }

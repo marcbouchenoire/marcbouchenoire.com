@@ -229,7 +229,7 @@
 }
 
 .browser {
-  @apply dark:highlight-invert overflow-hidden rounded-lg bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 supports-backdrop:bg-white/80 dark:bg-gray-800 dark:supports-backdrop:bg-gray-800/80;
+  @apply dark:highlight-invert overflow-hidden rounded-lg bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80;
 }
 
 .browser-header {
@@ -239,7 +239,7 @@
 }
 
 .phone {
-  @apply dark:highlight-invert relative bg-white shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone supports-backdrop:bg-white/80 dark:bg-gray-800 dark:before:shadow-phone-invert dark:supports-backdrop:bg-gray-800/80;
+  @apply dark:highlight-invert relative bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone dark:bg-gray-800/80 dark:before:shadow-phone-invert;
 
   aspect-ratio: 425 / 862;
   border-radius: 15.294% / 7.541%;
