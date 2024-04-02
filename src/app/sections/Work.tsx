@@ -192,8 +192,8 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-blue-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-blue-900">
               Liveblocks
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-blue-100/15 p-1 text-xs font-medium leading-none text-blue-100/90 mix-blend-overlay dark:bg-blue-800/20 dark:text-blue-900/80">
-                2022
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-cyan-100/20 p-1 text-xs font-medium leading-none text-blue-100 dark:bg-blue-800/20 dark:text-blue-900/80">
+                2023
                 <span className="mx-0.5 text-blue-100/60 dark:text-blue-900/40">
                   —
                 </span>
@@ -268,7 +268,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-violet-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-violet-900">
               Liveblocks.io
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-violet-100/15 p-1 text-xs font-medium leading-none text-violet-100/90 dark:bg-violet-800/20 dark:text-violet-900/80">
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-fuchsia-100/20 p-1 text-xs font-medium leading-none text-violet-100 dark:bg-violet-800/20 dark:text-violet-900/80">
                 2022
                 <span className="mx-0.5 text-violet-100/60 dark:text-violet-900/40">
                   —
@@ -390,7 +390,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-sky-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-sky-900">
               Framer.com
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-sky-100/15 p-1 text-xs font-medium leading-none text-sky-100/90 dark:bg-sky-800/20 dark:text-sky-900/80">
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-cyan-100/20 p-1 text-xs font-medium leading-none text-sky-100 dark:bg-sky-800/20 dark:text-sky-900/80">
                 2019
                 <span className="mx-0.5 text-sky-100/60 dark:text-sky-900/40">
                   —
@@ -457,7 +457,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-fuchsia-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-fuchsia-900">
               Framer Motion
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-fuchsia-100/15 p-1 text-xs font-medium leading-none text-fuchsia-100/90 dark:bg-fuchsia-800/20 dark:text-fuchsia-900/80">
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-rose-100/20 p-1 text-xs font-medium leading-none text-fuchsia-100 dark:bg-fuchsia-800/20 dark:text-fuchsia-900/80">
                 2019
               </span>
             </h3>
@@ -536,7 +536,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-orange-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-orange-900">
               Sketch Elements
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-orange-100/15 p-1 text-xs font-medium leading-none text-orange-100/90 dark:bg-orange-800/20 dark:text-orange-900/80">
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-yellow-100/20 p-1 text-xs font-medium leading-none text-orange-100 dark:bg-orange-800/20 dark:text-orange-900/80">
                 2017
               </span>
             </h3>
@@ -585,7 +585,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-rose-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-rose-900">
               Master’s degree
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-rose-100/15 p-1 text-xs font-medium leading-none text-rose-100/90 dark:bg-rose-800/20 dark:text-rose-900/80">
+              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-orange-100/20 p-1 text-xs font-medium leading-none text-rose-100 dark:bg-rose-800/20 dark:text-rose-900/80">
                 2017
                 <span className="mx-0.5 text-rose-100/60 dark:text-rose-900/40">
                   —
