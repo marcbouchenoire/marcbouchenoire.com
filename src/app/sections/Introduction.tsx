@@ -56,7 +56,7 @@ export function Introduction(props: ComponentProps<"section">) {
           I’m currently living in Amsterdam and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="text-liveblocks-deep dark:text-liveblocks-deep-dark group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium focus:outline-none"
+            className="text-liveblocks-alternate dark:text-liveblocks-alternate-dark group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium focus:outline-none"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"

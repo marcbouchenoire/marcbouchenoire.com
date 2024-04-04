@@ -108,7 +108,7 @@ module.exports = {
         liveblocks: {
           DEFAULT: "#8361ed",
           dark: "#9b7ef4",
-          deep: {
+          alternate: {
             DEFAULT: "#594b99",
             dark: "#d3c9f5"
           }
@@ -124,8 +124,7 @@ module.exports = {
         lecolededesign: {
           DEFAULT: "#d31b2e",
           dark: "#f4384b"
-        },
-        thesis: "#f17a54"
+        }
       },
       dropShadow: {
         floaty: [

@@ -648,7 +648,7 @@ export function Work(props: ComponentProps<"section">) {
                   src="/visuals/degree-phone.mp4"
                 />
               </Phone>
-              <Book className="transform-degree-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-thesis">
+              <Book className="transform-degree-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]">
                 <Image
                   alt="The cover of my master’s thesis"
                   className="absolute h-full w-full"
