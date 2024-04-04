@@ -5,7 +5,7 @@ import { Skeleton } from "../utils/Skeleton"
 import { ProjectCard } from "./ProjectCard"
 import { getRepository } from "src/utils/get-repository"
 
-interface Props extends ComponentProps<"div"> {
+interface GitHubProjectCardProps extends ComponentProps<"div"> {
   /**
    * The project's repository.
    */
@@ -61,7 +61,11 @@ async function GitHubProjectCardDate({
  * @param [props.repository] - The project's repository.
  * @param [props.className] - A list of one or more classes.
  */
-export function GitHubProjectCard({ children, repository, ...props }: Props) {
+export function GitHubProjectCard({
+  children,
+  repository,
+  ...props
+}: GitHubProjectCardProps) {
   return (
     <ProjectCard {...props}>
       <div className="mb-8 flex items-center text-gray-400">

@@ -1,73 +1,75 @@
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
 const MUSICBRAINZ_API = "https://musicbrainz.org/ws/2"
 const LASTFM_USERNAME = "marcbouchenoire"
-const LASTFM_ENDPOINT = `${LASTFM_API}?method=user.getRecentTracks&api_key=${process.env.LASTFM_API_TOKEN}&format=json&user=${LASTFM_USERNAME}&limit=1`
+const LASTFM_ENDPOINT = (limit: number) => {
+  return `${LASTFM_API}?method=user.getRecentTracks&api_key=${process.env.LASTFM_API_TOKEN}&format=json&user=${LASTFM_USERNAME}&limit=${limit}`
+}
 const MUSICBRAINZ_ENDPOINT = (mbid: string) => {
   return `${MUSICBRAINZ_API}/release/${mbid}?fmt=json`
 }
 
-type Boolean = "0" | "1"
+type LastFmBoolean = "0" | "1"
 
-interface Text<T = string> {
+interface LastFmText<T = string> {
   /**
    * The value's content.
    */
   "#text": T
 }
 
-interface MusicBrainzID extends Text {
+interface LastFmMusicBrainzId extends LastFmText {
   /**
    * A MusicBrainz identifier.
    */
   mbid: string
 }
 
-interface Image extends Text {
+interface LastFmImage extends LastFmText {
   /**
    * The image's size.
    */
   size: "extralarge" | "large" | "medium" | "small"
 }
 
-interface TrackDate extends Text {
+interface LastFmTrackDate extends LastFmText {
   /**
    * A Unix timestamp.
    */
   uts: string
 }
 
-interface RecentTrackAttributes {
+interface LastFmRecentTrackAttributes {
   /**
    * Whether the track is currently playing.
    */
   nowplaying: string
 }
 
-interface RecentTrack {
+interface LastFmRecentTrack {
   /**
    * A list of track-specific attributes.
    */
-  "@attr"?: RecentTrackAttributes
+  "@attr"?: LastFmRecentTrackAttributes
 
   /**
    * The album the track is featured in.
    */
-  album: MusicBrainzID
+  album: LastFmMusicBrainzId
 
   /**
    * The track's artist.
    */
-  artist: MusicBrainzID
+  artist: LastFmMusicBrainzId
 
   /**
    * The date at which the track was listened to.
    */
-  date?: TrackDate
+  date?: LastFmTrackDate
 
   /**
    * A cover art image in various sizes.
    */
-  image: Image[]
+  image: LastFmImage[]
 
   /**
    * The track's MusicBrainz identifier.
@@ -82,7 +84,7 @@ interface RecentTrack {
   /**
    * Whether a preview is available for streaming.
    */
-  streamable: Boolean
+  streamable: LastFmBoolean
 
   /**
    * The track's Last.fm URL.
@@ -90,7 +92,7 @@ interface RecentTrack {
   url: string
 }
 
-interface RecentTracksAttributes {
+interface LastFmRecentTracksAttributes {
   /**
    * The current page index.
    */
@@ -112,23 +114,23 @@ interface RecentTracksAttributes {
   totalPages: string
 }
 
-interface RecentTracks {
+interface LastFmRecentTracks {
   /**
    * A list of response-specific attributes.
    */
-  "@attr": RecentTracksAttributes
+  "@attr": LastFmRecentTracksAttributes
 
   /**
    * A list of tracks.
    */
-  track: RecentTrack[]
+  track: LastFmRecentTrack[]
 }
 
 interface LastFmResponse {
   /**
    * The response's main content.
    */
-  recenttracks: RecentTracks
+  recenttracks: LastFmRecentTracks
 }
 
 interface MusicBrainzResponse {
@@ -138,7 +140,7 @@ interface MusicBrainzResponse {
   date?: string
 }
 
-export interface Response {
+export interface Song {
   /**
    * The song's artist.
    */
@@ -176,11 +178,50 @@ export interface Response {
 }
 
 /**
- * Fetch the latest song I listened to from Last.fm.
+ * Format a Last.fm track.
+ *
+ * @param track - A Last.fm track.
  */
-export async function getLatestSong(): Promise<Response | undefined> {
+async function formatSong(track: LastFmRecentTrack): Promise<Song> {
+  const date = track.date?.uts ? Number(track.date?.uts) : undefined
+  const mbid = track.album.mbid
+  let year: number | undefined
+
+  if (mbid) {
+    const release: MusicBrainzResponse = await fetch(
+      MUSICBRAINZ_ENDPOINT(mbid)
+    ).then((response) => {
+      if (!response.ok) return {}
+
+      return response.json()
+    })
+
+    if (release.date) {
+      const date = new Date(release.date)
+
+      year = date.getFullYear()
+    }
+  }
+
+  return {
+    title: track.name,
+    artist: track.artist["#text"],
+    year,
+    date,
+    url: track.url,
+    cover: track.image.find((image) => image.size === "large")?.["#text"],
+    playing: Boolean(track["@attr"]?.nowplaying) ?? !date
+  }
+}
+
+/**
+ * Fetch the latest songs I listened to from Last.fm.
+ *
+ * @param limit - The maximum number of songs to return.
+ */
+export async function getLatestSongs(limit = 1): Promise<Song[]> {
   try {
-    const response: LastFmResponse = await fetch(LASTFM_ENDPOINT).then(
+    const response: LastFmResponse = await fetch(LASTFM_ENDPOINT(limit)).then(
       (response) => {
         if (!response.ok) {
           throw new Error("There was an error while querying the Last.fm API.")
@@ -190,39 +231,10 @@ export async function getLatestSong(): Promise<Response | undefined> {
       }
     )
 
-    const song = response.recenttracks?.track?.[0]
-    const date = song.date?.uts ? Number(song.date?.uts) : undefined
-    const mbid = song.album.mbid
-    let year: number | undefined
-
-    if (mbid) {
-      const release: MusicBrainzResponse = await fetch(
-        MUSICBRAINZ_ENDPOINT(mbid)
-      ).then((response) => {
-        if (!response.ok) return {}
-
-        return response.json()
-      })
-
-      if (release.date) {
-        const date = new Date(release.date)
-
-        year = date.getFullYear()
-      }
-    }
-
-    return {
-      title: song.name,
-      artist: song.artist["#text"],
-      year,
-      date,
-      url: song.url,
-      cover: song.image.find((image) => image.size === "large")?.["#text"],
-      playing: Boolean(song["@attr"]?.nowplaying) ?? !date
-    }
+    return Promise.all(response.recenttracks.track.map(formatSong))
   } catch (error) {
     console.error(error)
 
-    return
+    return []
   }
 }

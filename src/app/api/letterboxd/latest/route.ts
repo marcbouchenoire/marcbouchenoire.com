@@ -1,14 +1,22 @@
+import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
-import { getLatestFilm } from "./get-latest-film"
+import { getLatestFilms } from "./get-latest-films"
 
 /**
- * A Route Handler fetching the latest film I watched from Letterboxd.
+ * A Route Handler fetching the latest films I watched from Letterboxd.
+ *
+ * @param request - The incoming request.
  */
-export async function GET() {
-  const film = await getLatestFilm()
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const limit = searchParams.has("limit")
+    ? Number(searchParams.get("limit"))
+    : undefined
 
-  return film
-    ? NextResponse.json(film)
+  const films = await getLatestFilms(limit)
+
+  return films
+    ? NextResponse.json(films)
     : new Response(undefined, { status: 500 })
 }
 

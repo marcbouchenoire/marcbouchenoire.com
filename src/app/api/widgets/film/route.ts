@@ -2,7 +2,7 @@ import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestFilm } from "../../letterboxd/latest/get-latest-film"
+import { getLatestFilms } from "../../letterboxd/latest/get-latest-films"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
@@ -28,7 +28,7 @@ const RATING_HEIGHT = 20
  * @param [dark] - Whether to generate a dark variant.
  */
 async function generateLatestFilmWidget(dark?: boolean) {
-  const film = await getLatestFilm()
+  const [film] = await getLatestFilms()
 
   if (film) {
     const poster = film.poster ? await encodeImage(film.poster) : undefined

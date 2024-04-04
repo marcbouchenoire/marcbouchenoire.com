@@ -5,7 +5,7 @@ import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import { capitalize } from "src/utils/capitalize"
 
-interface Props extends ComponentProps<"time"> {
+interface RelativeDateProps extends ComponentProps<"time"> {
   /**
    * The date to display.
    */
@@ -18,7 +18,7 @@ interface Props extends ComponentProps<"time"> {
  * @param props - A set of `time` props.
  * @param props.date - The date to display.
  */
-export function RelativeDate({ date, ...props }: Props) {
+export function RelativeDate({ date, ...props }: RelativeDateProps) {
   const parsedDate = useMemo(() => new Date(date), [date])
   const normalizedDate = useMemo(() => parsedDate.toISOString(), [parsedDate])
   const formattedDate = useMemo(() => {

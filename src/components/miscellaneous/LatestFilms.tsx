@@ -6,9 +6,25 @@ import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
+import useSWR from "swr"
+import { Film } from "src/app/api/letterboxd/latest/get-latest-films"
 import { Skeleton } from "src/components/utils/Skeleton"
-import { useLatestFilm } from "src/hooks/use-latest-film"
 import { capitalize } from "src/utils/capitalize"
+import { json } from "src/utils/json"
+
+interface LatestFilmsProps extends ComponentProps<"div"> {
+  /**
+   * The maximum number of films to display.
+   */
+  limit?: number
+}
+
+interface FilmProps extends ComponentProps<"a"> {
+  /**
+   * The film to display.
+   */
+  film?: Film
+}
 
 const variants: Variants = {
   hidden: {
@@ -25,13 +41,14 @@ const fade: Transition = {
 }
 
 /**
- * Display the latest film I watched from Letterboxd.
+ * Display a film from Letterboxd.
  *
  * @param props - A set of `a` props.
+ * @param [props.film] - The film to display.
  * @param [props.className] - A list of one or more classes.
  */
-export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
-  const { date, poster, rating, title, year, url } = useLatestFilm()
+function Film({ film, className, ...props }: FilmProps) {
+  const { date, poster, rating, title, year, url } = film ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -53,7 +70,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus:ring-lime-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
@@ -166,5 +183,31 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
         </div>
       </div>
     </a>
+  )
+}
+
+/**
+ * Display the latest films I watched from Letterboxd.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.limit] - The maximum number of films to display.
+ * @param [props.className] - A list of one or more classes.
+ */
+export function LatestFilms({
+  limit = 1,
+  className,
+  ...props
+}: LatestFilmsProps) {
+  const { data: films } = useSWR<Film[]>(
+    `/api/letterboxd/latest?limit=${limit}`,
+    json
+  )
+
+  return (
+    <div className={clsx(className, "flex flex-col gap-6")} {...props}>
+      {films
+        ? films.map((film, index) => <Film film={film} key={index} />)
+        : Array.from({ length: limit }, (_, index) => <Film key={index} />)}
+    </div>
   )
 }

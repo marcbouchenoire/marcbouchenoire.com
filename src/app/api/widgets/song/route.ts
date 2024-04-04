@@ -2,7 +2,7 @@ import { formatDistanceToNow, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestSong } from "../../lastfm/latest/get-latest-song"
+import { getLatestSongs } from "../../lastfm/latest/get-latest-songs"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
@@ -25,7 +25,7 @@ const ICON_SIZE = 20
  * @param [dark] - Whether to generate a dark variant.
  */
 async function generateLatestSongWidget(dark?: boolean) {
-  const song = await getLatestSong()
+  const [song] = await getLatestSongs()
 
   if (song) {
     const cover = song.cover ? await encodeImage(song.cover) : undefined

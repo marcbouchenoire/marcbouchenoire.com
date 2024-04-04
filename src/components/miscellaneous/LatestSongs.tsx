@@ -6,9 +6,26 @@ import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
+import useSWR from "swr"
+import { Song } from "src/app/api/lastfm/latest/get-latest-songs"
+import { revalidate } from "src/app/api/lastfm/latest/route"
 import { Skeleton } from "src/components/utils/Skeleton"
-import { useLatestSong } from "src/hooks/use-latest-song"
 import { capitalize } from "src/utils/capitalize"
+import { json } from "src/utils/json"
+
+interface LatestSongsProps extends ComponentProps<"div"> {
+  /**
+   * The maximum number of songs to display.
+   */
+  limit?: number
+}
+
+interface SongProps extends ComponentProps<"a"> {
+  /**
+   * The song to display.
+   */
+  song?: Song
+}
 
 const variants: Variants = {
   hidden: {
@@ -25,13 +42,14 @@ const fade: Transition = {
 }
 
 /**
- * Display the latest song I listened to from Last.fm.
+ * Display a song from Last.fm.
  *
  * @param props - A set of `a` props.
+ * @param [props.song] - The song to display.
  * @param [props.className] - A list of one or more classes.
  */
-export function LatestSong({ className, ...props }: ComponentProps<"a">) {
-  const { artist, cover, date, title, year, playing, url } = useLatestSong()
+function Song({ song, className, ...props }: SongProps) {
+  const { artist, cover, date, title, year, playing, url } = song ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -49,7 +67,7 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-gray-900 dark:focus:ring-red-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-gray-900 dark:focus:ring-red-400/40"
       )}
       href={url}
       rel="noreferrer"
@@ -201,5 +219,34 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
         </p>
       </div>
     </a>
+  )
+}
+
+/**
+ * Display the latest songs I listened to from Last.fm.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.limit] - The maximum number of songs to display.
+ * @param [props.className] - A list of one or more classes.
+ */
+export function LatestSongs({
+  limit = 1,
+  className,
+  ...props
+}: LatestSongsProps) {
+  const { data: songs } = useSWR<Song[]>(
+    `/api/lastfm/latest?limit=${limit}`,
+    json,
+    {
+      refreshInterval: revalidate * 1000
+    }
+  )
+
+  return (
+    <div className={clsx(className, "flex flex-col gap-6")} {...props}>
+      {songs
+        ? songs.map((song, index) => <Song key={index} song={song} />)
+        : Array.from({ length: limit }, (_, index) => <Song key={index} />)}
+    </div>
   )
 }

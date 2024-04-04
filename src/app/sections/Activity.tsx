@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react"
-import { LatestFilm } from "src/components/miscellaneous/LatestFilm"
-import { LatestSong } from "src/components/miscellaneous/LatestSong"
+import { LatestFilms } from "src/components/miscellaneous/LatestFilms"
+import { LatestSongs } from "src/components/miscellaneous/LatestSongs"
+
+const NUMBER_OF_ACTIVITIES = 3
 
 /**
  * A section displaying my latest listens and watches.
@@ -34,9 +36,15 @@ export function Activity(props: ComponentProps<"section">) {
         </a>{" "}
         things.
       </p>
-      <div className="mt-8 flex flex-col gap-8">
-        <LatestSong className="min-w-0 max-w-full" />
-        <LatestFilm className="min-w-0 max-w-full" />
+      <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <LatestSongs
+          className="min-w-0 max-w-full"
+          limit={NUMBER_OF_ACTIVITIES}
+        />
+        <LatestFilms
+          className="min-w-0 max-w-full"
+          limit={NUMBER_OF_ACTIVITIES}
+        />
       </div>
     </section>
   )
