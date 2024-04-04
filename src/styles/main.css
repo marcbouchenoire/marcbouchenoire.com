@@ -379,18 +379,8 @@
   }
 }
 
-.browser {
-  @apply dark:highlight-invert overflow-hidden rounded-lg bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80;
-}
-
 .browser-header {
-  @apply relative grid h-8 flex-none items-center gap-2 px-3;
-
   grid-template-columns: 1fr minmax(0, 2fr) minmax(0, 1fr);
-}
-
-.browser-popup .browser-header {
-  @apply relative grid h-5 flex-none items-center gap-2 px-1.5;
 }
 
 .phone {

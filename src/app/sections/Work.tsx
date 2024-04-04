@@ -45,10 +45,18 @@ function Browser({
 }: BrowserProps) {
   return (
     <div
-      className={clsx(className, "browser", popup && "browser-popup")}
+      className={clsx(
+        className,
+        "browser dark:highlight-invert overflow-hidden rounded-lg bg-gray-50/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80"
+      )}
       {...props}
     >
-      <div className="browser-header">
+      <div
+        className={clsx(
+          "browser-header relative grid flex-none items-center gap-2",
+          popup ? "h-5 px-1.5" : "h-8 px-3"
+        )}
+      >
         <div className="flex gap-1.5">
           <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
           <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
