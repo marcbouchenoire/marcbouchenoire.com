@@ -196,7 +196,7 @@ export async function getLatestSongs(limit = 1): Promise<Song[]> {
       }
     )
 
-    return response.recenttracks.track.map(formatSong)
+    return response.recenttracks.track.slice(0, limit).map(formatSong)
   } catch (error) {
     console.error(error)
 
