@@ -49,7 +49,7 @@ const fade: Transition = {
  * @param [props.className] - A list of one or more classes.
  */
 function Song({ song, className, ...props }: SongProps) {
-  const { artist, cover, date, title, year, playing, url } = song ?? {}
+  const { artist, cover, date, title, playing, url } = song ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -204,15 +204,7 @@ function Song({ song, className, ...props }: SongProps) {
             title={title}
           >
             {title ?? <Skeleton className="w-40" />}
-          </span>{" "}
-          {year && (
-            <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400"
-              dateTime={String(year)}
-            >
-              {year}
-            </time>
-          )}
+          </span>
         </p>
         <p className="truncate text-gray-500 dark:text-gray-400" title={artist}>
           {artist ?? <Skeleton className="w-28" />}

@@ -1,11 +1,7 @@
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
-const MUSICBRAINZ_API = "https://musicbrainz.org/ws/2"
 const LASTFM_USERNAME = "marcbouchenoire"
 const LASTFM_ENDPOINT = (limit: number) => {
   return `${LASTFM_API}?method=user.getRecentTracks&api_key=${process.env.LASTFM_API_TOKEN}&format=json&user=${LASTFM_USERNAME}&limit=${limit}`
-}
-const MUSICBRAINZ_ENDPOINT = (mbid: string) => {
-  return `${MUSICBRAINZ_API}/release/${mbid}?fmt=json`
 }
 
 type LastFmBoolean = "0" | "1"
@@ -133,13 +129,6 @@ interface LastFmResponse {
   recenttracks: LastFmRecentTracks
 }
 
-interface MusicBrainzResponse {
-  /**
-   * The release's release date.
-   */
-  date?: string
-}
-
 export interface Song {
   /**
    * The song's artist.
@@ -170,11 +159,6 @@ export interface Song {
    * The song's Last.fm URL.
    */
   url: string
-
-  /**
-   * The song's release year.
-   */
-  year?: number
 }
 
 /**
@@ -182,31 +166,12 @@ export interface Song {
  *
  * @param track - A Last.fm track.
  */
-async function formatSong(track: LastFmRecentTrack): Promise<Song> {
+function formatSong(track: LastFmRecentTrack): Song {
   const date = track.date?.uts ? Number(track.date?.uts) : undefined
-  const mbid = track.album.mbid
-  let year: number | undefined
-
-  if (mbid) {
-    const release: MusicBrainzResponse = await fetch(
-      MUSICBRAINZ_ENDPOINT(mbid)
-    ).then((response) => {
-      if (!response.ok) return {}
-
-      return response.json()
-    })
-
-    if (release.date) {
-      const date = new Date(release.date)
-
-      year = date.getFullYear()
-    }
-  }
 
   return {
     title: track.name,
     artist: track.artist["#text"],
-    year,
     date,
     url: track.url,
     cover: track.image.find((image) => image.size === "large")?.["#text"],
@@ -231,7 +196,7 @@ export async function getLatestSongs(limit = 1): Promise<Song[]> {
       }
     )
 
-    return Promise.all(response.recenttracks.track.map(formatSong))
+    return response.recenttracks.track.map(formatSong)
   } catch (error) {
     console.error(error)
 
