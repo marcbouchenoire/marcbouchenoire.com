@@ -17,6 +17,7 @@
     "postinstall": "node src/scripts/postinstall.mjs"
   },
   "dependencies": {
+    "bright": "^0.8.5",
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",
     "fast-base64": "^0.1.8",

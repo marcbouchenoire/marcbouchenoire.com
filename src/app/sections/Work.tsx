@@ -1,9 +1,15 @@
+import type { BrightProps } from "bright"
+import { Code as Bright } from "bright"
 import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
 import elementsFood from "public/visuals/elements/food.png"
 import elementsMusic from "public/visuals/elements/music.png"
-import motion from "public/visuals/framer-motion/static.png"
+import framerMotion from "public/visuals/framer-motion/static.png"
+import liveblocksEmojiPicker from "public/visuals/liveblocks/emoji-picker.png"
+import liveblocksInbox from "public/visuals/liveblocks/inbox.png"
+import liveblocksMentionSuggestions from "public/visuals/liveblocks/mention-suggestions.png"
+import liveblocksThread from "public/visuals/liveblocks/thread.png"
 import masterThesis from "public/visuals/master/thesis.png"
 import masterVive from "public/visuals/master/vive.png"
 import { withExternalCdn } from "src/utils/with-external-cdn"
@@ -16,6 +22,23 @@ interface BrowserProps extends Omit<ComponentProps<"div">, "title"> {
 
   /**
    * The window's current URL or title.
+   */
+  title?: ReactNode
+}
+
+interface CodeProps extends Omit<ComponentProps<"div">, "title"> {
+  /**
+   * The editor's content.
+   */
+  code?: string
+
+  /**
+   * The editor's language.
+   */
+  language?: BrightProps["lang"]
+
+  /**
+   * The window's current title.
    */
   title?: ReactNode
 }
@@ -57,10 +80,25 @@ function Browser({
           popup ? "h-5 px-1.5" : "h-8 px-3"
         )}
       >
-        <div className="flex gap-1.5">
-          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
-          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
-          <div className="aspect-square w-2.5 rounded-full bg-black/10 dark:bg-white/20" />
+        <div className={clsx("flex", popup ? "gap-1" : "gap-1.5")}>
+          <div
+            className={clsx(
+              "aspect-square rounded-full bg-black/10 dark:bg-white/20",
+              popup ? "w-2" : "w-2.5"
+            )}
+          />
+          <div
+            className={clsx(
+              "aspect-square rounded-full bg-black/10 dark:bg-white/20",
+              popup ? "w-2" : "w-2.5"
+            )}
+          />
+          <div
+            className={clsx(
+              "aspect-square rounded-full bg-black/10 dark:bg-white/20",
+              popup ? "w-2" : "w-2.5"
+            )}
+          />
         </div>
         {title &&
           (popup ? (
@@ -76,6 +114,48 @@ function Browser({
           ))}
       </div>
       <div className="flex-1">{children}</div>
+    </div>
+  )
+}
+
+/**
+ * A code editor.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.title] - The window's current title.
+ * @param [props.code] - The editor's content.
+ * @param [props.language] - The editor's language.
+ * @param [props.className] - A list of one or more classes.
+ */
+function Code({ title, code, language, className, ...props }: CodeProps) {
+  return (
+    <div
+      className={clsx(
+        className,
+        "code highlight-invert overflow-hidden rounded-lg bg-gray-800/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200"
+      )}
+      {...props}
+    >
+      <div className="code-header relative grid h-5 flex-none items-center gap-2 px-1.5">
+        <div className="flex gap-1">
+          <div className="aspect-square w-2 rounded-full bg-white/20" />
+          <div className="aspect-square w-2 rounded-full bg-white/20" />
+          <div className="aspect-square w-2 rounded-full bg-white/20" />
+        </div>
+        {title && (
+          <div className="text-center text-3xs text-white/40">{title}</div>
+        )}
+      </div>
+      <div aria-hidden className="flex-1">
+        <Bright
+          className="bright"
+          lang={language}
+          lineNumbers
+          theme="poimandres"
+        >
+          {code}
+        </Bright>
+      </div>
     </div>
   )
 }
@@ -173,6 +253,27 @@ function Book({ children, className, ...props }: ComponentProps<"div">) {
   )
 }
 
+const liveblocksPrimitivesCode = `
+import {
+  Composer,
+  Comment,
+} from "@liveblocks/react-comments/primitives"
+
+function CustomComposer(props) {
+  return (
+    <Composer.Form {...props}>
+      <Composer.Editor
+        components={{
+          Mention,
+          MentionSuggestions,
+          Link,
+        }}
+      />
+      <Composer.Submit>Create thread</Composer.Submit>
+    </Composer.Form>
+  );
+}`.trim()
+
 /**
  * A section displaying a selection of projects.
  *
@@ -212,7 +313,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 Liveblocks
               </a>
-              , my focus slowly shifted towards the product. It started with{" "}
+              , my focus slowly shifted towards the product, starting with{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
                 href="https://liveblocks.io/devtools"
@@ -221,7 +322,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 a custom DevTools extension
               </a>{" "}
-              and culminated with{" "}
+              and culminating with{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
                 href="https://liveblocks.io/comments"
@@ -240,29 +341,80 @@ export function Work(props: ComponentProps<"section">) {
                 React
               </a>{" "}
               side of our opinionated products, from component APIs to default
-              styles, from hooks to unstyled primitives, and more.
+              styles, from hooks to unstyled primitives, rich text editors,
+              emoji pickers, internationalization, and more.
             </p>
           </div>
-          <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
-            <div className="perspective pointer-events-none absolute inset-0">
-              <Browser
-                className="transform-liveblocks-devtools pointer-events-auto absolute bottom-[-23%] right-0 w-[50%]"
-                popup
-                title="DevTools"
-              >
-                <div className="relative aspect-[574/760] bg-black">
-                  <video
-                    autoPlay
-                    className="absolute h-full w-full object-cover"
-                    loop
-                    muted
-                    playsInline
-                    poster="/visuals/liveblocks/devtools.jpg"
-                    preload="metadata"
-                    src={withExternalCdn("/visuals/liveblocks/devtools.mp4")}
+          <div className="relative flex flex-1 items-center justify-center p-12 pb-20 pt-8 sm:-mr-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
+            <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
+              <div className="perspective pointer-events-none absolute inset-0">
+                <div className="transform-liveblocks-inbox pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-20%] lg:w-[40%]">
+                  <Image
+                    alt="A notifications inbox"
+                    className="liveblocks liveblocks-inbox absolute h-full w-full object-cover"
+                    height="520"
+                    priority
+                    src={liveblocksInbox}
+                    width="460"
                   />
                 </div>
-              </Browser>
+                <Code
+                  className="transform-liveblocks-code pointer-events-auto absolute left-[6%] top-[20%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
+                  code={liveblocksPrimitivesCode}
+                  language="tsx"
+                  title="Primitives.tsx"
+                />
+                <Browser
+                  className="transform-liveblocks-devtools pointer-events-auto absolute bottom-[-10%] right-[4%] w-[50%] lg:bottom-[-20%] lg:right-0 lg:w-[56%]"
+                  popup
+                  title="DevTools"
+                >
+                  <div className="relative aspect-[574/760] bg-black">
+                    <video
+                      autoPlay
+                      className="absolute h-full w-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      poster="/visuals/liveblocks/devtools.jpg"
+                      preload="metadata"
+                      src={withExternalCdn("/visuals/liveblocks/devtools.mp4")}
+                    />
+                  </div>
+                </Browser>
+                <div className="transform-liveblocks-thread pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[8%]">
+                  <div className="absolute right-[-17.9012%] top-[10.799%] z-10 aspect-[292/332] w-[45.0617%] overflow-hidden rounded-[4.1096%/3.6145%] shadow-floaty">
+                    <Image
+                      alt="An emoji picker"
+                      className="absolute h-full w-full object-cover"
+                      height="332"
+                      priority
+                      src={liveblocksEmojiPicker}
+                      width="292"
+                    />
+                  </div>
+                  <div className="absolute bottom-[15.982%] left-[32.4074%] z-10 aspect-[135/253] w-[20.833%] overflow-hidden rounded-[6.6667%/3.5573%] shadow-floaty">
+                    <Image
+                      alt="A list of mention suggestions"
+                      className="absolute h-full w-full object-cover"
+                      height="253"
+                      priority
+                      src={liveblocksMentionSuggestions}
+                      width="135"
+                    />
+                  </div>
+                  <div className="liveblocks liveblocks-thread absolute h-full w-full overflow-hidden rounded-[1.8518%/2.5918%] shadow-floaty">
+                    <Image
+                      alt="A thread with 2 comments and a composer"
+                      className="absolute h-full w-full object-cover"
+                      height="463"
+                      priority
+                      src={liveblocksThread}
+                      width="648"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -503,7 +655,7 @@ export function Work(props: ComponentProps<"section">) {
                       className="absolute h-full w-full object-cover"
                       height="460"
                       priority
-                      src={motion}
+                      src={framerMotion}
                       width="280"
                     />
                   </div>
@@ -561,7 +713,7 @@ export function Work(props: ComponentProps<"section">) {
               customization, showcasing advanced Symbols use&nbsp;cases.
             </p>
           </div>
-          <div className="perspective relative z-20 flex flex-1 items-center justify-center sm:-mr-12 sm:basis-1/3">
+          <div className="perspective relative z-20 flex flex-1 items-center justify-center max-sm:-mb-6 sm:-mr-12 sm:basis-1/3">
             <div className="transform-elements mx-12 mb-24 mt-0 grid aspect-square w-full max-w-sm grid-cols-2 gap-8 sm:absolute sm:m-0 sm:max-w-[22rem] md:-top-16 lg:top-[-5.5rem] lg:grid-cols-[1fr_1.2fr]">
               <Phone
                 className="relative -mb-8 self-end md:-mb-16"
@@ -569,7 +721,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 <Image
                   alt="A food app interface"
-                  className="elements absolute h-full w-full object-cover"
+                  className="elements elements-food absolute h-full w-full object-cover"
                   height="346"
                   src={elementsFood}
                   width="160"
@@ -578,7 +730,7 @@ export function Work(props: ComponentProps<"section">) {
               <Phone className="relative" direction="right">
                 <Image
                   alt="A music app interface"
-                  className="elements elements-offset absolute h-full w-full object-cover"
+                  className="elements elements-music absolute h-full w-full object-cover"
                   height="346"
                   src={elementsMusic}
                   width="160"
