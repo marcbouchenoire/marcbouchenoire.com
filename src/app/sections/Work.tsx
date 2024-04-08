@@ -379,6 +379,7 @@ export function Work(props: ComponentProps<"section">) {
                       poster="/visuals/liveblocks/devtools.jpg"
                       preload="metadata"
                       src={withExternalCdn("/visuals/liveblocks/devtools.mp4")}
+                      tabIndex={-1}
                     />
                   </div>
                 </Browser>
@@ -516,6 +517,7 @@ export function Work(props: ComponentProps<"section">) {
                       src={withExternalCdn(
                         "/visuals/liveblocks.io/product.mp4"
                       )}
+                      tabIndex={-1}
                     />
                   </div>
                 </Browser>
@@ -537,6 +539,7 @@ export function Work(props: ComponentProps<"section">) {
                       src={withExternalCdn(
                         "/visuals/liveblocks.io/marketing.mp4"
                       )}
+                      tabIndex={-1}
                     />
                   </div>
                 </Browser>
@@ -605,6 +608,7 @@ export function Work(props: ComponentProps<"section">) {
                     poster="/visuals/framer.com/video.jpg"
                     preload="metadata"
                     src={withExternalCdn("/visuals/framer.com/video.mp4")}
+                    tabIndex={-1}
                   />
                 </div>
               </Browser>
@@ -683,6 +687,7 @@ export function Work(props: ComponentProps<"section">) {
                       poster="/visuals/framer-motion/video.jpg"
                       preload="metadata"
                       src={withExternalCdn("/visuals/framer-motion/video.mp4")}
+                      tabIndex={-1}
                     />
                   </div>
                 </Browser>
@@ -771,6 +776,7 @@ export function Work(props: ComponentProps<"section">) {
                   poster="/visuals/master/headset.jpg"
                   preload="metadata"
                   src={withExternalCdn("/visuals/master/headset.mp4")}
+                  tabIndex={-1}
                 />
               </Headset>
               <div className="absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
@@ -796,6 +802,7 @@ export function Work(props: ComponentProps<"section">) {
                   poster="/visuals/master/phone.jpg"
                   preload="metadata"
                   src={withExternalCdn("/visuals/master/phone.mp4")}
+                  tabIndex={-1}
                 />
               </Phone>
               <Book className="transform-master-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]">
