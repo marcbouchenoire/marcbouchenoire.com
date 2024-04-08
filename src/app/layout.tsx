@@ -51,18 +51,6 @@ export default function Layout({ children }: PropsWithChildren) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
-        <link
-          as="fetch"
-          crossOrigin="anonymous"
-          href="/api/lastfm/latest"
-          rel="preload"
-        />
-        <link
-          as="fetch"
-          crossOrigin="anonymous"
-          href="/api/letterboxd/latest"
-          rel="preload"
-        />
       </head>
       <body className={inter.variable}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
