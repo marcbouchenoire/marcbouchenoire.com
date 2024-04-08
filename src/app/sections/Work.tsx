@@ -1,12 +1,12 @@
 import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
-import headsetReflections from "public/utilities/headset-reflections.png"
-import degreeVive from "public/visuals/degree-vive.png"
-import elementsFood from "public/visuals/elements-food.png"
-import elementsMusic from "public/visuals/elements-music.png"
-import motion from "public/visuals/framer-motion-secondary.png"
-import thesis from "public/visuals/thesis.png"
+import elementsFood from "public/visuals/elements/food.png"
+import elementsMusic from "public/visuals/elements/music.png"
+import motion from "public/visuals/framer-motion/static.png"
+import masterThesis from "public/visuals/master/thesis.png"
+import masterVive from "public/visuals/master/vive.png"
+import { withExternalCdn } from "src/utils/with-external-cdn"
 
 interface BrowserProps extends Omit<ComponentProps<"div">, "title"> {
   /**
@@ -134,26 +134,20 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
             </clipPath>
           </defs>
         </svg>
-        <div className="pointer-events-none absolute inset-0 z-10 mix-blend-overlay">
-          <Image
-            alt=""
-            aria-hidden
-            className="absolute h-full w-full"
-            height="960"
-            src={headsetReflections}
-            width="540"
-          />
-        </div>
-        <div className="pointer-events-none absolute inset-0 z-10 opacity-30">
-          <Image
-            alt=""
-            aria-hidden
-            className="absolute h-full w-full"
-            height="960"
-            src={headsetReflections}
-            width="540"
-          />
-        </div>
+        <img
+          aria-hidden
+          className="pointer-events-none absolute z-10 h-full w-full mix-blend-overlay"
+          height="960"
+          src="/various/headset-reflections.png"
+          width="540"
+        />
+        <img
+          aria-hidden
+          className="pointer-events-none absolute z-10 h-full w-full opacity-50"
+          height="960"
+          src="/various/headset-reflections.png"
+          width="540"
+        />
         {children}
       </div>
     </div>
@@ -256,16 +250,16 @@ export function Work(props: ComponentProps<"section">) {
                 popup
                 title="DevTools"
               >
-                <div className="relative aspect-[1460/1880] bg-black">
+                <div className="relative aspect-[574/760] bg-black">
                   <video
                     autoPlay
                     className="absolute h-full w-full object-cover"
                     loop
                     muted
                     playsInline
-                    poster="/visuals/devtools.jpg"
+                    poster="/visuals/liveblocks/devtools.jpg"
                     preload="metadata"
-                    src="/visuals/devtools.mp4"
+                    src={withExternalCdn("/visuals/liveblocks/devtools.mp4")}
                   />
                 </div>
               </Browser>
@@ -355,7 +349,7 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-secondary pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
+                  className="transform-liveblocks-io-product pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
@@ -365,16 +359,18 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/liveblocks-io-secondary.jpg"
+                      poster="/visuals/liveblocks.io/product.jpg"
                       preload="metadata"
-                      src="/visuals/liveblocks-io-secondary.mp4"
+                      src={withExternalCdn(
+                        "/visuals/liveblocks.io/product.mp4"
+                      )}
                     />
                   </div>
                 </Browser>
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-primary pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
+                  className="transform-liveblocks-io-marketing pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
@@ -384,9 +380,11 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/liveblocks-io.jpg"
+                      poster="/visuals/liveblocks.io/marketing.jpg"
                       preload="metadata"
-                      src="/visuals/liveblocks-io.mp4"
+                      src={withExternalCdn(
+                        "/visuals/liveblocks.io/marketing.mp4"
+                      )}
                     />
                   </div>
                 </Browser>
@@ -452,9 +450,9 @@ export function Work(props: ComponentProps<"section">) {
                     loop
                     muted
                     playsInline
-                    poster="/visuals/framer-com.jpg"
+                    poster="/visuals/framer.com/video.jpg"
                     preload="metadata"
-                    src="/visuals/framer-com.mp4"
+                    src={withExternalCdn("/visuals/framer.com/video.mp4")}
                   />
                 </div>
               </Browser>
@@ -489,7 +487,7 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-secondary pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
+                  className="transform-motion-static pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
                   title={
                     <>
                       framer.com
@@ -513,7 +511,7 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-primary pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
+                  className="transform-motion-video pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
                   title={
                     <>
                       framer.com
@@ -530,9 +528,9 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/framer-motion.jpg"
+                      poster="/visuals/framer-motion/video.jpg"
                       preload="metadata"
-                      src="/visuals/framer-motion.mp4"
+                      src={withExternalCdn("/visuals/framer-motion/video.mp4")}
                     />
                   </div>
                 </Browser>
@@ -611,16 +609,16 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="perspective pointer-events-none relative z-20 aspect-[4/3] w-full max-w-sm bg-green-600/0 sm:absolute sm:max-w-none lg:aspect-[9/7]">
-              <Headset className="transform-degree-headset pointer-events-auto absolute top-[16%] w-[90%]">
+              <Headset className="transform-master-headset pointer-events-auto absolute top-[16%] w-[90%]">
                 <video
                   autoPlay
                   className="absolute h-full w-full object-cover"
                   loop
                   muted
                   playsInline
-                  poster="/visuals/degree-headset.jpg"
+                  poster="/visuals/master/headset.jpg"
                   preload="metadata"
-                  src="/visuals/degree-headset.mp4"
+                  src={withExternalCdn("/visuals/master/headset.mp4")}
                 />
               </Headset>
               <div className="absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
@@ -629,12 +627,12 @@ export function Work(props: ComponentProps<"section">) {
                   className="absolute h-full w-full object-cover"
                   height="155"
                   priority
-                  src={degreeVive}
+                  src={masterVive}
                   width="200"
                 />
               </div>
               <Phone
-                className="transform-degree-phone pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
+                className="transform-master-phone pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
                 direction="left"
               >
                 <video
@@ -643,17 +641,17 @@ export function Work(props: ComponentProps<"section">) {
                   loop
                   muted
                   playsInline
-                  poster="/visuals/degree-phone.jpg"
+                  poster="/visuals/master/phone.jpg"
                   preload="metadata"
-                  src="/visuals/degree-phone.mp4"
+                  src={withExternalCdn("/visuals/master/phone.mp4")}
                 />
               </Phone>
-              <Book className="transform-degree-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]">
+              <Book className="transform-master-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]">
                 <Image
                   alt="The cover of my master’s thesis"
                   className="absolute h-full w-full"
                   height="182"
-                  src={thesis}
+                  src={masterThesis}
                   width="130"
                 />
               </Book>

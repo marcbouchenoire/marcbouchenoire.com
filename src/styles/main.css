@@ -517,11 +517,11 @@
   transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
 }
 
-.transform-liveblocks-io-primary {
+.transform-liveblocks-io-marketing {
   transform: rotateX(18deg) rotateY(-16deg) rotateZ(8deg) translateX(-2%);
 }
 
-.transform-liveblocks-io-secondary {
+.transform-liveblocks-io-product {
   transform: rotateX(26deg) rotateY(22deg) rotateZ(-12deg) translateX(2%);
 }
 
@@ -529,11 +529,11 @@
   transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
 }
 
-.transform-motion-primary {
+.transform-motion-video {
   transform: rotateX(18deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
 }
 
-.transform-motion-secondary {
+.transform-motion-static {
   transform: rotateX(12deg) rotateY(16deg) rotateZ(-4deg) translateX(2%);
 }
 
@@ -541,14 +541,14 @@
   transform: rotateX(6deg) rotateY(-12deg) rotateZ(4deg) translateX(-2%);
 }
 
-.transform-degree-phone {
+.transform-master-phone {
   transform: rotate(-8deg);
 }
 
-.transform-degree-headset {
+.transform-master-headset {
   transform: rotate(-6deg);
 }
 
-.transform-degree-thesis {
+.transform-master-thesis {
   transform: rotate(6deg);
 }
