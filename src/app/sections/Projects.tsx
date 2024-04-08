@@ -250,10 +250,9 @@ export function Projects(props: ComponentProps<"section">) {
               <Image
                 alt="Splatoon"
                 className="h-[2.5em] w-[2.5em]"
-                height="128"
                 priority
                 src={splatoon}
-                width="128"
+                width="40"
               />
             </h3>
             <p className="leading-relaxed text-gray-500 dark:text-gray-350">

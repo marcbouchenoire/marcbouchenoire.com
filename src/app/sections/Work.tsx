@@ -352,10 +352,9 @@ export function Work(props: ComponentProps<"section">) {
                   <Image
                     alt="A notifications inbox"
                     className="liveblocks liveblocks-inbox absolute h-full w-full object-cover"
-                    height="520"
                     priority
                     src={liveblocksInbox}
-                    width="460"
+                    width="190"
                   />
                 </div>
                 <Code
@@ -383,35 +382,32 @@ export function Work(props: ComponentProps<"section">) {
                     />
                   </div>
                 </Browser>
-                <div className="transform-liveblocks-thread pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[8%]">
+                <div className="transform-liveblocks-thread pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[12%]">
                   <div className="absolute right-[-17.9012%] top-[10.799%] z-10 aspect-[292/332] w-[45.0617%] overflow-hidden rounded-[4.1096%/3.6145%] shadow-floaty">
                     <Image
                       alt="An emoji picker"
                       className="absolute h-full w-full object-cover"
-                      height="332"
                       priority
                       src={liveblocksEmojiPicker}
-                      width="292"
+                      width="120"
                     />
                   </div>
                   <div className="absolute bottom-[15.982%] left-[32.4074%] z-10 aspect-[135/253] w-[20.833%] overflow-hidden rounded-[6.6667%/3.5573%] shadow-floaty">
                     <Image
                       alt="A list of mention suggestions"
                       className="absolute h-full w-full object-cover"
-                      height="253"
                       priority
                       src={liveblocksMentionSuggestions}
-                      width="135"
+                      width="60"
                     />
                   </div>
                   <div className="liveblocks liveblocks-thread absolute h-full w-full overflow-hidden rounded-[1.8518%/2.5918%] shadow-floaty">
                     <Image
                       alt="A thread with 2 comments and a composer"
                       className="absolute h-full w-full object-cover"
-                      height="463"
                       priority
                       src={liveblocksThread}
-                      width="648"
+                      width="260"
                     />
                   </div>
                 </div>
@@ -657,8 +653,6 @@ export function Work(props: ComponentProps<"section">) {
                     <Image
                       alt="The Framer Motion website"
                       className="absolute h-full w-full object-cover"
-                      height="460"
-                      priority
                       src={framerMotion}
                       width="280"
                     />
@@ -727,18 +721,16 @@ export function Work(props: ComponentProps<"section">) {
                 <Image
                   alt="A food app interface"
                   className="elements elements-food absolute h-full w-full object-cover"
-                  height="346"
                   src={elementsFood}
-                  width="160"
+                  width="180"
                 />
               </Phone>
               <Phone className="relative" direction="right">
                 <Image
                   alt="A music app interface"
                   className="elements elements-music absolute h-full w-full object-cover"
-                  height="346"
                   src={elementsMusic}
-                  width="160"
+                  width="180"
                 />
               </Phone>
             </div>
@@ -779,14 +771,12 @@ export function Work(props: ComponentProps<"section">) {
                   tabIndex={-1}
                 />
               </Headset>
-              <div className="absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
+              <div className="pointer-events-auto absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
                 <Image
                   alt="An HTC Vive VR headset"
                   className="absolute h-full w-full object-cover"
-                  height="155"
-                  priority
                   src={masterVive}
-                  width="200"
+                  width="160"
                 />
               </div>
               <Phone
@@ -809,7 +799,6 @@ export function Work(props: ComponentProps<"section">) {
                 <Image
                   alt="The cover of my master’s thesis"
                   className="absolute h-full w-full"
-                  height="182"
                   src={masterThesis}
                   width="130"
                 />

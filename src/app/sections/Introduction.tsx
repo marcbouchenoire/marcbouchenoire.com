@@ -18,7 +18,6 @@ export function Introduction(props: ComponentProps<"section">) {
             <Image
               alt="Myself"
               className="absolute inset-0 h-full w-full"
-              height="80"
               priority
               src={portrait}
               title="Myself"
@@ -29,7 +28,6 @@ export function Introduction(props: ComponentProps<"section">) {
             <Image
               alt="Tofu, my cat"
               className="absolute inset-0 h-full w-full"
-              height="64"
               priority
               src={tofu}
               title="Tofu, my cat"
@@ -56,7 +54,7 @@ export function Introduction(props: ComponentProps<"section">) {
           I’m currently living in Amsterdam and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="text-liveblocks-alternate dark:text-liveblocks-alternate-dark group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium focus:outline-none"
+            className="group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
