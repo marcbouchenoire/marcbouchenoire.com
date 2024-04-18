@@ -133,19 +133,16 @@ export interface Response {
  */
 export async function getLatestFilm(): Promise<Response | undefined> {
   try {
-    const response = await fetch(LETTERBOXD_FEED).then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          "There was an error while fetching the Letterboxd feed."
-        )
-      }
+    const response = await fetch(LETTERBOXD_FEED)
+    const text = await response.text()
 
-      return response.text()
-    })
+    console.log(LETTERBOXD_FEED)
+    console.log(response.ok, response.status, response.statusText)
+    console.log(response)
+    console.log(text)
 
     const parser = new XMLParser()
-    const { rss }: XMLParserDocument<LetterboxdResponse> =
-      parser.parse(response)
+    const { rss }: XMLParserDocument<LetterboxdResponse> = parser.parse(text)
 
     const [film] = rss.channel.item
       .filter((item): item is FilmEntry => "letterboxd:watchedDate" in item)
