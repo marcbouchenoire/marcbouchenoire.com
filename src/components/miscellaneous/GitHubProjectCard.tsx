@@ -5,7 +5,7 @@ import { Skeleton } from "../utils/Skeleton"
 import { ProjectCard } from "./ProjectCard"
 import { getRepository } from "src/utils/get-repository"
 
-interface Props extends ComponentProps<"div"> {
+interface GitHubProjectCardProps extends ComponentProps<"div"> {
   /**
    * The project's repository.
    */
@@ -61,14 +61,18 @@ async function GitHubProjectCardDate({
  * @param [props.repository] - The project's repository.
  * @param [props.className] - A list of one or more classes.
  */
-export function GitHubProjectCard({ children, repository, ...props }: Props) {
+export function GitHubProjectCard({
+  children,
+  repository,
+  ...props
+}: GitHubProjectCardProps) {
   return (
     <ProjectCard {...props}>
-      <div className="mb-8 flex items-center text-zinc-400">
-        <small className="flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
+      <div className="mb-8 flex items-center text-gray-400">
+        <small className="mr-4 flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
           <span className="flex items-center">
             <svg
-              className="mr-1 -ml-px flex-none"
+              className="-ml-px mr-1 flex-none"
               height="20"
               role="presentation"
               width="20"
@@ -93,7 +97,7 @@ export function GitHubProjectCard({ children, repository, ...props }: Props) {
           </span>
           <span className="flex items-center">
             <svg
-              className="mr-1 -ml-px flex-none"
+              className="-ml-px mr-1 flex-none"
               height="20"
               role="presentation"
               width="20"
@@ -113,7 +117,7 @@ export function GitHubProjectCard({ children, repository, ...props }: Props) {
         </small>
         <a
           aria-label="View on GitHub"
-          className="focusable ml-auto flex-none rounded-full transition hover:text-zinc-600 dark:hover:text-zinc-100"
+          className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-gray-600 dark:hover:text-gray-100"
           href={`https://github.com/${repository}`}
           rel="noreferrer"
           target="_blank"

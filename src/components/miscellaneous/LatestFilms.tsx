@@ -1,14 +1,30 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
-import { Skeleton } from "../../components/utils/Skeleton"
-import { useLatestFilm } from "../../hooks/use-latest-film"
-import { capitalize } from "../../utils/capitalize"
+import useSWR from "swr"
+import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
+import { Skeleton } from "src/components/utils/Skeleton"
+import { capitalize } from "src/utils/capitalize"
+import { json } from "src/utils/json"
+
+interface LatestFilmsProps extends ComponentProps<"div"> {
+  /**
+   * The maximum number of films to display.
+   */
+  limit?: number
+}
+
+interface LatestFilmProps extends ComponentProps<"a"> {
+  /**
+   * The film to display.
+   */
+  film?: Film
+}
 
 const variants: Variants = {
   hidden: {
@@ -25,13 +41,14 @@ const fade: Transition = {
 }
 
 /**
- * Display the latest film I watched from Letterboxd.
+ * Display a film from Letterboxd.
  *
  * @param props - A set of `a` props.
+ * @param [props.film] - The film to display.
  * @param [props.className] - A list of one or more classes.
  */
-export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
-  const { date, poster, rating, title, year, url } = useLatestFilm()
+function LatestFilm({ film, className, ...props }: LatestFilmProps) {
+  const { date, poster, rating, title, year, url } = film ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -45,7 +62,9 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
     } else if (isYesterday(absoluteDate)) {
       return "Yesterday"
     } else {
-      return capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      return capitalize(
+        formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+      )
     }
   }, [absoluteDate])
 
@@ -53,16 +72,16 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-zinc-900 dark:focus:ring-lime-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
+      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
         <svg
-          className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
+          className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
           viewBox="0 0 52 78"
           xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +113,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
           <svg
-            className="mr-1 -ml-px flex-none"
+            className="-ml-px mr-1 flex-none"
             height="20"
             role="presentation"
             width="20"
@@ -111,20 +130,18 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
             <time className="truncate" dateTime={absoluteDate.toISOString()}>
               {relativeDate}
             </time>
-          ) : (
-            <span className="truncate">Nothing watched</span>
-          )}
+          ) : null}
         </small>
-        <p className="mt-1 mb-1.5 flex items-center">
+        <p className="mb-1.5 mt-1 flex items-center">
           <span
-            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
+            className="truncate font-semibold text-gray-700 dark:text-gray-100"
             title={title}
           >
             {title ?? <Skeleton className="w-32" />}
           </span>{" "}
           {year && (
             <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400"
               dateTime={String(year)}
             >
               {year}
@@ -137,7 +154,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
           role="img"
         >
           <svg
-            className="absolute text-zinc-200 dark:text-zinc-700"
+            className="absolute text-gray-200 dark:text-gray-700"
             height="20"
             role="presentation"
             width="96"
@@ -149,7 +166,7 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
             />
           </svg>
           <svg
-            className="absolute text-zinc-600 dark:text-zinc-300"
+            className="absolute text-gray-600 dark:text-gray-300"
             height="20"
             role="presentation"
             style={{
@@ -166,5 +183,33 @@ export function LatestFilm({ className, ...props }: ComponentProps<"a">) {
         </div>
       </div>
     </a>
+  )
+}
+
+/**
+ * Display the latest films I watched from Letterboxd.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.limit] - The maximum number of films to display.
+ * @param [props.className] - A list of one or more classes.
+ */
+export function LatestFilms({
+  limit = 1,
+  className,
+  ...props
+}: LatestFilmsProps) {
+  const { data: films } = useSWR<Film[]>(
+    `/api/letterboxd/latest?limit=${limit}`,
+    json
+  )
+
+  return (
+    <div className={clsx(className, "flex flex-col gap-6")} {...props}>
+      {films
+        ? films.map((film, index) => <LatestFilm film={film} key={index} />)
+        : Array.from({ length: limit }, (_, index) => (
+            <LatestFilm key={index} />
+          ))}
+    </div>
   )
 }

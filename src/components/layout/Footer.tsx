@@ -28,20 +28,21 @@ export async function Footer({
   return (
     <footer
       className={clsx(
-        "flex flex-col font-medium text-zinc-700 dark:text-zinc-100",
+        "flex flex-col font-medium text-gray-700 dark:text-gray-100",
         className
       )}
       {...props}
     >
-      <hr className="w-full border-t border-zinc-150 dark:border-zinc-800" />
+      <hr className="w-full border-t border-gray-150 dark:border-gray-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
           <Emoji />{" "}
           <time className="hidden sm:inline" dateTime={String(year)}>
             {year}{" "}
           </time>
-          <span className="text-zinc-300 dark:text-zinc-600">—</span> he
-          <span className="text-zinc-300 dark:text-zinc-600">/</span>they
+          <span className="text-gray-300 dark:text-gray-600">—</span> he
+          <span className="text-gray-300 dark:text-gray-600">/</span>
+          they
         </span>
         <a
           className="link ml-auto inline-flex items-center gap-1.5"
@@ -65,7 +66,7 @@ export async function Footer({
           </svg>
           <span>
             <span>marcbouchenoire.com</span>
-            <span className="hidden text-zinc-350 dark:text-zinc-450 sm:inline">
+            <span className="hidden text-gray-350 dark:text-gray-450 sm:inline">
               #{commit}
             </span>
           </span>

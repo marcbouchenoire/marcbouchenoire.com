@@ -2,7 +2,6 @@
 
 import { ThemeProvider as DefaultThemeProvider } from "next-themes"
 import type { ComponentProps } from "react"
-import React from "react"
 
 /**
  * A client wrapper of next-themes' `ThemeProvider`.

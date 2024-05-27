@@ -12,7 +12,7 @@ import { ThemeToggle } from "../miscellaneous/ThemeToggle"
 export function Header({ className, ...props }: ComponentProps<"header">) {
   return (
     <header className={clsx(className, "pt-6 lg:pt-8")} {...props}>
-      <div className="flex items-center justify-between text-zinc-700 dark:text-zinc-100">
+      <div className="flex items-center justify-between text-gray-700 dark:text-gray-100">
         <InternetTime />
         <ThemeToggle />
       </div>

@@ -1,8 +1,8 @@
-import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestFilm } from "../../letterboxd/latest/get-latest-film"
+import { getLatestFilms } from "../../letterboxd/latest/get-latest-films"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
@@ -28,7 +28,7 @@ const RATING_HEIGHT = 20
  * @param [dark] - Whether to generate a dark variant.
  */
 async function generateLatestFilmWidget(dark?: boolean) {
-  const film = await getLatestFilm()
+  const [film] = await getLatestFilms()
 
   if (film) {
     const poster = film.poster ? await encodeImage(film.poster) : undefined
@@ -40,7 +40,9 @@ async function generateLatestFilmWidget(dark?: boolean) {
     } else if (isYesterday(absoluteDate)) {
       date = "Yesterday"
     } else {
-      date = capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      date = capitalize(
+        formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+      )
     }
 
     const svg = s(
@@ -71,10 +73,10 @@ async function generateLatestFilmWidget(dark?: boolean) {
         s("style", [
           `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#poster-background { fill: ${
-            theme.colors.zinc[dark ? "800" : "100"]
+            theme.colors.gray[dark ? "800" : "100"]
           }; }`,
           `#poster-placeholder { fill: ${
-            theme.colors.zinc[dark ? "600" : "300"]
+            theme.colors.gray[dark ? "600" : "300"]
           }; }`,
           `#date { color: ${
             theme.colors.lime[dark ? "400" : "500"]
@@ -84,11 +86,11 @@ async function generateLatestFilmWidget(dark?: boolean) {
             theme.letterSpacing.widest
           }; }`,
           `#date, #title { font-weight: ${theme.fontWeight.semibold}; }`,
-          `#title { color: ${theme.colors.zinc[dark ? "100" : "700"]}; }`,
-          `#rating-background { fill: ${theme.colors.zinc["200"]}; opacity: ${
+          `#title { color: ${theme.colors.gray[dark ? "100" : "700"]}; }`,
+          `#rating-background { fill: ${theme.colors.gray["200"]}; opacity: ${
             dark ? 0.3 : 1
           }; }`,
-          `#rating-fill { fill: ${theme.colors.zinc[dark ? "300" : "600"]}; }`
+          `#rating-fill { fill: ${theme.colors.gray[dark ? "300" : "600"]}; }`
         ]),
         s("g", { "clip-path": "url(#poster-mask)" }, [
           s("use", {

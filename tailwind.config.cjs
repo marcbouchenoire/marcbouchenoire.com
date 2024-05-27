@@ -45,66 +45,96 @@ module.exports = {
     extend: {
       boxShadow: {
         floaty:
-          "0px 0px 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
+          "0 0 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
         phone:
           "inset 1px 1px 8px rgba(255, 255, 255, 0.8), inset -1px -1px 8px rgba(0, 0, 0, 0.1)",
         "phone-invert":
-          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)"
+          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)",
+        polaroid:
+          "inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 12px rgba(0, 0, 0, 0.2), inset 0 1px 8px rgba(0, 0, 0, 0.2)"
       },
       colors: {
-        dimmmensions: {
-          400: "#b488fb",
-          500: "#9a59f6"
-        },
-        dribbble: {
-          400: "#f377a9",
-          500: "#ea4c89"
-        },
-        mastodon: {
-          400: "#7475ff",
-          500: "#595aff"
-        },
-        primary: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e"
-        },
-        splatoon: {
-          400: "#ff7fbd",
-          500: "#f7499e"
-        },
-        symbolist: {
-          400: "#f8719d",
-          500: "#f1437b"
+        gray: {
+          50: "#fafafa",
+          100: "#f4f4f5",
+          150: "#ececee",
+          200: "#e4e4e7",
+          250: "#dcdce0",
+          300: "#d4d4d8",
+          350: "#bbbbc1",
+          400: "#a1a1aa",
+          450: "#898992",
+          500: "#71717a",
+          550: "#62626b",
+          600: "#52525b",
+          650: "#494951",
+          700: "#3f3f46",
+          750: "#333338",
+          800: "#27272a",
+          850: "#202023",
+          900: "#18181b",
+          950: "#09090b"
         },
         twitter: {
-          400: "#53bcf9",
-          500: "#1da1f2"
+          DEFAULT: "#1da1f2",
+          dark: "#53bcf9"
+        },
+        mastodon: {
+          DEFAULT: "#595aff",
+          dark: "#7475ff"
+        },
+        github: {
+          DEFAULT: "#27272a",
+          dark: "#f4f4f5"
+        },
+        dribbble: {
+          DEFAULT: "#ea4c89",
+          dark: "#f377a9"
+        },
+        dimmmensions: {
+          DEFAULT: "#9a59f6",
+          dark: "#b488fb"
+        },
+        symbolist: {
+          DEFAULT: "#f1437b",
+          dark: "#f8719d"
         },
         typometer: {
-          400: "#22d3ee",
-          500: "#06b6d4"
+          DEFAULT: "#06b6d4",
+          dark: "#22d3ee"
         },
-        zinc: {
-          150: "#ececee",
-          250: "#dcdce0",
-          350: "#bbbbc1",
-          450: "#898992",
-          550: "#62626b",
-          650: "#494951",
-          750: "#333338",
-          850: "#202023",
-          950: "#121215"
+        splatoon: {
+          DEFAULT: "#f1437b",
+          dark: "#f8719d"
+        },
+        liveblocks: {
+          DEFAULT: "#8361ed",
+          dark: "#9b7ef4",
+          alternate: {
+            DEFAULT: "#594b99",
+            dark: "#d3c9f5"
+          }
+        },
+        framer: {
+          DEFAULT: "#0099ff",
+          dark: "#33aaff"
+        },
+        awkward: {
+          DEFAULT: "#52525b",
+          dark: "#d4d4d8"
+        },
+        lecolededesign: {
+          DEFAULT: "#d31b2e",
+          dark: "#f4384b"
         }
       },
       dropShadow: {
+        floaty: [
+          "0 0 2px rgba(0, 0, 0, 0.04)",
+          "0 2px 8px rgba(0, 0, 0, 0.04)",
+          "0 4px 18px rgba(0, 0, 0, 0.06)",
+          "0 8px 42px rgba(0, 0, 0, 0.12)"
+        ],
         phone: "0 1px 4px rgba(0, 0, 0, 0.06)"
       },
       fontFamily: {
@@ -125,10 +155,14 @@ module.exports = {
         ]
       },
       maxWidth: ({ theme }) => ({
+        "screen-md-6": `calc(${theme("screens.md")} + ${theme("spacing.12")})`,
         "screen-md-8": `calc(${theme("screens.md")} + ${theme("spacing.16")})`,
         "screen-md-12": `calc(${theme("screens.md")} + ${theme("spacing.24")})`,
         "screen-md-16": `calc(${theme("screens.md")} + ${theme("spacing.32")})`
       }),
+      spacing: {
+        13: "3.25rem"
+      },
       transitionProperty: {
         DEFAULT:
           "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, text-decoration-color"
@@ -138,14 +172,5 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    plugin(({ addVariant }) => {
-      addVariant(
-        "supports-backdrop",
-        "@supports ((-webkit-backdrop-filter: blur(0px)) or (backdrop-filter: blur(0px)))"
-      )
-    }),
-    paddingSafe
-  ]
+  plugins: [require("@tailwindcss/typography"), paddingSafe]
 }

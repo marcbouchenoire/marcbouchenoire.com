@@ -1,14 +1,31 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNow, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
-import { Skeleton } from "../../components/utils/Skeleton"
-import { useLatestSong } from "../../hooks/use-latest-song"
-import { capitalize } from "../../utils/capitalize"
+import useSWR from "swr"
+import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
+import { revalidate } from "src/app/api/lastfm/latest/route"
+import { Skeleton } from "src/components/utils/Skeleton"
+import { capitalize } from "src/utils/capitalize"
+import { json } from "src/utils/json"
+
+interface LatestSongsProps extends ComponentProps<"div"> {
+  /**
+   * The maximum number of songs to display.
+   */
+  limit?: number
+}
+
+interface LatestSongProps extends ComponentProps<"a"> {
+  /**
+   * The song to display.
+   */
+  song?: Song
+}
 
 const variants: Variants = {
   hidden: {
@@ -25,13 +42,14 @@ const fade: Transition = {
 }
 
 /**
- * Display the latest song I listened to from Last.fm.
+ * Display a song from Last.fm.
  *
  * @param props - A set of `a` props.
+ * @param [props.song] - The song to display.
  * @param [props.className] - A list of one or more classes.
  */
-export function LatestSong({ className, ...props }: ComponentProps<"a">) {
-  const { artist, cover, date, title, year, playing, url } = useLatestSong()
+function LatestSong({ song, className, ...props }: LatestSongProps) {
+  const { artist, cover, date, title, playing, url } = song ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
 
@@ -42,23 +60,23 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
 
     return isYesterday(absoluteDate)
       ? "Yesterday"
-      : capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      : capitalize(formatDistanceToNowStrict(absoluteDate, { addSuffix: true }))
   }, [absoluteDate])
 
   return (
     <a
       className={clsx(
         className,
-        "focusable flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-zinc-900 dark:focus:ring-red-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-gray-900 dark:focus:ring-red-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
+      <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
         <svg
-          className="absolute h-full w-full text-zinc-300 dark:text-zinc-600"
+          className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
           viewBox="0 0 78 78"
           xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +106,7 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
           <svg
-            className="mr-1 -ml-px flex-none will-change-transform"
+            className="-ml-px mr-1 flex-none will-change-transform"
             fill="currentColor"
             height="20"
             role="presentation"
@@ -174,32 +192,53 @@ export function LatestSong({ className, ...props }: ComponentProps<"a">) {
             <time className="truncate" dateTime={absoluteDate.toISOString()}>
               {relativeDate}
             </time>
-          ) : (
-            <span className="truncate">
-              {playing ? "Currently playing" : "Not playing"}
-            </span>
-          )}
+          ) : playing ? (
+            <span className="truncate">Currently playing</span>
+          ) : null}
         </small>
         <p className="my-1 flex items-center">
           <span
-            className="truncate font-semibold text-zinc-700 dark:text-zinc-100"
+            className="truncate font-semibold text-gray-700 dark:text-gray-100"
             title={title}
           >
             {title ?? <Skeleton className="w-40" />}
-          </span>{" "}
-          {year && (
-            <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-zinc-100 p-1 text-xs font-medium leading-none text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400"
-              dateTime={String(year)}
-            >
-              {year}
-            </time>
-          )}
+          </span>
         </p>
-        <p className="truncate text-zinc-500 dark:text-zinc-400" title={artist}>
+        <p className="truncate text-gray-500 dark:text-gray-400" title={artist}>
           {artist ?? <Skeleton className="w-28" />}
         </p>
       </div>
     </a>
+  )
+}
+
+/**
+ * Display the latest songs I listened to from Last.fm.
+ *
+ * @param props - A set of `div` props.
+ * @param [props.limit] - The maximum number of songs to display.
+ * @param [props.className] - A list of one or more classes.
+ */
+export function LatestSongs({
+  limit = 1,
+  className,
+  ...props
+}: LatestSongsProps) {
+  const { data: songs } = useSWR<Song[]>(
+    `/api/lastfm/latest?limit=${limit}`,
+    json,
+    {
+      refreshInterval: revalidate * 1000
+    }
+  )
+
+  return (
+    <div className={clsx(className, "flex flex-col gap-6")} {...props}>
+      {songs
+        ? songs.map((song, index) => <LatestSong key={index} song={song} />)
+        : Array.from({ length: limit }, (_, index) => (
+            <LatestSong key={index} />
+          ))}
+    </div>
   )
 }

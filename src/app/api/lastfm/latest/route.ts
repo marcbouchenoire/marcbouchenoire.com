@@ -1,14 +1,22 @@
+import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
-import { getLatestSong } from "./get-latest-song"
+import { getLatestSongs } from "./get-latest-songs"
 
 /**
- * A Route Handler fetching the latest song I listened to from Last.fm.
+ * A Route Handler fetching the latest songs I listened to from Last.fm.
+ *
+ * @param request - The incoming request.
  */
-export async function GET() {
-  const song = await getLatestSong()
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const limit = searchParams.has("limit")
+    ? Number(searchParams.get("limit"))
+    : undefined
 
-  return song
-    ? NextResponse.json(song)
+  const songs = await getLatestSongs(limit)
+
+  return songs
+    ? NextResponse.json(songs)
     : new Response(undefined, { status: 500 })
 }
 

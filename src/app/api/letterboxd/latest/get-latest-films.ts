@@ -13,7 +13,7 @@ interface XMLParserDocument<T> {
   rss: T
 }
 
-interface FilmEntry {
+interface LetterboxdFilmEntry {
   /**
    * The film entry's description.
    */
@@ -60,7 +60,7 @@ interface FilmEntry {
   title: string
 }
 
-interface UnknownEntry {
+interface LetterboxdUnknownEntry {
   [key: string]: unknown | undefined
 
   /**
@@ -82,7 +82,7 @@ interface LetterboxdResponse {
     /**
      * The feed's content.
      */
-    item: (FilmEntry | UnknownEntry)[]
+    item: (LetterboxdFilmEntry | LetterboxdUnknownEntry)[]
 
     /**
      * The feed's URL.
@@ -96,9 +96,9 @@ interface LetterboxdResponse {
   }
 }
 
-export interface Response {
+export interface Film {
   /**
-   * The date at which the song was listened to.
+   * The date at which the film was watched.
    */
   date: string
 
@@ -129,9 +129,31 @@ export interface Response {
 }
 
 /**
- * Fetch the latest film I watched from Letterboxd.
+ * Format a Letterboxd film entry.
+ *
+ * @param entry - A Letterboxd film entry.
  */
-export async function getLatestFilm(): Promise<Response | undefined> {
+function formatFilm(entry: LetterboxdFilmEntry): Film {
+  const [poster] =
+    entry.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
+  const [, slug] = entry.link.match(/film\/([^/]*)\/?/) ?? []
+
+  return {
+    title: decode(entry["letterboxd:filmTitle"]),
+    year: entry["letterboxd:filmYear"],
+    rating: entry["letterboxd:memberRating"],
+    date: entry["letterboxd:watchedDate"],
+    poster,
+    url: LETTERBOXD_FILM_URL(slug)
+  }
+}
+
+/**
+ * Fetch the latest films I watched from Letterboxd.
+ *
+ * @param limit - The maximum number of films to return.
+ */
+export async function getLatestFilms(limit = 1): Promise<Film[]> {
   try {
     const response = await fetch(LETTERBOXD_FEED).then((response) => {
       if (!response.ok) {
@@ -147,26 +169,18 @@ export async function getLatestFilm(): Promise<Response | undefined> {
     const { rss }: XMLParserDocument<LetterboxdResponse> =
       parser.parse(response)
 
-    const [film] = rss.channel.item
-      .filter((item): item is FilmEntry => "letterboxd:watchedDate" in item)
+    const films = rss.channel.item
+      .filter(
+        (item): item is LetterboxdFilmEntry => "letterboxd:watchedDate" in item
+      )
       .sort((a, b) =>
         b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
       )
-    const [poster] =
-      film.description.match(/(http(s?):)([\s\w./|-])*\.jpg/) ?? []
-    const [, slug] = film.link.match(/film\/([^/]*)\/?/) ?? []
 
-    return {
-      title: decode(film["letterboxd:filmTitle"]),
-      year: film["letterboxd:filmYear"],
-      rating: film["letterboxd:memberRating"],
-      date: film["letterboxd:watchedDate"],
-      poster,
-      url: LETTERBOXD_FILM_URL(slug)
-    }
+    return films.slice(0, limit).map(formatFilm)
   } catch (error) {
     console.error(error)
 
-    return
+    return []
   }
 }

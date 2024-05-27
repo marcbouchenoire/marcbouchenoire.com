@@ -1,8 +1,8 @@
-import { formatDistanceToNow, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestSong } from "../../lastfm/latest/get-latest-song"
+import { getLatestSongs } from "../../lastfm/latest/get-latest-songs"
 import theme from "src/theme.json"
 import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
@@ -25,7 +25,7 @@ const ICON_SIZE = 20
  * @param [dark] - Whether to generate a dark variant.
  */
 async function generateLatestSongWidget(dark?: boolean) {
-  const song = await getLatestSong()
+  const [song] = await getLatestSongs()
 
   if (song) {
     const cover = song.cover ? await encodeImage(song.cover) : undefined
@@ -35,7 +35,9 @@ async function generateLatestSongWidget(dark?: boolean) {
       const absoluteDate = new Date(song.date * 1000)
       const relativeDate = isYesterday(absoluteDate)
         ? "Yesterday"
-        : capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+        : capitalize(
+            formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+          )
 
       date = relativeDate
     } else {
@@ -65,10 +67,10 @@ async function generateLatestSongWidget(dark?: boolean) {
         s("style", [
           `:root { font-family: ${theme.fontFamily.sans}; font-size: ${theme.fontSize.base}; }`,
           `#cover-background { fill: ${
-            theme.colors.zinc[dark ? "800" : "100"]
+            theme.colors.gray[dark ? "800" : "100"]
           }; }`,
           `#cover-placeholder { fill: ${
-            theme.colors.zinc[dark ? "600" : "300"]
+            theme.colors.gray[dark ? "600" : "300"]
           }; }`,
           `#date { color: ${
             theme.colors.rose[dark ? "400" : "500"]
@@ -78,8 +80,8 @@ async function generateLatestSongWidget(dark?: boolean) {
             theme.letterSpacing.widest
           }; }`,
           `#date, #title { font-weight: ${theme.fontWeight.semibold}; }`,
-          `#title { color: ${theme.colors.zinc[dark ? "100" : "700"]}; }`,
-          `#artist { color: ${theme.colors.zinc[dark ? "400" : "500"]}; }`
+          `#title { color: ${theme.colors.gray[dark ? "100" : "700"]}; }`,
+          `#artist { color: ${theme.colors.gray[dark ? "400" : "500"]}; }`
         ]),
         s("g", { "clip-path": "url(#cover-mask)" }, [
           s("use", {
