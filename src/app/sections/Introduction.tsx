@@ -1,7 +1,7 @@
 import Image from "next/image"
 import type { ComponentProps } from "react"
 import portrait from "public/portrait.jpg"
-import tofu from "public/tofu.jpg"
+import { TofuPolaroid } from "src/components/miscellaneous/TofuPolaroid"
 import { Characters } from "src/components/utils/Characters"
 
 /**
@@ -14,26 +14,17 @@ export function Introduction(props: ComponentProps<"section">) {
     <section {...props}>
       <div>
         <div className="relative size-[80px]">
-          <div className="portrait absolute h-full w-full bg-gray-800/10 dark:bg-gray-100/10">
+          <div className="absolute h-full w-full select-none rounded-full bg-gray-800/10 dark:bg-gray-100/10">
             <Image
-              alt="Myself"
-              className="absolute inset-0 h-full w-full"
+              alt="Marc Bouchenoire"
+              className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden rounded-full"
               priority
               src={portrait}
-              title="Myself"
+              title="Marc Bouchenoire"
               width="80"
             />
           </div>
-          <div className="absolute bottom-0 right-0 size-[26px] overflow-hidden rounded-full bg-gray-800/10 dark:bg-gray-100/10">
-            <Image
-              alt="Tofu, my cat"
-              className="absolute inset-0 h-full w-full"
-              priority
-              src={tofu}
-              title="Tofu, my cat"
-              width="64"
-            />
-          </div>
+          <TofuPolaroid className="-bottom-0.5 -right-1 w-7" />
         </div>
         <h1 className="mb-1 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
@@ -54,17 +45,17 @@ export function Introduction(props: ComponentProps<"section">) {
           I’m currently living in Amsterdam and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="group relative whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
+            className="group relative ml-[-0.1em] mr-[0.125em] whitespace-nowrap pl-[0.2em] pr-[0.175em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             <span
               aria-hidden
-              className="pointer-events-none absolute left-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-left-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus:dark:before:opacity-30"
+              className="pointer-events-none absolute right-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-l-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-right-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus:dark:before:opacity-30"
             >
-              <span className="absolute -left-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
-              <span className="absolute -left-px top-0 origin-top-left -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none  text-white dark:bg-liveblocks-dark">
+              <span className="absolute -right-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
+              <span className="absolute -right-px top-0 origin-top-right -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-br-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none  text-white dark:bg-liveblocks-dark">
                 Marc
               </span>
             </span>
@@ -75,12 +66,12 @@ export function Introduction(props: ComponentProps<"section">) {
       </div>
       <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3">
         <a
-          aria-label="Twitter · 𝕏"
+          aria-label="Twitter (or 𝕏)"
           className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-twitter transition hover:text-twitter/50 hover:shadow-twitter/5 focus:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus:ring-twitter-dark/40"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
-          title="Twitter · 𝕏"
+          title="Twitter (or 𝕏)"
         >
           <svg
             className="[transform:scaleY(-1)]"
@@ -164,7 +155,7 @@ export function Introduction(props: ComponentProps<"section">) {
           </svg>
         </a>
         <a
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-orange-500 transition hover:text-orange-500/50 hover:shadow-orange-500/5 focus:ring-orange-500/40 dark:text-orange-400 dark:hover:text-orange-400/50 dark:focus:ring-orange-400/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-red-500 transition hover:text-red-500/50 hover:shadow-red-500/5 focus:ring-red-500/40 dark:text-red-400 dark:hover:text-red-400/50 dark:focus:ring-red-400/40"
           href="mailto:mail@marcbouchenoire.com"
           title="Email"
         >

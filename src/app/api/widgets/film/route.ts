@@ -1,4 +1,4 @@
-import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
@@ -40,7 +40,9 @@ async function generateLatestFilmWidget(dark?: boolean) {
     } else if (isYesterday(absoluteDate)) {
       date = "Yesterday"
     } else {
-      date = capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      date = capitalize(
+        formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+      )
     }
 
     const svg = s(

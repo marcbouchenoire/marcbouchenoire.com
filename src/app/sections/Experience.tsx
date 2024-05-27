@@ -5,19 +5,19 @@ import type { ComponentProps } from "react"
  *
  * @param props - A set of `section` props.
  */
-export function Resume(props: ComponentProps<"section">) {
+export function Experience(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
-        Résumé
+        Experience
       </h2>
       <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
-        A history of places I’ve worked and studied at.
+        The places I’ve worked and studied at.
       </p>
       <ul className="mt-8">
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 flex-none cursor-pointer rounded-md bg-liveblocks/10 text-liveblocks transition hover:bg-liveblocks/20 focus:ring-liveblocks/40 dark:bg-liveblocks-dark/20 dark:text-liveblocks-dark dark:hover:bg-liveblocks-dark/30 dark:focus:ring-liveblocks-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-liveblocks/10 text-liveblocks transition hover:bg-liveblocks/20 focus:ring-liveblocks/40 dark:bg-liveblocks-dark/20 dark:text-liveblocks-dark dark:hover:bg-liveblocks-dark/30 dark:focus:ring-liveblocks-dark/40"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
@@ -41,33 +41,11 @@ export function Resume(props: ComponentProps<"section">) {
                 Liveblocks
               </span>
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
-                2024
-                <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
-                </span>
-                Present
-              </span>
-            </p>
-            <p className="flex items-center truncate">
-              <span className="flex-1 truncate text-gray-500 dark:text-gray-400">
-                Senior Staff Design Engineer
-              </span>
-            </p>
-          </div>
-        </li>
-        <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
-          <div className="aspect-square w-12 flex-none" />
-          <div className="flex min-w-0 flex-col justify-center">
-            <p className="mb-1 flex items-center">
-              <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
-                Liveblocks
-              </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2023
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   —
                 </span>
-                24
+                Present
               </span>
             </p>
             <p className="flex items-center truncate">
@@ -78,7 +56,7 @@ export function Resume(props: ComponentProps<"section">) {
           </div>
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
-          <div className="aspect-square w-12 flex-none" />
+          <div className="aspect-square w-13 flex-none" />
           <div className="flex min-w-0 flex-col justify-center">
             <p className="mb-1 flex items-center">
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
@@ -101,7 +79,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 flex-none cursor-pointer rounded-md bg-framer/10 text-framer transition hover:bg-framer/20 focus:ring-framer/40 dark:bg-framer-dark/20 dark:text-framer-dark dark:hover:bg-framer-dark/30 dark:focus:ring-framer-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-framer/10 text-framer transition hover:bg-framer/20 focus:ring-framer/40 dark:bg-framer-dark/20 dark:text-framer-dark dark:hover:bg-framer-dark/30 dark:focus:ring-framer-dark/40"
             href="https://www.framer.com/"
             rel="noreferrer"
             target="_blank"
@@ -140,7 +118,7 @@ export function Resume(props: ComponentProps<"section">) {
           </div>
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
-          <div className="aspect-square w-12 flex-none" />
+          <div className="aspect-square w-13 flex-none" />
           <div className="flex min-w-0 flex-col justify-center">
             <p className="mb-1 flex items-center">
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
@@ -162,7 +140,7 @@ export function Resume(props: ComponentProps<"section">) {
           </div>
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
-          <div className="aspect-square w-12 flex-none" />
+          <div className="aspect-square w-13 flex-none" />
           <div className="flex min-w-0 flex-col justify-center">
             <p className="mb-1 flex items-center">
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
@@ -181,7 +159,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 flex-none cursor-pointer rounded-md bg-awkward/10 text-awkward transition hover:bg-awkward/20 focus:ring-awkward/40 dark:bg-awkward-dark/20 dark:text-awkward-dark dark:hover:bg-awkward-dark/30 dark:focus:ring-awkward-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-awkward/10 text-awkward transition hover:bg-awkward/20 focus:ring-awkward/40 dark:bg-awkward-dark/20 dark:text-awkward-dark dark:hover:bg-awkward-dark/30 dark:focus:ring-awkward-dark/40"
             href="https://www.awkward.co/"
             rel="noreferrer"
             target="_blank"
@@ -217,7 +195,7 @@ export function Resume(props: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-12 flex-none cursor-pointer rounded-md bg-lecolededesign/10 text-lecolededesign transition hover:bg-lecolededesign/20 focus:ring-lecolededesign/40 dark:bg-lecolededesign-dark/20 dark:text-lecolededesign-dark dark:hover:bg-lecolededesign-dark/30 dark:focus:ring-lecolededesign-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-lecolededesign/10 text-lecolededesign transition hover:bg-lecolededesign/20 focus:ring-lecolededesign/40 dark:bg-lecolededesign-dark/20 dark:text-lecolededesign-dark dark:hover:bg-lecolededesign-dark/30 dark:focus:ring-lecolededesign-dark/40"
             href="https://en.lecolededesign.com/"
             rel="noreferrer"
             target="_blank"
@@ -256,7 +234,7 @@ export function Resume(props: ComponentProps<"section">) {
           </div>
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
-          <div className="aspect-square w-12 flex-none" />
+          <div className="aspect-square w-13 flex-none" />
           <div className="flex min-w-0 flex-col justify-center">
             <p className="mb-1 flex items-center">
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">

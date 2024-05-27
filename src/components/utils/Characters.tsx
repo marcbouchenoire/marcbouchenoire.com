@@ -1,3 +1,4 @@
+import { clsx } from "clsx"
 import type { CSSProperties, ComponentProps } from "react"
 import { useMemo } from "react"
 
@@ -14,24 +15,28 @@ export interface CharactersProps
  *
  * @param props - A set of `span` props applied to each character.
  * @param [props.children] - A string of characters to split.
- * @param [props.style] - A set of inline styles.
+ * @param [props.className] - A list of one or more classes.
  */
 export function Characters({
   children = "",
-  style,
+  className,
   ...props
 }: CharactersProps) {
   const characters = useMemo(() => [...children], [children])
 
   return (
-    <span aria-label={children} role="text">
+    <span
+      aria-label={children}
+      className={clsx(className, "whitespace-nowrap")}
+      role="text"
+      {...props}
+    >
       {characters.map((character, index) => (
         <span
           aria-hidden
           data-character
           key={`${character}-${index}`}
-          style={{ "--character": index, ...style } as CSSProperties}
-          {...props}
+          style={{ "--character": index } as CSSProperties}
         >
           {character}
         </span>

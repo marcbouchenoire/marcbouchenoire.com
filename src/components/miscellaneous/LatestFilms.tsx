@@ -1,13 +1,13 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNow, isToday, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
-import { Film } from "src/app/api/letterboxd/latest/get-latest-films"
+import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
 import { Skeleton } from "src/components/utils/Skeleton"
 import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
@@ -19,7 +19,7 @@ interface LatestFilmsProps extends ComponentProps<"div"> {
   limit?: number
 }
 
-interface FilmProps extends ComponentProps<"a"> {
+interface LatestFilmProps extends ComponentProps<"a"> {
   /**
    * The film to display.
    */
@@ -47,7 +47,7 @@ const fade: Transition = {
  * @param [props.film] - The film to display.
  * @param [props.className] - A list of one or more classes.
  */
-function Film({ film, className, ...props }: FilmProps) {
+function LatestFilm({ film, className, ...props }: LatestFilmProps) {
   const { date, poster, rating, title, year, url } = film ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
@@ -62,7 +62,9 @@ function Film({ film, className, ...props }: FilmProps) {
     } else if (isYesterday(absoluteDate)) {
       return "Yesterday"
     } else {
-      return capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      return capitalize(
+        formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+      )
     }
   }, [absoluteDate])
 
@@ -128,9 +130,7 @@ function Film({ film, className, ...props }: FilmProps) {
             <time className="truncate" dateTime={absoluteDate.toISOString()}>
               {relativeDate}
             </time>
-          ) : (
-            <span className="truncate">Nothing watched</span>
-          )}
+          ) : null}
         </small>
         <p className="mb-1.5 mt-1 flex items-center">
           <span
@@ -206,8 +206,10 @@ export function LatestFilms({
   return (
     <div className={clsx(className, "flex flex-col gap-6")} {...props}>
       {films
-        ? films.map((film, index) => <Film film={film} key={index} />)
-        : Array.from({ length: limit }, (_, index) => <Film key={index} />)}
+        ? films.map((film, index) => <LatestFilm film={film} key={index} />)
+        : Array.from({ length: limit }, (_, index) => (
+            <LatestFilm key={index} />
+          ))}
     </div>
   )
 }

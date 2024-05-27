@@ -1,4 +1,4 @@
-import { formatDistanceToNow, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
@@ -35,7 +35,9 @@ async function generateLatestSongWidget(dark?: boolean) {
       const absoluteDate = new Date(song.date * 1000)
       const relativeDate = isYesterday(absoluteDate)
         ? "Yesterday"
-        : capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+        : capitalize(
+            formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
+          )
 
       date = relativeDate
     } else {

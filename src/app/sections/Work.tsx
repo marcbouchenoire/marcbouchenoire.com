@@ -282,47 +282,23 @@ function CustomComposer(props) {
 export function Work(props: ComponentProps<"section">) {
   return (
     <section {...props}>
-      <div className="content mb-8">
-        <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
-          Work
-        </h2>
-        <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
-          A selection of projects I worked on in the past few years.
-        </p>
-      </div>
       <div className="content lg:max-w-screen-md-12">
         <div className="relative z-10 mb-5 flex flex-col rounded-lg bg-blue-500 shadow-xl shadow-blue-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-cyan-400/60 before:to-cyan-400/0 dark:bg-blue-400 dark:shadow-blue-400/10 dark:before:from-cyan-300/60 dark:before:to-cyan-300/0 sm:mb-8 sm:flex-row lg:mb-10">
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-blue-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-blue-900">
               Liveblocks
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-cyan-100/20 p-1 text-xs font-medium leading-none text-blue-100 dark:bg-blue-800/20 dark:text-blue-900/80">
-                2023
-                <span className="mx-0.5 text-blue-100/60 dark:text-blue-900/40">
-                  —
-                </span>
-                Present
-              </span>
             </h3>
             <p className="leading-relaxed text-blue-100 dark:text-blue-900/80">
-              At{" "}
-              <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
-                href="https://liveblocks.io/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Liveblocks
-              </a>
-              , my focus slowly shifted towards the product, starting with{" "}
+              I started getting involved on the product engineering side with{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
                 href="https://liveblocks.io/devtools"
                 rel="noreferrer"
                 target="_blank"
               >
-                a custom DevTools extension
-              </a>{" "}
-              and culminating with{" "}
+                our DevTools extension
+              </a>
+              , and it then became my primary side with{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
                 href="https://liveblocks.io/comments"
@@ -331,24 +307,51 @@ export function Work(props: ComponentProps<"section">) {
               >
                 Comments
               </a>
-              . Since then, I’ve been defining the{" "}
+              . I’m now focusing on the React layer of our opinionated products,
+              from{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
-                href="https://react.dev/"
+                href="https://liveblocks.io/docs/products/comments/default-components"
                 rel="noreferrer"
                 target="_blank"
               >
-                React
+                component APIs
               </a>{" "}
-              side of our opinionated products, from component APIs to default
-              styles, from hooks to unstyled primitives, rich text editors,
-              emoji pickers, internationalization, and more.
+              to{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://liveblocks.io/docs/products/comments/styling-and-customization"
+                rel="noreferrer"
+                target="_blank"
+              >
+                default styles
+              </a>
+              , from{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://liveblocks.io/docs/products/comments/hooks"
+                rel="noreferrer"
+                target="_blank"
+              >
+                hooks
+              </a>{" "}
+              to{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://liveblocks.io/docs/products/comments/primitives"
+                rel="noreferrer"
+                target="_blank"
+              >
+                unstyled primitives
+              </a>
+              , rich text editors, emoji pickers, internationalization,
+              and&nbsp;more.
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pb-20 pt-8 sm:-mr-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
-                <div className="transform-liveblocks-inbox pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-20%] lg:w-[40%]">
+                <div className="transform-liveblocks-inbox pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-12%] lg:w-[40%]">
                   <Image
                     alt="A notifications inbox"
                     className="liveblocks liveblocks-inbox absolute h-full w-full object-cover"
@@ -419,23 +422,16 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-violet-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-violet-900">
               Liveblocks.io
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-fuchsia-100/20 p-1 text-xs font-medium leading-none text-violet-100 dark:bg-violet-800/20 dark:text-violet-900/80">
-                2022
-                <span className="mx-0.5 text-violet-100/60 dark:text-violet-900/40">
-                  —
-                </span>
-                Present
-              </span>
             </h3>
             <p className="leading-relaxed text-violet-100 dark:text-violet-900/80">
-              Before focusing on{" "}
+              Before focusing on the product engineering side of{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
-                href="https://liveblocks.io/docs"
+                href="https://liveblocks.io"
                 rel="noreferrer"
                 target="_blank"
               >
-                the Liveblocks packages
+                Liveblocks
               </a>
               , I was involved in many areas of{" "}
               <a
@@ -464,7 +460,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 examples gallery
               </a>{" "}
-              to be fetched from{" "}
+              to live in{" "}
               <a
                 className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
                 href="https://github.com/liveblocks/liveblocks"
@@ -491,7 +487,7 @@ export function Work(props: ComponentProps<"section">) {
               >
                 advanced examples
               </a>
-              , custom language parsers, and&nbsp;more.
+              , and&nbsp;more.
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -547,13 +543,6 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-sky-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-sky-900">
               Framer.com
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-cyan-100/20 p-1 text-xs font-medium leading-none text-sky-100 dark:bg-sky-800/20 dark:text-sky-900/80">
-                2019
-                <span className="mx-0.5 text-sky-100/60 dark:text-sky-900/40">
-                  —
-                </span>
-                22
-              </span>
             </h3>
             <p className="leading-relaxed text-sky-100 dark:text-sky-900/80">
               As part of the site team, I worked on various aspects of{" "}
@@ -615,9 +604,6 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-fuchsia-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-fuchsia-900">
               Framer Motion
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-rose-100/20 p-1 text-xs font-medium leading-none text-fuchsia-100 dark:bg-fuchsia-800/20 dark:text-fuchsia-900/80">
-                2019
-              </span>
             </h3>
             <p className="leading-relaxed text-fuchsia-100 dark:text-fuchsia-900/80">
               I worked on{" "}
@@ -693,9 +679,6 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-orange-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-orange-900">
               Sketch Elements
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-yellow-100/20 p-1 text-xs font-medium leading-none text-orange-100 dark:bg-orange-800/20 dark:text-orange-900/80">
-                2017
-              </span>
             </h3>
             <p className="leading-relaxed text-orange-100 dark:text-orange-900/80">
               I designed Sketch Elements, a UI kit built with and distributed by{" "}
@@ -740,16 +723,9 @@ export function Work(props: ComponentProps<"section">) {
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-rose-900/30 sm:basis-1/2 sm:p-12">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-rose-900">
               Master’s degree
-              <span className="ml-1.5 inline-block flex-none -translate-y-px rounded bg-orange-100/20 p-1 text-xs font-medium leading-none text-rose-100 dark:bg-rose-800/20 dark:text-rose-900/80">
-                2017
-                <span className="mx-0.5 text-rose-100/60 dark:text-rose-900/40">
-                  —
-                </span>
-                19
-              </span>
             </h3>
             <p className="leading-relaxed text-rose-100 dark:text-rose-900/80">
-              During my master’s in interaction design, I&nbsp;researched
+              During my master’s in interaction design, I&nbsp;worked on
               language learning through the lens of immersive interfaces. My
               thesis focused on language immersion and some of its ideas
               resulted in a series of prototypes, exploring gestural

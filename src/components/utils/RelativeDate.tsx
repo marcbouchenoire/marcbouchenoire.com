@@ -22,7 +22,9 @@ export function RelativeDate({ date, ...props }: RelativeDateProps) {
   const parsedDate = useMemo(() => new Date(date), [date])
   const normalizedDate = useMemo(() => parsedDate.toISOString(), [parsedDate])
   const formattedDate = useMemo(() => {
-    return `${capitalize(formatDistanceToNowStrict(parsedDate))} ago`
+    return capitalize(
+      formatDistanceToNowStrict(parsedDate, { addSuffix: true })
+    )
   }, [parsedDate])
 
   return (

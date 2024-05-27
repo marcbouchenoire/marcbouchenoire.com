@@ -1,13 +1,13 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNow, isYesterday } from "date-fns"
+import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import type { Transition, Variants } from "framer-motion"
 import { AnimatePresence, motion } from "framer-motion"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
-import { Song } from "src/app/api/lastfm/latest/get-latest-songs"
+import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
 import { revalidate } from "src/app/api/lastfm/latest/route"
 import { Skeleton } from "src/components/utils/Skeleton"
 import { capitalize } from "src/utils/capitalize"
@@ -20,7 +20,7 @@ interface LatestSongsProps extends ComponentProps<"div"> {
   limit?: number
 }
 
-interface SongProps extends ComponentProps<"a"> {
+interface LatestSongProps extends ComponentProps<"a"> {
   /**
    * The song to display.
    */
@@ -48,7 +48,7 @@ const fade: Transition = {
  * @param [props.song] - The song to display.
  * @param [props.className] - A list of one or more classes.
  */
-function Song({ song, className, ...props }: SongProps) {
+function LatestSong({ song, className, ...props }: LatestSongProps) {
   const { artist, cover, date, title, playing, url } = song ?? {}
   const absoluteDate = useMemo(() => {
     if (!date) return
@@ -60,7 +60,7 @@ function Song({ song, className, ...props }: SongProps) {
 
     return isYesterday(absoluteDate)
       ? "Yesterday"
-      : capitalize(formatDistanceToNow(absoluteDate, { addSuffix: true }))
+      : capitalize(formatDistanceToNowStrict(absoluteDate, { addSuffix: true }))
   }, [absoluteDate])
 
   return (
@@ -192,11 +192,9 @@ function Song({ song, className, ...props }: SongProps) {
             <time className="truncate" dateTime={absoluteDate.toISOString()}>
               {relativeDate}
             </time>
-          ) : (
-            <span className="truncate">
-              {playing ? "Currently playing" : "Not playing"}
-            </span>
-          )}
+          ) : playing ? (
+            <span className="truncate">Currently playing</span>
+          ) : null}
         </small>
         <p className="my-1 flex items-center">
           <span
@@ -237,8 +235,10 @@ export function LatestSongs({
   return (
     <div className={clsx(className, "flex flex-col gap-6")} {...props}>
       {songs
-        ? songs.map((song, index) => <Song key={index} song={song} />)
-        : Array.from({ length: limit }, (_, index) => <Song key={index} />)}
+        ? songs.map((song, index) => <LatestSong key={index} song={song} />)
+        : Array.from({ length: limit }, (_, index) => (
+            <LatestSong key={index} />
+          ))}
     </div>
   )
 }

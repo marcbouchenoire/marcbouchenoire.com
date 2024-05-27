@@ -49,7 +49,9 @@ module.exports = {
         phone:
           "inset 1px 1px 8px rgba(255, 255, 255, 0.8), inset -1px -1px 8px rgba(0, 0, 0, 0.1)",
         "phone-invert":
-          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)"
+          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)",
+        polaroid:
+          "inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 12px rgba(0, 0, 0, 0.2), inset 0 1px 8px rgba(0, 0, 0, 0.2)"
       },
       colors: {
         gray: {
@@ -153,10 +155,14 @@ module.exports = {
         ]
       },
       maxWidth: ({ theme }) => ({
+        "screen-md-6": `calc(${theme("screens.md")} + ${theme("spacing.12")})`,
         "screen-md-8": `calc(${theme("screens.md")} + ${theme("spacing.16")})`,
         "screen-md-12": `calc(${theme("screens.md")} + ${theme("spacing.24")})`,
         "screen-md-16": `calc(${theme("screens.md")} + ${theme("spacing.32")})`
       }),
+      spacing: {
+        13: "3.25rem"
+      },
       transitionProperty: {
         DEFAULT:
           "background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, text-decoration-color"

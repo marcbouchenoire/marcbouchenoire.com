@@ -16,14 +16,14 @@ export function Activity(props: ComponentProps<"section">) {
         Activity
       </h2>
       <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
-        I <del>occasionally</del>{" "}
+        What I’ve recently{" "}
         <a
           className="link text-gray-800 dark:text-white"
           href="https://www.last.fm/user/marcbouchenoire"
           rel="noreferrer"
           target="_blank"
         >
-          listen to
+          listened to
         </a>{" "}
         and{" "}
         <a
@@ -32,9 +32,9 @@ export function Activity(props: ComponentProps<"section">) {
           rel="noreferrer"
           target="_blank"
         >
-          watch
-        </a>{" "}
-        things.
+          watched
+        </a>
+        .
       </p>
       <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
         <LatestSongs
