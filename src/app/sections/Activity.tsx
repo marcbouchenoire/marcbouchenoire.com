@@ -1,7 +1,4 @@
 import type { ComponentProps } from "react"
-import { SWRConfig } from "swr"
-import { getLatestSongs } from "../api/lastfm/latest/get-latest-songs"
-import { getLatestFilms } from "../api/letterboxd/latest/get-latest-films"
 import { LatestFilms } from "src/components/miscellaneous/LatestFilms"
 import { LatestSongs } from "src/components/miscellaneous/LatestSongs"
 
@@ -40,25 +37,14 @@ export function Activity(props: ComponentProps<"section">) {
         .
       </p>
       <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
-        <SWRConfig
-          value={{
-            fallback: {
-              [`/api/lastfm/latest?limit=${NUMBER_OF_ACTIVITIES}`]:
-                getLatestSongs(NUMBER_OF_ACTIVITIES),
-              [`/api/letterboxd/latest?limit=${NUMBER_OF_ACTIVITIES}`]:
-                getLatestFilms(NUMBER_OF_ACTIVITIES)
-            }
-          }}
-        >
-          <LatestSongs
-            className="min-w-0 max-w-full"
-            limit={NUMBER_OF_ACTIVITIES}
-          />
-          <LatestFilms
-            className="min-w-0 max-w-full"
-            limit={NUMBER_OF_ACTIVITIES}
-          />
-        </SWRConfig>
+        <LatestSongs
+          className="min-w-0 max-w-full"
+          limit={NUMBER_OF_ACTIVITIES}
+        />
+        <LatestFilms
+          className="min-w-0 max-w-full"
+          limit={NUMBER_OF_ACTIVITIES}
+        />
       </div>
     </section>
   )
