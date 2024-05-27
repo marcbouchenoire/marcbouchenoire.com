@@ -145,6 +145,11 @@ export function TofuPolaroid({
           title="Tofu, my cat"
           width="80"
         />
+        <div aria-hidden hidden>
+          {PHOTOS.map((photo, index) => (
+            <Image alt="" key={index} src={photo} width="80" />
+          ))}
+        </div>
       </div>
     </motion.div>
   )
