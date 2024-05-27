@@ -33,15 +33,15 @@ export function Introduction(props: ComponentProps<"section">) {
           Detail-obsessed Design Engineer
         </p>
       </div>
-      <div className="my-10 max-w-[56ch] text-gray-500 dark:text-gray-350">
-        <p className="my-4 leading-loose">
+      <div className="my-10 text-gray-500 dark:text-gray-350">
+        <p className="my-4 max-w-[64ch] leading-loose">
           Designing and building{" "}
           <em className="delightful">
             <Characters>delightful</Characters>
           </em>{" "}
           products, interfaces, and&nbsp;interactions.
         </p>
-        <p className="my-4 leading-loose">
+        <p className="my-4 max-w-[56ch] leading-loose">
           I’m currently living in Amsterdam and working on collaborative
           components—amongst other things—at&nbsp;
           <a
