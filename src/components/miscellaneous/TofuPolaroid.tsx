@@ -127,7 +127,7 @@ export function TofuPolaroid({
       title="Tofu, my cat"
       {...props}
     >
-      <div className="relative aspect-square w-full">
+      <div className="relative aspect-square w-full bg-gray-800">
         <motion.div
           className="absolute inset-0 z-10 bg-gray-50"
           style={{ opacity: overlayOpacity }}
