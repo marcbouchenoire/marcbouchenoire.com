@@ -90,7 +90,10 @@ async function generateLatestFilmWidget(dark?: boolean) {
           `#rating-background { fill: ${theme.colors.gray["200"]}; opacity: ${
             dark ? 0.3 : 1
           }; }`,
-          `#rating-fill { fill: ${theme.colors.gray[dark ? "300" : "600"]}; }`
+          `#rating-fill { fill: ${theme.colors.gray[dark ? "300" : "600"]}; }`,
+          `#rewatch-icon { stroke: ${
+            theme.colors.gray[dark ? "500" : "400"]
+          }; }`
         ]),
         s("g", { "clip-path": "url(#poster-mask)" }, [
           s("use", {
@@ -121,7 +124,7 @@ async function generateLatestFilmWidget(dark?: boolean) {
         s("g", { transform: `translate(${POSTER_WIDTH + PADDING}, 0)` }, [
           s(
             "g",
-            { id: "date", fill: "currentColor", transform: "translate(-2, 0)" },
+            { id: "date", fill: "currentColor", transform: "translate(-2, 1)" },
             [
               s("path", {
                 fill: "currentColor",
@@ -144,16 +147,40 @@ async function generateLatestFilmWidget(dark?: boolean) {
             [truncate(film.title, LABEL_LENGTH)]
           ),
           s("g", { transform: "translate(-2, 57)" }, [
-            s("use", {
-              id: "rating-background",
-              href: "#rating"
-            }),
-            s("rect", {
-              id: "rating-fill",
-              width: RATING_WIDTH * ((film.rating ?? 0) / 5),
-              height: RATING_HEIGHT,
-              "clip-path": "url(#rating-mask)"
-            })
+            s("g", [
+              s("use", {
+                id: "rating-background",
+                href: "#rating"
+              }),
+              s("rect", {
+                id: "rating-fill",
+                width: RATING_WIDTH * ((film.rating ?? 0) / 5),
+                height: RATING_HEIGHT,
+                "clip-path": "url(#rating-mask)"
+              })
+            ]),
+            film.rewatch
+              ? s(
+                  "g",
+                  {
+                    id: "rewatch-icon",
+                    stroke: "currentColor",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": 1.5,
+                    transform: `translate(${RATING_WIDTH + 6}, 2)`
+                  },
+                  [
+                    s("path", {
+                      d: "M2 8a6 6 0 0 1 6-6 6.5 6.5 0 0 1 4.493 1.827l.754.753"
+                    }),
+                    s("path", {
+                      d: "M13.5 2v3h-3M14 8a6 6 0 0 1-6 6 6.5 6.5 0 0 1-4.493-1.827l-.753-.753"
+                    }),
+                    s("path", { d: "M5.5 11h-3v3" })
+                  ]
+                )
+              : null
           ])
         ])
       ]

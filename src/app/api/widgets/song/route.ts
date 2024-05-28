@@ -110,7 +110,7 @@ async function generateLatestSongWidget(dark?: boolean) {
         s("g", { transform: `translate(${COVER_WIDTH + PADDING}, 0)` }, [
           s(
             "g",
-            { id: "date", fill: "currentColor", transform: "translate(-2, 0)" },
+            { id: "date", fill: "currentColor", transform: "translate(-2, 1)" },
             [
               song.playing
                 ? s("g", [

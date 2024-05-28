@@ -113,6 +113,11 @@ export interface Film {
   rating?: number
 
   /**
+   * Whether the film was already watched before.
+   */
+  rewatch: boolean
+
+  /**
    * The film's title.
    */
   title: string
@@ -143,6 +148,7 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
     year: entry["letterboxd:filmYear"],
     rating: entry["letterboxd:memberRating"],
     date: entry["letterboxd:watchedDate"],
+    rewatch: entry["letterboxd:rewatch"] === "Yes",
     poster,
     url: LETTERBOXD_FILM_URL(slug)
   }
