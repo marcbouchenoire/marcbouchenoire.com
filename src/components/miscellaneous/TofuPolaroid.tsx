@@ -10,7 +10,7 @@ import {
 } from "framer-motion"
 import Image from "next/image"
 import type { ComponentProps } from "react"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import tofu1 from "public/tofu/1.jpg"
 import tofu2 from "public/tofu/2.jpg"
 import tofu3 from "public/tofu/3.jpg"
@@ -42,7 +42,6 @@ export function TofuPolaroid({
   ...props
 }: ComponentProps<typeof motion.div>) {
   const [photoIndex, setPhotoIndex] = useState(0)
-  const photo = useMemo(() => PHOTOS[photoIndex], [photoIndex])
   const [isDragging, setDragging] = useState(false)
   const overlayOpacity = useMotionValue(0)
   const highlightOpacity = useMotionValue(1)
@@ -137,19 +136,32 @@ export function TofuPolaroid({
           className="polaroid-highlight absolute inset-0 z-10"
           style={{ opacity: highlightOpacity }}
         />
-        <Image
-          alt="Tofu, my cat"
-          className="absolute inset-0 h-full w-full"
-          priority
-          src={photo}
-          title="Tofu, my cat"
-          width="80"
-        />
-        <div aria-hidden hidden>
-          {PHOTOS.map((photo, index) => (
-            <Image alt="" key={index} src={photo} width="80" />
-          ))}
-        </div>
+        {PHOTOS.map((photo, index) => {
+          if (index === photoIndex) {
+            return (
+              <Image
+                alt="Tofu, my cat"
+                className="absolute inset-0 h-full w-full"
+                key={index}
+                priority
+                src={photo}
+                title="Tofu, my cat"
+                width="80"
+              />
+            )
+          }
+
+          return (
+            <Image
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full opacity-0"
+              key={index}
+              src={photo}
+              width="80"
+            />
+          )
+        })}
       </div>
     </motion.div>
   )
