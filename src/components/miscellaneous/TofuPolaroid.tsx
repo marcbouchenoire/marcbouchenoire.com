@@ -129,7 +129,7 @@ export function TofuPolaroid({
     >
       <div className="relative aspect-square w-full bg-gray-800">
         <motion.div
-          className="absolute inset-0 z-10 bg-gray-50"
+          className="absolute inset-0 z-10 bg-gray-800"
           style={{ opacity: overlayOpacity }}
         />
         <motion.div

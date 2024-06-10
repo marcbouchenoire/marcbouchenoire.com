@@ -45,18 +45,31 @@ export function Introduction(props: ComponentProps<"section">) {
           I’m currently living in Amsterdam and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="group relative ml-[-0.1em] mr-[0.125em] whitespace-nowrap pl-[0.2em] pr-[0.175em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
+            className="group relative ml-[-0.05em] whitespace-nowrap pl-[0.3em] pr-[0.125em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             <span
               aria-hidden
-              className="pointer-events-none absolute right-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-l-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-right-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus:dark:before:opacity-30"
+              className="pointer-events-none absolute left-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-left-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus:dark:before:opacity-30"
             >
-              <span className="absolute -right-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
-              <span className="absolute -right-px top-0 origin-top-right -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-br-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none  text-white dark:bg-liveblocks-dark">
+              <span className="absolute -left-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
+              <span className="absolute -left-px top-0 origin-top-left -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none  text-white dark:bg-liveblocks-dark">
                 Marc
+                <svg
+                  className="absolute bottom-[-0.25rem] left-[2px] z-10 size-[0.25rem] overflow-visible text-liveblocks dark:text-liveblocks-dark"
+                  fill="none"
+                  viewBox="0 0 4 4"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M-1 4v-5h5v1a4 4 0 0 0-4 4h-1Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  />
+                </svg>
               </span>
             </span>
             Liveblocks
