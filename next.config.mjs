@@ -45,24 +45,60 @@ export default () => {
       ignoreDuringBuilds: true
     },
     async rewrites() {
-      return [
-        {
-          source: "/:path*",
-          destination: `/:path*`
-        },
-        {
-          source: "/projects/symbolist/:path*",
-          destination: "https://symbolist.marcbouchenoire.com/:path*"
-        },
-        {
-          source: "/projects/typometer/:path*",
-          destination: "https://typometer.marcbouchenoire.com/:path*"
-        },
-        {
-          source: "/projects/dimmmensions/:path*",
-          destination: "https://dimmmensions.marcbouchenoire.com/:path*"
-        }
-      ]
+      return {
+        beforeFiles: [
+          {
+            source: "/:path*",
+            has: [
+              {
+                type: "host",
+                value: "symbolist.marcbouchenoire.com"
+              }
+            ],
+            destination: "https://marcbouchenoire-symbolist.vercel.app/:path*"
+          },
+          {
+            source: "/:path*",
+            has: [
+              {
+                type: "host",
+                value: "typometer.marcbouchenoire.com"
+              }
+            ],
+            destination: "https://marcbouchenoire-typometer.vercel.app/:path*"
+          },
+          {
+            source: "/:path*",
+            has: [
+              {
+                type: "host",
+                value: "dimmmensions.marcbouchenoire.com"
+              }
+            ],
+            destination:
+              "https://marcbouchenoire-dimmmensions.vercel.app/:path*"
+          }
+        ],
+        afterFiles: [
+          ({
+            source: "/:path*",
+            destination: `/:path*`
+          },
+          {
+            source: "/projects/symbolist/:path*",
+            destination: "https://marcbouchenoire-symbolist.vercel.app/:path*"
+          },
+          {
+            source: "/projects/typometer/:path*",
+            destination: "https://marcbouchenoire-typometer.vercel.app/:path*"
+          },
+          {
+            source: "/projects/dimmmensions/:path*",
+            destination:
+              "https://marcbouchenoire-dimmmensions.vercel.app/:path*"
+          })
+        ]
+      }
     }
   }
 }
