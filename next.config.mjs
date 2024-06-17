@@ -80,7 +80,7 @@ export default () => {
           }
         ],
         afterFiles: [
-          ({
+          {
             source: "/:path*",
             destination: `/:path*`
           },
@@ -96,7 +96,7 @@ export default () => {
             source: "/projects/dimmmensions/:path*",
             destination:
               "https://marcbouchenoire-dimmmensions.vercel.app/:path*"
-          })
+          }
         ]
       }
     }
