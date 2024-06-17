@@ -43,6 +43,26 @@ export default () => {
     trailingSlash: false,
     eslint: {
       ignoreDuringBuilds: true
+    },
+    async rewrites() {
+      return [
+        {
+          source: "/:path*",
+          destination: `/:path*`
+        },
+        {
+          source: "/projects/symbolist/:path*",
+          destination: "https://symbolist.marcbouchenoire.com/:path*"
+        },
+        {
+          source: "/projects/typometer/:path*",
+          destination: "https://typometer.marcbouchenoire.com/:path*"
+        },
+        {
+          source: "/projects/dimmmensions/:path*",
+          destination: "https://dimmmensions.marcbouchenoire.com/:path*"
+        }
+      ]
     }
   }
 }
