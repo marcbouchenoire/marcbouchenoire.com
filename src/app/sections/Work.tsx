@@ -344,8 +344,34 @@ export function Work(props: ComponentProps<"section">) {
               >
                 unstyled primitives
               </a>
-              , rich text editors, emoji pickers, internationalization,
-              and&nbsp;more.
+              ,{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Composer"
+                rel="noreferrer"
+                target="_blank"
+              >
+                rich text editors
+              </a>
+              ,{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Overrides"
+                rel="noreferrer"
+                target="_blank"
+              >
+                internationalization
+              </a>
+              ,{" "}
+              <a
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                href="https://github.com/liveblocks/liveblocks/tree/main/packages/liveblocks-codemod"
+                rel="noreferrer"
+                target="_blank"
+              >
+                codemods
+              </a>
+              , and&nbsp;more.
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pb-20 pt-8 sm:-mr-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
