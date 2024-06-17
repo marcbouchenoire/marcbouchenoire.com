@@ -54,7 +54,7 @@ export default () => {
               value: "symbolist.marcbouchenoire.com"
             }
           ],
-          destination: "/projects/symbolist/:path*",
+          destination: "https://marcbouchenoire.com/projects/symbolist/:path*",
           permanent: true
         },
         {
@@ -65,7 +65,7 @@ export default () => {
               value: "typometer.marcbouchenoire.com"
             }
           ],
-          destination: "/projects/typometer/:path*",
+          destination: "https://marcbouchenoire.com/projects/typometer/:path*",
           permanent: true
         },
         {
@@ -76,7 +76,8 @@ export default () => {
               value: "dimmmensions.marcbouchenoire.com"
             }
           ],
-          destination: "/projects/dimmmensions/:path*",
+          destination:
+            "https://marcbouchenoire.com/projects/dimmmensions/:path*",
           permanent: true
         }
       ]
