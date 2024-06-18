@@ -24,7 +24,7 @@ export function Introduction(props: ComponentProps<"section">) {
               width="80"
             />
           </div>
-          <TofuPolaroid className="-bottom-0.5 -right-1 w-7" />
+          <TofuPolaroid className="bottom-[-4.35rem] right-[-3.65rem] w-[8.5rem]" />
         </div>
         <h1 className="mb-1 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
@@ -36,7 +36,7 @@ export function Introduction(props: ComponentProps<"section">) {
       <div className="my-10 text-gray-500 dark:text-gray-350">
         <p className="my-4 max-w-[64ch] leading-loose">
           Designing and building{" "}
-          <em className="delightful">
+          <em className="delightful cursor-text">
             <Characters>delightful</Characters>
           </em>{" "}
           products, interfaces, and&nbsp;interactions.

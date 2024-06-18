@@ -50,7 +50,7 @@ export function TofuPolaroid({
   const scale = useTransform(() => {
     const distance = Math.hypot(x.get(), y.get())
 
-    return clamp(1, 3, 1 + distance / 100)
+    return clamp(0.2, 1, 0.2 + distance / 400)
   })
   const rotateZ = useTransform(() => {
     const rotateZ = x.get() / 10
@@ -110,7 +110,7 @@ export function TofuPolaroid({
       aria-label="Tofu, my cat"
       className={clsx(
         className,
-        "absolute z-50 aspect-[328/400] cursor-grab touch-none bg-white p-0.5 shadow-floaty"
+        "absolute z-50 aspect-[328/400] cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
       )}
       drag={!isAnimating}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -129,7 +129,7 @@ export function TofuPolaroid({
     >
       <div className="relative aspect-square w-full bg-gray-800">
         <motion.div
-          className="absolute inset-0 z-10 bg-gray-800"
+          className="absolute inset-0 z-10 bg-gray-50"
           style={{ opacity: overlayOpacity }}
         />
         <motion.div
