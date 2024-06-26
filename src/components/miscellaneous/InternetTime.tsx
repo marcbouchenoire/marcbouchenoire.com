@@ -12,6 +12,8 @@ import {
 import { type ComponentProps, useEffect, useMemo, useState } from "react"
 import { DEFAULT_TIME, useInternetTime } from "src/hooks/use-internet-time"
 
+const OFFSET_PERCENTAGE = 60
+
 interface DigitsColumnProps extends ComponentProps<"span"> {
   /**
    * The place of the digit.
@@ -91,11 +93,23 @@ function Digit({
     stiffness: 220,
     damping: 30
   })
-  const y = useTransform(offsetSpring, (offset) => offset * 100)
+  const y = useTransform(offsetSpring, (offset) => offset * OFFSET_PERCENTAGE)
   const yPercentage = useMotionTemplate`${y}%`
-  const opacity = useTransform(y, [-100, 0, 100], [0, 1, 0])
-  const scale = useTransform(y, [-100, 0, 100], [0.5, 1, 0.5])
-  const blur = useTransform(y, [-100, 0, 100], [5, 0, 5])
+  const opacity = useTransform(
+    y,
+    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
+    [0, 1, 0]
+  )
+  const scale = useTransform(
+    y,
+    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
+    [0.5, 1, 0.5]
+  )
+  const blur = useTransform(
+    y,
+    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
+    [5, 0, 5]
+  )
   const filter = useMotionTemplate`blur(${blur}px)`
 
   useEffect(() => {
