@@ -39,7 +39,7 @@ export function Introduction(props: ComponentProps<"section">) {
           <em className="delightful cursor-text">
             <Characters>delightful</Characters>
           </em>{" "}
-          products, interfaces, and&nbsp;interactions.
+          products, interfaces, and&nbsp;APIs.
         </p>
         <p className="my-4 max-w-[56ch] leading-loose">
           I’m currently living in Amsterdam and working on collaborative
