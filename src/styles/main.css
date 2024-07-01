@@ -133,6 +133,10 @@
     @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-gray-500/40 dark:focus:ring-gray-400/40;
   }
 
+  .focusable-within {
+    @apply box-decoration-clone focus-within:!decoration-transparent focus-within:outline-none focus-within:ring focus-within:ring-gray-500/40 dark:focus-within:ring-gray-400/40;
+  }
+
   .highlight::after {
     @apply pointer-events-none absolute inset-0 z-10;
 
@@ -150,7 +154,7 @@
   }
 
   .polaroid-highlight::after {
-    @apply shadow-polaroid pointer-events-none absolute inset-0 z-10;
+    @apply pointer-events-none absolute inset-0 z-10 shadow-polaroid;
 
     content: "";
     border-radius: inherit;

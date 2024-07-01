@@ -1,6 +1,7 @@
 import Image from "next/image"
 import type { ComponentProps } from "react"
 import portrait from "public/portrait.jpg"
+import { CustomizableTitle } from "src/components/miscellaneous/CustomizableTitle"
 import { TofuPolaroid } from "src/components/miscellaneous/TofuPolaroid"
 import { Characters } from "src/components/utils/Characters"
 
@@ -26,20 +27,20 @@ export function Introduction(props: ComponentProps<"section">) {
           </div>
           <TofuPolaroid className="bottom-[-4.35rem] right-[-3.65rem] w-[8.5rem]" />
         </div>
-        <h1 className="mb-1 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
+        <h1 className="mb-2.5 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
         </h1>
-        <p className="text-lg text-gray-400 dark:text-gray-450">
-          Detail-obsessed Design Engineer
+        <p className="text-lg leading-none text-gray-400 dark:text-gray-450">
+          Detail-obsessed <CustomizableTitle />
         </p>
       </div>
-      <div className="my-10 text-gray-500 dark:text-gray-350">
+      <div className="mb-10 mt-11 text-gray-500 dark:text-gray-350">
         <p className="my-4 max-w-[64ch] leading-loose">
           Designing and building{" "}
           <em className="delightful cursor-text">
             <Characters>delightful</Characters>
           </em>{" "}
-          products, interfaces, and&nbsp;APIs.
+          products, interactions, and&nbsp;APIs.
         </p>
         <p className="my-4 max-w-[56ch] leading-loose">
           I’m currently living in Amsterdam and working on collaborative
