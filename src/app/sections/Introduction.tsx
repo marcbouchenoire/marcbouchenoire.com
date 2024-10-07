@@ -30,7 +30,7 @@ export function Introduction(props: ComponentProps<"section">) {
         <h1 className="mb-2.5 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
           Marc Bouchenoire
         </h1>
-        <p className="text-lg leading-none text-gray-400 dark:text-gray-450">
+        <p className="text-lg text-gray-400 dark:text-gray-450">
           Detail-obsessed <CustomizableTitle />
         </p>
       </div>
