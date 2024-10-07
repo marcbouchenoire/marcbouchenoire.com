@@ -43,7 +43,7 @@ export function Introduction(props: ComponentProps<"section">) {
           products, interactions, and&nbsp;APIs.
         </p>
         <p className="my-4 max-w-[56ch] leading-loose">
-          I’m currently living in Amsterdam and working on collaborative
+          I’m currently living in Nantes, France and working on collaborative
           components—amongst other things—at&nbsp;
           <a
             className="group relative ml-[-0.05em] whitespace-nowrap pl-[0.3em] pr-[0.125em] font-medium text-liveblocks-alternate focus:outline-none dark:text-liveblocks-alternate-dark"
