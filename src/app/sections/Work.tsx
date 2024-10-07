@@ -378,13 +378,15 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <div className="transform-liveblocks-inbox pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-12%] lg:w-[40%]">
-                  <Image
-                    alt="A notifications inbox"
-                    className="liveblocks liveblocks-inbox absolute h-full w-full object-cover"
-                    priority
-                    src={liveblocksInbox}
-                    width="190"
-                  />
+                  <div className="liveblocks liveblocks-inbox scroll-gradient absolute inset-0">
+                    <Image
+                      alt="A notifications inbox"
+                      className="absolute h-full w-full object-cover"
+                      priority
+                      src={liveblocksInbox}
+                      width="190"
+                    />
+                  </div>
                 </div>
                 <Code
                   className="transform-liveblocks-code pointer-events-auto absolute left-[6%] top-[20%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
@@ -430,14 +432,16 @@ export function Work(props: ComponentProps<"section">) {
                       width="60"
                     />
                   </div>
-                  <div className="liveblocks liveblocks-thread absolute h-full w-full overflow-hidden rounded-[1.8518%/2.5918%] shadow-floaty">
-                    <Image
-                      alt="A thread with 2 comments and a composer"
-                      className="absolute h-full w-full object-cover"
-                      priority
-                      src={liveblocksThread}
-                      width="260"
-                    />
+                  <div className="absolute h-full w-full overflow-hidden rounded-[1.8518%/2.5918%] shadow-floaty">
+                    <div className="liveblocks liveblocks-thread scroll-gradient absolute inset-0">
+                      <Image
+                        alt="A thread with 2 comments and a composer"
+                        className="absolute h-full w-full object-cover"
+                        priority
+                        src={liveblocksThread}
+                        width="260"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -727,20 +731,24 @@ export function Work(props: ComponentProps<"section">) {
                 className="relative -mb-8 self-end md:-mb-16"
                 direction="right"
               >
-                <Image
-                  alt="A food app interface"
-                  className="elements elements-food absolute h-full w-full object-cover"
-                  src={elementsFood}
-                  width="180"
-                />
+                <div className="elements elements-food scroll-gradient absolute inset-0 overflow-hidden">
+                  <Image
+                    alt="A food app interface"
+                    className="absolute h-full w-full object-cover"
+                    src={elementsFood}
+                    width="180"
+                  />
+                </div>
               </Phone>
               <Phone className="relative" direction="right">
-                <Image
-                  alt="A music app interface"
-                  className="elements elements-music absolute h-full w-full object-cover"
-                  src={elementsMusic}
-                  width="180"
-                />
+                <div className="elements elements-music scroll-gradient absolute inset-0 overflow-hidden">
+                  <Image
+                    alt="A music app interface"
+                    className="absolute h-full w-full object-cover"
+                    src={elementsMusic}
+                    width="180"
+                  />
+                </div>
               </Phone>
             </div>
           </div>

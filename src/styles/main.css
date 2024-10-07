@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes scroll-gradient {
+  from {
+    transform: translateY(0%);
+  }
+
+  to {
+    transform: translateY(-87.5%);
+  }
+}
+
 @keyframes wavy {
   from {
     transform: translateY(-3%);
@@ -9,16 +19,6 @@
 
   to {
     transform: translateY(3%);
-  }
-}
-
-@keyframes scroll {
-  from {
-    background-position: 50% 0%;
-  }
-
-  to {
-    background-position: 50% 100%;
   }
 }
 
@@ -39,47 +39,6 @@
 
   to {
     transform: translateY(var(--aura-rainbow-offset)) rotate(-360deg);
-  }
-}
-
-@keyframes aura-rays {
-  0% {
-    --aura-rays-1: #000;
-    --aura-rays-2: #000;
-    --aura-rays-3: rgb(0 0 0 / 75%);
-    --aura-rays-4: rgb(0 0 0 / 50%);
-    --aura-rays-5: transparent;
-    --aura-rays-6: transparent;
-  }
-
-  25% {
-    --aura-rays-2: transparent;
-    --aura-rays-3: transparent;
-    --aura-rays-6: rgb(0 0 0 / 75%);
-  }
-
-  50% {
-    --aura-rays-1: #000;
-    --aura-rays-2: #000;
-    --aura-rays-3: rgb(0 0 0 / 75%);
-    --aura-rays-4: rgb(0 0 0 / 50%);
-    --aura-rays-5: transparent;
-    --aura-rays-6: transparent;
-  }
-
-  75% {
-    --aura-rays-1: transparent;
-    --aura-rays-4: transparent;
-    --aura-rays-5: #000;
-  }
-
-  100% {
-    --aura-rays-1: #000;
-    --aura-rays-2: #000;
-    --aura-rays-3: rgb(0 0 0 / 75%);
-    --aura-rays-4: rgb(0 0 0 / 50%);
-    --aura-rays-5: transparent;
-    --aura-rays-6: transparent;
   }
 }
 
@@ -215,62 +174,44 @@
   }
 }
 
+.scroll-gradient::before {
+  @apply absolute w-full;
+
+  content: "";
+  height: 800%;
+  background: linear-gradient(
+    0deg,
+    theme("colors.violet.500"),
+    theme("colors.blue.500"),
+    theme("colors.cyan.500"),
+    theme("colors.emerald.500"),
+    theme("colors.yellow.500"),
+    theme("colors.orange.500"),
+    theme("colors.rose.500"),
+    theme("colors.violet.500"),
+    theme("colors.blue.500")
+  );
+  animation: 20s linear infinite alternate both scroll-gradient;
+}
+
 .aura {
   mask-image: radial-gradient(farthest-side at center -100%, #000, transparent);
-}
-
-@property --aura-rays-1 {
-  syntax: "<color>";
-  initial-value: #000;
-  inherits: true;
-}
-
-@property --aura-rays-2 {
-  syntax: "<color>";
-  initial-value: #000;
-  inherits: true;
-}
-
-@property --aura-rays-3 {
-  syntax: "<color>";
-  initial-value: rgb(0 0 0 / 75%);
-  inherits: true;
-}
-
-@property --aura-rays-4 {
-  syntax: "<color>";
-  initial-value: rgb(0 0 0 / 50%);
-  inherits: true;
-}
-
-@property --aura-rays-5 {
-  syntax: "<color>";
-  initial-value: transparent;
-  inherits: true;
-}
-
-@property --aura-rays-6 {
-  syntax: "<color>";
-  initial-value: transparent;
-  inherits: true;
 }
 
 .aura-rays {
   mask-image: linear-gradient(
       50deg,
-      transparent 28%,
       transparent 32%,
       #000 36%,
       transparent 38%,
-      rgb(0 0 0 / 75%) 39%,
+      rgb(0 0 0 / 75%) 43%,
       transparent 47%,
-      transparent 54%,
-      rgb(0 0 0 / 50%) 57%,
-      transparent 58%,
+      transparent 51%,
+      rgb(0 0 0 / 50%) 54%,
+      transparent 56%,
       #000 62%,
-      transparent 65%,
+      rgb(0 0 0 / 35%) 65%,
       rgb(0 0 0 / 75%) 66%,
-      transparent 68%,
       transparent 71%
     ),
     linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
@@ -280,29 +221,6 @@
   mask-size:
     300% auto,
     auto;
-
-  /* TODO: Remove when Firefox supports @property (https://caniuse.com/mdn-css_at-rules_property) */
-  @supports not (-moz-appearance: none) {
-    animation: 6s linear infinite aura-rays;
-    mask-image: linear-gradient(
-        50deg,
-        transparent 28%,
-        transparent 32%,
-        var(--aura-rays-1) 36%,
-        var(--aura-rays-5) 38%,
-        var(--aura-rays-3) 39%,
-        transparent 47%,
-        transparent 54%,
-        var(--aura-rays-4) 57%,
-        transparent 58%,
-        var(--aura-rays-2) 62%,
-        var(--aura-rays-6) 65%,
-        var(--aura-rays-3) 66%,
-        transparent 68%,
-        transparent 71%
-      ),
-      linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
-  }
 
   @media screen(sm) {
     mask-size:
@@ -501,67 +419,12 @@
     );
 }
 
-.liveblocks {
-  background: linear-gradient(
-    0deg,
-    theme("colors.violet.500"),
-    theme("colors.blue.500"),
-    theme("colors.cyan.500"),
-    theme("colors.emerald.500"),
-    theme("colors.yellow.500"),
-    theme("colors.orange.500"),
-    theme("colors.rose.500"),
-    theme("colors.violet.500"),
-    theme("colors.blue.500")
-  );
-  background-size: 100% 800%;
-  animation: 20s linear infinite both scroll;
+.liveblocks-inbox::before {
+  animation-delay: -4s;
 }
 
-.liveblocks-inbox {
-  animation-delay: -2s;
-}
-
-.elements {
-  background: linear-gradient(
-    0deg,
-    theme("colors.violet.500"),
-    theme("colors.blue.500"),
-    theme("colors.cyan.500"),
-    theme("colors.emerald.500"),
-    theme("colors.yellow.500"),
-    theme("colors.orange.500"),
-    theme("colors.rose.500"),
-    theme("colors.violet.500"),
-    theme("colors.blue.500")
-  );
-  background-size: 100% 800%;
-  animation: 20s linear infinite both scroll;
-
-  span {
-    @apply z-10;
-  }
-
-  &::before,
-  &::after {
-    @apply absolute bottom-0 z-0 bg-white;
-
-    content: "";
-    width: 20%;
-    height: 10%;
-  }
-
-  &::before {
-    @apply left-0;
-  }
-
-  &::after {
-    @apply right-0;
-  }
-}
-
-.elements-music {
-  animation-delay: -2s;
+.elements-music::before {
+  animation-delay: -4s;
 }
 
 .transform-liveblocks-thread {
