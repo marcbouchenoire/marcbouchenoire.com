@@ -129,12 +129,7 @@ module.exports = {
         }
       },
       dropShadow: {
-        floaty: [
-          "0 0 2px rgba(0, 0, 0, 0.04)",
-          "0 2px 8px rgba(0, 0, 0, 0.04)",
-          "0 4px 18px rgba(0, 0, 0, 0.06)",
-          "0 8px 42px rgba(0, 0, 0, 0.12)"
-        ],
+        floaty: ["0 4px 22px rgba(0, 0, 0, 0.16)"],
         phone: "0 1px 4px rgba(0, 0, 0, 0.06)"
       },
       fontFamily: {

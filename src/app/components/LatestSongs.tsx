@@ -9,7 +9,7 @@ import { useMemo } from "react"
 import useSWR from "swr"
 import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
 import { revalidate } from "src/app/api/lastfm/latest/route"
-import { Skeleton } from "src/components/utils/Skeleton"
+import { Skeleton } from "src/components/Skeleton"
 import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
 

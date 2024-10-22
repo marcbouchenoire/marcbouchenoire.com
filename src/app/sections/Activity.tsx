@@ -1,6 +1,7 @@
+import { clsx } from "clsx"
 import type { ComponentProps } from "react"
-import { LatestFilms } from "src/components/miscellaneous/LatestFilms"
-import { LatestSongs } from "src/components/miscellaneous/LatestSongs"
+import { LatestFilms } from "src/app/components/LatestFilms"
+import { LatestSongs } from "src/app/components/LatestSongs"
 
 const NUMBER_OF_ACTIVITIES = 3
 
@@ -8,10 +9,11 @@ const NUMBER_OF_ACTIVITIES = 3
  * A section displaying my latest listens and watches.
  *
  * @param props - A set of `section` props.
+ * @param [props.className] - A list of one or more classes.
  */
-export function Activity(props: ComponentProps<"section">) {
+export function Activity({ className, ...props }: ComponentProps<"section">) {
   return (
-    <section {...props}>
+    <section className={clsx(className, "content")} {...props}>
       <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
         Activity
       </h2>

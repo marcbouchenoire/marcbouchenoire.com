@@ -10,7 +10,7 @@ import {
   useTransform
 } from "framer-motion"
 import { type ComponentProps, useEffect, useMemo, useState } from "react"
-import { DEFAULT_TIME, useInternetTime } from "src/hooks/use-internet-time"
+import { DEFAULT_TIME, useInternetTime } from "src/utils/use-internet-time"
 
 const OFFSET_PERCENTAGE = 60
 

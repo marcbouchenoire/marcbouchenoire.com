@@ -8,7 +8,7 @@ import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
 import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
-import { Skeleton } from "src/components/utils/Skeleton"
+import { Skeleton } from "src/components/Skeleton"
 import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
 

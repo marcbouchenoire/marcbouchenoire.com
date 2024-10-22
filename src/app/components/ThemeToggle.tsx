@@ -4,7 +4,7 @@ import { clsx } from "clsx"
 import type { Transition, Variants } from "framer-motion"
 import { motion } from "framer-motion"
 import type { ComponentProps } from "react"
-import { useSystemTheme } from "src/hooks/use-system-theme"
+import { useSystemTheme } from "src/utils/use-system-theme"
 
 const TRANSITION_DURATION = 0.6
 

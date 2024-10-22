@@ -200,10 +200,7 @@ function Phone({ direction, children, className, ...props }: PhoneProps) {
 function Headset({ children, className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={clsx(
-        className,
-        "headset drop-shadow-floaty will-change-transform"
-      )}
+      className={clsx(className, "headset will-change-transform")}
       {...props}
     >
       <div className="headset-screen absolute inset-0">
@@ -282,7 +279,7 @@ function CustomComposer(props) {
 export function Work(props: ComponentProps<"section">) {
   return (
     <section {...props}>
-      <div className="content lg:max-w-screen-md-12">
+      <div className="content content-lg">
         <div className="relative z-10 mb-5 flex flex-col rounded-lg bg-blue-500 shadow-xl shadow-blue-500/10 before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-gradient-to-tl before:from-cyan-400/60 before:to-cyan-400/0 dark:bg-blue-400 dark:shadow-blue-400/10 dark:before:from-cyan-300/60 dark:before:to-cyan-300/0 sm:mb-8 sm:flex-row lg:mb-10">
           <div className="z-10 flex-1 p-8 selection:bg-white/30 dark:selection:bg-blue-900/30 sm:basis-1/2 sm:p-12 sm:pr-10">
             <h3 className="mb-3 text-lg font-semibold leading-none text-white dark:text-blue-900">
@@ -767,7 +764,7 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
-            <div className="perspective pointer-events-none relative z-20 aspect-[4/3] w-full max-w-sm bg-green-600/0 sm:absolute sm:max-w-none lg:aspect-[9/7]">
+            <div className="perspective pointer-events-none relative z-20 aspect-[4/3] w-full max-w-sm bg-green-600/0 drop-shadow-floaty sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <Headset className="transform-master-headset pointer-events-auto absolute top-[16%] w-[90%]">
                 <video
                   autoPlay
@@ -781,7 +778,7 @@ export function Work(props: ComponentProps<"section">) {
                   tabIndex={-1}
                 />
               </Headset>
-              <div className="pointer-events-auto absolute right-[10%] top-[49%] aspect-[768/593] w-[36%] drop-shadow-floaty">
+              <div className="pointer-events-auto absolute right-[10%] top-[49%] aspect-[768/593] w-[36%]">
                 <Image
                   alt="An HTC Vive VR headset"
                   className="absolute h-full w-full object-cover"

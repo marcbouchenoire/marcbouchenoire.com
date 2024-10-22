@@ -1,13 +1,15 @@
+import { clsx } from "clsx"
 import type { ComponentProps } from "react"
 
 /**
  * A section listing roles and degrees.
  *
  * @param props - A set of `section` props.
+ * @param [props.className] - A list of one or more classes.
  */
-export function Experience(props: ComponentProps<"section">) {
+export function Experience({ className, ...props }: ComponentProps<"section">) {
   return (
-    <section {...props}>
+    <section className={clsx(className, "content")} {...props}>
       <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
         Experience
       </h2>

@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import { execa } from "execa"
 import type { ComponentProps } from "react"
-import { Emoji } from "../miscellaneous/Emoji"
+import { Emoji } from "src/components/Emoji"
 
 /**
  * Get the latest commit's short hash.

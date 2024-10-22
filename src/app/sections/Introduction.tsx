@@ -1,18 +1,23 @@
+import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps } from "react"
+import { CustomizableTitle } from "../components/CustomizableTitle"
+import { TofuPolaroid } from "../components/TofuPolaroid"
 import portrait from "public/portrait.jpg"
-import { CustomizableTitle } from "src/components/miscellaneous/CustomizableTitle"
-import { TofuPolaroid } from "src/components/miscellaneous/TofuPolaroid"
-import { Characters } from "src/components/utils/Characters"
+import { Characters } from "src/components/Characters"
 
 /**
  * An introduction section with a short bio.
  *
  * @param props - A set of `section` props.
+ * @param [props.className] - A list of one or more classes.
  */
-export function Introduction(props: ComponentProps<"section">) {
+export function Introduction({
+  className,
+  ...props
+}: ComponentProps<"section">) {
   return (
-    <section {...props}>
+    <section className={clsx(className, "content")} {...props}>
       <div>
         <div className="relative size-[80px]">
           <div className="absolute h-full w-full select-none rounded-full bg-gray-800/10 dark:bg-gray-100/10">

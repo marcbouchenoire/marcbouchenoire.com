@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import type { PropsWithChildren } from "react"
-import { Footer } from "src/components/layout/Footer"
-import { Header } from "src/components/layout/Header"
-import { ThemeProvider } from "src/components/miscellaneous/ThemeProvider"
+import { Footer } from "./sections/Footer"
+import { Header } from "./sections/Header"
+import { ThemeProvider } from "src/components/ThemeProvider"
 import "src/styles/main.css"
 
 const inter = Inter({

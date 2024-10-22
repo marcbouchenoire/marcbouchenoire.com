@@ -1,12 +1,9 @@
 import Image from "next/image"
 import { type ComponentProps, Suspense } from "react"
 import splatoon from "public/projects/splatoon.png"
-import { GitHubProjectCard } from "src/components/miscellaneous/GitHubProjectCard"
-import {
-  ProjectCard,
-  ProjectCardDate
-} from "src/components/miscellaneous/ProjectCard"
-import { Skeleton } from "src/components/utils/Skeleton"
+import { GitHubProjectCard } from "src/app/components/GitHubProjectCard"
+import { ProjectCard, ProjectCardDate } from "src/app/components/ProjectCard"
+import { Skeleton } from "src/components/Skeleton"
 
 /**
  * A section displaying personal projects.
@@ -33,7 +30,7 @@ export function Projects(props: ComponentProps<"section">) {
           —projects.
         </p>
       </div>
-      <div className="content mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:max-w-screen-md-8">
+      <div className="content content-md mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8">
         <GitHubProjectCard repository="marcbouchenoire/symbolist">
           <h3 className="mb-2 font-semibold text-symbolist dark:text-symbolist-dark">
             <svg

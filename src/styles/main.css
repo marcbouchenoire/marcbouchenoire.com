@@ -81,13 +81,6 @@
 /* stylelint-enable selector-id-pattern */
 
 @layer utilities {
-  /* Safari doesn't seem to support multiple drop shadows (see original drop-shadow-floaty in tailwind.config.cjs) */
-  @supports (background: -webkit-named-image(i)) {
-    .drop-shadow-floaty {
-      --tw-drop-shadow: drop-shadow(0 6px 32px rgb(0 0 0 / 22%));
-    }
-  }
-
   .focusable {
     @apply box-decoration-clone focus:!decoration-transparent focus:outline-none focus:ring focus:ring-gray-500/40 dark:focus:ring-gray-400/40;
   }
@@ -135,6 +128,14 @@
 @layer components {
   .content {
     @apply mx-auto max-w-screen-md px-5-safe;
+  }
+
+  .content-md {
+    @apply lg:max-w-screen-md-8;
+  }
+
+  .content-lg {
+    @apply lg:max-w-screen-md-12;
   }
 
   .skeleton {
@@ -264,6 +265,20 @@
       theme("colors.amber.300"),
       theme("colors.red.300")
     );
+  }
+}
+
+.portrait {
+  @apply highlight relative inline-block overflow-hidden rounded-full bg-white ring-offset-2;
+
+  box-shadow:
+    0 0 0 2px theme("colors.white"),
+    0 0 1px 2px rgb(0 0 0 / 8%),
+    0 1px 4px 2px rgb(0 0 0 / 8%),
+    0 2px 8px 2px rgb(0 0 0 / 6%);
+
+  & > span {
+    @apply !absolute !inset-0 !h-full !w-full;
   }
 }
 

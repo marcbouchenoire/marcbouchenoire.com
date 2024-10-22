@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { wrap } from "../utils/wrap"
+import { wrap } from "src/utils/wrap"
 
 const SECONDS_PER_DAY = 86400
 const BEATS_PER_DAY = 1000

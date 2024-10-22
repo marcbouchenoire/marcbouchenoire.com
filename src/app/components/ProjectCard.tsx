@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import type { ComponentProps } from "react"
-import { RelativeDate } from "../utils/RelativeDate"
+import { RelativeDate } from "src/components/RelativeDate"
 
 interface ProjectCardDateProps extends ComponentProps<"span"> {
   /**
