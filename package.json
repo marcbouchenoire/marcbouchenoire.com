@@ -5,8 +5,9 @@
   "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
+  "packageManager": "bun@1.1.32",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "prettier": "prettier --write --log-level silent --ignore-path .eslintignore",
     "lint": "bun run lint:eslint && bun run lint:stylelint && bun run lint:tsc && bun run lint:prettier",
@@ -14,7 +15,7 @@
     "lint:prettier": "bun run prettier '**/*.{cjs,mjs,ts,tsx,json,md,yml,css}'",
     "lint:stylelint": "stylelint '**/*.css' --fix",
     "lint:tsc": "tsc --project tsconfig.json",
-    "postinstall": "node src/scripts/postinstall.mjs"
+    "postinstall": "bun src/scripts/postinstall.ts"
   },
   "dependencies": {
     "bright": "^0.8.5",
@@ -26,7 +27,7 @@
     "hast-util-to-html": "^9.0.0",
     "hastscript": "^9.0.0",
     "html-entities": "^2.5.2",
-    "next": "^14.2.15",
+    "next": "^15.0.0",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

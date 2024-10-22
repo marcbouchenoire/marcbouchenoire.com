@@ -10,7 +10,13 @@ const THEME_PATH = path.resolve("./src/theme.json")
  */
 function getTheme() {
   const { theme } = resolveConfig(tailwindConfig)
-  const colors = ["black", "white", "gray", "lime", "rose"]
+  const colors = [
+    "black",
+    "white",
+    "gray",
+    "lime",
+    "rose"
+  ] satisfies (keyof typeof theme.colors)[]
 
   return {
     colors: Object.fromEntries(
