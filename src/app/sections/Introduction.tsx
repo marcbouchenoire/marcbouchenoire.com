@@ -108,6 +108,28 @@ export function Introduction({
           </svg>
         </a>
         <a
+          aria-label="Bluesky"
+          className="focusable text-bluesky hover:text-bluesky/50 hover:shadow-bluesky/5 focus:ring-bluesky/40 dark:text-bluesky-dark dark:hover:text-bluesky-dark/50 dark:focus:ring-bluesky-dark/40 -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          href="https://bsky.app/profile/marcbouchenoire.com"
+          rel="me noreferrer"
+          target="_blank"
+          title="Bluesky"
+        >
+          <svg
+            height="24"
+            role="presentation"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clipRule="evenodd"
+              d="M6.524 4.794c2.216 1.662 4.6 5.032 5.476 6.84.875-1.808 3.26-5.178 5.476-6.84 1.6-1.199 4.19-2.127 4.19.826 0 .59-.338 4.953-.537 5.661-.69 2.463-3.204 3.091-5.441 2.71 3.91.665 4.904 2.867 2.756 5.068-4.08 4.18-5.863-1.049-6.32-2.389-.085-.246-.124-.36-.124-.263 0-.098-.04.017-.124.263-.457 1.34-2.241 6.57-6.32 2.39-2.149-2.202-1.154-4.404 2.756-5.068-2.237.38-4.752-.248-5.442-2.71-.199-.71-.537-5.073-.537-5.662 0-2.953 2.591-2.025 4.19-.826Z"
+              fill="currentColor"
+              fillRule="evenodd"
+            />
+          </svg>
+        </a>
+        <a
           aria-label="Mastodon"
           className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus:ring-mastodon-dark/40"
           href="https://mastodon.social/@marcbouchenoire"

@@ -83,6 +83,10 @@ module.exports = {
           DEFAULT: "#595aff",
           dark: "#7475ff"
         },
+        bluesky: {
+          DEFAULT: "#1083FE",
+          dark: "#3698FF"
+        },
         github: {
           DEFAULT: "#27272a",
           dark: "#f4f4f5"
