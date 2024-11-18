@@ -20,11 +20,12 @@ export function Introduction({
     <section className={clsx(className, "content")} {...props}>
       <div>
         <div className="relative size-[80px]">
-          <div className="absolute h-full w-full select-none rounded-full bg-gray-800/10 dark:bg-gray-100/10">
+          <div className="highlight dark:highlight-invert absolute h-full w-full select-none rounded-full bg-gray-800/10 dark:bg-gray-100/10">
             <Image
               alt="Marc Bouchenoire"
               className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden rounded-full"
               priority
+              quality={95}
               src={portrait}
               title="Marc Bouchenoire"
               width="80"
@@ -109,7 +110,7 @@ export function Introduction({
         </a>
         <a
           aria-label="Bluesky"
-          className="focusable text-bluesky hover:text-bluesky/50 hover:shadow-bluesky/5 focus:ring-bluesky/40 dark:text-bluesky-dark dark:hover:text-bluesky-dark/50 dark:focus:ring-bluesky-dark/40 -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-bluesky transition hover:text-bluesky/50 hover:shadow-bluesky/5 focus:ring-bluesky/40 dark:text-bluesky-dark dark:hover:text-bluesky-dark/50 dark:focus:ring-bluesky-dark/40"
           href="https://bsky.app/profile/marcbouchenoire.com"
           rel="me noreferrer"
           target="_blank"
