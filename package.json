@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
-  "packageManager": "bun@1.1.32",
+  "packageManager": "bun@1.1.40",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -29,8 +29,8 @@
     "html-entities": "^2.5.2",
     "next": "^15.0.0",
     "next-themes": "^0.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {
