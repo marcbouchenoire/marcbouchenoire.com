@@ -66,7 +66,7 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-gray-900 dark:focus:ring-red-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-red-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-red-400/40"
       )}
       href={url}
       rel="noreferrer"

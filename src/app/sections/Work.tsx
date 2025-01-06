@@ -288,7 +288,7 @@ export function Work(props: ComponentProps<"section">) {
             <p className="leading-relaxed text-blue-100 dark:text-blue-900/80">
               I started getting involved on the product engineering side with{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/devtools"
                 rel="noreferrer"
                 target="_blank"
@@ -297,7 +297,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , and it then became my primary side with{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/comments"
                 rel="noreferrer"
                 target="_blank"
@@ -307,7 +307,7 @@ export function Work(props: ComponentProps<"section">) {
               . I’m now focusing on the React layer of our opinionated products,
               from{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/products/comments/default-components"
                 rel="noreferrer"
                 target="_blank"
@@ -316,7 +316,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               to{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/products/comments/styling-and-customization"
                 rel="noreferrer"
                 target="_blank"
@@ -325,7 +325,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , from{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/products/comments/hooks"
                 rel="noreferrer"
                 target="_blank"
@@ -334,7 +334,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               to{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/products/comments/primitives"
                 rel="noreferrer"
                 target="_blank"
@@ -343,7 +343,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Composer"
                 rel="noreferrer"
                 target="_blank"
@@ -352,7 +352,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Overrides"
                 rel="noreferrer"
                 target="_blank"
@@ -361,7 +361,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus:ring-blue-900/20"
+                className="focusable rounded-sm font-medium underline decoration-blue-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:hover:decoration-blue-900/40 dark:focus-visible:ring-blue-900/20"
                 href="https://github.com/liveblocks/liveblocks/tree/main/packages/liveblocks-codemod"
                 rel="noreferrer"
                 target="_blank"
@@ -453,7 +453,7 @@ export function Work(props: ComponentProps<"section">) {
             <p className="leading-relaxed text-violet-100 dark:text-violet-900/80">
               Before focusing on the product engineering side of{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io"
                 rel="noreferrer"
                 target="_blank"
@@ -462,7 +462,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , I was involved in many areas of{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io/"
                 rel="noreferrer"
                 target="_blank"
@@ -471,7 +471,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               . From refactoring{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io/docs"
                 rel="noreferrer"
                 target="_blank"
@@ -480,7 +480,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               and{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io/examples"
                 rel="noreferrer"
                 target="_blank"
@@ -489,7 +489,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               to live in{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://github.com/liveblocks/liveblocks"
                 rel="noreferrer"
                 target="_blank"
@@ -498,7 +498,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , to building multiplayer landing pages,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io/blog/how-to-build-undo-redo-in-a-multiplayer-environment"
                 rel="noreferrer"
                 target="_blank"
@@ -507,7 +507,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus:ring-violet-900/20"
+                className="focusable rounded-sm font-medium underline decoration-violet-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:hover:decoration-violet-900/40 dark:focus-visible:ring-violet-900/20"
                 href="https://liveblocks.io/examples/collaborative-spreadsheet-advanced"
                 rel="noreferrer"
                 target="_blank"
@@ -574,7 +574,7 @@ export function Work(props: ComponentProps<"section">) {
             <p className="leading-relaxed text-sky-100 dark:text-sky-900/80">
               As part of the site team, I worked on various aspects of{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus:ring-sky-900/20"
+                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus-visible:ring-sky-900/20"
                 href="https://www.framer.com/"
                 rel="noreferrer"
                 target="_blank"
@@ -583,7 +583,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               . From rewriting it from the ground up using{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus:ring-sky-900/20"
+                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus-visible:ring-sky-900/20"
                 href="https://nextjs.org/"
                 rel="noreferrer"
                 target="_blank"
@@ -592,7 +592,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus:ring-sky-900/20"
+                className="focusable rounded-sm font-medium underline decoration-sky-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:hover:decoration-sky-900/40 dark:focus-visible:ring-sky-900/20"
                 href="https://www.sanity.io/"
                 rel="noreferrer"
                 target="_blank"
@@ -635,7 +635,7 @@ export function Work(props: ComponentProps<"section">) {
             <p className="leading-relaxed text-fuchsia-100 dark:text-fuchsia-900/80">
               I worked on{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-fuchsia-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-fuchsia-100/50 focus:ring-fuchsia-100/30 dark:decoration-fuchsia-900/20 dark:hover:decoration-fuchsia-900/40 dark:focus:ring-fuchsia-900/20"
+                className="focusable rounded-sm font-medium underline decoration-fuchsia-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-fuchsia-100/50 focus-visible:ring-fuchsia-100/30 dark:decoration-fuchsia-900/20 dark:hover:decoration-fuchsia-900/40 dark:focus-visible:ring-fuchsia-900/20"
                 href="https://www.framer.com/motion"
                 rel="noreferrer"
                 target="_blank"
@@ -710,7 +710,7 @@ export function Work(props: ComponentProps<"section">) {
             <p className="leading-relaxed text-orange-100 dark:text-orange-900/80">
               I designed Sketch Elements, a UI kit built with and distributed by{" "}
               <a
-                className="focusable rounded-sm font-medium underline decoration-orange-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-orange-100/50 focus:ring-orange-100/30 dark:decoration-orange-900/20 dark:hover:decoration-orange-900/40 dark:focus:ring-orange-900/20"
+                className="focusable rounded-sm font-medium underline decoration-orange-100/30 decoration-2 underline-offset-2 transition duration-100 hover:decoration-orange-100/50 focus-visible:ring-orange-100/30 dark:decoration-orange-900/20 dark:hover:decoration-orange-900/40 dark:focus-visible:ring-orange-900/20"
                 href="https://www.sketch.com/"
                 rel="noreferrer"
                 target="_blank"

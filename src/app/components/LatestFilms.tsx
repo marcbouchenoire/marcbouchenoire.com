@@ -72,7 +72,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus:ring-lime-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
