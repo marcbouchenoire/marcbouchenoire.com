@@ -45,7 +45,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2023
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 Present
               </span>
@@ -67,7 +67,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2022
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 23
               </span>
@@ -107,7 +107,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2021
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 22
               </span>
@@ -129,7 +129,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2019
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 21
               </span>
@@ -223,7 +223,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2017
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 19
               </span>
@@ -245,7 +245,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
                 2014
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
-                  —
+                  –
                 </span>
                 17
               </span>
