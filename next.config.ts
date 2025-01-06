@@ -1,4 +1,6 @@
-export default {
+import type { NextConfig } from "next"
+
+const config: NextConfig = {
   trailingSlash: false,
   eslint: {
     ignoreDuringBuilds: true
@@ -61,3 +63,5 @@ export default {
     ]
   }
 }
+
+export default config
