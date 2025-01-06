@@ -20,6 +20,4 @@ export async function GET(request: NextRequest) {
     : new Response(undefined, { status: 500 })
 }
 
-export const runtime = "edge"
-
 export const revalidate = 60

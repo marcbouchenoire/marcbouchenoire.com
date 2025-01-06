@@ -280,6 +280,4 @@ export async function GET(request: NextRequest) {
     : new Response(undefined, { status: 500 })
 }
 
-export const runtime = "edge"
-
-export { revalidate } from "../../lastfm/latest/route"
+export const revalidate = 60

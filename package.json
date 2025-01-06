@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
+    "start": "next start",
     "prettier": "prettier --write --log-level silent --ignore-path .eslintignore",
     "lint": "bun run lint:eslint && bun run lint:stylelint && bun run lint:tsc && bun run lint:prettier",
     "lint:eslint": "eslint '**/*.{cjs,mjs,ts,tsx}' --fix",

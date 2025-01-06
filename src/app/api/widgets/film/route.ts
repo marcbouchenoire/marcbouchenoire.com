@@ -210,6 +210,4 @@ export async function GET(request: NextRequest) {
     : new Response(undefined, { status: 500 })
 }
 
-export const runtime = "edge"
-
-export { revalidate } from "../../letterboxd/latest/route"
+export const revalidate = 3600
