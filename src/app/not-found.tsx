@@ -2,11 +2,11 @@ import Link from "next/link"
 
 export default function Page() {
   return (
-    <>
+    <div className="content flex flex-1 flex-col items-center justify-center">
       <h1 className="mb-3 text-3xl font-extrabold text-gray-800 dark:text-gray-100 sm:mb-4 sm:text-4xl">
         Oops
       </h1>
-      <p className="mb-6 text-lg text-gray-700 dark:text-gray-300 sm:text-xl">
+      <p className="mb-6 text-center text-lg text-gray-700 dark:text-gray-300 sm:text-xl">
         The page you are looking for doesn’t exist.
       </p>
       <Link
@@ -15,6 +15,6 @@ export default function Page() {
       >
         Return to home page
       </Link>
-    </>
+    </div>
   )
 }

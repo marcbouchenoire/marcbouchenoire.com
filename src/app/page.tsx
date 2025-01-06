@@ -6,7 +6,7 @@ import { Work } from "./sections/Work"
 
 export default function Page() {
   return (
-    <div className="flex flex-1 flex-col gap-16 md:gap-20 lg:gap-24">
+    <div className="flex max-w-full flex-1 flex-col gap-16 md:gap-20 lg:gap-24">
       <Introduction />
       <Work />
       <Projects />
