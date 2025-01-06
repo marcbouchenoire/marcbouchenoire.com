@@ -39,19 +39,13 @@ const paddingSafe = plugin(({ addUtilities, config, e }) => {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
+  content: ["./src/**/*.tsx"],
   darkMode: "class",
   theme: {
     extend: {
       boxShadow: {
         floaty:
-          "0 0 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)",
-        phone:
-          "inset 1px 1px 8px rgba(255, 255, 255, 0.8), inset -1px -1px 8px rgba(0, 0, 0, 0.1)",
-        "phone-invert":
-          "inset 1px 1px 8px rgba(255, 255, 255, 0.2), inset -1px -1px 8px rgba(0, 0, 0, 0.8)",
-        polaroid:
-          "inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 12px rgba(0, 0, 0, 0.2), inset 0 1px 8px rgba(0, 0, 0, 0.2)"
+          "0 0 2px 1px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06), 0 8px 42px -6px rgba(0, 0, 0, 0.12)"
       },
       colors: {
         gray: {
@@ -171,5 +165,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require("@tailwindcss/typography"), paddingSafe]
+  plugins: [paddingSafe]
 }

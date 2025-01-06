@@ -6,7 +6,7 @@
 [![license](https://img.shields.io/github/license/marcbouchenoire/marcbouchenoire.com?color=%23f81)](https://github.com/marcbouchenoire/marcbouchenoire.com/blob/main/LICENSE)
 
 - 📚 Built with [Next.js](https://nextjs.org), [React](https://reactjs.org), and [TypeScript](https://www.typescriptlang.org)
-- 💫 Animated with [Framer Motion](https://www.framer.com/motion)
+- 💫 Animated with [Motion](https://motion.dev)
 - 🎨 Styled with [Tailwind](https://tailwindcss.com)
 - 💽 Hosted on [Vercel](https://vercel.com)
 

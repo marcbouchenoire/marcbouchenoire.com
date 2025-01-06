@@ -31,7 +31,7 @@ async function GitHubProjectCardStars({
 }: GitHubProjectCardInfoProps) {
   const repository = await getRepository(path)
 
-  return <span {...props}>{repository?.stars ?? "—"}</span>
+  return <span {...props}>{repository?.stars}</span>
 }
 
 /**
@@ -48,7 +48,7 @@ async function GitHubProjectCardDate({
 
   return (
     <span {...props}>
-      {repository ? <RelativeDate date={repository.created} /> : "—"}
+      {repository ? <RelativeDate date={repository.created} /> : null}
     </span>
   )
 }

@@ -3,6 +3,7 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "declarations.d.ts",
+    "next.config.ts",
     "src"
   ],
   "exclude": ["node_modules"],

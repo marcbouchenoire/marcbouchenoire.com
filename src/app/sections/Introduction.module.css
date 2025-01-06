@@ -1,0 +1,22 @@
+/* stylelint-disable selector-class-pattern */
+
+@keyframes wavy {
+  from {
+    transform: translateY(-3%);
+  }
+
+  to {
+    transform: translateY(3%);
+  }
+}
+
+.delightful {
+  margin-right: 0.15em;
+
+  span[data-character] {
+    @apply relative mx-[-0.495em] inline-block px-[0.5em];
+
+    animation: 0.8s ease-in-out calc(var(--character) * -0.1s) infinite
+      alternate both wavy;
+  }
+}

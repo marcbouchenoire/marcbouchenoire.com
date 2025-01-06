@@ -1,9 +1,12 @@
+import { clsx } from "clsx"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import type { PropsWithChildren } from "react"
+import styles from "./layout.module.css"
 import { Footer } from "./sections/Footer"
 import { Header } from "./sections/Header"
 import { ThemeProvider } from "src/components/ThemeProvider"
+import { METADATA } from "src/metadata"
 import "src/styles/main.css"
 
 const inter = Inter({
@@ -11,39 +14,30 @@ const inter = Inter({
   variable: "--font-inter"
 })
 
-const info = {
-  name: "Marc Bouchenoire",
-  twitter: "@marcbouchenoire",
-  description:
-    "A detail-obsessed Design Engineer, designing and building delightful products.",
-  url: "https://marcbouchenoire.com",
-  image: "/meta.png"
-}
-
 export const metadata: Metadata = {
-  metadataBase: new URL(info.url),
-  title: info.name,
-  description: info.description,
+  metadataBase: new URL(METADATA.url),
+  title: METADATA.name,
+  description: METADATA.description,
   authors: {
-    name: info.name,
-    url: info.url
+    name: METADATA.name,
+    url: METADATA.url
   },
-  creator: info.name,
+  creator: METADATA.name,
   openGraph: {
     type: "website",
-    url: info.url,
-    title: info.name,
-    description: info.description,
-    images: info.image
+    url: METADATA.url,
+    title: METADATA.name,
+    description: METADATA.description,
+    images: METADATA.image
   },
   twitter: {
     card: "summary_large_image",
-    title: info.name,
-    description: info.description,
-    creator: info.twitter,
-    images: info.image
+    title: METADATA.name,
+    description: METADATA.description,
+    creator: METADATA.twitter,
+    images: METADATA.image
   },
-  icons: "/favicon.png"
+  icons: METADATA.icon
 }
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -56,15 +50,32 @@ export default function Layout({ children }: PropsWithChildren) {
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
             <div className="content relative h-full">
-              <div className="aura absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]">
-                <div className="aura-rays absolute inset-0 flex items-center">
-                  <div className="aura-rainbow absolute left-[-10%] aspect-square w-[120%]" />
+              <div
+                className={clsx(
+                  styles.auraMask,
+                  "absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]"
+                )}
+              >
+                <div
+                  className={clsx(
+                    styles.auraRaysMask,
+                    "absolute inset-0 flex items-center"
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      styles.auraRainbowGradient,
+                      "absolute left-[-10%] aspect-square w-[120%]"
+                    )}
+                  />
                 </div>
               </div>
             </div>
           </div>
           <Header className="content" />
-          {children}
+          <main className="flex flex-1 flex-col items-center justify-center pb-16 pt-12 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20">
+            {children}
+          </main>
           <Footer className="content pb-0-safe" />
         </ThemeProvider>
       </body>

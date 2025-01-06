@@ -1,5 +1,6 @@
 import { XMLParser } from "fast-xml-parser"
 import { decode } from "html-entities"
+import { unstable_cache as cache } from "next/cache"
 
 const LETTERBOXD_USERNAME = "marcbouchenoire"
 const LETTERBOXD_URL = "https://letterboxd.com"
@@ -159,34 +160,41 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
  *
  * @param limit - The maximum number of films to return.
  */
-export async function getLatestFilms(limit = 1): Promise<Film[]> {
-  try {
-    const response = await fetch(LETTERBOXD_FEED).then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          "There was an error while fetching the Letterboxd feed."
+export const getLatestFilms = cache(
+  async (limit: number = 1): Promise<Film[]> => {
+    try {
+      const response = await fetch(LETTERBOXD_FEED).then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            "There was an error while fetching the Letterboxd feed."
+          )
+        }
+
+        return response.text()
+      })
+
+      const parser = new XMLParser()
+      const { rss }: XMLParserDocument<LetterboxdResponse> =
+        parser.parse(response)
+
+      const films = rss.channel.item
+        .filter(
+          (item): item is LetterboxdFilmEntry =>
+            "letterboxd:watchedDate" in item
         )
-      }
+        .sort((a, b) =>
+          b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
+        )
 
-      return response.text()
-    })
+      return films.slice(0, limit).map(formatFilm)
+    } catch (error) {
+      console.error(error)
 
-    const parser = new XMLParser()
-    const { rss }: XMLParserDocument<LetterboxdResponse> =
-      parser.parse(response)
-
-    const films = rss.channel.item
-      .filter(
-        (item): item is LetterboxdFilmEntry => "letterboxd:watchedDate" in item
-      )
-      .sort((a, b) =>
-        b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
-      )
-
-    return films.slice(0, limit).map(formatFilm)
-  } catch (error) {
-    console.error(error)
-
-    return []
+      return []
+    }
+  },
+  ["latest-films"],
+  {
+    revalidate: 3600
   }
-}
+)

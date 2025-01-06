@@ -1,16 +1,14 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNowStrict, isYesterday } from "date-fns"
-import type { Transition, Variants } from "framer-motion"
-import { AnimatePresence, motion } from "framer-motion"
+import type { Transition, Variants } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
 import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
-import { revalidate } from "src/app/api/lastfm/latest/route"
+import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
 
 interface LatestSongsProps extends ComponentProps<"div"> {
@@ -53,21 +51,14 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
   const absoluteDate = useMemo(() => {
     if (!date) return
 
-    return new Date(date * 1000)
+    return new Date(date)
   }, [date])
-  const relativeDate = useMemo(() => {
-    if (!absoluteDate) return
-
-    return isYesterday(absoluteDate)
-      ? "Yesterday"
-      : capitalize(formatDistanceToNowStrict(absoluteDate, { addSuffix: true }))
-  }, [absoluteDate])
 
   return (
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus:ring-red-500/40 dark:ring-offset-gray-900 dark:focus:ring-red-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-red-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-red-400/40"
       )}
       href={url}
       rel="noreferrer"
@@ -189,9 +180,11 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
             )}
           </svg>
           {absoluteDate ? (
-            <time className="truncate" dateTime={absoluteDate.toISOString()}>
-              {relativeDate}
-            </time>
+            <RelativeDate
+              className="truncate"
+              date={absoluteDate}
+              simplifyYesterday
+            />
           ) : playing ? (
             <span className="truncate">Currently playing</span>
           ) : null}
@@ -228,7 +221,7 @@ export function LatestSongs({
     `/api/lastfm/latest?limit=${limit}`,
     json,
     {
-      refreshInterval: revalidate * 1000
+      refreshInterval: 60000
     }
   )
 

@@ -1,0 +1,84 @@
+/* stylelint-disable selector-class-pattern */
+
+@keyframes aura-rainbow {
+  from {
+    transform: translateY(var(--aura-rainbow-offset)) rotate(0deg);
+  }
+
+  to {
+    transform: translateY(var(--aura-rainbow-offset)) rotate(-360deg);
+  }
+}
+
+.auraMask {
+  mask-image: radial-gradient(farthest-side at center -100%, #000, transparent);
+}
+
+.auraRaysMask {
+  mask-image: linear-gradient(
+      50deg,
+      transparent 32%,
+      #000 36%,
+      transparent 38%,
+      rgb(0 0 0 / 75%) 43%,
+      transparent 47%,
+      transparent 51%,
+      rgb(0 0 0 / 50%) 54%,
+      transparent 56%,
+      #000 62%,
+      rgb(0 0 0 / 35%) 65%,
+      rgb(0 0 0 / 75%) 66%,
+      transparent 71%
+    ),
+    linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
+  mask-position:
+    60% 0%,
+    0% 0%;
+  mask-size:
+    300% auto,
+    auto;
+
+  @media screen(sm) {
+    mask-size:
+      200% auto,
+      auto;
+  }
+
+  @media screen(md) {
+    mask-position:
+      50% 0%,
+      0% 0%;
+    mask-size:
+      110% auto,
+      auto;
+  }
+}
+
+.auraRainbowGradient {
+  background: conic-gradient(
+    theme("colors.red.500"),
+    theme("colors.pink.500"),
+    theme("colors.violet.500"),
+    theme("colors.blue.500"),
+    theme("colors.sky.500"),
+    theme("colors.teal.500"),
+    theme("colors.lime.500"),
+    theme("colors.amber.500"),
+    theme("colors.red.500")
+  );
+  animation: 8s linear infinite aura-rainbow;
+
+  :global(.dark) & {
+    background: conic-gradient(
+      theme("colors.red.300"),
+      theme("colors.pink.300"),
+      theme("colors.violet.300"),
+      theme("colors.blue.300"),
+      theme("colors.sky.300"),
+      theme("colors.teal.300"),
+      theme("colors.lime.300"),
+      theme("colors.amber.300"),
+      theme("colors.red.300")
+    );
+  }
+}

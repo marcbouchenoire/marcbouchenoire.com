@@ -35,7 +35,7 @@ export function ProjectCard({
 }
 
 /**
- * Display a GitHub repository's creation date.
+ * Display a project's creation date.
  *
  * @param props - A set of `span` props.
  * @param props.date - The project's creation date.

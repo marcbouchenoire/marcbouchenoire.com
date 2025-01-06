@@ -8,7 +8,7 @@ import { getLatestSongs } from "./get-latest-songs"
  * @param request - The incoming request.
  */
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
+  const { searchParams } = request.nextUrl
   const limit = searchParams.has("limit")
     ? Number(searchParams.get("limit"))
     : undefined
@@ -19,7 +19,3 @@ export async function GET(request: NextRequest) {
     ? NextResponse.json(songs)
     : new Response(undefined, { status: 500 })
 }
-
-export const runtime = "edge"
-
-export const revalidate = 60

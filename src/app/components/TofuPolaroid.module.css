@@ -1,0 +1,12 @@
+/* stylelint-disable selector-class-pattern */
+
+.polaroidShadow {
+  @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
+
+  &::after {
+    box-shadow:
+      inset 0 0 2px rgb(0 0 0 / 20%),
+      inset 0 0 12px rgb(0 0 0 / 20%),
+      inset 0 1px 8px rgb(0 0 0 / 20%);
+  }
+}
