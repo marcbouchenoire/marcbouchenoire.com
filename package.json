@@ -1,5 +1,6 @@
 {
   "name": "marcbouchenoire.com",
+  "type": "module",
   "description": "My personal website and portfolio.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
