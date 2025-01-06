@@ -175,7 +175,7 @@ function formatSong(track: LastFmRecentTrack): Song {
   return {
     title: track.name,
     artist: track.artist["#text"],
-    date,
+    date: date ? date * 1000 : undefined,
     url: track.url,
     cover: track.image.find((image) => image.size === "large")?.["#text"],
     playing: Boolean(track["@attr"]?.nowplaying) ?? !date
@@ -209,7 +209,7 @@ export const getLatestSongs = cache(
         songs[0].playing &&
         songs[0].url === songs[1].url &&
         songs[1].date &&
-        Date.now() - songs[1].date * 1000 < NOW_PLAYING_DEDUPLICATION_THRESHOLD
+        Date.now() - songs[1].date < NOW_PLAYING_DEDUPLICATION_THRESHOLD
       ) {
         songs.splice(1, 1)
       }

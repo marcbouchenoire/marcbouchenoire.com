@@ -1,15 +1,14 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import type { Transition, Variants } from "motion/react"
 import { AnimatePresence, motion } from "motion/react"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
 import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
+import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
 
 interface LatestSongsProps extends ComponentProps<"div"> {
@@ -52,15 +51,8 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
   const absoluteDate = useMemo(() => {
     if (!date) return
 
-    return new Date(date * 1000)
+    return new Date(date)
   }, [date])
-  const relativeDate = useMemo(() => {
-    if (!absoluteDate) return
-
-    return isYesterday(absoluteDate)
-      ? "Yesterday"
-      : capitalize(formatDistanceToNowStrict(absoluteDate, { addSuffix: true }))
-  }, [absoluteDate])
 
   return (
     <a
@@ -188,9 +180,11 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
             )}
           </svg>
           {absoluteDate ? (
-            <time className="truncate" dateTime={absoluteDate.toISOString()}>
-              {relativeDate}
-            </time>
+            <RelativeDate
+              className="truncate"
+              date={absoluteDate}
+              simplifyYesterday
+            />
           ) : playing ? (
             <span className="truncate">Currently playing</span>
           ) : null}

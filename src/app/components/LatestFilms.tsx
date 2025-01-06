@@ -1,15 +1,14 @@
 "use client"
 
 import { clsx } from "clsx"
-import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import type { Transition, Variants } from "motion/react"
 import { AnimatePresence, motion } from "motion/react"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"
 import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
+import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { capitalize } from "src/utils/capitalize"
 import { json } from "src/utils/json"
 
 interface LatestFilmsProps extends ComponentProps<"div"> {
@@ -54,19 +53,6 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
 
     return new Date(date)
   }, [date])
-  const relativeDate = useMemo(() => {
-    if (!absoluteDate) return
-
-    if (isToday(absoluteDate)) {
-      return "Today"
-    } else if (isYesterday(absoluteDate)) {
-      return "Yesterday"
-    } else {
-      return capitalize(
-        formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
-      )
-    }
-  }, [absoluteDate])
 
   return (
     <a
@@ -127,9 +113,12 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
             />
           </svg>
           {absoluteDate ? (
-            <time className="truncate" dateTime={absoluteDate.toISOString()}>
-              {relativeDate}
-            </time>
+            <RelativeDate
+              className="truncate"
+              date={absoluteDate}
+              simplifyToday
+              simplifyYesterday
+            />
           ) : null}
         </small>
         <p className="mb-1.5 mt-1 flex items-center">

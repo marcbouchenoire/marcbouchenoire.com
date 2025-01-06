@@ -1,12 +1,11 @@
-import { formatDistanceToNowStrict, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import { unstable_cache as cache } from "next/cache"
 import type { NextRequest } from "next/server"
 import { getLatestSongs } from "../../lastfm/latest/get-latest-songs"
 import theme from "../theme.json"
-import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
+import { formatRelativeDate } from "src/utils/format-relative-date"
 import { truncate } from "src/utils/truncate"
 
 const WIDTH = 380
@@ -31,20 +30,13 @@ const generateLatestSongWidget = cache(
 
     if (song) {
       const cover = song.cover ? await encodeImage(song.cover) : undefined
-      let date: string
-
-      if (song.date) {
-        const absoluteDate = new Date(song.date * 1000)
-        const relativeDate = isYesterday(absoluteDate)
-          ? "Yesterday"
-          : capitalize(
-              formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
-            )
-
-        date = relativeDate
-      } else {
-        date = song.playing ? "Currently playing" : "Not playing"
-      }
+      const date = song.date
+        ? formatRelativeDate(new Date(song.date), {
+            simplifyYesterday: true
+          })
+        : song.playing
+          ? "Currently playing"
+          : "Not playing"
 
       const svg = s(
         "svg",

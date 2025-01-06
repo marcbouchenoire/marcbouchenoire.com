@@ -1,12 +1,11 @@
-import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import { unstable_cache as cache } from "next/cache"
 import type { NextRequest } from "next/server"
 import { getLatestFilms } from "../../letterboxd/latest/get-latest-films"
 import theme from "../theme.json"
-import { capitalize } from "src/utils/capitalize"
 import { encodeImage } from "src/utils/encode-image"
+import { formatRelativeDate } from "src/utils/format-relative-date"
 import { truncate } from "src/utils/truncate"
 
 const WIDTH = 380
@@ -35,17 +34,10 @@ const generateLatestFilmWidget = cache(
     if (film) {
       const poster = film.poster ? await encodeImage(film.poster) : undefined
       const absoluteDate = new Date(film.date)
-      let date: string
-
-      if (isToday(absoluteDate)) {
-        date = "Today"
-      } else if (isYesterday(absoluteDate)) {
-        date = "Yesterday"
-      } else {
-        date = capitalize(
-          formatDistanceToNowStrict(absoluteDate, { addSuffix: true })
-        )
-      }
+      const date = formatRelativeDate(absoluteDate, {
+        simplifyToday: true,
+        simplifyYesterday: true
+      })
 
       const svg = s(
         "svg",
