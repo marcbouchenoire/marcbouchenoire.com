@@ -39,7 +39,7 @@ const paddingSafe = plugin(({ addUtilities, config, e }) => {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/app/**/*.tsx", "./src/components/**/*.tsx"],
+  content: ["./src/**/*.tsx"],
   darkMode: "class",
   theme: {
     extend: {
@@ -171,5 +171,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require("@tailwindcss/typography"), paddingSafe]
+  plugins: [paddingSafe]
 }

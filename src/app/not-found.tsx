@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Page() {
   return (
-    <main className="content flex flex-1 flex-col items-center justify-center py-12 text-center md:py-16 lg:py-20">
+    <>
       <h1 className="mb-3 text-3xl font-extrabold text-gray-800 dark:text-gray-100 sm:mb-4 sm:text-4xl">
         Oops
       </h1>
@@ -15,6 +15,6 @@ export default function Page() {
       >
         Return to home page
       </Link>
-    </main>
+    </>
   )
 }

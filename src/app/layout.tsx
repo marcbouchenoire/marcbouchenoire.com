@@ -5,45 +5,37 @@ import { Footer } from "./sections/Footer"
 import { Header } from "./sections/Header"
 import { ThemeProvider } from "src/components/ThemeProvider"
 import "src/styles/main.css"
+import { METADATA } from "src/metadata"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter"
 })
 
-const info = {
-  name: "Marc Bouchenoire",
-  twitter: "@marcbouchenoire",
-  description:
-    "A detail-obsessed Design Engineer, designing and building delightful products.",
-  url: "https://marcbouchenoire.com",
-  image: "/meta.png"
-}
-
 export const metadata: Metadata = {
-  metadataBase: new URL(info.url),
-  title: info.name,
-  description: info.description,
+  metadataBase: new URL(METADATA.url),
+  title: METADATA.name,
+  description: METADATA.description,
   authors: {
-    name: info.name,
-    url: info.url
+    name: METADATA.name,
+    url: METADATA.url
   },
-  creator: info.name,
+  creator: METADATA.name,
   openGraph: {
     type: "website",
-    url: info.url,
-    title: info.name,
-    description: info.description,
-    images: info.image
+    url: METADATA.url,
+    title: METADATA.name,
+    description: METADATA.description,
+    images: METADATA.image
   },
   twitter: {
     card: "summary_large_image",
-    title: info.name,
-    description: info.description,
-    creator: info.twitter,
-    images: info.image
+    title: METADATA.name,
+    description: METADATA.description,
+    creator: METADATA.twitter,
+    images: METADATA.image
   },
-  icons: "/favicon.png"
+  icons: METADATA.icon
 }
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -64,7 +56,9 @@ export default function Layout({ children }: PropsWithChildren) {
             </div>
           </div>
           <Header className="content" />
-          {children}
+          <main className="flex flex-1 flex-col items-center justify-center pb-16 pt-12 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20">
+            {children}
+          </main>
           <Footer className="content pb-0-safe" />
         </ThemeProvider>
       </body>

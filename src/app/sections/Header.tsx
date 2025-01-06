@@ -17,19 +17,21 @@ function Todo() {
   }, [segment])
 
   return (
-    <span className="flex items-center whitespace-pre leading-none">
+    <span className="flex items-center whitespace-pre leading-none text-gray-700 dark:text-gray-100">
       <Link
         aria-label="Return to home page"
-        className="focusable portrait mr-0.5 h-5 w-5 transition hover:opacity-60"
+        className="link inline-flex items-center gap-2.5 py-1"
         href="/"
       >
         <Image
           alt="Marc Bouchenoire"
+          className="portrait h-4 w-4 flex-none"
           height="20"
           priority
           src={portrait}
           width="20"
         />
+        <span>Marc Bouchenoire</span>
       </Link>{" "}
       {formattedSegment && (
         <>
@@ -48,9 +50,7 @@ function Todo() {
               fillRule="evenodd"
             />
           </svg>
-          <span className="font-medium text-gray-700 dark:text-gray-100">
-            {formattedSegment}
-          </span>
+          <span className="font-medium">{formattedSegment}</span>
         </>
       )}
     </span>

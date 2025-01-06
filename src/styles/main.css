@@ -127,7 +127,7 @@
 
 @layer components {
   .content {
-    @apply mx-auto max-w-screen-md px-5-safe;
+    @apply mx-auto w-full max-w-screen-md px-5-safe;
   }
 
   .content-md {
@@ -269,17 +269,13 @@
 }
 
 .portrait {
-  @apply highlight relative inline-block overflow-hidden rounded-full bg-white ring-offset-2;
+  @apply highlight relative inline-block select-none overflow-hidden rounded-full bg-white ring-offset-2;
 
   box-shadow:
     0 0 0 2px theme("colors.white"),
     0 0 1px 2px rgb(0 0 0 / 8%),
     0 1px 4px 2px rgb(0 0 0 / 8%),
     0 2px 8px 2px rgb(0 0 0 / 6%);
-
-  & > span {
-    @apply !absolute !inset-0 !h-full !w-full;
-  }
 }
 
 .counter {
