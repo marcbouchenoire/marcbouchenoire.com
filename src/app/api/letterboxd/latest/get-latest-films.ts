@@ -161,7 +161,7 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
  * @param limit - The maximum number of films to return.
  */
 export const getLatestFilms = cache(
-  async (limit = 1): Promise<Film[]> => {
+  async (limit: number = 1): Promise<Film[]> => {
     try {
       const response = await fetch(LETTERBOXD_FEED).then((response) => {
         if (!response.ok) {

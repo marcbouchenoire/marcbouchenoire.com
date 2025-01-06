@@ -188,7 +188,7 @@ function formatSong(track: LastFmRecentTrack): Song {
  * @param limit - The maximum number of songs to return.
  */
 export const getLatestSongs = cache(
-  async (limit = 1): Promise<Song[]> => {
+  async (limit: number = 1): Promise<Song[]> => {
     try {
       const response: LastFmResponse = await fetch(
         LASTFM_ENDPOINT(limit + 1)
