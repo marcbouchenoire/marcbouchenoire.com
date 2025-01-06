@@ -2,8 +2,8 @@
 
 import { clsx } from "clsx"
 import { formatDistanceToNowStrict, isToday, isYesterday } from "date-fns"
-import type { Transition, Variants } from "framer-motion"
-import { AnimatePresence, motion } from "framer-motion"
+import type { Transition, Variants } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import useSWR from "swr"

@@ -1,14 +1,14 @@
 "use client"
 
 import { clsx } from "clsx"
-import type { MotionValue, Transition, Variants } from "framer-motion"
+import type { MotionValue, Transition, Variants } from "motion/react"
 import {
   AnimatePresence,
   motion,
   useMotionTemplate,
   useSpring,
   useTransform
-} from "framer-motion"
+} from "motion/react"
 import { type ComponentProps, useEffect, useMemo, useState } from "react"
 import { DEFAULT_TIME, useInternetTime } from "src/utils/use-internet-time"
 

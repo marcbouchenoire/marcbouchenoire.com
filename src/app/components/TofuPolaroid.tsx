@@ -7,7 +7,7 @@ import {
   motion,
   useMotionValue,
   useTransform
-} from "framer-motion"
+} from "motion/react"
 import Image from "next/image"
 import type { ComponentProps } from "react"
 import { useCallback, useEffect, useState } from "react"
