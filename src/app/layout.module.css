@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 @keyframes aura-rainbow {
   from {
     transform: translateY(var(--aura-rainbow-offset)) rotate(0deg);
@@ -8,11 +10,11 @@
   }
 }
 
-.aura {
+.auraMask {
   mask-image: radial-gradient(farthest-side at center -100%, #000, transparent);
 }
 
-.auraRays {
+.auraRaysMask {
   mask-image: linear-gradient(
       50deg,
       transparent 32%,
@@ -52,7 +54,7 @@
   }
 }
 
-.auraRainbow {
+.auraRainbowGradient {
   background: conic-gradient(
     theme("colors.red.500"),
     theme("colors.pink.500"),

@@ -8,7 +8,6 @@ import { Header } from "./sections/Header"
 import { ThemeProvider } from "src/components/ThemeProvider"
 import { METADATA } from "src/metadata"
 import "src/styles/main.css"
-import { METADATA } from "src/metadata"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,19 +52,19 @@ export default function Layout({ children }: PropsWithChildren) {
             <div className="content relative h-full">
               <div
                 className={clsx(
-                  styles.aura,
+                  styles.auraMask,
                   "absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]"
                 )}
               >
                 <div
                   className={clsx(
-                    styles.auraRays,
+                    styles.auraRaysMask,
                     "absolute inset-0 flex items-center"
                   )}
                 >
                   <div
                     className={clsx(
-                      styles.auraRainbow,
+                      styles.auraRainbowGradient,
                       "absolute left-[-10%] aspect-square w-[120%]"
                     )}
                   />

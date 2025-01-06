@@ -174,7 +174,8 @@ function Phone({ direction, children, className, ...props }: PhoneProps) {
     <div
       className={clsx(
         className,
-        "dark:highlight-invert group aspect-[425/862] rounded-[15.294%/7.541%] bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone dark:bg-gray-800/80 dark:before:shadow-phone-invert"
+        styles.phoneShadow,
+        "dark:highlight-invert group aspect-[425/862] rounded-[15.294%/7.541%] bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80"
       )}
       data-direction={direction}
       {...props}
@@ -246,15 +247,21 @@ function Book({ children, className, ...props }: ComponentProps<"div">) {
     <div className={clsx(className, "aspect-[1214/1702]")} {...props}>
       <div
         className={clsx(
-          styles.bookBackCover,
-          "absolute bg-current shadow-floaty"
+          styles.bookBackCoverGradient,
+          styles.bookBackCoverSecondaryGradient,
+          "absolute inset-x-0 bottom-[-5%] top-[5%] rounded-[4.615%/3.297%] bg-current shadow-floaty"
         )}
       />
-      <div className={clsx(styles.bookPages, "absolute z-20")} />
       <div
         className={clsx(
-          styles.bookCover,
-          "absolute inset-0 z-20 overflow-hidden bg-current"
+          styles.bookPagesGradient,
+          "absolute inset-[3%] bottom-[-3%] right-0 z-20 rounded-[4.615%/3.297%] rounded-bl-[3.077%_2.198%] bg-white"
+        )}
+      />
+      <div
+        className={clsx(
+          styles.bookCoverGradient,
+          "absolute inset-0 z-20 overflow-hidden rounded-[4.615%/3.297%] bg-current"
         )}
       >
         {children}
@@ -389,7 +396,7 @@ export function Work(props: ComponentProps<"section">) {
               <div className="perspective pointer-events-none absolute inset-0">
                 <div
                   className={clsx(
-                    styles.transformLiveblocksInbox,
+                    styles.liveblocksInboxTransform,
                     "pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-12%] lg:w-[40%]"
                   )}
                 >
@@ -411,7 +418,7 @@ export function Work(props: ComponentProps<"section">) {
                 </div>
                 <Code
                   className={clsx(
-                    styles.transformLiveblocksCode,
+                    styles.liveblocksCodeTransform,
                     "pointer-events-auto absolute left-[6%] top-[20%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
                   )}
                   code={liveblocksPrimitivesCode}
@@ -420,7 +427,7 @@ export function Work(props: ComponentProps<"section">) {
                 />
                 <Browser
                   className={clsx(
-                    styles.transformLiveblocksDevtools,
+                    styles.liveblocksDevtoolsTransform,
                     "pointer-events-auto absolute bottom-[-10%] right-[4%] w-[50%] lg:bottom-[-20%] lg:right-0 lg:w-[56%]"
                   )}
                   popup
@@ -442,7 +449,7 @@ export function Work(props: ComponentProps<"section">) {
                 </Browser>
                 <div
                   className={clsx(
-                    styles.transformLiveblocksThread,
+                    styles.liveblocksThreadTransform,
                     "pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[12%]"
                   )}
                 >
@@ -562,7 +569,7 @@ export function Work(props: ComponentProps<"section">) {
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
                   className={clsx(
-                    styles.transformLiveblocksIoProduct,
+                    styles.liveblocksIoProductTransform,
                     "pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
                   )}
                   title="liveblocks.io"
@@ -587,7 +594,7 @@ export function Work(props: ComponentProps<"section">) {
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
                   className={clsx(
-                    styles.transformLiveblocksIoMarketing,
+                    styles.liveblocksIoMarketingTransform,
                     "pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
                   )}
                   title="liveblocks.io"
@@ -653,7 +660,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
             <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
               <Browser
-                className={clsx(styles.transformFramerCom, "w-full")}
+                className={clsx(styles.framerComTransform, "w-full")}
                 title="framer.com"
               >
                 <div className="relative aspect-[920/560] bg-black">
@@ -699,7 +706,7 @@ export function Work(props: ComponentProps<"section">) {
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
                   className={clsx(
-                    styles.transformMotionStatic,
+                    styles.motionStaticTransform,
                     "pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
                   )}
                   title={
@@ -724,7 +731,7 @@ export function Work(props: ComponentProps<"section">) {
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
                   className={clsx(
-                    styles.transformMotionVideo,
+                    styles.motionVideoTransform,
                     "pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
                   )}
                   title={
@@ -777,7 +784,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="perspective relative z-20 flex flex-1 items-center justify-center max-sm:-mb-6 sm:-mr-12 sm:basis-1/3">
             <div
               className={clsx(
-                styles.transformElements,
+                styles.elementsTransform,
                 "mx-12 mb-24 mt-0 grid aspect-square w-full max-w-sm grid-cols-2 gap-8 sm:absolute sm:m-0 sm:max-w-[22rem] md:-top-16 lg:top-[-5.5rem] lg:grid-cols-[1fr_1.2fr]"
               )}
             >
@@ -835,7 +842,7 @@ export function Work(props: ComponentProps<"section">) {
             <div className="perspective pointer-events-none relative z-20 aspect-[4/3] w-full max-w-sm bg-green-600/0 drop-shadow-floaty sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <Headset
                 className={clsx(
-                  styles.transformMasterHeadset,
+                  styles.masterHeadsetTransform,
                   "pointer-events-auto absolute top-[16%] w-[90%]"
                 )}
               >
@@ -861,7 +868,7 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <Phone
                 className={clsx(
-                  styles.transformMasterPhone,
+                  styles.masterPhoneTransform,
                   "pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
                 )}
                 direction="left"
@@ -880,7 +887,7 @@ export function Work(props: ComponentProps<"section">) {
               </Phone>
               <Book
                 className={clsx(
-                  styles.transformMasterThesis,
+                  styles.masterThesisTransform,
                   "pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]"
                 )}
               >

@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 @keyframes wavy {
   from {
     transform: translateY(-3%);

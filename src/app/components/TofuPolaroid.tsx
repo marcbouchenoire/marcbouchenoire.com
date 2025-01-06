@@ -11,6 +11,7 @@ import {
 import Image from "next/image"
 import type { ComponentProps } from "react"
 import { useCallback, useEffect, useState } from "react"
+import styles from "./TofuPolaroid.module.css"
 import tofu1 from "public/tofu/1.jpg"
 import tofu2 from "public/tofu/2.jpg"
 import tofu3 from "public/tofu/3.jpg"
@@ -133,7 +134,7 @@ export function TofuPolaroid({
           style={{ opacity: overlayOpacity }}
         />
         <motion.div
-          className="absolute inset-0 z-10 after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit] after:shadow-polaroid"
+          className={clsx(styles.polaroidShadow, "absolute inset-0 z-10")}
           style={{ opacity: highlightOpacity }}
         />
         {PHOTOS.map((photo, index) => {

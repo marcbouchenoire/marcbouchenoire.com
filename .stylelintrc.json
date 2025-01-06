@@ -15,6 +15,12 @@
       }
     ],
     "no-descending-specificity": null,
-    "media-query-no-invalid": null
+    "media-query-no-invalid": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
   }
 }

@@ -59,20 +59,20 @@
     @apply box-decoration-clone focus-within:!decoration-transparent focus-within:outline-none focus-within:ring focus-within:ring-gray-500/40 dark:focus-within:ring-gray-400/40;
   }
 
-  .highlight::after {
-    @apply pointer-events-none absolute inset-0 z-10;
+  .highlight {
+    @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
 
-    content: "";
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
+    &::after {
+      box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
+    }
   }
 
-  .highlight-invert::after {
-    @apply pointer-events-none absolute inset-0 z-10;
+  .highlight-invert {
+    @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
 
-    content: "";
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
+    &::after {
+      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
+    }
   }
 
   .link {
@@ -125,15 +125,5 @@
 }
 
 :not(pre) > code {
-  @apply relative whitespace-nowrap text-sm font-semibold;
-
-  margin: 0 0.4em;
-
-  &::before {
-    @apply absolute z-negative bg-gray-100 dark:bg-gray-750;
-
-    content: "";
-    inset: -0.25em -0.4em -0.3em;
-    border-radius: 0.4em;
-  }
+  @apply relative mx-[0.4em] whitespace-nowrap text-sm font-semibold before:absolute before:inset-x-[-0.4em] before:bottom-[-0.3em] before:top-[-0.25em] before:z-negative before:rounded-[0.4em] before:bg-gray-100 before:dark:bg-gray-750;
 }
