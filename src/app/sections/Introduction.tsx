@@ -3,6 +3,7 @@ import Image from "next/image"
 import type { ComponentProps } from "react"
 import { CustomizableTitle } from "../components/CustomizableTitle"
 import { TofuPolaroid } from "../components/TofuPolaroid"
+import styles from "./Introduction.module.css"
 import portrait from "public/portrait.jpg"
 import { Characters } from "src/components/Characters"
 
@@ -43,7 +44,7 @@ export function Introduction({
       <div className="mb-10 mt-11 text-gray-500 dark:text-gray-350">
         <p className="my-4 max-w-[64ch] leading-loose">
           Designing and building{" "}
-          <em className="delightful cursor-text">
+          <em className={clsx(styles.delightful, "cursor-text")}>
             <Characters>delightful</Characters>
           </em>{" "}
           products, interactions, and&nbsp;APIs.

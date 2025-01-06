@@ -133,7 +133,7 @@ export function TofuPolaroid({
           style={{ opacity: overlayOpacity }}
         />
         <motion.div
-          className="polaroid-highlight absolute inset-0 z-10"
+          className="absolute inset-0 z-10 after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit] after:shadow-polaroid"
           style={{ opacity: highlightOpacity }}
         />
         {PHOTOS.map((photo, index) => {

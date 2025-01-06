@@ -5,6 +5,9 @@ const config: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  experimental: {
+    inlineCss: true
+  },
   async redirects() {
     return [
       {

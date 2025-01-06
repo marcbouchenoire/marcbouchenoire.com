@@ -3,6 +3,7 @@ import { Code as Bright } from "bright"
 import { clsx } from "clsx"
 import Image from "next/image"
 import type { ComponentProps, ReactNode } from "react"
+import styles from "./Work.module.css"
 import elementsFood from "public/visuals/elements/food.png"
 import elementsMusic from "public/visuals/elements/music.png"
 import framerMotion from "public/visuals/framer-motion/static.png"
@@ -70,13 +71,13 @@ function Browser({
     <div
       className={clsx(
         className,
-        "browser dark:highlight-invert overflow-hidden rounded-lg bg-gray-50/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80"
+        "dark:highlight-invert overflow-hidden rounded-lg bg-gray-50/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 dark:bg-gray-800/80"
       )}
       {...props}
     >
       <div
         className={clsx(
-          "browser-header relative grid flex-none items-center gap-2",
+          "relative grid flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] items-center gap-2",
           popup ? "h-5 px-1.5" : "h-8 px-3"
         )}
       >
@@ -132,11 +133,11 @@ function Code({ title, code, language, className, ...props }: CodeProps) {
     <div
       className={clsx(
         className,
-        "code highlight-invert overflow-hidden rounded-lg bg-gray-800/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200"
+        "highlight-invert overflow-hidden rounded-lg bg-gray-800/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200"
       )}
       {...props}
     >
-      <div className="code-header relative grid h-5 flex-none items-center gap-2 px-1.5">
+      <div className="relative grid h-5 flex-none grid-cols-[1fr_minmax(0,2fr)_minmax(0,1fr)] items-center gap-2 px-1.5">
         <div className="flex gap-1">
           <div className="aspect-square w-2 rounded-full bg-white/20" />
           <div className="aspect-square w-2 rounded-full bg-white/20" />
@@ -148,7 +149,7 @@ function Code({ title, code, language, className, ...props }: CodeProps) {
       </div>
       <div aria-hidden className="flex-1">
         <Bright
-          className="bright"
+          className={styles.bright}
           lang={language}
           lineNumbers
           theme="poimandres"
@@ -173,18 +174,20 @@ function Phone({ direction, children, className, ...props }: PhoneProps) {
     <div
       className={clsx(
         className,
-        "phone dark:highlight-invert bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone dark:bg-gray-800/80 dark:before:shadow-phone-invert",
-        `phone-${direction}`
+        "dark:highlight-invert group aspect-[425/862] rounded-[15.294%/7.541%] bg-white/80 shadow-floaty backdrop-blur-lg backdrop-saturate-200 before:absolute before:inset-0 before:rounded-[inherit] before:shadow-phone dark:bg-gray-800/80 dark:before:shadow-phone-invert"
       )}
+      data-direction={direction}
       {...props}
     >
-      <div className="phone-screen-container absolute drop-shadow-phone">
+      <div className="absolute bottom-[3.1%] top-[2.7%] drop-shadow-phone group-data-[direction=left]:left-[6.35%] group-data-[direction=left]:right-[5.4%] group-data-[direction=right]:left-[5.4%] group-data-[direction=right]:right-[6.35%]">
         <svg className="absolute" height={0} role="presentation" width={0}>
           <clipPath clipPathUnits="objectBoundingBox" id="phone-mask">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
           </clipPath>
         </svg>
-        <div className="phone-screen absolute inset-0">{children}</div>
+        <div className="absolute inset-0 [clip-path:url(#phone-mask)]">
+          {children}
+        </div>
       </div>
     </div>
   )
@@ -200,10 +203,10 @@ function Phone({ direction, children, className, ...props }: PhoneProps) {
 function Headset({ children, className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={clsx(className, "headset will-change-transform")}
+      className={clsx(className, "aspect-[960/540] will-change-transform")}
       {...props}
     >
-      <div className="headset-screen absolute inset-0">
+      <div className="absolute inset-0 [clip-path:url(#headset-mask)]">
         <svg height={0} role="presentation" width={0}>
           <defs>
             <clipPath clipPathUnits="objectBoundingBox" id="headset-mask">
@@ -240,10 +243,20 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
  */
 function Book({ children, className, ...props }: ComponentProps<"div">) {
   return (
-    <div className={clsx(className, "book")} {...props}>
-      <div className="book-back-cover absolute bg-current shadow-floaty" />
-      <div className="book-pages absolute z-20" />
-      <div className="book-cover absolute inset-0 z-20 overflow-hidden bg-current">
+    <div className={clsx(className, "aspect-[1214/1702]")} {...props}>
+      <div
+        className={clsx(
+          styles.bookBackCover,
+          "absolute bg-current shadow-floaty"
+        )}
+      />
+      <div className={clsx(styles.bookPages, "absolute z-20")} />
+      <div
+        className={clsx(
+          styles.bookCover,
+          "absolute inset-0 z-20 overflow-hidden bg-current"
+        )}
+      >
         {children}
       </div>
     </div>
@@ -374,8 +387,19 @@ export function Work(props: ComponentProps<"section">) {
           <div className="relative flex flex-1 items-center justify-center p-12 pb-20 pt-8 sm:-mr-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
-                <div className="transform-liveblocks-inbox pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-12%] lg:w-[40%]">
-                  <div className="liveblocks liveblocks-inbox scroll-gradient absolute inset-0">
+                <div
+                  className={clsx(
+                    styles.transformLiveblocksInbox,
+                    "pointer-events-auto absolute right-[36%] top-[-10%] aspect-[460/520] w-[30%] overflow-hidden rounded-[2.6087%/2.3077%] shadow-floaty lg:right-[8%] lg:top-[-12%] lg:w-[40%]"
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      styles.scrollGradient,
+                      styles.scrollGradientDelayed,
+                      "absolute inset-0"
+                    )}
+                  >
                     <Image
                       alt="A notifications inbox"
                       className="absolute h-full w-full object-cover"
@@ -386,13 +410,19 @@ export function Work(props: ComponentProps<"section">) {
                   </div>
                 </div>
                 <Code
-                  className="transform-liveblocks-code pointer-events-auto absolute left-[6%] top-[20%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
+                  className={clsx(
+                    styles.transformLiveblocksCode,
+                    "pointer-events-auto absolute left-[6%] top-[20%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
+                  )}
                   code={liveblocksPrimitivesCode}
                   language="tsx"
                   title="Primitives.tsx"
                 />
                 <Browser
-                  className="transform-liveblocks-devtools pointer-events-auto absolute bottom-[-10%] right-[4%] w-[50%] lg:bottom-[-20%] lg:right-0 lg:w-[56%]"
+                  className={clsx(
+                    styles.transformLiveblocksDevtools,
+                    "pointer-events-auto absolute bottom-[-10%] right-[4%] w-[50%] lg:bottom-[-20%] lg:right-0 lg:w-[56%]"
+                  )}
                   popup
                   title="DevTools"
                 >
@@ -410,7 +440,12 @@ export function Work(props: ComponentProps<"section">) {
                     />
                   </div>
                 </Browser>
-                <div className="transform-liveblocks-thread pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[12%]">
+                <div
+                  className={clsx(
+                    styles.transformLiveblocksThread,
+                    "pointer-events-auto absolute bottom-[4%] left-0 aspect-[648/463] w-[54%] lg:bottom-[12%]"
+                  )}
+                >
                   <div className="absolute right-[-17.9012%] top-[10.799%] z-10 aspect-[292/332] w-[45.0617%] overflow-hidden rounded-[4.1096%/3.6145%] shadow-floaty">
                     <Image
                       alt="An emoji picker"
@@ -430,7 +465,12 @@ export function Work(props: ComponentProps<"section">) {
                     />
                   </div>
                   <div className="absolute h-full w-full overflow-hidden rounded-[1.8518%/2.5918%] shadow-floaty">
-                    <div className="liveblocks liveblocks-thread scroll-gradient absolute inset-0">
+                    <div
+                      className={clsx(
+                        styles.scrollGradient,
+                        "absolute inset-0"
+                      )}
+                    >
                       <Image
                         alt="A thread with 2 comments and a composer"
                         className="absolute h-full w-full object-cover"
@@ -521,7 +561,10 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-product pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
+                  className={clsx(
+                    styles.transformLiveblocksIoProduct,
+                    "pointer-events-auto absolute bottom-0 left-0 w-[65%] lg:-bottom-8 lg:w-[75%]"
+                  )}
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
@@ -543,7 +586,10 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-liveblocks-io-marketing pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
+                  className={clsx(
+                    styles.transformLiveblocksIoMarketing,
+                    "pointer-events-auto absolute right-0 top-0 w-[65%] lg:-top-3 lg:w-[75%]"
+                  )}
                   title="liveblocks.io"
                 >
                   <div className="relative aspect-[920/560] bg-black">
@@ -607,7 +653,7 @@ export function Work(props: ComponentProps<"section">) {
           <div className="relative flex flex-1 items-center justify-center p-12 pb-16 pt-0 sm:-mr-12 sm:basis-1/3 sm:p-0 lg:-mr-12 lg:basis-1/2">
             <div className="perspective z-20 flex w-full max-w-sm items-center sm:absolute sm:inset-0 sm:max-w-none lg:-bottom-20">
               <Browser
-                className="transform-framer-com w-full"
+                className={clsx(styles.transformFramerCom, "w-full")}
                 title="framer.com"
               >
                 <div className="relative aspect-[920/560] bg-black">
@@ -652,7 +698,10 @@ export function Work(props: ComponentProps<"section">) {
             <div className="relative z-20 aspect-[4/3] w-full max-w-sm sm:absolute sm:max-w-none lg:aspect-[9/7]">
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-static pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
+                  className={clsx(
+                    styles.transformMotionStatic,
+                    "pointer-events-auto absolute left-0 top-0 w-[60%] lg:-top-10 lg:w-[80%]"
+                  )}
                   title={
                     <>
                       framer.com
@@ -674,7 +723,10 @@ export function Work(props: ComponentProps<"section">) {
               </div>
               <div className="perspective pointer-events-none absolute inset-0">
                 <Browser
-                  className="transform-motion-video pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
+                  className={clsx(
+                    styles.transformMotionVideo,
+                    "pointer-events-auto absolute bottom-0 right-0 w-[80%] lg:-bottom-2"
+                  )}
                   title={
                     <>
                       framer.com
@@ -723,12 +775,22 @@ export function Work(props: ComponentProps<"section">) {
             </p>
           </div>
           <div className="perspective relative z-20 flex flex-1 items-center justify-center max-sm:-mb-6 sm:-mr-12 sm:basis-1/3">
-            <div className="transform-elements mx-12 mb-24 mt-0 grid aspect-square w-full max-w-sm grid-cols-2 gap-8 sm:absolute sm:m-0 sm:max-w-[22rem] md:-top-16 lg:top-[-5.5rem] lg:grid-cols-[1fr_1.2fr]">
+            <div
+              className={clsx(
+                styles.transformElements,
+                "mx-12 mb-24 mt-0 grid aspect-square w-full max-w-sm grid-cols-2 gap-8 sm:absolute sm:m-0 sm:max-w-[22rem] md:-top-16 lg:top-[-5.5rem] lg:grid-cols-[1fr_1.2fr]"
+              )}
+            >
               <Phone
                 className="relative -mb-8 self-end md:-mb-16"
                 direction="right"
               >
-                <div className="elements elements-food scroll-gradient absolute inset-0 overflow-hidden">
+                <div
+                  className={clsx(
+                    styles.scrollGradient,
+                    "absolute inset-0 overflow-hidden"
+                  )}
+                >
                   <Image
                     alt="A food app interface"
                     className="absolute h-full w-full object-cover"
@@ -738,7 +800,13 @@ export function Work(props: ComponentProps<"section">) {
                 </div>
               </Phone>
               <Phone className="relative" direction="right">
-                <div className="elements elements-music scroll-gradient absolute inset-0 overflow-hidden">
+                <div
+                  className={clsx(
+                    styles.scrollGradient,
+                    styles.scrollGradientDelayed,
+                    "absolute inset-0 overflow-hidden"
+                  )}
+                >
                   <Image
                     alt="A music app interface"
                     className="absolute h-full w-full object-cover"
@@ -765,7 +833,12 @@ export function Work(props: ComponentProps<"section">) {
           </div>
           <div className="relative flex flex-1 items-center justify-center p-12 pt-0 sm:-ml-12 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
             <div className="perspective pointer-events-none relative z-20 aspect-[4/3] w-full max-w-sm bg-green-600/0 drop-shadow-floaty sm:absolute sm:max-w-none lg:aspect-[9/7]">
-              <Headset className="transform-master-headset pointer-events-auto absolute top-[16%] w-[90%]">
+              <Headset
+                className={clsx(
+                  styles.transformMasterHeadset,
+                  "pointer-events-auto absolute top-[16%] w-[90%]"
+                )}
+              >
                 <video
                   autoPlay
                   className="absolute h-full w-full object-cover"
@@ -787,7 +860,10 @@ export function Work(props: ComponentProps<"section">) {
                 />
               </div>
               <Phone
-                className="transform-master-phone pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
+                className={clsx(
+                  styles.transformMasterPhone,
+                  "pointer-events-auto absolute right-[19%] top-[56%] w-[12%]"
+                )}
                 direction="left"
               >
                 <video
@@ -802,7 +878,12 @@ export function Work(props: ComponentProps<"section">) {
                   tabIndex={-1}
                 />
               </Phone>
-              <Book className="transform-master-thesis pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]">
+              <Book
+                className={clsx(
+                  styles.transformMasterThesis,
+                  "pointer-events-auto absolute right-0 top-[40%] w-[24%] text-[#f17a54]"
+                )}
+              >
                 <Image
                   alt="The cover of my master’s thesis"
                   className="absolute h-full w-full"
