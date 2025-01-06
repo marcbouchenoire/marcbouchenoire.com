@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { execa } from "execa"
-import type { ComponentProps } from "react"
+import { type ComponentProps, Suspense } from "react"
 import { Emoji } from "src/components/Emoji"
 import { Year } from "src/components/Year"
 
@@ -36,7 +36,10 @@ export async function Footer({
       <hr className="w-full border-t border-gray-150 dark:border-gray-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
-          <Emoji /> <Year className="hidden sm:inline" />{" "}
+          <Emoji />{" "}
+          <Suspense>
+            <Year className="hidden sm:inline" />
+          </Suspense>{" "}
           <span className="text-gray-300 dark:text-gray-600">—</span> he
           <span className="text-gray-300 dark:text-gray-600">/</span>
           they
