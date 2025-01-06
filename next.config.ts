@@ -8,6 +8,11 @@ const config: NextConfig = {
   experimental: {
     inlineCss: true
   },
+  logging: {
+    fetches: {
+      fullUrl: true
+    }
+  },
   async redirects() {
     return [
       {

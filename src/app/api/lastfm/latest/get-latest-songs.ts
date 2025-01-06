@@ -1,3 +1,5 @@
+import { unstable_cache as cache } from "next/cache"
+
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
 const LASTFM_USERNAME = "marcbouchenoire"
 const LASTFM_ENDPOINT = (limit: number) => {
@@ -185,36 +187,42 @@ function formatSong(track: LastFmRecentTrack): Song {
  *
  * @param limit - The maximum number of songs to return.
  */
-export async function getLatestSongs(limit = 1): Promise<Song[]> {
-  try {
-    const response: LastFmResponse = await fetch(
-      LASTFM_ENDPOINT(limit + 1)
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error("There was an error while querying the Last.fm API.")
+export const getLatestSongs = cache(
+  async (limit = 1): Promise<Song[]> => {
+    try {
+      const response: LastFmResponse = await fetch(
+        LASTFM_ENDPOINT(limit + 1)
+      ).then((response) => {
+        if (!response.ok) {
+          throw new Error("There was an error while querying the Last.fm API.")
+        }
+
+        return response.json()
+      })
+
+      const songs = response.recenttracks.track
+        .slice(0, limit + 1)
+        .map(formatSong)
+
+      // De-duplicate the first "now playing" song if needed
+      if (
+        songs[0].playing &&
+        songs[0].url === songs[1].url &&
+        songs[1].date &&
+        Date.now() - songs[1].date * 1000 < NOW_PLAYING_DEDUPLICATION_THRESHOLD
+      ) {
+        songs.splice(1, 1)
       }
 
-      return response.json()
-    })
+      return songs.slice(0, limit)
+    } catch (error) {
+      console.error(error)
 
-    const songs = response.recenttracks.track
-      .slice(0, limit + 1)
-      .map(formatSong)
-
-    // De-duplicate the first "now playing" song if needed
-    if (
-      songs[0].playing &&
-      songs[0].url === songs[1].url &&
-      songs[1].date &&
-      Date.now() - songs[1].date * 1000 < NOW_PLAYING_DEDUPLICATION_THRESHOLD
-    ) {
-      songs.splice(1, 1)
+      return []
     }
-
-    return songs.slice(0, limit)
-  } catch (error) {
-    console.error(error)
-
-    return []
+  },
+  ["latest-songs"],
+  {
+    revalidate: 60
   }
-}
+)
