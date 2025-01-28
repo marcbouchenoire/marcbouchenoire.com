@@ -45,6 +45,7 @@ export default function Layout({ children }: PropsWithChildren) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
+        <meta content={METADATA.mastodon} name="fediverse:creator" />
       </head>
       <body className={inter.variable}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
