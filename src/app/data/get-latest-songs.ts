@@ -191,7 +191,7 @@ function formatSong(track: LastFmRecentTrack): Song {
  *
  * @param limit - The maximum number of songs to return.
  */
-export async function getLatestSongs(limit = 1): Promise<Song[]> {
+export async function getLatestSongs(limit: number): Promise<Song[]> {
   cacheLife("seconds")
 
   try {

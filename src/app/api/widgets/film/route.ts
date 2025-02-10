@@ -1,10 +1,10 @@
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
+import { getLatestFilms } from "src/app/data/get-latest-films"
 import { encodeImage } from "src/utils/encode-image"
 import { formatRelativeDate } from "src/utils/format-relative-date"
 import { truncate } from "src/utils/truncate"
-import { getLatestFilms } from "../../../data/get-latest-films"
 import theme from "../theme.json"
 
 const WIDTH = 380
@@ -22,15 +22,16 @@ const RATING_WIDTH = 96
 const RATING_HEIGHT = 20
 
 /**
- * Generate an SVG image of the latest film I watched.
+ * A Route Handler generating an SVG image of the latest film I watched.
  *
- * @param [dark] - Whether to generate a dark variant.
+ * @param request - The incoming request.
  */
-async function generateLatestFilmWidget(dark?: boolean) {
-  const [film] = await getLatestFilms()
+export async function GET(request: NextRequest) {
+  const dark = request.nextUrl.searchParams.get("dark") !== null
+  const [film] = await getLatestFilms(1)
 
   if (!film) {
-    return
+    return new Response(undefined, { status: 500 })
   }
 
   const poster = film.poster ? await encodeImage(film.poster) : undefined
@@ -180,24 +181,9 @@ async function generateLatestFilmWidget(dark?: boolean) {
     ]
   )
 
-  return toHtml(svg, { space: "svg" })
-}
-
-/**
- * A Route Handler generating an SVG image of the latest film I watched.
- *
- * @param request - The incoming request.
- */
-export async function GET(request: NextRequest) {
-  const svg = await generateLatestFilmWidget(
-    request.nextUrl.searchParams.get("dark") !== null
-  )
-
-  return svg
-    ? new Response(svg, {
-        headers: {
-          "Content-Type": "image/svg+xml"
-        }
-      })
-    : new Response(undefined, { status: 500 })
+  return new Response(toHtml(svg, { space: "svg" }), {
+    headers: {
+      "Content-Type": "image/svg+xml"
+    }
+  })
 }

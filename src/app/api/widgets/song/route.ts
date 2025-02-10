@@ -1,11 +1,11 @@
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestSongs } from "../../../data/get-latest-songs"
-import theme from "../theme.json"
+import { getLatestSongs } from "src/app/data/get-latest-songs"
 import { encodeImage } from "src/utils/encode-image"
 import { formatRelativeDate } from "src/utils/format-relative-date"
 import { truncate } from "src/utils/truncate"
+import theme from "../theme.json"
 
 const WIDTH = 380
 const HEIGHT = 80
@@ -19,16 +19,18 @@ const COVER_RADIUS = 4
 const ICON_SIZE = 20
 
 /**
- * Generate an SVG image of the latest song I listened to.
+ * A Route Handler generating an SVG image of the latest song I listened to.
  *
- * @param [dark] - Whether to generate a dark variant.
+ * @param request - The incoming request.
  */
-async function generateLatestSongWidget(dark?: boolean) {
-  const [song] = await getLatestSongs()
+export async function GET(request: NextRequest) {
+  const dark = request.nextUrl.searchParams.get("dark") !== null
+  const [song] = await getLatestSongs(1)
 
   if (!song) {
-    return
+    return new Response(undefined, { status: 500 })
   }
+
   const cover = song.cover ? await encodeImage(song.cover) : undefined
   const date = song.date
     ? formatRelativeDate(song.date, {
@@ -252,24 +254,9 @@ async function generateLatestSongWidget(dark?: boolean) {
     ]
   )
 
-  return toHtml(svg, { space: "svg" })
-}
-
-/**
- * A Route Handler generating an SVG image of the latest song I listened to.
- *
- * @param request - The incoming request.
- */
-export async function GET(request: NextRequest) {
-  const svg = await generateLatestSongWidget(
-    request.nextUrl.searchParams.get("dark") !== null
-  )
-
-  return svg
-    ? new Response(svg, {
-        headers: {
-          "Content-Type": "image/svg+xml"
-        }
-      })
-    : new Response(undefined, { status: 500 })
+  return new Response(toHtml(svg, { space: "svg" }), {
+    headers: {
+      "Content-Type": "image/svg+xml"
+    }
+  })
 }
