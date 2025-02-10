@@ -6,13 +6,13 @@
   "license": "MIT",
   "repository": "https://github.com/marcbouchenoire/marcbouchenoire.com",
   "homepage": "https://marcbouchenoire.com",
-  "packageManager": "bun@1.1.40",
+  "packageManager": "bun@1.2.0",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "biome": "biome check --write ./ --assists-enabled=true",
-    "biome:lint": "biome lint --write ./ --assists-enabled=true"
+    "biome": "biome check --write --assists-enabled=true",
+    "ci": "biome lint --write && tsc --noEmit"
   },
   "dependencies": {
     "bright": "^1.0.0",
