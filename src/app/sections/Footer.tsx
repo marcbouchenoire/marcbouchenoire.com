@@ -58,7 +58,7 @@ export async function Footer({
       )}
       {...props}
     >
-      <hr className="w-full border-t border-gray-150 dark:border-gray-800" />
+      <hr className="w-full border-gray-150 border-t dark:border-gray-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
           <RandomEmoji />{" "}
@@ -92,7 +92,7 @@ export async function Footer({
           <span>
             <span>marcbouchenoire.com</span>
             <Suspense>
-              <LatestCommit className="hidden text-gray-350 dark:text-gray-450 sm:inline" />
+              <LatestCommit className="hidden text-gray-350 sm:inline dark:text-gray-450" />
             </Suspense>
           </span>
         </a>

@@ -65,7 +65,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
         )}
       </div>
       <div className="flex min-w-0 flex-col justify-center">
-        <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
+        <small className="flex items-center font-semibold text-2xs text-lime-500 uppercase leading-tight tracking-widest dark:text-lime-400">
           <svg
             className="-ml-px mr-1 flex-none"
             height="20"
@@ -88,10 +88,10 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
               simplifyYesterday
             />
           ) : (
-            <Skeleton className="w-16 !bg-lime-500/20 dark:!bg-lime-400/20" />
+            <Skeleton className="!bg-lime-500/20 dark:!bg-lime-400/20 w-16" />
           )}
         </small>
-        <p className="mb-1.5 mt-1 flex items-center">
+        <p className="mt-1 mb-1.5 flex items-center">
           <span
             className="truncate font-semibold text-gray-700 dark:text-gray-100"
             title={title}
@@ -100,7 +100,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
           </span>{" "}
           {year && (
             <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400"
               dateTime={String(year)}
             >
               {year}
@@ -111,7 +111,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
           <div
             aria-label={`${rating ?? 0} out of 5`}
             className={clsx(
-              "relative -ml-px h-[20px] w-[96px]",
+              "-ml-px relative h-[20px] w-[96px]",
               !rating && "skeleton"
             )}
             role="img"

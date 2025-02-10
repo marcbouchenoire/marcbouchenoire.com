@@ -11,6 +11,16 @@ interface GitHubResponse {
   created_at: string
 
   /**
+   * The date at which the repository was last updated.
+   */
+  updated_at: string
+
+  /**
+   * The date at which the repository was last pushed to.
+   */
+  pushed_at: string
+
+  /**
    * The amount of forks.
    */
   forks_count: number
@@ -21,19 +31,9 @@ interface GitHubResponse {
   open_issues_count: number
 
   /**
-   * The date at which the repository was last pushed to.
-   */
-  pushed_at: string
-
-  /**
    * The amount of stars.
    */
   stargazers_count: number
-
-  /**
-   * The date at which the repository was last updated.
-   */
-  updated_at: string
 
   /**
    * The amount of users watching the repository.
@@ -48,6 +48,16 @@ interface Repository {
   created: string
 
   /**
+   * The date at which the repository was last updated.
+   */
+  updated: string
+
+  /**
+   * The date at which the repository was last pushed to.
+   */
+  pushed: string
+
+  /**
    * The amount of forks.
    */
   forks: number
@@ -58,19 +68,9 @@ interface Repository {
   issues: number
 
   /**
-   * The date at which the repository was last pushed to.
-   */
-  pushed: string
-
-  /**
    * The amount of stars.
    */
   stars: number
-
-  /**
-   * The date at which the repository was last updated.
-   */
-  updated: string
 
   /**
    * The amount of users watching the repository.

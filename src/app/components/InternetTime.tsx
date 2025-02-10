@@ -16,18 +16,18 @@ const OFFSET_PERCENTAGE = 60
 
 interface DigitsColumnProps extends ComponentProps<"span"> {
   /**
-   * The place of the digit.
-   */
-  place: number
-
-  /**
    * The total value.
    */
   value: number
+
+  /**
+   * The place of the digit.
+   */
+  place: number
 }
 
 interface DigitProps
-  extends Pick<DigitsColumnProps, "place" | "value">,
+  extends Pick<DigitsColumnProps, "value" | "place">,
     ComponentProps<typeof motion.span> {
   /**
    * The digit to display.
@@ -216,7 +216,7 @@ export function InternetTime({
             transition={transition}
             variants={variants}
           >
-            <span className="absolute select-text font-medium tracking-wide text-transparent">
+            <span className="absolute select-text font-medium text-transparent tracking-wide">
               {time}
             </span>
             <span aria-hidden className="pointer-events-none inline-block">

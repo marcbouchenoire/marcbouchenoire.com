@@ -29,7 +29,7 @@ interface LastFmImage extends LastFmText {
   /**
    * The image's size.
    */
-  size: "extralarge" | "large" | "medium" | "small"
+  size: "small" | "medium" | "large" | "extralarge"
 }
 
 interface LastFmTrackDate extends LastFmText {
@@ -53,26 +53,6 @@ interface LastFmRecentTrack {
   "@attr"?: LastFmRecentTrackAttributes
 
   /**
-   * The album the track is featured in.
-   */
-  album: LastFmMusicBrainzId
-
-  /**
-   * The track's artist.
-   */
-  artist: LastFmMusicBrainzId
-
-  /**
-   * The date at which the track was listened to.
-   */
-  date?: LastFmTrackDate
-
-  /**
-   * A cover art image in various sizes.
-   */
-  image: LastFmImage[]
-
-  /**
    * The track's MusicBrainz identifier.
    */
   mbid: string
@@ -83,21 +63,41 @@ interface LastFmRecentTrack {
   name: string
 
   /**
-   * Whether a preview is available for streaming.
+   * The album the track is featured in.
    */
-  streamable: LastFmBoolean
+  album: LastFmMusicBrainzId
+
+  /**
+   * The track's artist.
+   */
+  artist: LastFmMusicBrainzId
 
   /**
    * The track's Last.fm URL.
    */
   url: string
+
+  /**
+   * A cover art image in various sizes.
+   */
+  image: LastFmImage[]
+
+  /**
+   * Whether a preview is available for streaming.
+   */
+  streamable: LastFmBoolean
+
+  /**
+   * The date at which the track was listened to.
+   */
+  date?: LastFmTrackDate
 }
 
 interface LastFmRecentTracksAttributes {
   /**
-   * The current page index.
+   * The total amount of tracks.
    */
-  page: string
+  total: string
 
   /**
    * The amount of tracks per page.
@@ -105,9 +105,9 @@ interface LastFmRecentTracksAttributes {
   perPage: string
 
   /**
-   * The total amount of tracks.
+   * The current page index.
    */
-  total: string
+  page: string
 
   /**
    * The total amount of pages.
@@ -136,9 +136,19 @@ interface LastFmResponse {
 
 export interface Song {
   /**
+   * The song's title.
+   */
+  title: string
+
+  /**
    * The song's artist.
    */
   artist: string
+
+  /**
+   * The song's Last.fm URL.
+   */
+  url: string
 
   /**
    * The song's cover art.
@@ -154,16 +164,6 @@ export interface Song {
    * Whether the song is currently playing.
    */
   playing: boolean
-
-  /**
-   * The song's title.
-   */
-  title: string
-
-  /**
-   * The song's Last.fm URL.
-   */
-  url: string
 }
 
 /**
@@ -191,7 +191,7 @@ function formatSong(track: LastFmRecentTrack): Song {
  *
  * @param limit - The maximum number of songs to return.
  */
-export async function getLatestSongs(limit: number = 1): Promise<Song[]> {
+export async function getLatestSongs(limit = 1): Promise<Song[]> {
   cacheLife("seconds")
 
   try {

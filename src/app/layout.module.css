@@ -1,5 +1,3 @@
-/* stylelint-disable selector-class-pattern */
-
 @keyframes aura-rainbow {
   from {
     transform: translateY(var(--aura-rainbow-offset)) rotate(0deg);
@@ -29,14 +27,9 @@
       rgb(0 0 0 / 35%) 65%,
       rgb(0 0 0 / 75%) 66%,
       transparent 71%
-    ),
-    linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
-  mask-position:
-    60% 0%,
-    0% 0%;
-  mask-size:
-    300% auto,
-    auto;
+    ), linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
+  mask-position: 60% 0%, 0% 0%;
+  mask-size: 300% auto, auto;
 
   @media screen(sm) {
     mask-size:

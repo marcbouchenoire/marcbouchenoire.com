@@ -11,11 +11,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --write --log-level silent --ignore-path .eslintignore",
-    "lint": "bun run lint:eslint && bun run lint:stylelint && bun run lint:tsc && bun run lint:prettier",
-    "lint:eslint": "eslint '**/*.{cjs,mjs,ts,tsx}' --fix",
-    "lint:prettier": "bun run prettier '**/*.{cjs,mjs,ts,tsx,json,md,yml,css}'",
-    "lint:stylelint": "stylelint '**/*.css' --fix",
+    "format": "biome format --write ./",
+    "lint": "bun run lint:biome && bun run lint:tsc",
+    "lint:biome": "biome lint --write ./",
     "lint:tsc": "tsc --project tsconfig.json"
   },
   "dependencies": {
@@ -34,20 +32,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@marcbouchenoire/eslint-config": "^3.0.1",
-    "@marcbouchenoire/prettier-config": "^1.1.0",
-    "@marcbouchenoire/stylelint-config": "^2.0.1",
-    "@types/node": "^22.10.5",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
     "execa": "^9.5.2",
     "postcss": "^8.4.49",
     "postcss-nesting": "^12.1.5",
-    "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "stylelint": "^15.11.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   }

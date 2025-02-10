@@ -18,10 +18,10 @@ function Breadcrumbs() {
   }, [segment])
 
   return (
-    <span className="flex items-center whitespace-pre leading-none text-gray-700 dark:text-gray-100">
+    <span className="flex items-center whitespace-pre text-gray-700 leading-none dark:text-gray-100">
       <Link
         aria-label="Return to home page"
-        className="link -ml-1 -mr-0.5 inline-flex items-center gap-2.5 py-1 pl-1 pr-0.5"
+        className="link -ml-1 -mr-0.5 inline-flex items-center gap-2.5 py-1 pr-0.5 pl-1"
         href="/"
       >
         <Image

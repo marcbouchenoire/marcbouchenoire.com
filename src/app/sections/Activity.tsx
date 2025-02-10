@@ -15,10 +15,10 @@ const NUMBER_OF_ACTIVITIES = 3
 export function Activity({ className, ...props }: ComponentProps<"section">) {
   return (
     <section className={clsx(className, "content")} {...props}>
-      <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
+      <h2 className="mb-2 font-bold text-gray-800 text-xl dark:text-white">
         Activity
       </h2>
-      <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
+      <p className="max-w-[46ch] text-gray-500 leading-relaxed dark:text-gray-350">
         What I’ve recently{" "}
         <a
           className="link text-gray-800 dark:text-white"

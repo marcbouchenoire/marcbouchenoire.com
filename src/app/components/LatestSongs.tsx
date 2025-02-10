@@ -62,7 +62,7 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
         )}
       </div>
       <div className="flex min-w-0 flex-col justify-center">
-        <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
+        <small className="flex items-center font-semibold text-2xs text-rose-500 uppercase leading-tight tracking-widest dark:text-rose-400">
           <svg
             className="-ml-px mr-1 flex-none will-change-transform"
             fill="currentColor"
@@ -151,7 +151,7 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
           ) : playing ? (
             <span className="truncate">Currently playing</span>
           ) : (
-            <Skeleton className="w-16 !bg-rose-500/20 dark:!bg-rose-400/20" />
+            <Skeleton className="!bg-rose-500/20 dark:!bg-rose-400/20 w-16" />
           )}
         </small>
         <p className="my-1 flex items-center">

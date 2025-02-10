@@ -18,14 +18,24 @@ interface XMLParserDocument<T> {
 
 interface LetterboxdFilmEntry {
   /**
+   * A unique identifer.
+   */
+  guid: string
+
+  /**
+   * The film entry's title.
+   */
+  title: string
+
+  /**
    * The film entry's description.
    */
   description: string
 
   /**
-   * A unique identifer.
+   * The film's Letterboxd URL.
    */
-  guid: string
+  link: string
 
   /**
    * The film's title.
@@ -43,24 +53,14 @@ interface LetterboxdFilmEntry {
   "letterboxd:memberRating": number
 
   /**
-   * Whether the film was already watched before.
-   */
-  "letterboxd:rewatch": "No" | "Yes"
-
-  /**
    * The date at which the film was watched.
    */
   "letterboxd:watchedDate": string
 
   /**
-   * The film's Letterboxd URL.
+   * Whether the film was already watched before.
    */
-  link: string
-
-  /**
-   * The film entry's title.
-   */
-  title: string
+  "letterboxd:rewatch": "Yes" | "No"
 }
 
 interface LetterboxdUnknownEntry {
@@ -78,14 +78,14 @@ interface LetterboxdResponse {
    */
   channel: {
     /**
+     * The feed's title.
+     */
+    title: string
+
+    /**
      * The feed's description.
      */
     description: string
-
-    /**
-     * The feed's content.
-     */
-    item: (LetterboxdFilmEntry | LetterboxdUnknownEntry)[]
 
     /**
      * The feed's URL.
@@ -93,9 +93,9 @@ interface LetterboxdResponse {
     link: string
 
     /**
-     * The feed's title.
+     * The feed's content.
      */
-    title: string
+    item: (LetterboxdFilmEntry | LetterboxdUnknownEntry)[]
   }
 }
 
@@ -162,7 +162,7 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
  *
  * @param limit - The maximum number of films to return.
  */
-export async function getLatestFilms(limit: number = 1): Promise<Film[]> {
+export async function getLatestFilms(limit = 1): Promise<Film[]> {
   cacheLife("hours")
 
   try {

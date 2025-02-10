@@ -9,14 +9,14 @@ import {
   useTransform
 } from "motion/react"
 import Image from "next/image"
-import type { ComponentProps } from "react"
-import { useCallback, useEffect, useState } from "react"
-import styles from "./TofuPolaroid.module.css"
 import tofu1 from "public/tofu/1.jpg"
 import tofu2 from "public/tofu/2.jpg"
 import tofu3 from "public/tofu/3.jpg"
 import tofu4 from "public/tofu/4.jpg"
 import tofu5 from "public/tofu/5.jpg"
+import type { ComponentProps } from "react"
+import { useCallback, useEffect, useState } from "react"
+import styles from "./TofuPolaroid.module.css"
 
 const PHOTOS = [tofu1, tofu2, tofu3, tofu4, tofu5]
 
@@ -55,54 +55,51 @@ export function TofuPolaroid({
 
   const [isAnimating, setAnimating] = useState(false)
 
-  useEffect(
-    () => {
-      if (isDragging) {
-        document.body.classList.add("grabbing")
+  useEffect(() => {
+    if (isDragging) {
+      document.body.classList.add("grabbing")
 
-        const handlePointerUp = () => {
-          setDragging(false)
-          setPhotoIndex((index) => {
-            let randomIndex = index
+      const handlePointerUp = () => {
+        setDragging(false)
+        setPhotoIndex((index) => {
+          let randomIndex = index
 
-            while (randomIndex === index) {
-              randomIndex = Math.floor(Math.random() * PHOTOS.length)
-            }
-
-            return randomIndex
-          })
-
-          overlayOpacity.set(1)
-          animate(overlayOpacity, 0, { duration: 2, ease: "easeOut" })
-          highlightOpacity.set(0.1)
-          animate(highlightOpacity, 1, { duration: 2, ease: "easeOut" })
-
-          if ((x.get() === 0 && y.get() === 0) || isAnimating) {
-            x.stop()
-            x.set(0)
-            setAnimating(true)
-            animate(x, [0, -5, 5, -5, 5, 0], {
-              duration: 0.4,
-              ease: "easeInOut",
-              onComplete: () => setAnimating(false)
-            })
+          while (randomIndex === index) {
+            randomIndex = Math.floor(Math.random() * PHOTOS.length)
           }
-        }
 
-        document.addEventListener("pointerup", handlePointerUp)
+          return randomIndex
+        })
 
-        return () => {
-          document.body.classList.remove("grabbing")
-          document.removeEventListener("pointerup", handlePointerUp)
+        overlayOpacity.set(1)
+        animate(overlayOpacity, 0, { duration: 2, ease: "easeOut" })
+        highlightOpacity.set(0.1)
+        animate(highlightOpacity, 1, { duration: 2, ease: "easeOut" })
+
+        if ((x.get() === 0 && y.get() === 0) || isAnimating) {
+          x.stop()
+          x.set(0)
+          setAnimating(true)
+          animate(x, [0, -3, 3, -3, 3, 0], {
+            duration: 0.4,
+            ease: "easeInOut",
+            onComplete: () => setAnimating(false)
+          })
         }
       }
+
+      document.addEventListener("pointerup", handlePointerUp)
 
       return () => {
         document.body.classList.remove("grabbing")
+        document.removeEventListener("pointerup", handlePointerUp)
       }
-    },
-    [isDragging] // eslint-disable-line react-hooks/exhaustive-deps
-  )
+    }
+
+    return () => {
+      document.body.classList.remove("grabbing")
+    }
+  }, [isDragging, isAnimating])
 
   return (
     <motion.div

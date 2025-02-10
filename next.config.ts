@@ -2,9 +2,6 @@ import type { NextConfig } from "next"
 
 const config: NextConfig = {
   trailingSlash: false,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   experimental: {
     inlineCss: true,
     dynamicIO: true,
@@ -57,7 +54,7 @@ const config: NextConfig = {
     return [
       {
         source: "/:path*",
-        destination: `/:path*`
+        destination: "/:path*"
       },
       {
         source: "/projects/symbolist/:path*",

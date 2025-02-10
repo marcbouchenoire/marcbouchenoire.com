@@ -1,11 +1,11 @@
 import { clsx } from "clsx"
 import Image from "next/image"
+import portrait from "public/portrait.jpg"
 import type { ComponentProps } from "react"
+import { Characters } from "src/components/Characters"
 import { CustomizableTitle } from "../components/CustomizableTitle"
 import { TofuPolaroid } from "../components/TofuPolaroid"
 import styles from "./Introduction.module.css"
-import portrait from "public/portrait.jpg"
-import { Characters } from "src/components/Characters"
 
 /**
  * An introduction section with a short bio.
@@ -32,16 +32,16 @@ export function Introduction({
               width="80"
             />
           </div>
-          <TofuPolaroid className="bottom-[-4.35rem] right-[-3.65rem] w-[8.5rem]" />
+          <TofuPolaroid className="right-[-3.65rem] bottom-[-4.35rem] w-[8.5rem]" />
         </div>
-        <h1 className="mb-2.5 mt-5 text-2xl font-semibold text-gray-800 dark:text-white">
+        <h1 className="mt-5 mb-2.5 font-semibold text-2xl text-gray-800 dark:text-white">
           Marc Bouchenoire
         </h1>
-        <p className="text-lg text-gray-400 dark:text-gray-450">
+        <p className="text-gray-400 text-lg dark:text-gray-450">
           Detail-obsessed <CustomizableTitle />
         </p>
       </div>
-      <div className="mb-10 mt-11 text-gray-500 dark:text-gray-350">
+      <div className="mt-11 mb-10 text-gray-500 dark:text-gray-350">
         <p className="my-4 max-w-[64ch] leading-loose">
           Designing and building{" "}
           <em className={clsx(styles.delightful, "cursor-text")}>
@@ -53,18 +53,19 @@ export function Introduction({
           I’m currently living in Nantes, France and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="group relative ml-[-0.05em] whitespace-nowrap pl-[0.25em] pr-[0.2em] font-medium text-liveblocks-alternate focus-visible:outline-none dark:text-liveblocks-alternate-dark"
+            className="group relative ml-[-0.05em] whitespace-nowrap pr-[0.2em] pl-[0.25em] font-medium text-liveblocks-alternate focus-visible:outline-none dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             <span
               aria-hidden
-              className="pointer-events-none absolute left-0 top-[-0.075lh] h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:-left-px after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus-visible:before:opacity-20 dark:before:bg-liveblocks-dark dark:before:opacity-20 after:dark:bg-liveblocks-dark group-hover:dark:before:opacity-30 group-focus-visible:dark:before:opacity-30"
+              className="after:-left-px pointer-events-none absolute top-[-0.075lh] left-0 h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus-visible:before:opacity-20 after:dark:bg-liveblocks-dark dark:before:bg-liveblocks-dark dark:before:opacity-20 group-focus-visible:dark:before:opacity-30 group-hover:dark:before:opacity-30"
             >
-              <span className="absolute -left-px top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
-              <span className="absolute -left-px top-0 origin-top-left -translate-y-full whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] text-2xs font-medium leading-none text-white dark:bg-liveblocks-dark">
+              <span className="-left-px absolute top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
+              <span className="-left-px -translate-y-full absolute top-0 origin-top-left whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] font-medium text-2xs text-white leading-none dark:bg-liveblocks-dark">
                 Marc
+                {/* biome-ignore lint/a11y/noSvgWithoutTitle: The parent element has an `aria-hidden` attribute */}
                 <svg
                   className="absolute bottom-[-0.25rem] left-[2px] z-10 size-[0.25rem] overflow-visible text-liveblocks dark:text-liveblocks-dark"
                   fill="none"
@@ -88,14 +89,14 @@ export function Introduction({
       <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3">
         <a
           aria-label="Twitter (or 𝕏)"
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-twitter transition hover:text-twitter/50 hover:shadow-twitter/5 focus-visible:ring-twitter/40 dark:text-twitter-dark dark:hover:text-twitter-dark/50 dark:focus-visible:ring-twitter-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-twitter transition hover:text-twitter/50 hover:shadow-twitter/5 focus-visible:ring-twitter/40 dark:text-twitter-dark dark:focus-visible:ring-twitter-dark/40 dark:hover:text-twitter-dark/50"
           href="https://twitter.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
           title="Twitter (or 𝕏)"
         >
           <svg
-            className="[transform:scaleY(-1)]"
+            className="scale-y-[-1]"
             height="24"
             role="presentation"
             width="24"
@@ -111,7 +112,7 @@ export function Introduction({
         </a>
         <a
           aria-label="Bluesky"
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-bluesky transition hover:text-bluesky/50 hover:shadow-bluesky/5 focus-visible:ring-bluesky/40 dark:text-bluesky-dark dark:hover:text-bluesky-dark/50 dark:focus-visible:ring-bluesky-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-bluesky transition hover:text-bluesky/50 hover:shadow-bluesky/5 focus-visible:ring-bluesky/40 dark:text-bluesky-dark dark:focus-visible:ring-bluesky-dark/40 dark:hover:text-bluesky-dark/50"
           href="https://bsky.app/profile/marcbouchenoire.com"
           rel="me noreferrer"
           target="_blank"
@@ -133,7 +134,7 @@ export function Introduction({
         </a>
         <a
           aria-label="Mastodon"
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus-visible:ring-mastodon/40 dark:text-mastodon-dark dark:hover:text-mastodon-dark/50 dark:focus-visible:ring-mastodon-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-mastodon transition hover:text-mastodon/50 hover:shadow-mastodon/5 focus-visible:ring-mastodon/40 dark:text-mastodon-dark dark:focus-visible:ring-mastodon-dark/40 dark:hover:text-mastodon-dark/50"
           href="https://mastodon.social/@marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -155,7 +156,7 @@ export function Introduction({
         </a>
         <a
           aria-label="GitHub"
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-github transition hover:text-github/50 hover:shadow-github/5 focus-visible:ring-github/40 dark:text-github-dark dark:hover:text-github-dark/50 dark:focus-visible:ring-github-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-github transition hover:text-github/50 hover:shadow-github/5 focus-visible:ring-github/40 dark:text-github-dark dark:focus-visible:ring-github-dark/40 dark:hover:text-github-dark/50"
           href="https://github.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -177,7 +178,7 @@ export function Introduction({
         </a>
         <a
           aria-label="Dribbble"
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-dribbble transition hover:text-dribbble/50 hover:shadow-dribbble/5 focus-visible:ring-dribbble/40 dark:text-dribbble-dark dark:hover:text-dribbble-dark/50 dark:focus-visible:ring-dribbble-dark/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-dribbble transition hover:text-dribbble/50 hover:shadow-dribbble/5 focus-visible:ring-dribbble/40 dark:text-dribbble-dark dark:focus-visible:ring-dribbble-dark/40 dark:hover:text-dribbble-dark/50"
           href="https://dribbble.com/marcbouchenoire"
           rel="me noreferrer"
           target="_blank"
@@ -198,7 +199,7 @@ export function Introduction({
           </svg>
         </a>
         <a
-          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-red-500 transition hover:text-red-500/50 hover:shadow-red-500/5 focus-visible:ring-red-500/40 dark:text-red-400 dark:hover:text-red-400/50 dark:focus-visible:ring-red-400/40"
+          className="focusable -ml-2.5 flex h-10 w-10 flex-none cursor-pointer items-center justify-center gap-2 rounded-full font-medium text-red-500 transition hover:text-red-500/50 hover:shadow-red-500/5 focus-visible:ring-red-500/40 dark:text-red-400 dark:focus-visible:ring-red-400/40 dark:hover:text-red-400/50"
           href="mailto:mail@marcbouchenoire.com"
           title="Email"
         >

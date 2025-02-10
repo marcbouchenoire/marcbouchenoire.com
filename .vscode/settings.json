@@ -1,15 +1,11 @@
 {
-  "css.validate": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
-  "eslint.validate": ["typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
   "files.exclude": {
     "node_modules": true
-  },
-  "prettier.ignorePath": ".gitignore",
-  "stylelint.enable": true
+  }
 }

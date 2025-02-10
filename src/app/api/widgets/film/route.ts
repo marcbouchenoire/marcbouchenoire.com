@@ -1,11 +1,11 @@
 import { toHtml } from "hast-util-to-html"
 import { s } from "hastscript"
 import type { NextRequest } from "next/server"
-import { getLatestFilms } from "../../../data/get-latest-films"
-import theme from "../theme.json"
 import { encodeImage } from "src/utils/encode-image"
 import { formatRelativeDate } from "src/utils/format-relative-date"
 import { truncate } from "src/utils/truncate"
+import { getLatestFilms } from "../../../data/get-latest-films"
+import theme from "../theme.json"
 
 const WIDTH = 380
 const HEIGHT = 80

@@ -1,5 +1,3 @@
-/* stylelint-disable selector-class-pattern */
-
 @keyframes scroll-gradient {
   from {
     transform: translateY(0%);
@@ -66,14 +64,12 @@
   @apply before:absolute before:inset-0 before:rounded-[inherit];
 
   &::before {
-    box-shadow:
-      inset 1px 1px 8px rgb(255 255 255 / 80%),
-      inset -1px -1px 8px rgb(0 0 0 / 10%);
+    box-shadow: inset 1px 1px 8px rgb(255 255 255 / 80%), inset -1px -1px 8px
+      rgb(0 0 0 / 10%);
 
     :global(.dark) & {
-      box-shadow:
-        inset 1px 1px 8px rgb(255 255 255 / 20%),
-        inset -1px -1px 8px rgb(0 0 0 / 80%);
+      box-shadow: inset 1px 1px 8px rgb(255 255 255 / 20%), inset -1px -1px 8px
+        rgb(0 0 0 / 80%);
     }
   }
 }

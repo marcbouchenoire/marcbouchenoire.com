@@ -2,12 +2,12 @@ import { clsx } from "clsx"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { type PropsWithChildren, Suspense } from "react"
-import styles from "./layout.module.css"
-import { Footer } from "./sections/Footer"
 import { ThemeProvider } from "src/components/ThemeProvider"
 import { METADATA } from "src/metadata"
-import "src/styles/main.css"
+import styles from "./layout.module.css"
+import { Footer } from "./sections/Footer"
 import { Header } from "./sections/Header"
+import "src/styles/main.css"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,7 +54,7 @@ export default function Layout({ children }: PropsWithChildren) {
               <div
                 className={clsx(
                   styles.auraMask,
-                  "absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:left-[-150%] md:w-[400%] md:[--aura-offset:-10%]"
+                  "absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] md:left-[-150%] md:w-[400%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:[--aura-offset:-10%]"
                 )}
               >
                 <div
@@ -76,7 +76,7 @@ export default function Layout({ children }: PropsWithChildren) {
           <Suspense>
             <Header className="content" />
           </Suspense>
-          <main className="flex flex-1 flex-col items-center justify-center pb-16 pt-12 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20">
+          <main className="flex flex-1 flex-col items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24">
             {children}
           </main>
           <Suspense>

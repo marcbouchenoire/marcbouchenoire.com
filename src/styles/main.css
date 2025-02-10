@@ -3,30 +3,16 @@
 @tailwind utilities;
 
 @keyframes skeleton {
-  from,
-  to {
-    mask-image: linear-gradient(
-      90deg,
-      #000 5%,
-      rgb(0 0 0 / 50%) 25%,
-      rgb(0 0 0 / 50%) 75%,
-      #000 95%
-    );
+  from {
+    mask-position: 200% 0;
     mask-size: 400% 100%;
   }
 
-  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
-  from {
-    mask-position: 200% 0;
-  }
-
-  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
   to {
     mask-position: -200% 0;
   }
 }
 
-/* stylelint-disable selector-id-pattern */
 @layer base {
   html,
   body {
@@ -62,7 +48,6 @@
     @apply touch-manipulation;
   }
 }
-/* stylelint-enable selector-id-pattern */
 
 @layer utilities {
   .focusable {
@@ -116,6 +101,13 @@
   }
 
   .skeleton {
+    mask-image: linear-gradient(
+      90deg,
+      #000 5%,
+      rgb(0 0 0 / 50%) 25%,
+      rgb(0 0 0 / 50%) 75%,
+      #000 95%
+    );
     animation: 6s linear infinite skeleton;
   }
 }
