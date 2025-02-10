@@ -30,8 +30,6 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Liveblocks"
             >
               <path
                 clipRule="evenodd"
@@ -96,8 +94,6 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Framer"
             >
               <path
                 clipRule="evenodd"
@@ -180,8 +176,6 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Awkward"
             >
               <path
                 clipRule="evenodd"
@@ -220,8 +214,6 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="L’École de Design"
             >
               <path
                 clipRule="evenodd"
