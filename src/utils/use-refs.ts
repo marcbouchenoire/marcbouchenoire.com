@@ -23,8 +23,9 @@ function mergeRefs<T>(value: T, ...refs: Ref<T>[]) {
  * @param refs - A list of possible refs.
  */
 export function useRefs<T>(...refs: (Ref<T> | undefined)[]): RefCallback<T> {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: The refs themselves should be compared, not the surrounding array
   return useCallback(
     (value: T) => mergeRefs(value, ...(refs.filter(Boolean) as Ref<T>[])),
-    [refs]
+    refs
   )
 }
