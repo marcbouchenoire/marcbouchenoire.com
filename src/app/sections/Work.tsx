@@ -1,5 +1,3 @@
-import type { BrightProps } from "bright"
-import { Code as Bright } from "bright"
 import { clsx } from "clsx"
 import Image from "next/image"
 import elementsFood from "public/visuals/elements/food.png"
@@ -11,8 +9,12 @@ import liveblocksMentionSuggestions from "public/visuals/liveblocks/mention-sugg
 import liveblocksThread from "public/visuals/liveblocks/thread.png"
 import masterThesis from "public/visuals/master/thesis.png"
 import masterVive from "public/visuals/master/vive.png"
-import type { ComponentProps, ReactNode } from "react"
+import { type ComponentProps, type ReactNode, Suspense } from "react"
 import { withExternalCdn } from "src/utils/with-external-cdn"
+import {
+  CodeHighlight,
+  type CodeHighlightProps
+} from "../components/CodeHighlight"
 import styles from "./Work.module.css"
 
 interface BrowserProps extends Omit<ComponentProps<"div">, "title"> {
@@ -27,21 +29,13 @@ interface BrowserProps extends Omit<ComponentProps<"div">, "title"> {
   popup?: boolean
 }
 
-interface CodeProps extends Omit<ComponentProps<"div">, "title"> {
+interface CodeProps
+  extends Omit<ComponentProps<"div">, "title">,
+    Pick<CodeHighlightProps, "code" | "lang"> {
   /**
    * The window's current title.
    */
   title?: ReactNode
-
-  /**
-   * The editor's content.
-   */
-  code?: string
-
-  /**
-   * The editor's language.
-   */
-  language?: BrightProps["lang"]
 }
 
 interface PhoneProps extends ComponentProps<"div"> {
@@ -125,10 +119,10 @@ function Browser({
  * @param props - A set of `div` props.
  * @param [props.title] - The window's current title.
  * @param [props.code] - The editor's content.
- * @param [props.language] - The editor's language.
+ * @param [props.lang] - The editor's language.
  * @param [props.className] - A list of one or more classes.
  */
-function Code({ title, code, language, className, ...props }: CodeProps) {
+function Code({ title, code, lang, className, ...props }: CodeProps) {
   return (
     <div
       className={clsx(
@@ -147,15 +141,15 @@ function Code({ title, code, language, className, ...props }: CodeProps) {
           <div className="text-center text-3xs text-white/40">{title}</div>
         )}
       </div>
-      <div aria-hidden className="flex-1">
-        <Bright
-          className={styles.bright}
-          lang={language}
-          lineNumbers
-          theme="poimandres"
-        >
-          {code}
-        </Bright>
+      <div className="flex-1">
+        <Suspense>
+          <CodeHighlight
+            className={styles.codeHighlight}
+            code={code}
+            lang={lang}
+            themes="poimandres"
+          />
+        </Suspense>
       </div>
     </div>
   )
@@ -422,7 +416,7 @@ export function Work(props: ComponentProps<"section">) {
                     "pointer-events-auto absolute top-[20%] left-[6%] h-[60%] w-[52%] text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
                   )}
                   code={liveblocksPrimitivesCode}
-                  language="tsx"
+                  lang="tsx"
                   title="Primitives.tsx"
                 />
                 <Browser

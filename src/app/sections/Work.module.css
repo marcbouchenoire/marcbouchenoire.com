@@ -144,12 +144,9 @@
     );
 }
 
-.bright {
-  @apply !m-0;
-
-  pre {
-    --line-number-color: rgb(255 255 255 / 30%);
-
-    @apply !overflow-hidden !bg-transparent !px-0 !py-[0.5em] selection:!bg-white/10;
+.codeHighlight {
+  pre,
+  span {
+    @apply !bg-transparent;
   }
 }

@@ -34,6 +34,7 @@ export function TofuPolaroid({
 }: ComponentProps<typeof motion.div>) {
   const [photoIndex, setPhotoIndex] = useState(0)
   const [isDragging, setDragging] = useState(false)
+  const [isAnimating, setAnimating] = useState(false)
   const overlayOpacity = useMotionValue(0)
   const highlightOpacity = useMotionValue(1)
   const x = useMotionValue(0)
@@ -52,8 +53,6 @@ export function TofuPolaroid({
   const handleDragStart = useCallback(() => {
     setDragging(true)
   }, [])
-
-  const [isAnimating, setAnimating] = useState(false)
 
   useEffect(() => {
     if (isDragging) {

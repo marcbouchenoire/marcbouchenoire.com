@@ -1,0 +1,31 @@
+.codeHighlight {
+  --line-numbers-width: 1ch;
+
+  pre {
+    @apply outline-none py-[0.75em] cursor-text;
+  }
+
+  pre,
+  span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+
+    :global(.dark) & {
+      color: var(--shiki-dark);
+      background-color: var(--shiki-dark-bg);
+    }
+  }
+
+  code {
+    counter-increment: step 0;
+    counter-reset: step;
+
+    :global(.line)::before {
+      @apply inline-block text-right select-none opacity-40 text-current mx-[1em];
+
+      content: counter(step);
+      counter-increment: step;
+      width: var(--line-numbers-width);
+    }
+  }
+}
