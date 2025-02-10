@@ -1,5 +1,5 @@
 import { clsx } from "clsx"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { type PropsWithChildren, Suspense } from "react"
 import { ThemeProvider } from "src/components/ThemeProvider"
@@ -37,16 +37,20 @@ export const metadata: Metadata = {
     creator: METADATA.twitter,
     images: METADATA.image
   },
-  icons: METADATA.icon
+  icons: METADATA.icon,
+  other: {
+    "fediverse:creator": METADATA.mastodon
+  }
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  viewportFit: "cover"
 }
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta content="initial-scale=1, viewport-fit=cover" name="viewport" />
-        <meta content={METADATA.mastodon} name="fediverse:creator" />
-      </head>
       <body className={inter.variable}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
