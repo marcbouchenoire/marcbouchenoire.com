@@ -150,7 +150,9 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
             <RelativeDate className="truncate" date={date} simplifyYesterday />
           ) : playing ? (
             <span className="truncate">Currently playing</span>
-          ) : null}
+          ) : (
+            <Skeleton className="w-16 !bg-rose-500/20 dark:!bg-rose-400/20" />
+          )}
         </small>
         <p className="my-1 flex items-center">
           <span

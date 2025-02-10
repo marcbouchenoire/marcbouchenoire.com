@@ -87,7 +87,9 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
               simplifyToday
               simplifyYesterday
             />
-          ) : null}
+          ) : (
+            <Skeleton className="w-16 !bg-lime-500/20 dark:!bg-lime-400/20" />
+          )}
         </small>
         <p className="mb-1.5 mt-1 flex items-center">
           <span
@@ -108,7 +110,10 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
         <div className="flex items-center gap-1.5">
           <div
             aria-label={`${rating ?? 0} out of 5`}
-            className="relative -ml-px h-[20px] w-[96px]"
+            className={clsx(
+              "relative -ml-px h-[20px] w-[96px]",
+              !rating && "skeleton"
+            )}
             role="img"
             title={`${rating ?? 0} out of 5`}
           >

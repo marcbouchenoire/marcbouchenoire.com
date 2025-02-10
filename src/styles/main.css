@@ -3,12 +3,26 @@
 @tailwind utilities;
 
 @keyframes skeleton {
-  from {
-    background-position: 200% 0%;
+  from,
+  to {
+    mask-image: linear-gradient(
+      90deg,
+      #000 5%,
+      rgb(0 0 0 / 50%) 25%,
+      rgb(0 0 0 / 50%) 75%,
+      #000 95%
+    );
+    mask-size: 400% 100%;
   }
 
+  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
+  from {
+    mask-position: 200% 0;
+  }
+
+  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
   to {
-    background-position: -200% 0%;
+    mask-position: -200% 0;
   }
 }
 
@@ -102,25 +116,7 @@
   }
 
   .skeleton {
-    background: linear-gradient(
-      -90deg,
-      theme("colors.gray.100"),
-      theme("colors.gray.200"),
-      theme("colors.gray.200"),
-      theme("colors.gray.100")
-    );
-    background-size: 400% 100%;
     animation: 6s linear infinite skeleton;
-
-    .dark & {
-      background-image: linear-gradient(
-        -90deg,
-        theme("colors.gray.700"),
-        theme("colors.gray.800"),
-        theme("colors.gray.800"),
-        theme("colors.gray.700")
-      );
-    }
   }
 }
 
