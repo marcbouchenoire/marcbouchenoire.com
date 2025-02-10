@@ -1,15 +1,10 @@
-"use client"
-
 import { clsx } from "clsx"
-import type { Transition, Variants } from "motion/react"
-import { AnimatePresence, motion } from "motion/react"
-import type { ComponentProps } from "react"
-import { useMemo } from "react"
-import useSWR from "swr"
-import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
+import { type ComponentProps, Suspense } from "react"
+import type { Film } from "src/app/data/get-latest-films"
+import { getLatestFilms } from "src/app/data/get-latest-films"
+import { FadedImage } from "src/components/FadedImage"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { json } from "src/utils/json"
 
 interface LatestFilmsProps extends ComponentProps<"div"> {
   /**
@@ -25,20 +20,6 @@ interface LatestFilmProps extends ComponentProps<"a"> {
   film?: Film
 }
 
-const variants: Variants = {
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    opacity: 1
-  }
-}
-
-const fade: Transition = {
-  ease: "easeInOut",
-  duration: 0.6
-}
-
 /**
  * Display a film from Letterboxd.
  *
@@ -48,11 +29,6 @@ const fade: Transition = {
  */
 function LatestFilm({ film, className, ...props }: LatestFilmProps) {
   const { date, poster, rating, title, year, url } = film ?? {}
-  const absoluteDate = useMemo(() => {
-    if (!date) return
-
-    return new Date(date)
-  }, [date])
 
   return (
     <a
@@ -79,22 +55,14 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
             fillRule="evenodd"
           />
         </svg>
-        <AnimatePresence>
-          {poster && (
-            <motion.img
-              alt={title}
-              animate="visible"
-              className="absolute h-full w-full object-cover"
-              exit="hidden"
-              initial="hidden"
-              key={title}
-              loading="lazy"
-              src={poster}
-              transition={fade}
-              variants={variants}
-            />
-          )}
-        </AnimatePresence>
+        {poster && title && (
+          <FadedImage
+            alt={title}
+            className="absolute h-full w-full object-cover"
+            key={title}
+            src={poster}
+          />
+        )}
       </div>
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
@@ -112,10 +80,10 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
               fillRule="evenodd"
             />
           </svg>
-          {absoluteDate ? (
+          {date ? (
             <RelativeDate
               className="truncate"
-              date={absoluteDate}
+              date={date}
               simplifyToday
               simplifyYesterday
             />
@@ -199,6 +167,20 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
   )
 }
 
+function LatestFilmsFallback({
+  limit
+}: Required<Pick<LatestFilmsProps, "limit">>) {
+  return Array.from({ length: limit }, (_, index) => <LatestFilm key={index} />)
+}
+
+async function LatestFilmsData({
+  limit
+}: Required<Pick<LatestFilmsProps, "limit">>) {
+  const films = await getLatestFilms(limit)
+
+  return films.map((film, index) => <LatestFilm film={film} key={index} />)
+}
+
 /**
  * Display the latest films I watched from Letterboxd.
  *
@@ -211,18 +193,11 @@ export function LatestFilms({
   className,
   ...props
 }: LatestFilmsProps) {
-  const { data: films } = useSWR<Film[]>(
-    `/api/letterboxd/latest?limit=${limit}`,
-    json
-  )
-
   return (
     <div className={clsx(className, "flex flex-col gap-6")} {...props}>
-      {films
-        ? films.map((film, index) => <LatestFilm film={film} key={index} />)
-        : Array.from({ length: limit }, (_, index) => (
-            <LatestFilm key={index} />
-          ))}
+      <Suspense fallback={<LatestFilmsFallback limit={limit} />}>
+        <LatestFilmsData limit={limit} />
+      </Suspense>
     </div>
   )
 }

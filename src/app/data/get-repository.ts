@@ -1,3 +1,7 @@
+"use cache"
+
+import { unstable_cacheLife as cacheLife } from "next/cache"
+
 const GITHUB_API = "https://api.github.com"
 
 interface GitHubResponse {
@@ -82,6 +86,8 @@ interface Repository {
 export async function getRepository(
   repository: string
 ): Promise<Repository | undefined> {
+  cacheLife("hours")
+
   try {
     const response: GitHubResponse = await fetch(
       `${GITHUB_API}/repos/${repository}`,

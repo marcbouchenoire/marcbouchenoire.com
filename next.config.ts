@@ -6,7 +6,10 @@ const config: NextConfig = {
     ignoreDuringBuilds: true
   },
   experimental: {
-    inlineCss: true
+    inlineCss: true,
+    dynamicIO: true,
+    useCache: true,
+    ppr: true
   },
   logging: {
     fetches: {

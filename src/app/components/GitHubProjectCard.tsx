@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react"
 import { Suspense } from "react"
 import { ProjectCard } from "./ProjectCard"
+import { getRepository } from "src/app/data/get-repository"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { getRepository } from "src/utils/get-repository"
 
 interface GitHubProjectCardProps extends ComponentProps<"div"> {
   /**

@@ -1,4 +1,6 @@
-import { unstable_cache as cache } from "next/cache"
+"use cache"
+
+import { unstable_cacheLife as cacheLife } from "next/cache"
 
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
 const LASTFM_USERNAME = "marcbouchenoire"
@@ -146,7 +148,7 @@ export interface Song {
   /**
    * The date at which the song was listened to.
    */
-  date?: number
+  date?: Date
 
   /**
    * Whether the song is currently playing.
@@ -170,12 +172,14 @@ export interface Song {
  * @param track - A Last.fm track.
  */
 function formatSong(track: LastFmRecentTrack): Song {
-  const date = track.date?.uts ? Number(track.date?.uts) : undefined
+  const date = track.date?.uts
+    ? new Date(Number(track.date.uts) * 1000)
+    : undefined
 
   return {
     title: track.name,
     artist: track.artist["#text"],
-    date: date ? date * 1000 : undefined,
+    date,
     url: track.url,
     cover: track.image.find((image) => image.size === "large")?.["#text"],
     playing: Boolean(track["@attr"]?.nowplaying) ?? !date
@@ -187,42 +191,38 @@ function formatSong(track: LastFmRecentTrack): Song {
  *
  * @param limit - The maximum number of songs to return.
  */
-export const getLatestSongs = cache(
-  async (limit: number = 1): Promise<Song[]> => {
-    try {
-      const response: LastFmResponse = await fetch(
-        LASTFM_ENDPOINT(limit + 1)
-      ).then((response) => {
-        if (!response.ok) {
-          throw new Error("There was an error while querying the Last.fm API.")
-        }
+export async function getLatestSongs(limit: number = 1): Promise<Song[]> {
+  cacheLife("seconds")
 
-        return response.json()
-      })
-
-      const songs = response.recenttracks.track
-        .slice(0, limit + 1)
-        .map(formatSong)
-
-      // De-duplicate the first "now playing" song if needed
-      if (
-        songs[0].playing &&
-        songs[0].url === songs[1].url &&
-        songs[1].date &&
-        Date.now() - songs[1].date < NOW_PLAYING_DEDUPLICATION_THRESHOLD
-      ) {
-        songs.splice(1, 1)
+  try {
+    const response: LastFmResponse = await fetch(
+      LASTFM_ENDPOINT(limit + 1)
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error("There was an error while querying the Last.fm API.")
       }
 
-      return songs.slice(0, limit)
-    } catch (error) {
-      console.error(error)
+      return response.json()
+    })
 
-      return []
+    const songs = response.recenttracks.track
+      .slice(0, limit + 1)
+      .map(formatSong)
+
+    // De-duplicate the first "now playing" song if needed
+    if (
+      songs[0].playing &&
+      songs[0].url === songs[1].url &&
+      songs[1].date &&
+      Date.now() - songs[1].date.getTime() < NOW_PLAYING_DEDUPLICATION_THRESHOLD
+    ) {
+      songs.splice(1, 1)
     }
-  },
-  ["latest-songs"],
-  {
-    revalidate: 60
+
+    return songs.slice(0, limit)
+  } catch (error) {
+    console.error(error)
+
+    return []
   }
-)
+}

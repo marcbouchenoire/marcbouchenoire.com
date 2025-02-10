@@ -1,15 +1,9 @@
-"use client"
-
 import { clsx } from "clsx"
-import type { Transition, Variants } from "motion/react"
-import { AnimatePresence, motion } from "motion/react"
-import type { ComponentProps } from "react"
-import { useMemo } from "react"
-import useSWR from "swr"
-import type { Song } from "src/app/api/lastfm/latest/get-latest-songs"
+import { type ComponentProps, Suspense } from "react"
+import { type Song, getLatestSongs } from "src/app/data/get-latest-songs"
+import { FadedImage } from "src/components/FadedImage"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { json } from "src/utils/json"
 
 interface LatestSongsProps extends ComponentProps<"div"> {
   /**
@@ -25,20 +19,6 @@ interface LatestSongProps extends ComponentProps<"a"> {
   song?: Song
 }
 
-const variants: Variants = {
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    opacity: 1
-  }
-}
-
-const fade: Transition = {
-  ease: "easeInOut",
-  duration: 0.6
-}
-
 /**
  * Display a song from Last.fm.
  *
@@ -48,11 +28,6 @@ const fade: Transition = {
  */
 function LatestSong({ song, className, ...props }: LatestSongProps) {
   const { artist, cover, date, title, playing, url } = song ?? {}
-  const absoluteDate = useMemo(() => {
-    if (!date) return
-
-    return new Date(date)
-  }, [date])
 
   return (
     <a
@@ -77,22 +52,14 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
             fill="currentColor"
           />
         </svg>
-        <AnimatePresence>
-          {cover && (
-            <motion.img
-              alt={`${title} by ${artist}`}
-              animate="visible"
-              className="absolute h-full w-full object-cover"
-              exit="hidden"
-              initial="hidden"
-              key={`${artist} ${title}`}
-              loading="lazy"
-              src={cover}
-              transition={fade}
-              variants={variants}
-            />
-          )}
-        </AnimatePresence>
+        {cover && (
+          <FadedImage
+            alt={`${title} by ${artist}`}
+            className="absolute h-full w-full object-cover"
+            key={`${artist} ${title}`}
+            src={cover}
+          />
+        )}
       </div>
       <div className="flex min-w-0 flex-col justify-center">
         <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-rose-500 dark:text-rose-400">
@@ -179,12 +146,8 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
               />
             )}
           </svg>
-          {absoluteDate ? (
-            <RelativeDate
-              className="truncate"
-              date={absoluteDate}
-              simplifyYesterday
-            />
+          {date ? (
+            <RelativeDate className="truncate" date={date} simplifyYesterday />
           ) : playing ? (
             <span className="truncate">Currently playing</span>
           ) : null}
@@ -205,6 +168,20 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
   )
 }
 
+function LatestSongsFallback({
+  limit
+}: Required<Pick<LatestSongsProps, "limit">>) {
+  return Array.from({ length: limit }, (_, index) => <LatestSong key={index} />)
+}
+
+async function LatestSongsData({
+  limit
+}: Required<Pick<LatestSongsProps, "limit">>) {
+  const songs = await getLatestSongs(limit)
+
+  return songs.map((song, index) => <LatestSong key={index} song={song} />)
+}
+
 /**
  * Display the latest songs I listened to from Last.fm.
  *
@@ -217,21 +194,11 @@ export function LatestSongs({
   className,
   ...props
 }: LatestSongsProps) {
-  const { data: songs } = useSWR<Song[]>(
-    `/api/lastfm/latest?limit=${limit}`,
-    json,
-    {
-      refreshInterval: 60000
-    }
-  )
-
   return (
     <div className={clsx(className, "flex flex-col gap-6")} {...props}>
-      {songs
-        ? songs.map((song, index) => <LatestSong key={index} song={song} />)
-        : Array.from({ length: limit }, (_, index) => (
-            <LatestSong key={index} />
-          ))}
+      <Suspense fallback={<LatestSongsFallback limit={limit} />}>
+        <LatestSongsData limit={limit} />
+      </Suspense>
     </div>
   )
 }

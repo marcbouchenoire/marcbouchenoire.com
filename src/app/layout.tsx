@@ -1,13 +1,13 @@
 import { clsx } from "clsx"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import type { PropsWithChildren } from "react"
+import { type PropsWithChildren, Suspense } from "react"
 import styles from "./layout.module.css"
 import { Footer } from "./sections/Footer"
-import { Header } from "./sections/Header"
 import { ThemeProvider } from "src/components/ThemeProvider"
 import { METADATA } from "src/metadata"
 import "src/styles/main.css"
+import { Header } from "./sections/Header"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,11 +73,15 @@ export default function Layout({ children }: PropsWithChildren) {
               </div>
             </div>
           </div>
-          <Header className="content" />
+          <Suspense>
+            <Header className="content" />
+          </Suspense>
           <main className="flex flex-1 flex-col items-center justify-center pb-16 pt-12 md:pb-20 md:pt-16 lg:pb-24 lg:pt-20">
             {children}
           </main>
-          <Footer className="content pb-0-safe" />
+          <Suspense>
+            <Footer className="content pb-0-safe" />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

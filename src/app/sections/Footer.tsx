@@ -1,16 +1,43 @@
+"use cache"
+
 import { clsx } from "clsx"
 import { execa } from "execa"
+import { unstable_cacheLife as cacheLife } from "next/cache"
 import { type ComponentProps, Suspense } from "react"
-import { Emoji } from "src/components/Emoji"
-import { Year } from "src/components/Year"
+import { RandomEmoji } from "src/components/RandomEmoji"
 
 /**
- * Get the latest commit's short hash.
+ * Display the current year.
+ *
+ * @param props - A set of `time` props.
  */
-async function getLatestCommit() {
-  const { stdout } = await execa("git", ["rev-parse", "--short", "HEAD"])
+async function Year(props: ComponentProps<"time">) {
+  cacheLife("hours")
 
-  return stdout
+  const year = String(new Date().getFullYear())
+
+  return (
+    <time dateTime={year} {...props}>
+      {year}
+    </time>
+  )
+}
+
+/**
+ * Display the latest commit's short hash.
+ *
+ * @param props - A set of `span` props.
+ */
+async function LatestCommit(props: ComponentProps<"span">) {
+  cacheLife("max")
+
+  const { stdout: commit } = await execa("git", [
+    "rev-parse",
+    "--short",
+    "HEAD"
+  ])
+
+  return <span {...props}>#{commit}</span>
 }
 
 /**
@@ -23,8 +50,6 @@ export async function Footer({
   className,
   ...props
 }: ComponentProps<"footer">) {
-  const commit = await getLatestCommit()
-
   return (
     <footer
       className={clsx(
@@ -36,7 +61,7 @@ export async function Footer({
       <hr className="w-full border-t border-gray-150 dark:border-gray-800" />
       <div className="flex items-center py-6 lg:py-8">
         <span>
-          <Emoji />{" "}
+          <RandomEmoji />{" "}
           <Suspense>
             <Year className="hidden sm:inline" />
           </Suspense>{" "}
@@ -66,9 +91,9 @@ export async function Footer({
           </svg>
           <span>
             <span>marcbouchenoire.com</span>
-            <span className="hidden text-gray-350 dark:text-gray-450 sm:inline">
-              #{commit}
-            </span>
+            <Suspense>
+              <LatestCommit className="hidden text-gray-350 dark:text-gray-450 sm:inline" />
+            </Suspense>
           </span>
         </a>
       </div>

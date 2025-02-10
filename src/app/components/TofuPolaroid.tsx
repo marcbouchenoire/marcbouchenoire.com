@@ -20,16 +20,6 @@ import tofu5 from "public/tofu/5.jpg"
 
 const PHOTOS = [tofu1, tofu2, tofu3, tofu4, tofu5]
 
-function getRandomPhotoIndex(currentIndex: number) {
-  let randomIndex: number
-
-  do {
-    randomIndex = Math.floor(Math.random() * PHOTOS.length)
-  } while (randomIndex === currentIndex)
-
-  return randomIndex
-}
-
 /**
  * A Polaroid-style portrait of Tofu, my cat.
  *
@@ -72,7 +62,15 @@ export function TofuPolaroid({
 
         const handlePointerUp = () => {
           setDragging(false)
-          setPhotoIndex(getRandomPhotoIndex)
+          setPhotoIndex((index) => {
+            let randomIndex = index
+
+            while (randomIndex === index) {
+              randomIndex = Math.floor(Math.random() * PHOTOS.length)
+            }
+
+            return randomIndex
+          })
 
           overlayOpacity.set(1)
           animate(overlayOpacity, 0, { duration: 2, ease: "easeOut" })

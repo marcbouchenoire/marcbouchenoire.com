@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import type { ComponentProps } from "react"
+import { LatestSongs } from "../components/LatestSongs"
 import { LatestFilms } from "src/app/components/LatestFilms"
-import { LatestSongs } from "src/app/components/LatestSongs"
 
 const NUMBER_OF_ACTIVITIES = 3
 
