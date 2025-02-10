@@ -1,8 +1,8 @@
 import { clsx } from "clsx"
 import type { ComponentProps } from "react"
-import { LatestSongs } from "../components/LatestSongs"
 import { LatestFilms } from "src/app/components/LatestFilms"
 import { RefreshBoundary } from "src/components/RefreshBoundary"
+import { LatestSongs } from "../components/LatestSongs"
 
 const NUMBER_OF_ACTIVITIES = 3
 

@@ -11,10 +11,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "format": "biome format --write ./",
-    "lint": "bun run lint:biome && bun run lint:tsc",
-    "lint:biome": "biome lint --write ./",
-    "lint:tsc": "tsc --project tsconfig.json"
+    "biome": "biome check --write ./ --assists-enabled=true",
+    "biome:lint": "biome lint --write ./ --assists-enabled=true"
   },
   "dependencies": {
     "bright": "^1.0.0",

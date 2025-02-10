@@ -7,6 +7,14 @@
     "lineWidth": 80
   },
   "organizeImports": { "enabled": true },
+  "assists": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "sortJsxProps": "on"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {

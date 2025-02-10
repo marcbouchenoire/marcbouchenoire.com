@@ -4,12 +4,12 @@ import { clsx } from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useSelectedLayoutSegment } from "next/navigation"
-import { type ComponentProps, useMemo } from "react"
-import styles from "./Header.module.css"
 import portrait from "public/portrait.jpg"
+import { type ComponentProps, useMemo } from "react"
 import { InternetTime } from "src/app/components/InternetTime"
 import { ThemeToggle } from "src/app/components/ThemeToggle"
 import { capitalize } from "src/utils/capitalize"
+import styles from "./Header.module.css"
 
 function Breadcrumbs() {
   const segment = useSelectedLayoutSegment()

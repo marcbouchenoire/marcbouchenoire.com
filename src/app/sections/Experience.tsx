@@ -25,7 +25,9 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
             target="_blank"
           >
             <svg
+              aria-label="Liveblocks"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
@@ -89,7 +91,9 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
             target="_blank"
           >
             <svg
+              aria-label="Framer"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
@@ -171,7 +175,9 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
             target="_blank"
           >
             <svg
+              aria-label="Awkward"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
@@ -209,7 +215,9 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
             target="_blank"
           >
             <svg
+              aria-label="L’École de Design"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
