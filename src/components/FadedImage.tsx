@@ -23,7 +23,7 @@ export function FadedImage({
   ...props
 }: ComponentProps<typeof NextImage>) {
   const [isLoaded, setLoaded] = useState(false)
-  const ref = useRef<HTMLImageElement>(null)
+  const ref = useRef<HTMLImageElement>(null!)
   const mergedRef = useRefs(forwardedRef, ref)
   const Image =
     !src || (typeof src === "string" && src.startsWith("http"))
@@ -42,7 +42,7 @@ export function FadedImage({
   )
 
   useEffect(() => {
-    if (ref.current?.complete) {
+    if (ref.current.complete) {
       setLoaded(true)
     }
   }, [])

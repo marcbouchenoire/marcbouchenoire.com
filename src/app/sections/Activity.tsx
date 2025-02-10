@@ -2,6 +2,7 @@ import { clsx } from "clsx"
 import type { ComponentProps } from "react"
 import { LatestSongs } from "../components/LatestSongs"
 import { LatestFilms } from "src/app/components/LatestFilms"
+import { RefreshBoundary } from "src/components/RefreshBoundary"
 
 const NUMBER_OF_ACTIVITIES = 3
 
@@ -38,7 +39,7 @@ export function Activity({ className, ...props }: ComponentProps<"section">) {
         </a>
         .
       </p>
-      <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <RefreshBoundary className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
         <LatestSongs
           className="min-w-0 max-w-full"
           limit={NUMBER_OF_ACTIVITIES}
@@ -47,7 +48,7 @@ export function Activity({ className, ...props }: ComponentProps<"section">) {
           className="min-w-0 max-w-full"
           limit={NUMBER_OF_ACTIVITIES}
         />
-      </div>
+      </RefreshBoundary>
     </section>
   )
 }
