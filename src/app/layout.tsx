@@ -58,7 +58,7 @@ export default function Layout({ children }: PropsWithChildren) {
               <div
                 className={clsx(
                   styles.auraMask,
-                  "absolute left-[-100%] z-negative h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] md:left-[-150%] md:w-[400%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:[--aura-offset:-10%]"
+                  "-z-1 absolute left-[-100%] h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] md:left-[-150%] md:w-[400%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:[--aura-offset:-10%]"
                 )}
               >
                 <div
@@ -84,7 +84,7 @@ export default function Layout({ children }: PropsWithChildren) {
             {children}
           </main>
           <Suspense>
-            <Footer className="content pb-0-safe" />
+            <Footer className="content pb-[max(0px,env(safe-area-inset-bottom))]" />
           </Suspense>
         </ThemeProvider>
       </body>

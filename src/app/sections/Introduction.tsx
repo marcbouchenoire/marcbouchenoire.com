@@ -53,21 +53,21 @@ export function Introduction({
           I’m currently living in Nantes, France and working on collaborative
           components—amongst other things—at&nbsp;
           <a
-            className="group relative ml-[-0.05em] whitespace-nowrap pr-[0.2em] pl-[0.25em] font-medium text-liveblocks-alternate focus-visible:outline-none dark:text-liveblocks-alternate-dark"
+            className="group relative ml-[-0.05em] whitespace-nowrap pr-[0.2em] pl-[0.25em] font-medium text-liveblocks-alternate focus-visible:outline-hidden dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             <span
               aria-hidden
-              className="after:-left-px pointer-events-none absolute top-[-0.075lh] left-0 h-[0.75lh] w-full select-none before:absolute before:inset-0 before:z-negative before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus-visible:before:opacity-20 after:dark:bg-liveblocks-dark dark:before:bg-liveblocks-dark dark:before:opacity-20 group-focus-visible:dark:before:opacity-30 group-hover:dark:before:opacity-30"
+              className="after:-left-px before:-z-1 pointer-events-none absolute top-[-0.075lh] left-0 h-[0.75lh] w-full select-none before:absolute before:inset-0 before:rounded-r-sm before:bg-liveblocks before:opacity-10 before:transition after:absolute after:top-[-25%] after:h-[125%] after:w-[2px] after:rounded-full after:bg-liveblocks group-hover:before:opacity-20 group-focus-visible:before:opacity-20 dark:after:bg-liveblocks-dark dark:before:bg-liveblocks-dark dark:before:opacity-20 dark:group-focus-visible:before:opacity-30 dark:group-hover:before:opacity-30"
             >
               <span className="-left-px absolute top-[-25%] h-[125%] w-[2px] rounded-full bg-liveblocks dark:bg-liveblocks-dark" />
               <span className="-left-px -translate-y-full absolute top-0 origin-top-left whitespace-nowrap rounded-[0.35em] rounded-bl-none bg-liveblocks px-[0.3rem] py-[0.25rem] font-medium text-2xs text-white leading-none dark:bg-liveblocks-dark">
                 Marc
                 {/* biome-ignore lint/a11y/noSvgWithoutTitle: The parent element has an `aria-hidden` attribute */}
                 <svg
-                  className="absolute bottom-[-0.25rem] left-[2px] z-10 size-[0.25rem] overflow-visible text-liveblocks dark:text-liveblocks-dark"
+                  className="absolute bottom-[-0.25rem] left-[2px] z-1 size-[0.25rem] overflow-visible text-liveblocks dark:text-liveblocks-dark"
                   fill="none"
                   viewBox="0 0 4 4"
                   xmlns="http://www.w3.org/2000/svg"

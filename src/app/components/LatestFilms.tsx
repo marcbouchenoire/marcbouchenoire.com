@@ -34,14 +34,14 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-lime-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded-sm pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
+      <div className="highlight dark:highlight-invert relative aspect-2/3 h-20 flex-none overflow-hidden rounded-sm bg-gray-100 dark:bg-gray-800">
         <svg
           className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
@@ -88,7 +88,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
               simplifyYesterday
             />
           ) : (
-            <Skeleton className="!bg-lime-500/20 dark:!bg-lime-400/20 w-16" />
+            <Skeleton className="w-16 bg-lime-500/20! dark:bg-lime-400/20!" />
           )}
         </small>
         <p className="mt-1 mb-1.5 flex items-center">
@@ -100,7 +100,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
           </span>{" "}
           {year && (
             <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400"
               dateTime={String(year)}
             >
               {year}

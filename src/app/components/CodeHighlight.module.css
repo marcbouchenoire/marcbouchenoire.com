@@ -1,3 +1,5 @@
+@reference "../../styles/main.css";
+
 .codeHighlight {
   --line-numbers-width: 1ch;
 
@@ -21,7 +23,7 @@
     counter-reset: step;
 
     :global(.line)::before {
-      @apply inline-block text-right select-none opacity-40 text-current mx-[1em];
+      @apply inline-block text-right select-none text-current/40 mx-[1em];
 
       content: counter(step);
       counter-increment: step;

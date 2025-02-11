@@ -105,7 +105,7 @@ export function TofuPolaroid({
       aria-label="Tofu, my cat"
       className={clsx(
         className,
-        "absolute z-50 aspect-[328/400] cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
+        "absolute z-1 aspect-328/400 cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
       )}
       drag={!isAnimating}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -124,11 +124,11 @@ export function TofuPolaroid({
     >
       <div className="relative aspect-square w-full bg-gray-800">
         <motion.div
-          className="absolute inset-0 z-10 bg-gray-50"
+          className="absolute inset-0 z-1 bg-gray-50"
           style={{ opacity: overlayOpacity }}
         />
         <motion.div
-          className={clsx(styles.polaroidShadow, "absolute inset-0 z-10")}
+          className={clsx(styles.polaroidShadow, "absolute inset-0 z-1")}
           style={{ opacity: highlightOpacity }}
         />
         {PHOTOS.map((photo, index) => {

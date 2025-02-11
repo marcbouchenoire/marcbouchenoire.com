@@ -198,7 +198,7 @@ export function InternetTime({
     <motion.a
       className={clsx(
         className,
-        "focusable inline-flex h-[1.25em] cursor-help items-center rounded-sm font-semibold transition hover:opacity-60"
+        "focusable inline-flex h-[1.25em] cursor-help items-center rounded-xs font-semibold transition hover:opacity-60"
       )}
       href="https://en.wikipedia.org/wiki/Swatch_Internet_Time"
       rel="noreferrer"

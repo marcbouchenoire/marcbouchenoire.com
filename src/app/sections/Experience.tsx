@@ -44,7 +44,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Liveblocks
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2023
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -66,7 +66,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Liveblocks
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2022
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -108,7 +108,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2021
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -130,7 +130,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2019
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -152,7 +152,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2019
               </span>
             </p>
@@ -190,7 +190,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Awkward
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2018
               </span>
             </p>
@@ -228,7 +228,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 L’École de Design
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2017
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -250,7 +250,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 L’École de Design
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2014
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –

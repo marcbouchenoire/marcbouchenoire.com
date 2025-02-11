@@ -33,14 +33,14 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-red-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-red-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded-sm pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-red-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-red-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
+      <div className="highlight dark:highlight-invert relative aspect-square h-20 flex-none overflow-hidden rounded-sm bg-gray-100 dark:bg-gray-800">
         <svg
           className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
@@ -151,7 +151,7 @@ function LatestSong({ song, className, ...props }: LatestSongProps) {
           ) : playing ? (
             <span className="truncate">Currently playing</span>
           ) : (
-            <Skeleton className="!bg-rose-500/20 dark:!bg-rose-400/20 w-16" />
+            <Skeleton className="w-16 bg-rose-500/20! dark:bg-rose-400/20!" />
           )}
         </small>
         <p className="my-1 flex items-center">

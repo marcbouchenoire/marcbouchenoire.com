@@ -1,6 +1,118 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-gray-50: oklch(0.985 0 0);
+  --color-gray-100: oklch(0.967 0.001 286.375);
+  --color-gray-150: oklch(0.944 0.0025 286.348);
+  --color-gray-200: oklch(0.92 0.004 286.32);
+  --color-gray-250: oklch(0.896 0.005 286.303);
+  --color-gray-300: oklch(0.871 0.006 286.286);
+  --color-gray-350: oklch(0.788 0.0105 286.177);
+  --color-gray-400: oklch(0.705 0.015 286.067);
+  --color-gray-450: oklch(0.629 0.0155 286.003);
+  --color-gray-500: oklch(0.552 0.016 285.938);
+  --color-gray-550: oklch(0.497 0.0165 285.862);
+  --color-gray-600: oklch(0.442 0.017 285.786);
+  --color-gray-650: oklch(0.406 0.015 285.796);
+  --color-gray-700: oklch(0.37 0.013 285.805);
+  --color-gray-750: oklch(0.322 0.0095 285.919);
+  --color-gray-800: oklch(0.274 0.006 286.033);
+  --color-gray-850: oklch(0.242 0.006 285.959);
+  --color-gray-900: oklch(0.21 0.006 285.885);
+  --color-gray-950: oklch(0.141 0.005 285.823);
+
+  --color-twitter: oklch(68.18% 0.1584 243.35);
+  --color-twitter-dark: oklch(75.89% 0.1302 237.52);
+  --color-mastodon: oklch(57.03% 0.2378 275.53);
+  --color-mastodon-dark: oklch(63.33% 0.2001 278.72);
+  --color-bluesky: oklch(62.19% 0.205 255.86);
+  --color-bluesky-dark: oklch(67.41% 0.1767 253.03);
+  --color-github: oklch(27.39% 0.0055 286.03);
+  --color-github-dark: oklch(96.74% 0.0013 286.38);
+  --color-dribbble: oklch(65.15% 0.1995 0.71);
+  --color-dribbble-dark: oklch(72.64% 0.1605 356.43);
+  --color-dimmmensions: oklch(61.63% 0.224 298.64);
+  --color-dimmmensions-dark: oklch(71.61% 0.1666 299.87);
+  --color-symbolist: oklch(65.02% 0.212 6.13);
+  --color-symbolist-dark: oklch(72.14% 0.1701 1.81);
+  --color-typometer: oklch(71.48% 0.1257 215.22);
+  --color-typometer-dark: oklch(79.71% 0.1339 211.53);
+  --color-splatoon: oklch(65.02% 0.212 6.13);
+  --color-splatoon-dark: oklch(72.14% 0.1701 1.81);
+  --color-liveblocks: oklch(59.93% 0.2015 290.16);
+  --color-liveblocks-dark: oklch(67.27% 0.17 292.55);
+  --color-liveblocks-alternate: oklch(46.6% 0.1226 288.99);
+  --color-liveblocks-alternate-dark: oklch(85.82% 0.0613 295.5);
+  --color-framer: oklch(66.9% 0.18368 248.8066);
+  --color-framer-dark: oklch(71.3% 0.1605 245.09);
+  --color-awkward: oklch(44.19% 0.0146 285.79);
+  --color-awkward-dark: oklch(87.11% 0.0055 286.29);
+  --color-lecolededesign: oklch(55.54% 0.2123 23.92);
+  --color-lecolededesign-dark: oklch(63.62% 0.2216 21.38);
+
+  --font-sans: var(--font-inter, Inter), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --text-2xs: 0.65rem;
+  --text-2xs--line-height: calc(1 / 0.65);
+  --text-3xs: 0.55rem;
+  --text-3xs--line-height: calc(1 / 0.55);
+
+  --shadow-floaty:
+    0 0 2px 1px rgba(0, 0, 0, 0.04),
+    0 2px 8px -2px rgba(0, 0, 0, 0.04), 0 4px 18px -4px rgba(0, 0, 0, 0.06),
+    0 8px 42px -6px rgba(0, 0, 0, 0.12);
+  --drop-shadow-floaty: 0 4px 22px rgba(0, 0, 0, 0.16);
+  --drop-shadow-phone: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  --perspective-far: 1000px;
+}
+
+@utility focusable {
+  @apply box-decoration-clone focus-visible:decoration-transparent! focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-gray-500/40 dark:focus-visible:ring-gray-400/40;
+}
+
+@utility focusable-within {
+  @apply box-decoration-clone focus-within:decoration-transparent! focus-within:outline-hidden focus-within:ring-3 focus-within:ring-gray-500/40 dark:focus-within:ring-gray-400/40;
+}
+
+@utility highlight {
+  @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
+
+  &::after {
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
+  }
+}
+
+@utility highlight-invert {
+  @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
+
+  &::after {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
+  }
+}
+
+@utility link {
+  @apply focusable rounded-xs font-medium underline decoration-gray-600/20 decoration-2 underline-offset-2 transition selection:decoration-gray-600/20 hover:decoration-gray-600/40 focus-visible:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
+}
+
+@utility link-invert {
+  @apply decoration-white/20 selection:decoration-white/20 hover:decoration-white/40 dark:decoration-gray-600/20 dark:selection:decoration-gray-600/20 dark:hover:decoration-gray-600/40;
+}
+
+@utility content {
+  @apply mx-auto w-full max-w-(--breakpoint-md) px-[max(--spacing(5),env(safe-area-inset-left))];
+}
+
+@utility content-md {
+  @apply lg:max-w-[calc(--spacing(16)+var(--breakpoint-md))];
+}
+
+@utility content-lg {
+  @apply lg:max-w-[calc(--spacing(24)+var(--breakpoint-md))];
+}
 
 @keyframes skeleton {
   from {
@@ -13,20 +125,29 @@
   }
 }
 
-@layer base {
-  html,
-  body {
-    @apply min-h-screen max-w-full overflow-x-hidden;
-  }
+@utility skeleton {
+  mask-image: linear-gradient(
+    90deg,
+    #000 5%,
+    rgb(0 0 0 / 50%) 25%,
+    rgb(0 0 0 / 50%) 75%,
+    #000 95%
+  );
+  animation: 6s linear infinite skeleton;
+}
 
-  body {
-    @apply flex flex-col bg-white font-sans selection:bg-gray-500/30 dark:bg-gray-900 dark:selection:bg-gray-400/40;
+html,
+body {
+  @apply min-h-screen max-w-full overflow-x-hidden;
+}
 
-    -webkit-tap-highlight-color: transparent;
+body {
+  @apply flex flex-col bg-white font-sans selection:bg-gray-500/30 dark:bg-gray-900 dark:selection:bg-gray-400/40;
 
-    > * {
-      @apply w-full;
-    }
+  -webkit-tap-highlight-color: transparent;
+
+  > * {
+    @apply w-full;
   }
 
   body.grabbing {
@@ -49,69 +170,6 @@
   }
 }
 
-@layer utilities {
-  .focusable {
-    @apply box-decoration-clone focus-visible:!decoration-transparent focus-visible:outline-none focus-visible:ring focus-visible:ring-gray-500/40 dark:focus-visible:ring-gray-400/40;
-  }
-
-  .focusable-within {
-    @apply box-decoration-clone focus-within:!decoration-transparent focus-within:outline-none focus-within:ring focus-within:ring-gray-500/40 dark:focus-within:ring-gray-400/40;
-  }
-
-  .highlight {
-    @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
-
-    &::after {
-      box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);
-    }
-  }
-
-  .highlight-invert {
-    @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
-
-    &::after {
-      box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
-    }
-  }
-
-  .link {
-    @apply focusable rounded-sm font-medium underline decoration-gray-600/20 decoration-2 underline-offset-2 transition selection:decoration-gray-600/20 hover:decoration-gray-600/40 focus-visible:decoration-transparent dark:decoration-white/20 dark:selection:decoration-white/20 dark:hover:decoration-white/40;
-  }
-
-  .link-invert {
-    @apply decoration-white/20 selection:decoration-white/20 hover:decoration-white/40 dark:decoration-gray-600/20 dark:selection:decoration-gray-600/20 dark:hover:decoration-gray-600/40;
-  }
-
-  .perspective {
-    perspective: 1000px;
-  }
-}
-
-@layer components {
-  .content {
-    @apply mx-auto w-full max-w-screen-md px-5-safe;
-  }
-
-  .content-md {
-    @apply lg:max-w-screen-md-8;
-  }
-
-  .content-lg {
-    @apply lg:max-w-screen-md-12;
-  }
-
-  .skeleton {
-    mask-image: linear-gradient(
-      90deg,
-      #000 5%,
-      rgb(0 0 0 / 50%) 25%,
-      rgb(0 0 0 / 50%) 75%,
-      #000 95%
-    );
-    animation: 6s linear infinite skeleton;
-  }
-}
-
 :not(pre) > code {
-  @apply relative mx-[0.4em] whitespace-nowrap text-sm font-semibold before:absolute before:inset-x-[-0.4em] before:bottom-[-0.3em] before:top-[-0.25em] before:z-negative before:rounded-[0.4em] before:bg-gray-100 before:dark:bg-gray-750;
+  @apply relative mx-[0.4em] whitespace-nowrap text-sm font-semibold before:absolute before:inset-x-[-0.4em] before:bottom-[-0.3em] before:top-[-0.25em] before:-z-1 before:rounded-[0.4em] before:bg-gray-100 dark:before:bg-gray-750;
 }

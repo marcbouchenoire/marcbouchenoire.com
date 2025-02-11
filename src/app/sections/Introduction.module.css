@@ -1,3 +1,5 @@
+@reference "../../styles/main.css";
+
 @keyframes wavy {
   from {
     transform: translateY(-3%);
