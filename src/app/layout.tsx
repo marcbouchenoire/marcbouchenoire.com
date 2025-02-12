@@ -53,39 +53,41 @@ export default function Layout({ children }: PropsWithChildren) {
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>
         <ThemeProvider attribute="class" disableTransitionOnChange>
-          <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
-            <div className="content relative h-full">
-              <div
-                className={clsx(
-                  styles.auraMask,
-                  "-z-1 absolute left-[-100%] h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] md:left-[-150%] md:w-[400%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:[--aura-offset:-10%]"
-                )}
-              >
+          <div className="flex min-h-screen flex-col">
+            <div className="pointer-events-none absolute top-0 h-72 w-full overflow-hidden md:h-80 lg:h-96">
+              <div className="content relative h-full">
                 <div
                   className={clsx(
-                    styles.auraRaysMask,
-                    "absolute inset-0 flex items-center"
+                    styles.auraMask,
+                    "-z-1 absolute left-[-100%] h-full w-[300%] overflow-hidden opacity-50 [--aura-rainbow-offset:-20%] md:left-[-150%] md:w-[400%] dark:opacity-30 sm:[--aura-rainbow-offset:-15%] md:[--aura-offset:-10%]"
                   )}
                 >
                   <div
                     className={clsx(
-                      styles.auraRainbowGradient,
-                      "absolute left-[-10%] aspect-square w-[120%]"
+                      styles.auraRaysMask,
+                      "absolute inset-0 flex items-center"
                     )}
-                  />
+                  >
+                    <div
+                      className={clsx(
+                        styles.auraRainbowGradient,
+                        "absolute left-[-10%] aspect-square w-[120%]"
+                      )}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            <Suspense>
+              <Header className="content" />
+            </Suspense>
+            <main className="flex w-full flex-1 flex-col items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24">
+              {children}
+            </main>
+            <Suspense>
+              <Footer className="content pb-[max(0px,env(safe-area-inset-bottom))]" />
+            </Suspense>
           </div>
-          <Suspense>
-            <Header className="content" />
-          </Suspense>
-          <main className="flex flex-1 flex-col items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24">
-            {children}
-          </main>
-          <Suspense>
-            <Footer className="content pb-[max(0px,env(safe-area-inset-bottom))]" />
-          </Suspense>
         </ThemeProvider>
       </body>
     </html>
