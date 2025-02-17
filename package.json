@@ -20,8 +20,6 @@
     "date-fns": "^4.1.0",
     "fast-base64": "^0.1.8",
     "fast-xml-parser": "^4.5.1",
-    "hast-util-to-html": "^9.0.4",
-    "hastscript": "^9.0.0",
     "html-entities": "^2.5.2",
     "motion": "^12.4.2",
     "next": "15.2.0-canary.49",
