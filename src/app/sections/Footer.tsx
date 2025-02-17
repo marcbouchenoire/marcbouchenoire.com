@@ -29,7 +29,9 @@ async function Year(props: ComponentProps<"time">) {
  * @param props - A set of `span` props.
  */
 function LatestCommit(props: ComponentProps<"span">) {
-  const commit = String(execSync("git rev-parse --short HEAD"))
+  const commit = process.env.VERCEL_GIT_COMMIT_SHA
+    ? process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)
+    : String(execSync("git rev-parse --short HEAD"))
 
   return <span {...props}>#{commit}</span>
 }
