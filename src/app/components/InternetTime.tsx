@@ -1,156 +1,116 @@
 "use client"
 
 import { clsx } from "clsx"
-import type { MotionValue } from "motion/react"
 import {
+  type MotionValue,
   motion,
-  useMotionTemplate,
+  motionValue,
+  useMotionValueEvent,
   useSpring,
   useTransform
 } from "motion/react"
-import { type ComponentProps, useEffect, useMemo } from "react"
+import { type ComponentProps, memo, useEffect, useRef } from "react"
+import { useInitial } from "src/utils/use-initial"
 import { useInternetTime } from "src/utils/use-internet-time"
+import styles from "./InternetTime.module.css"
 
-const OFFSET_PERCENTAGE = 60
+const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-interface DigitsColumnProps extends ComponentProps<"span"> {
+interface RollingDigitsProps {
   /**
-   * The total value.
+   * The digit's value.
    */
-  value: number
-
-  /**
-   * The place of the digit.
-   */
-  place: number
+  value: MotionValue<number>
 }
 
-interface DigitProps
-  extends Pick<DigitsColumnProps, "value" | "place">,
-    ComponentProps<typeof motion.span> {
+interface RollingDigitProps extends ComponentProps<typeof motion.span> {
   /**
-   * The digit to display.
+   * The parent digits' current index.
    */
-  digit: number
+  currentIndex: MotionValue<number>
+
+  /**
+   * The digit's index.
+   */
+  digitIndex: number
 }
 
-function getPlaceValue(number: number, place: number): number {
-  if (number === 0) {
-    return 0
-  }
-
-  const absolutePlace = Math.abs(place)
-  const stringValue = Math.abs(number).toString()
-
-  if (absolutePlace >= stringValue.length) {
-    return 0
-  }
-
-  const digit = stringValue[stringValue.length - absolutePlace - 1]
-
-  return Number(digit)
-}
-
-/**
- * A rolling digit.
- *
- * @param props - A set of `motion.span` props.
- * @param props.digit - The digit to display.
- * @param props.place - The place of the digit.
- * @param props.value - The total value.
- * @param [props.className] - A list of one or more classes.
- * @param [props.style] - A set of inline styles.
- */
-function Digit({
-  digit,
-  place,
-  value,
-  className,
-  style,
+function RollingDigit({
+  currentIndex,
+  digitIndex,
   ...props
-}: DigitProps) {
-  const offset = useMemo(() => {
-    return ((15 + digit - getPlaceValue(value, place)) % 10) - 5
-  }, [digit, place, value])
-  const offsetSpring: MotionValue<number> = useSpring(offset, {
-    stiffness: 220,
-    damping: 30
+}: RollingDigitProps) {
+  const opacity = useTransform(currentIndex, (index) => {
+    return Math.max(1 - Math.abs(index - digitIndex), 0)
   })
-  const y = useTransform(offsetSpring, (offset) => offset * OFFSET_PERCENTAGE)
-  const yPercentage = useMotionTemplate`${y}%`
-  const opacity = useTransform(
-    y,
-    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
-    [0, 1, 0]
-  )
-  const scale = useTransform(
-    y,
-    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
-    [0.5, 1, 0.5]
-  )
-  const blur = useTransform(
-    y,
-    [-OFFSET_PERCENTAGE, 0, OFFSET_PERCENTAGE],
-    [5, 0, 5]
-  )
-  const filter = useMotionTemplate`blur(${blur}px)`
-
-  useEffect(() => {
-    if (Math.abs(offset) <= 2) {
-      offsetSpring.set(offset)
-    } else {
-      offsetSpring.jump(offset)
-    }
-  }, [offset])
-
-  return (
-    <motion.span
-      className={clsx(
-        className,
-        "absolute inset-0 flex justify-center will-change-transform"
-      )}
-      style={{
-        y: yPercentage,
-        opacity,
-        scale,
-        filter,
-        ...style
-      }}
-      {...props}
-    >
-      {digit}
-    </motion.span>
-  )
+  return <motion.span {...props} style={{ opacity }} />
 }
 
-/**
- * A column of rolling digits.
- *
- * @param props - A set of `span` props.
- * @param props.place - The place of the digit.
- * @param props.value - The total value.
- * @param [props.className] - A list of one or more classes.
- */
-export function DigitsColumn({
-  place,
-  value,
-  className,
-  ...props
-}: DigitsColumnProps) {
+const RollingDigits = memo(({ value }: RollingDigitsProps) => {
+  const isSecondaryDigit = useRef(false)
+  const index = useSpring(0, {
+    stiffness: 300,
+    damping: 40
+  })
+  const y = useTransform(
+    index,
+    (index) => `-${(index / (DIGITS.length * 2)) * 100}%`
+  )
+
+  useMotionValueEvent(value, "change", () => {
+    const previous = value.getPrevious() ?? value.get()
+    const current = value.get()
+
+    if (previous === current) {
+      return
+    }
+
+    // Move back to the primary set of digits when possible
+    if (isSecondaryDigit.current) {
+      isSecondaryDigit.current = false
+      index.jump(previous)
+    }
+
+    // If backwards (e.g. 9 to 0), move to the secondary set of digits instead
+    if (current < previous) {
+      isSecondaryDigit.current = true
+      index.set(current + DIGITS.length)
+    } else {
+      index.set(current)
+    }
+  })
+
   return (
-    <span
-      className={clsx(
-        className,
-        "relative inline-block h-[1em] w-[1ch] translate-y-[-0.125em] will-change-transform"
-      )}
-      {...props}
-    >
-      {[...Array.from({ length: 10 }).keys()].map((index) => (
-        <Digit digit={index} key={index} place={place} value={value} />
-      ))}
+    <span className="relative inline-block h-[1lh] w-[1ch]">
+      <motion.span
+        className="absolute inline-flex flex-col will-change-transform"
+        style={{ y }}
+      >
+        <RollingDigit
+          className="absolute top-[-1lh]"
+          currentIndex={index}
+          digitIndex={-1}
+        >
+          {DIGITS[DIGITS.length - 1]}
+        </RollingDigit>
+        {DIGITS.map((digit) => (
+          <RollingDigit currentIndex={index} digitIndex={digit} key={digit}>
+            {digit}
+          </RollingDigit>
+        ))}
+        {DIGITS.map((digit) => (
+          <RollingDigit
+            currentIndex={index}
+            digitIndex={digit + DIGITS.length}
+            key={`${digit}:secondary`}
+          >
+            {digit}
+          </RollingDigit>
+        ))}
+      </motion.span>
     </span>
   )
-}
+})
 
 /**
  * A rolling timer of the current internet time.
@@ -160,10 +120,20 @@ export function DigitsColumn({
  */
 export function InternetTime({ className, ...props }: ComponentProps<"a">) {
   const time = useInternetTime()
-  const [integers, decimals] = useMemo(() => {
-    const [integers, decimals] = time.split(".")
+  const digits = useInitial(() => {
+    return time
+      .replace(".", "")
+      .split("")
+      .map((digit) => motionValue(Number(digit)))
+  })
 
-    return [Number(integers), Number(decimals)] as const
+  useEffect(() => {
+    time
+      .replace(".", "")
+      .split("")
+      .forEach((digit, index) => {
+        digits[index].set(Number(digit))
+      })
   }, [time])
 
   return (
@@ -178,19 +148,26 @@ export function InternetTime({ className, ...props }: ComponentProps<"a">) {
       {...props}
     >
       <span className="font-normal text-gray-400">@</span>
-      <span className="relative translate-y-[0.0625em] select-none">
-        <span className="absolute select-text font-medium text-transparent tracking-wide">
+      <span
+        className={clsx(
+          styles.mask,
+          "pointer-events-none relative h-[3lh] translate-y-[0.125lh] select-none tabular-nums leading-none"
+        )}
+      >
+        <span className="absolute top-[1lh] select-text font-medium text-transparent">
           {time}
         </span>
-        <span aria-hidden className="pointer-events-none inline-block">
-          <DigitsColumn place={2} value={integers} />
-          <DigitsColumn place={1} value={integers} />
-          <DigitsColumn place={0} value={integers} />
-          <span className="relative inline-flex h-[1em] w-[0.25ch] justify-center">
-            .
-          </span>
-          <DigitsColumn place={1} value={decimals} />
-          <DigitsColumn place={0} value={decimals} />
+        <span
+          aria-hidden
+          className="pointer-events-none inline-flex translate-y-[1lh] items-center"
+        >
+          {digits.slice(0, 3).map((digit, index) => (
+            <RollingDigits key={index} value={digit} />
+          ))}
+          <span className="mx-[0.025ch] inline-block h-[1lh]">.</span>
+          {digits.slice(3).map((digit, index) => (
+            <RollingDigits key={index + 3} value={digit} />
+          ))}
         </span>
       </span>
     </a>

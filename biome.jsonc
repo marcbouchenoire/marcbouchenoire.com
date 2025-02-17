@@ -28,6 +28,7 @@
           "level": "error",
           "options": {
             "hooks": [
+              { "name": "useInitial", "stableResult": true },
               { "name": "useMotionValue", "stableResult": true },
               { "name": "useMotionTemplate", "stableResult": true },
               { "name": "useSpring", "stableResult": true },
