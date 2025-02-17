@@ -64,8 +64,8 @@ const RollingDigits = memo(({ value, delay }: RollingDigitsProps) => {
   )
   const isSecondaryDigit = useRef(false)
   const index = useSpring(0, {
-    stiffness: 300,
-    damping: 40
+    stiffness: 120,
+    damping: 20
   })
   const y = useTransform(
     index,

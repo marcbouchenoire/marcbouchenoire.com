@@ -23,7 +23,7 @@ function getInternetTime(date = new Date()) {
     BEATS_PER_DAY
   )
 
-  return beats.toPrecision(5).padStart(6, "0")
+  return beats.toFixed(2).padStart(6, "0").slice(-6)
 }
 
 /**
