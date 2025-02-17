@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
-import { type PropsWithChildren, Suspense } from "react"
+import type { PropsWithChildren } from "react"
 import { ThemeProvider } from "src/components/ThemeProvider"
 import { METADATA } from "src/metadata"
 import styles from "./layout.module.css"
@@ -78,15 +78,11 @@ export default function Layout({ children }: PropsWithChildren) {
                 </div>
               </div>
             </div>
-            <Suspense>
-              <Header className="content" />
-            </Suspense>
+            <Header className="content" />
             <main className="flex w-full flex-1 flex-col items-center justify-center pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24">
               {children}
             </main>
-            <Suspense>
-              <Footer className="content pb-[max(0px,env(safe-area-inset-bottom))]" />
-            </Suspense>
+            <Footer className="content pb-[max(0px,env(safe-area-inset-bottom))]" />
           </div>
         </ThemeProvider>
       </body>

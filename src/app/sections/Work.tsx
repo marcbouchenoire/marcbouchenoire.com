@@ -9,7 +9,7 @@ import liveblocksMentionSuggestions from "public/visuals/liveblocks/mention-sugg
 import liveblocksThread from "public/visuals/liveblocks/thread.png"
 import masterThesis from "public/visuals/master/thesis.png"
 import masterVive from "public/visuals/master/vive.png"
-import { type ComponentProps, type ReactNode, Suspense } from "react"
+import type { ComponentProps, ReactNode } from "react"
 import { withExternalCdn } from "src/utils/with-external-cdn"
 import {
   CodeHighlight,
@@ -142,14 +142,12 @@ function Code({ title, code, lang, className, ...props }: CodeProps) {
         )}
       </div>
       <div className="flex-1">
-        <Suspense>
-          <CodeHighlight
-            className={styles.codeHighlight}
-            code={code}
-            lang={lang}
-            themes="poimandres"
-          />
-        </Suspense>
+        <CodeHighlight
+          className={styles.codeHighlight}
+          code={code}
+          lang={lang}
+          themes="poimandres"
+        />
       </div>
     </div>
   )

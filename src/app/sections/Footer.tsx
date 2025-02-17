@@ -1,7 +1,5 @@
-"use cache"
-
+import { execSync } from "node:child_process"
 import { clsx } from "clsx"
-import { execa } from "execa"
 import { unstable_cacheLife as cacheLife } from "next/cache"
 import { type ComponentProps, Suspense } from "react"
 import { RandomEmoji } from "src/components/RandomEmoji"
@@ -12,6 +10,8 @@ import { RandomEmoji } from "src/components/RandomEmoji"
  * @param props - A set of `time` props.
  */
 async function Year(props: ComponentProps<"time">) {
+  "use cache"
+
   cacheLife("hours")
 
   const year = String(new Date().getFullYear())
@@ -28,14 +28,8 @@ async function Year(props: ComponentProps<"time">) {
  *
  * @param props - A set of `span` props.
  */
-async function LatestCommit(props: ComponentProps<"span">) {
-  cacheLife("max")
-
-  const { stdout: commit } = await execa("git", [
-    "rev-parse",
-    "--short",
-    "HEAD"
-  ])
+function LatestCommit(props: ComponentProps<"span">) {
+  const commit = String(execSync("git rev-parse --short HEAD"))
 
   return <span {...props}>#{commit}</span>
 }
@@ -46,10 +40,7 @@ async function LatestCommit(props: ComponentProps<"span">) {
  * @param props - A set of `footer` props.
  * @param [props.className] - A list of one or more classes.
  */
-export async function Footer({
-  className,
-  ...props
-}: ComponentProps<"footer">) {
+export function Footer({ className, ...props }: ComponentProps<"footer">) {
   return (
     <footer
       className={clsx(
@@ -91,9 +82,7 @@ export async function Footer({
           </svg>
           <span>
             <span>marcbouchenoire.com</span>
-            <Suspense>
-              <LatestCommit className="hidden text-gray-350 sm:inline dark:text-gray-450" />
-            </Suspense>
+            <LatestCommit className="hidden text-gray-350 sm:inline dark:text-gray-450" />
           </span>
         </a>
       </div>

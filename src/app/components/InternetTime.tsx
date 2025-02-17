@@ -1,16 +1,15 @@
 "use client"
 
 import { clsx } from "clsx"
-import type { MotionValue, Transition, Variants } from "motion/react"
+import type { MotionValue } from "motion/react"
 import {
-  AnimatePresence,
   motion,
   useMotionTemplate,
   useSpring,
   useTransform
 } from "motion/react"
-import { type ComponentProps, useEffect, useMemo, useState } from "react"
-import { DEFAULT_TIME, useInternetTime } from "src/utils/use-internet-time"
+import { type ComponentProps, useEffect, useMemo } from "react"
+import { useInternetTime } from "src/utils/use-internet-time"
 
 const OFFSET_PERCENTAGE = 60
 
@@ -33,20 +32,6 @@ interface DigitProps
    * The digit to display.
    */
   digit: number
-}
-
-const variants: Variants = {
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    opacity: 1
-  }
-}
-
-const transition: Transition = {
-  ease: "easeInOut",
-  duration: 0.6
 }
 
 function getPlaceValue(number: number, place: number): number {
@@ -85,9 +70,7 @@ function Digit({
   ...props
 }: DigitProps) {
   const offset = useMemo(() => {
-    const placeValue = getPlaceValue(value, place)
-
-    return ((15 + digit - placeValue) % 10) - 5
+    return ((15 + digit - getPlaceValue(value, place)) % 10) - 5
   }, [digit, place, value])
   const offsetSpring: MotionValue<number> = useSpring(offset, {
     stiffness: 220,
@@ -118,7 +101,7 @@ function Digit({
     } else {
       offsetSpring.jump(offset)
     }
-  }, [offsetSpring, offset])
+  }, [offset])
 
   return (
     <motion.span
@@ -132,9 +115,6 @@ function Digit({
         scale,
         filter,
         ...style
-      }}
-      transition={{
-        duration: 0.2
       }}
       {...props}
     >
@@ -178,11 +158,7 @@ export function DigitsColumn({
  * @param props - A set of `a` props.
  * @param [props.className] - A list of one or more classes.
  */
-export function InternetTime({
-  className,
-  ...props
-}: ComponentProps<typeof motion.a>) {
-  const [isHydrated, setHydrated] = useState(false)
+export function InternetTime({ className, ...props }: ComponentProps<"a">) {
   const time = useInternetTime()
   const [integers, decimals] = useMemo(() => {
     const [integers, decimals] = time.split(".")
@@ -190,12 +166,8 @@ export function InternetTime({
     return [Number(integers), Number(decimals)] as const
   }, [time])
 
-  useEffect(() => {
-    setHydrated(true)
-  }, [])
-
   return (
-    <motion.a
+    <a
       className={clsx(
         className,
         "focusable inline-flex h-[1.25em] cursor-help items-center rounded-xs font-semibold transition hover:opacity-60"
@@ -206,44 +178,21 @@ export function InternetTime({
       {...props}
     >
       <span className="font-normal text-gray-400">@</span>
-      <AnimatePresence initial={false} mode="popLayout">
-        {isHydrated ? (
-          <motion.span
-            animate="visible"
-            className="relative translate-y-[0.0625em] select-none"
-            exit="hidden"
-            initial="hidden"
-            transition={transition}
-            variants={variants}
-          >
-            <span className="absolute select-text font-medium text-transparent tracking-wide">
-              {time}
-            </span>
-            <span aria-hidden className="pointer-events-none inline-block">
-              <DigitsColumn place={2} value={integers} />
-              <DigitsColumn place={1} value={integers} />
-              <DigitsColumn place={0} value={integers} />
-              <span className="relative inline-flex h-[1em] w-[0.25ch] justify-center">
-                .
-              </span>
-              <DigitsColumn place={1} value={decimals} />
-              <DigitsColumn place={0} value={decimals} />
-            </span>
-          </motion.span>
-        ) : (
-          <motion.span
-            animate="visible"
-            className="relative translate-y-[0.0625em] select-none"
-            exit="hidden"
-            initial="hidden"
-            key="default"
-            transition={transition}
-            variants={variants}
-          >
-            {DEFAULT_TIME}
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </motion.a>
+      <span className="relative translate-y-[0.0625em] select-none">
+        <span className="absolute select-text font-medium text-transparent tracking-wide">
+          {time}
+        </span>
+        <span aria-hidden className="pointer-events-none inline-block">
+          <DigitsColumn place={2} value={integers} />
+          <DigitsColumn place={1} value={integers} />
+          <DigitsColumn place={0} value={integers} />
+          <span className="relative inline-flex h-[1em] w-[0.25ch] justify-center">
+            .
+          </span>
+          <DigitsColumn place={1} value={decimals} />
+          <DigitsColumn place={0} value={decimals} />
+        </span>
+      </span>
+    </a>
   )
 }

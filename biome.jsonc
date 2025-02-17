@@ -27,7 +27,12 @@
         "useExhaustiveDependencies": {
           "level": "error",
           "options": {
-            "hooks": [{ "name": "useMotionValue", "stableResult": true }]
+            "hooks": [
+              { "name": "useMotionValue", "stableResult": true },
+              { "name": "useMotionTemplate", "stableResult": true },
+              { "name": "useSpring", "stableResult": true },
+              { "name": "useTransform", "stableResult": true }
+            ]
           }
         }
       },

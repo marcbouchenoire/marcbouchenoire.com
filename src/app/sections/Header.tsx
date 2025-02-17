@@ -6,9 +6,9 @@ import Link from "next/link"
 import { usePathname, useSelectedLayoutSegment } from "next/navigation"
 import portrait from "public/portrait.jpg"
 import { type ComponentProps, useMemo } from "react"
-import { InternetTime } from "src/app/components/InternetTime"
-import { ThemeToggle } from "src/app/components/ThemeToggle"
 import { capitalize } from "src/utils/capitalize"
+import { InternetTime } from "../components/InternetTime"
+import { ThemeToggle } from "../components/ThemeToggle"
 import styles from "./Header.module.css"
 
 function Breadcrumbs() {
