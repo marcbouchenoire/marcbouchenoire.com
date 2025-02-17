@@ -105,7 +105,7 @@ export function TofuPolaroid({
       aria-label="Tofu, my cat"
       className={clsx(
         className,
-        "absolute z-1 aspect-328/400 cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
+        "absolute z-10 aspect-328/400 cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
       )}
       drag={!isAnimating}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
