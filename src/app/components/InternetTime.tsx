@@ -9,19 +9,19 @@ import {
   useSpring,
   useTransform
 } from "motion/react"
-import { type ComponentProps, memo, useEffect, useRef } from "react"
+import {
+  type ComponentProps,
+  memo,
+  useCallback,
+  useEffect,
+  useRef
+} from "react"
 import { useInitial } from "src/utils/use-initial"
 import { useInternetTime } from "src/utils/use-internet-time"
 import styles from "./InternetTime.module.css"
 
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-interface RollingDigitsProps {
-  /**
-   * The digit's value.
-   */
-  value: MotionValue<number>
-}
+const STAGGER_DELAY = 100
 
 interface RollingDigitProps extends ComponentProps<typeof motion.span> {
   /**
@@ -35,6 +35,18 @@ interface RollingDigitProps extends ComponentProps<typeof motion.span> {
   digitIndex: number
 }
 
+interface RollingDigitsProps {
+  /**
+   * The digit's value.
+   */
+  value: MotionValue<number>
+
+  /**
+   * The rolling animation's delay.
+   */
+  delay?: number
+}
+
 function RollingDigit({
   currentIndex,
   digitIndex,
@@ -46,7 +58,10 @@ function RollingDigit({
   return <motion.span {...props} style={{ opacity }} />
 }
 
-const RollingDigits = memo(({ value }: RollingDigitsProps) => {
+const RollingDigits = memo(({ value, delay }: RollingDigitsProps) => {
+  const delayTimeouts = useInitial(
+    () => new Set<ReturnType<typeof setTimeout>>()
+  )
   const isSecondaryDigit = useRef(false)
   const index = useSpring(0, {
     stiffness: 300,
@@ -57,28 +72,48 @@ const RollingDigits = memo(({ value }: RollingDigitsProps) => {
     (index) => `-${(index / (DIGITS.length * 2)) * 100}%`
   )
 
-  useMotionValueEvent(value, "change", () => {
+  const ttt = useCallback(() => {
     const previous = value.getPrevious() ?? value.get()
     const current = value.get()
 
-    if (previous === current) {
-      return
-    }
+    if (previous !== current) {
+      // Move back to the primary set of digits when possible
+      if (isSecondaryDigit.current) {
+        isSecondaryDigit.current = false
+        index.jump(previous)
+      }
 
-    // Move back to the primary set of digits when possible
-    if (isSecondaryDigit.current) {
-      isSecondaryDigit.current = false
-      index.jump(previous)
+      // If backwards (e.g. 9 to 0), move to the secondary set of digits instead
+      if (current < previous) {
+        isSecondaryDigit.current = true
+        index.set(current + DIGITS.length)
+      } else {
+        index.set(current)
+      }
     }
+  }, [value])
 
-    // If backwards (e.g. 9 to 0), move to the secondary set of digits instead
-    if (current < previous) {
-      isSecondaryDigit.current = true
-      index.set(current + DIGITS.length)
+  useMotionValueEvent(value, "change", () => {
+    if (!delay) {
+      ttt()
     } else {
-      index.set(current)
+      const timeout = setTimeout(() => {
+        ttt()
+
+        delayTimeouts.delete(timeout)
+      }, delay)
+
+      delayTimeouts.add(timeout)
     }
   })
+
+  useEffect(() => {
+    return () => {
+      for (const timeout of delayTimeouts) {
+        clearTimeout(timeout)
+      }
+    }
+  }, [])
 
   return (
     <span className="relative inline-block h-[1lh] w-[1ch]">
@@ -162,11 +197,19 @@ export function InternetTime({ className, ...props }: ComponentProps<"a">) {
           className="pointer-events-none inline-flex translate-y-[1lh] items-center"
         >
           {digits.slice(0, 3).map((digit, index) => (
-            <RollingDigits key={index} value={digit} />
+            <RollingDigits
+              delay={(digits.length - index - 1) * STAGGER_DELAY}
+              key={index}
+              value={digit}
+            />
           ))}
           <span className="mx-[0.025ch] inline-block h-[1lh]">.</span>
           {digits.slice(3).map((digit, index) => (
-            <RollingDigits key={index + 3} value={digit} />
+            <RollingDigits
+              delay={(digits.length - (index + 3) - 1) * STAGGER_DELAY}
+              key={index + 3}
+              value={digit}
+            />
           ))}
         </span>
       </span>
