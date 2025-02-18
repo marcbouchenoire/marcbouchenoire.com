@@ -6,6 +6,8 @@ import { useCallback, useRef } from "react"
 import { useDebounce } from "src/utils/use-debounce"
 import { useVisibleCallback } from "src/utils/use-visible"
 
+const REFRESH_MINIMUM_INTERVAL = 10000
+
 /**
  * Refresh the current route whenever this component becomes visible.
  *
@@ -19,9 +21,12 @@ export function RefreshBoundary({ children, ...props }: ComponentProps<"div">) {
   const refresh = useCallback(() => {
     router.refresh()
   }, [router])
-  const debouncedRefresh = useDebounce(refresh, 10000, {
+  const debouncedRefresh = useDebounce(refresh, REFRESH_MINIMUM_INTERVAL, {
     leading: true,
-    trailing: false
+    trailing: false,
+
+    // The inital page load can be counted as a first refresh
+    initial: true
   })
 
   useVisibleCallback(ref, debouncedRefresh)

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from "react"
+import { useInitial } from "./use-initial"
 
 interface DebounceOptions {
   /**
@@ -10,11 +11,17 @@ interface DebounceOptions {
    * Whether to invoke the callback after the delay.
    */
   trailing: boolean
+
+  /**
+   * Whether to count mounting as an initial invocation.
+   */
+  initial: boolean
 }
 
 const defaultOptions: DebounceOptions = {
   leading: false,
-  trailing: true
+  trailing: true,
+  initial: false
 }
 
 /**
@@ -33,9 +40,11 @@ export function useDebounce<T extends (...args: unknown[]) => void>(
 ) {
   const leading = options?.leading ?? defaultOptions.leading
   const trailing = options?.trailing ?? defaultOptions.trailing
+  const initial = options?.initial ?? defaultOptions.initial
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const callbackRef = useRef(callback)
-  const wasInvokedRef = useRef(false)
+  const isLeadingPendingRef = useRef(false)
+  const initialTimestamp = useInitial(() => performance.now())
 
   useEffect(() => {
     callbackRef.current = callback
@@ -43,10 +52,14 @@ export function useDebounce<T extends (...args: unknown[]) => void>(
 
   const debounce = useCallback(
     (...args: Parameters<T>) => {
-      if (leading && !wasInvokedRef.current) {
+      if (
+        leading &&
+        !isLeadingPendingRef.current &&
+        (initial ? performance.now() - initialTimestamp >= delay : true)
+      ) {
         callbackRef.current(...args)
 
-        wasInvokedRef.current = true
+        isLeadingPendingRef.current = true
       }
 
       if (timeoutRef.current) {
@@ -54,14 +67,14 @@ export function useDebounce<T extends (...args: unknown[]) => void>(
       }
 
       timeoutRef.current = setTimeout(() => {
-        wasInvokedRef.current = false
+        isLeadingPendingRef.current = false
 
         if (trailing) {
           callbackRef.current(...args)
         }
       }, delay)
     },
-    [delay, leading, trailing]
+    [delay, leading, trailing, initial]
   )
 
   useEffect(() => {
