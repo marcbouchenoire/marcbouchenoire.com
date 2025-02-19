@@ -11,7 +11,7 @@ export const DEFAULT_TIME = "000.00"
  *
  * @param [date] - The date to get an internet time string from.
  */
-function getInternetTime(date = new Date()) {
+export function getInternetTime(date = new Date()) {
   const seconds =
     date.getUTCMilliseconds() / 1000 +
     date.getUTCSeconds() +

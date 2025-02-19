@@ -2,9 +2,14 @@
 
 import { clsx } from "clsx"
 import NextImage from "next/image"
-import { useCallback, useEffect, useRef, useState } from "react"
+import {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState
+} from "react"
 import type { ComponentProps, SyntheticEvent } from "react"
-import { useRefs } from "src/utils/use-refs"
 
 /**
  * An image that fades in when it loads.
@@ -24,7 +29,6 @@ export function FadedImage({
 }: ComponentProps<typeof NextImage>) {
   const [isLoaded, setLoaded] = useState(false)
   const ref = useRef<HTMLImageElement>(null!)
-  const mergedRef = useRefs(forwardedRef, ref)
   const Image =
     !src || (typeof src === "string" && src.startsWith("http"))
       ? "img"
@@ -47,6 +51,8 @@ export function FadedImage({
     }
   }, [])
 
+  useImperativeHandle(forwardedRef, () => ref.current)
+
   return (
     <Image
       {...props}
@@ -56,7 +62,7 @@ export function FadedImage({
         isLoaded ? "opacity-100" : "opacity-0"
       )}
       onLoad={handleLoad}
-      ref={mergedRef}
+      ref={ref}
       src={src as string}
     />
   )

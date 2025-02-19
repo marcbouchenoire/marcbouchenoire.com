@@ -4,7 +4,8 @@
     ".next/types/**/*.ts",
     "declarations.d.ts",
     "next.config.ts",
-    "src"
+    "src",
+    "test"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
