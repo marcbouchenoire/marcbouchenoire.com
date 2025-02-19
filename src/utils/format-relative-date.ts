@@ -1,5 +1,6 @@
 import {
   formatDistanceToNowStrict,
+  isSameMinute,
   isToday,
   isTomorrow,
   isYesterday
@@ -36,17 +37,25 @@ export function formatRelativeDate(
   date: Date,
   {
     simplifyToday,
-    simplifyYesterday,
-    simplifyTomorrow
+    simplifyTomorrow,
+    simplifyYesterday
   }: FormatRelativeDateOptions = {}
 ) {
   if (simplifyToday && isToday(date)) {
     return "Today"
-  } else if (simplifyTomorrow && isTomorrow(date)) {
-    return "Tomorrow"
-  } else if (simplifyYesterday && isYesterday(date)) {
-    return "Yesterday"
-  } else {
-    return capitalize(formatDistanceToNowStrict(date, { addSuffix: true }))
   }
+
+  if (simplifyTomorrow && isTomorrow(date)) {
+    return "Tomorrow"
+  }
+
+  if (simplifyYesterday && isYesterday(date)) {
+    return "Yesterday"
+  }
+
+  if (isSameMinute(date, new Date())) {
+    return "Now"
+  }
+
+  return capitalize(formatDistanceToNowStrict(date, { addSuffix: true }))
 }

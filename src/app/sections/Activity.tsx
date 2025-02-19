@@ -1,7 +1,8 @@
 import { clsx } from "clsx"
 import type { ComponentProps } from "react"
 import { LatestFilms } from "src/app/components/LatestFilms"
-import { LatestSongs } from "src/app/components/LatestSongs"
+import { RefreshBoundary } from "src/components/RefreshBoundary"
+import { LatestSongs } from "../components/LatestSongs"
 
 const NUMBER_OF_ACTIVITIES = 3
 
@@ -14,10 +15,10 @@ const NUMBER_OF_ACTIVITIES = 3
 export function Activity({ className, ...props }: ComponentProps<"section">) {
   return (
     <section className={clsx(className, "content")} {...props}>
-      <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
+      <h2 className="mb-2 font-bold text-gray-800 text-xl dark:text-white">
         Activity
       </h2>
-      <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
+      <p className="max-w-[46ch] text-gray-500 leading-relaxed dark:text-gray-350">
         What I’ve recently{" "}
         <a
           className="link text-gray-800 dark:text-white"
@@ -38,7 +39,7 @@ export function Activity({ className, ...props }: ComponentProps<"section">) {
         </a>
         .
       </p>
-      <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <RefreshBoundary className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
         <LatestSongs
           className="min-w-0 max-w-full"
           limit={NUMBER_OF_ACTIVITIES}
@@ -47,7 +48,7 @@ export function Activity({ className, ...props }: ComponentProps<"section">) {
           className="min-w-0 max-w-full"
           limit={NUMBER_OF_ACTIVITIES}
         />
-      </div>
+      </RefreshBoundary>
     </section>
   )
 }

@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes"
 import { useCallback, useEffect, useMemo } from "react"
 
-type Theme = "dark" | "light"
+type Theme = "light" | "dark"
 
 type SystemTheme = Theme | "system"
 

@@ -1,3 +1,7 @@
+"use cache"
+
+import { unstable_cacheLife as cacheLife } from "next/cache"
+
 const GITHUB_API = "https://api.github.com"
 
 interface GitHubResponse {
@@ -5,6 +9,16 @@ interface GitHubResponse {
    * The date at which the repository was created.
    */
   created_at: string
+
+  /**
+   * The date at which the repository was last updated.
+   */
+  updated_at: string
+
+  /**
+   * The date at which the repository was last pushed to.
+   */
+  pushed_at: string
 
   /**
    * The amount of forks.
@@ -17,19 +31,9 @@ interface GitHubResponse {
   open_issues_count: number
 
   /**
-   * The date at which the repository was last pushed to.
-   */
-  pushed_at: string
-
-  /**
    * The amount of stars.
    */
   stargazers_count: number
-
-  /**
-   * The date at which the repository was last updated.
-   */
-  updated_at: string
 
   /**
    * The amount of users watching the repository.
@@ -44,6 +48,16 @@ interface Repository {
   created: string
 
   /**
+   * The date at which the repository was last updated.
+   */
+  updated: string
+
+  /**
+   * The date at which the repository was last pushed to.
+   */
+  pushed: string
+
+  /**
    * The amount of forks.
    */
   forks: number
@@ -54,19 +68,9 @@ interface Repository {
   issues: number
 
   /**
-   * The date at which the repository was last pushed to.
-   */
-  pushed: string
-
-  /**
    * The amount of stars.
    */
   stars: number
-
-  /**
-   * The date at which the repository was last updated.
-   */
-  updated: string
 
   /**
    * The amount of users watching the repository.
@@ -82,6 +86,8 @@ interface Repository {
 export async function getRepository(
   repository: string
 ): Promise<Repository | undefined> {
+  cacheLife("hours")
+
   try {
     const response: GitHubResponse = await fetch(
       `${GITHUB_API}/repos/${repository}`,

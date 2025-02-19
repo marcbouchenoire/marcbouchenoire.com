@@ -1,6 +1,8 @@
+"use cache"
+
 import { XMLParser } from "fast-xml-parser"
 import { decode } from "html-entities"
-import { unstable_cache as cache } from "next/cache"
+import { unstable_cacheLife as cacheLife } from "next/cache"
 
 const LETTERBOXD_USERNAME = "marcbouchenoire"
 const LETTERBOXD_URL = "https://letterboxd.com"
@@ -16,14 +18,24 @@ interface XMLParserDocument<T> {
 
 interface LetterboxdFilmEntry {
   /**
+   * A unique identifer.
+   */
+  guid: string
+
+  /**
+   * The film entry's title.
+   */
+  title: string
+
+  /**
    * The film entry's description.
    */
   description: string
 
   /**
-   * A unique identifer.
+   * The film's Letterboxd URL.
    */
-  guid: string
+  link: string
 
   /**
    * The film's title.
@@ -41,24 +53,14 @@ interface LetterboxdFilmEntry {
   "letterboxd:memberRating": number
 
   /**
-   * Whether the film was already watched before.
-   */
-  "letterboxd:rewatch": "No" | "Yes"
-
-  /**
    * The date at which the film was watched.
    */
   "letterboxd:watchedDate": string
 
   /**
-   * The film's Letterboxd URL.
+   * Whether the film was already watched before.
    */
-  link: string
-
-  /**
-   * The film entry's title.
-   */
-  title: string
+  "letterboxd:rewatch": "Yes" | "No"
 }
 
 interface LetterboxdUnknownEntry {
@@ -76,14 +78,14 @@ interface LetterboxdResponse {
    */
   channel: {
     /**
+     * The feed's title.
+     */
+    title: string
+
+    /**
      * The feed's description.
      */
     description: string
-
-    /**
-     * The feed's content.
-     */
-    item: (LetterboxdFilmEntry | LetterboxdUnknownEntry)[]
 
     /**
      * The feed's URL.
@@ -91,9 +93,9 @@ interface LetterboxdResponse {
     link: string
 
     /**
-     * The feed's title.
+     * The feed's content.
      */
-    title: string
+    item: (LetterboxdFilmEntry | LetterboxdUnknownEntry)[]
   }
 }
 
@@ -101,7 +103,7 @@ export interface Film {
   /**
    * The date at which the film was watched.
    */
-  date: string
+  date: Date
 
   /**
    * The film's poster.
@@ -148,7 +150,7 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
     title: decode(entry["letterboxd:filmTitle"]),
     year: entry["letterboxd:filmYear"],
     rating: entry["letterboxd:memberRating"],
-    date: entry["letterboxd:watchedDate"],
+    date: new Date(entry["letterboxd:watchedDate"]),
     rewatch: entry["letterboxd:rewatch"] === "Yes",
     poster,
     url: LETTERBOXD_FILM_URL(slug)
@@ -160,41 +162,36 @@ function formatFilm(entry: LetterboxdFilmEntry): Film {
  *
  * @param limit - The maximum number of films to return.
  */
-export const getLatestFilms = cache(
-  async (limit: number = 1): Promise<Film[]> => {
-    try {
-      const response = await fetch(LETTERBOXD_FEED).then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            "There was an error while fetching the Letterboxd feed."
-          )
-        }
+export async function getLatestFilms(limit: number): Promise<Film[]> {
+  cacheLife("hours")
 
-        return response.text()
-      })
-
-      const parser = new XMLParser()
-      const { rss }: XMLParserDocument<LetterboxdResponse> =
-        parser.parse(response)
-
-      const films = rss.channel.item
-        .filter(
-          (item): item is LetterboxdFilmEntry =>
-            "letterboxd:watchedDate" in item
+  try {
+    const response = await fetch(LETTERBOXD_FEED).then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          "There was an error while fetching the Letterboxd feed."
         )
-        .sort((a, b) =>
-          b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
-        )
+      }
 
-      return films.slice(0, limit).map(formatFilm)
-    } catch (error) {
-      console.error(error)
+      return response.text()
+    })
 
-      return []
-    }
-  },
-  ["latest-films"],
-  {
-    revalidate: 3600
+    const parser = new XMLParser()
+    const { rss }: XMLParserDocument<LetterboxdResponse> =
+      parser.parse(response)
+
+    const films = rss.channel.item
+      .filter(
+        (item): item is LetterboxdFilmEntry => "letterboxd:watchedDate" in item
+      )
+      .sort((a, b) =>
+        b["letterboxd:watchedDate"].localeCompare(a["letterboxd:watchedDate"])
+      )
+
+    return films.slice(0, limit).map(formatFilm)
+  } catch (error) {
+    console.error(error)
+
+    return []
   }
-)
+}

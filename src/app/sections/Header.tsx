@@ -4,12 +4,12 @@ import { clsx } from "clsx"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useSelectedLayoutSegment } from "next/navigation"
-import { type ComponentProps, useMemo } from "react"
-import styles from "./Header.module.css"
 import portrait from "public/portrait.jpg"
-import { InternetTime } from "src/app/components/InternetTime"
-import { ThemeToggle } from "src/app/components/ThemeToggle"
+import { type ComponentProps, useMemo } from "react"
 import { capitalize } from "src/utils/capitalize"
+import { InternetTime } from "../components/InternetTime"
+import { ThemeToggle } from "../components/ThemeToggle"
+import styles from "./Header.module.css"
 
 function Breadcrumbs() {
   const segment = useSelectedLayoutSegment()
@@ -18,10 +18,10 @@ function Breadcrumbs() {
   }, [segment])
 
   return (
-    <span className="flex items-center whitespace-pre leading-none text-gray-700 dark:text-gray-100">
+    <span className="flex items-center whitespace-pre text-gray-700 leading-none dark:text-gray-100">
       <Link
         aria-label="Return to home page"
-        className="link -ml-1 -mr-0.5 inline-flex items-center gap-2.5 py-1 pl-1 pr-0.5"
+        className="link -ml-1 -mr-0.5 inline-flex items-center gap-2.5 py-1 pr-0.5 pl-1"
         href="/"
       >
         <Image

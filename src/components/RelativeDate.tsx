@@ -1,9 +1,11 @@
 "use client"
 
+import { format } from "date-fns"
 import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import type { FormatRelativeDateOptions } from "src/utils/format-relative-date"
 import { formatRelativeDate } from "src/utils/format-relative-date"
+import { useHydrated } from "src/utils/use-hydrated"
 
 interface RelativeDateProps
   extends ComponentProps<"time">,
@@ -30,15 +32,24 @@ export function RelativeDate({
   simplifyYesterday,
   ...props
 }: RelativeDateProps) {
+  const isHydrated = useHydrated()
   const parsedDate = useMemo(() => new Date(date), [date])
   const normalizedDate = useMemo(() => parsedDate.toISOString(), [parsedDate])
   const formattedDate = useMemo(() => {
-    return formatRelativeDate(parsedDate, {
-      simplifyToday,
-      simplifyTomorrow,
-      simplifyYesterday
-    })
-  }, [parsedDate, simplifyToday, simplifyTomorrow, simplifyYesterday])
+    return isHydrated
+      ? formatRelativeDate(parsedDate, {
+          simplifyToday,
+          simplifyTomorrow,
+          simplifyYesterday
+        })
+      : format(parsedDate, "PPP")
+  }, [
+    isHydrated,
+    parsedDate,
+    simplifyToday,
+    simplifyTomorrow,
+    simplifyYesterday
+  ])
 
   return (
     <time {...props} dateTime={normalizedDate}>

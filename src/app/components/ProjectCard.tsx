@@ -25,7 +25,7 @@ export function ProjectCard({
     <div
       className={clsx(
         className,
-        "relative flex flex-col rounded-lg border border-gray-150 p-6 dark:border-gray-800 sm:p-8"
+        "relative flex flex-col rounded-lg border border-gray-150 p-6 sm:p-8 dark:border-gray-800"
       )}
       {...props}
     >

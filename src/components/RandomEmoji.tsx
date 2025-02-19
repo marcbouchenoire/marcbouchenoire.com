@@ -53,7 +53,7 @@ function getRandomEmoji(exclude?: string) {
  *
  * @param props - A set of `span` props.
  */
-export function Emoji(props: ComponentProps<"span">) {
+export function RandomEmoji(props: ComponentProps<"span">) {
   const [emoji, setEmoji] = useState(EMOJI[0])
 
   useEffect(() => {

@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react"
 import { Suspense } from "react"
-import { ProjectCard } from "./ProjectCard"
+import { getRepository } from "src/app/data/get-repository"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { getRepository } from "src/utils/get-repository"
+import { ProjectCard } from "./ProjectCard"
 
 interface GitHubProjectCardProps extends ComponentProps<"div"> {
   /**
@@ -69,7 +69,7 @@ export function GitHubProjectCard({
   return (
     <ProjectCard {...props}>
       <div className="mb-8 flex items-center text-gray-400">
-        <small className="mr-4 flex items-center gap-4 text-2xs font-semibold uppercase leading-tight tracking-widest">
+        <small className="mr-4 flex items-center gap-4 font-semibold text-2xs uppercase leading-tight tracking-widest">
           <span className="flex items-center">
             <svg
               className="-ml-px mr-1 flex-none"

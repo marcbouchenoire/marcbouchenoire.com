@@ -1,4 +1,4 @@
-/* stylelint-disable selector-class-pattern */
+@reference "../../styles/main.css";
 
 @keyframes scroll-gradient {
   from {
@@ -10,71 +10,17 @@
   }
 }
 
-.liveblocksThreadTransform {
-  transform: rotateX(26deg) rotateY(14deg) rotateZ(-10deg) translateX(2%);
-}
-
-.liveblocksInboxTransform {
-  transform: rotateX(14deg) rotateY(6deg) rotateZ(-4deg) translateX(-2%);
-}
-
-.liveblocksCodeTransform {
-  transform: rotateX(16deg) rotateY(18deg) rotateZ(-6deg) translateX(2%);
-}
-
-.liveblocksDevtoolsTransform {
-  transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
-}
-
-.liveblocksIoMarketingTransform {
-  transform: rotateX(18deg) rotateY(-16deg) rotateZ(8deg) translateX(-2%);
-}
-
-.liveblocksIoProductTransform {
-  transform: rotateX(26deg) rotateY(22deg) rotateZ(-12deg) translateX(2%);
-}
-
-.framerComTransform {
-  transform: rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
-}
-
-.motionVideoTransform {
-  transform: rotateX(18deg) rotateY(-20deg) rotateZ(8deg) translateX(-2%);
-}
-
-.motionStaticTransform {
-  transform: rotateX(12deg) rotateY(16deg) rotateZ(-4deg) translateX(2%);
-}
-
-.elementsTransform {
-  transform: rotateX(6deg) rotateY(-12deg) rotateZ(4deg) translateX(-2%);
-}
-
-.masterPhoneTransform {
-  transform: rotate(-8deg);
-}
-
-.masterHeadsetTransform {
-  transform: rotate(-6deg);
-}
-
-.masterThesisTransform {
-  transform: rotate(6deg);
-}
-
 .phoneShadow {
   @apply before:absolute before:inset-0 before:rounded-[inherit];
 
   &::before {
-    box-shadow:
-      inset 1px 1px 8px rgb(255 255 255 / 80%),
-      inset -1px -1px 8px rgb(0 0 0 / 10%);
+    box-shadow: inset 1px 1px 8px rgb(255 255 255 / 80%), inset -1px -1px 8px
+      rgb(0 0 0 / 10%);
+  }
 
-    :global(.dark) & {
-      box-shadow:
-        inset 1px 1px 8px rgb(255 255 255 / 20%),
-        inset -1px -1px 8px rgb(0 0 0 / 80%);
-    }
+  :global(.dark) &::before {
+    box-shadow: inset 1px 1px 8px rgb(255 255 255 / 20%), inset -1px -1px 8px
+      rgb(0 0 0 / 80%);
   }
 }
 
@@ -84,15 +30,15 @@
   &::before {
     background: linear-gradient(
       0deg,
-      theme("colors.violet.500"),
-      theme("colors.blue.500"),
-      theme("colors.cyan.500"),
-      theme("colors.emerald.500"),
-      theme("colors.yellow.500"),
-      theme("colors.orange.500"),
-      theme("colors.rose.500"),
-      theme("colors.violet.500"),
-      theme("colors.blue.500")
+      var(--color-violet-500),
+      var(--color-blue-500),
+      var(--color-cyan-500),
+      var(--color-emerald-500),
+      var(--color-yellow-500),
+      var(--color-orange-500),
+      var(--color-rose-500),
+      var(--color-violet-500),
+      var(--color-blue-500)
     );
     animation: 20s linear infinite alternate both scroll-gradient;
   }
@@ -104,7 +50,7 @@
 
 .bookCoverGradient,
 .bookBackCoverGradient {
-  @apply before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-[inherit];
+  @apply before:pointer-events-none before:absolute before:inset-0 before:z-1 before:rounded-[inherit];
 
   &::before {
     background-image: linear-gradient(
@@ -122,7 +68,7 @@
 }
 
 .bookBackCoverSecondaryGradient {
-  @apply after:pointer-events-none after:absolute after:inset-0 after:z-10 after:rounded-[inherit];
+  @apply after:pointer-events-none after:absolute after:inset-0 after:z-1 after:rounded-[inherit];
 
   &::after {
     background-image: linear-gradient(
@@ -148,12 +94,9 @@
     );
 }
 
-.bright {
-  @apply !m-0;
-
-  pre {
-    --line-number-color: rgb(255 255 255 / 30%);
-
-    @apply !overflow-hidden !bg-transparent !px-0 !py-[0.5em] selection:!bg-white/10;
+.codeHighlight {
+  pre,
+  span {
+    @apply !bg-transparent;
   }
 }

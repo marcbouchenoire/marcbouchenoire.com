@@ -33,7 +33,7 @@ function CustomizableTitleSelect({
     <span
       className={clsx(
         className,
-        "focusable-within relative m-[-0.1ch] inline-block rounded-sm p-[0.1ch] leading-none transition duration-100"
+        "focusable-within relative m-[-0.1ch] inline-block rounded-xs p-[0.1ch] leading-none transition duration-100"
       )}
       {...props}
     >

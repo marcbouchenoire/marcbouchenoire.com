@@ -10,22 +10,24 @@ import type { ComponentProps } from "react"
 export function Experience({ className, ...props }: ComponentProps<"section">) {
   return (
     <section className={clsx(className, "content")} {...props}>
-      <h2 className="mb-2 text-xl font-bold text-gray-800 dark:text-white">
+      <h2 className="mb-2 font-bold text-gray-800 text-xl dark:text-white">
         Experience
       </h2>
-      <p className="max-w-[46ch] leading-relaxed text-gray-500 dark:text-gray-350">
+      <p className="max-w-[46ch] text-gray-500 leading-relaxed dark:text-gray-350">
         The places I’ve worked and studied at.
       </p>
       <ul className="mt-8">
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-liveblocks/10 text-liveblocks transition hover:bg-liveblocks/20 focus-visible:ring-liveblocks/40 dark:bg-liveblocks-dark/20 dark:text-liveblocks-dark dark:hover:bg-liveblocks-dark/30 dark:focus-visible:ring-liveblocks-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-liveblocks/10 text-liveblocks transition hover:bg-liveblocks/20 focus-visible:ring-liveblocks/40 dark:bg-liveblocks-dark/20 dark:text-liveblocks-dark dark:focus-visible:ring-liveblocks-dark/40 dark:hover:bg-liveblocks-dark/30"
             href="https://liveblocks.io/"
             rel="noreferrer"
             target="_blank"
           >
             <svg
+              aria-label="Liveblocks"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -42,7 +44,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Liveblocks
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2023
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -64,7 +66,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Liveblocks
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2022
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -81,13 +83,15 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-framer/10 text-framer transition hover:bg-framer/20 focus-visible:ring-framer/40 dark:bg-framer-dark/20 dark:text-framer-dark dark:hover:bg-framer-dark/30 dark:focus-visible:ring-framer-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-framer/10 text-framer transition hover:bg-framer/20 focus-visible:ring-framer/40 dark:bg-framer-dark/20 dark:text-framer-dark dark:focus-visible:ring-framer-dark/40 dark:hover:bg-framer-dark/30"
             href="https://www.framer.com/"
             rel="noreferrer"
             target="_blank"
           >
             <svg
+              aria-label="Framer"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -104,7 +108,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2021
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -126,7 +130,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2019
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -148,7 +152,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Framer
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2019
               </span>
             </p>
@@ -161,13 +165,15 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-awkward/10 text-awkward transition hover:bg-awkward/20 focus-visible:ring-awkward/40 dark:bg-awkward-dark/20 dark:text-awkward-dark dark:hover:bg-awkward-dark/30 dark:focus-visible:ring-awkward-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-awkward/10 text-awkward transition hover:bg-awkward/20 focus-visible:ring-awkward/40 dark:bg-awkward-dark/20 dark:text-awkward-dark dark:focus-visible:ring-awkward-dark/40 dark:hover:bg-awkward-dark/30"
             href="https://www.awkward.co/"
             rel="noreferrer"
             target="_blank"
           >
             <svg
+              aria-label="Awkward"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -184,7 +190,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 Awkward
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2018
               </span>
             </p>
@@ -197,13 +203,15 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
         </li>
         <li className="my-5 flex items-center gap-4 text-gray-500 dark:text-gray-350">
           <a
-            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-lecolededesign/10 text-lecolededesign transition hover:bg-lecolededesign/20 focus-visible:ring-lecolededesign/40 dark:bg-lecolededesign-dark/20 dark:text-lecolededesign-dark dark:hover:bg-lecolededesign-dark/30 dark:focus-visible:ring-lecolededesign-dark/40"
+            className="focusable aspect-square w-13 flex-none cursor-pointer rounded-md bg-lecolededesign/10 text-lecolededesign transition hover:bg-lecolededesign/20 focus-visible:ring-lecolededesign/40 dark:bg-lecolededesign-dark/20 dark:text-lecolededesign-dark dark:focus-visible:ring-lecolededesign-dark/40 dark:hover:bg-lecolededesign-dark/30"
             href="https://en.lecolededesign.com/"
             rel="noreferrer"
             target="_blank"
           >
             <svg
+              aria-label="L’École de Design"
               className="h-full w-full"
+              role="img"
               viewBox="0 0 56 56"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -220,7 +228,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 L’École de Design
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2017
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –
@@ -242,7 +250,7 @@ export function Experience({ className, ...props }: ComponentProps<"section">) {
               <span className="truncate font-semibold text-gray-700 dark:text-gray-100">
                 L’École de Design
               </span>
-              <span className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400">
+              <span className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400">
                 2014
                 <span className="mx-0.5 text-gray-350 dark:text-gray-550">
                   –

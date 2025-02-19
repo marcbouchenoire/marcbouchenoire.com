@@ -1,5 +1,7 @@
-declare module "*/data.json" {
-  const value: any
+import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers"
 
-  export default value
+declare module "bun:test" {
+  interface Matchers<T>
+    extends TestingLibraryMatchers<typeof expect.stringContaining, T> {}
+  interface AsymmetricMatchers extends TestingLibraryMatchers {}
 }

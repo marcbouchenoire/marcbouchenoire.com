@@ -28,7 +28,6 @@ export function Characters({
     <span
       aria-label={children}
       className={clsx(className, "whitespace-nowrap")}
-      role="text"
       {...props}
     >
       {characters.map((character, index) => (

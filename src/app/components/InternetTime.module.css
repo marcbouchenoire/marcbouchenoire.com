@@ -1,0 +1,11 @@
+.mask {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    black,
+    black,
+    transparent,
+    transparent
+  );
+}

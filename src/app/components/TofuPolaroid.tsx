@@ -9,26 +9,16 @@ import {
   useTransform
 } from "motion/react"
 import Image from "next/image"
-import type { ComponentProps } from "react"
-import { useCallback, useEffect, useState } from "react"
-import styles from "./TofuPolaroid.module.css"
 import tofu1 from "public/tofu/1.jpg"
 import tofu2 from "public/tofu/2.jpg"
 import tofu3 from "public/tofu/3.jpg"
 import tofu4 from "public/tofu/4.jpg"
 import tofu5 from "public/tofu/5.jpg"
+import type { ComponentProps } from "react"
+import { useCallback, useEffect, useState } from "react"
+import styles from "./TofuPolaroid.module.css"
 
 const PHOTOS = [tofu1, tofu2, tofu3, tofu4, tofu5]
-
-function getRandomPhotoIndex(currentIndex: number) {
-  let randomIndex: number
-
-  do {
-    randomIndex = Math.floor(Math.random() * PHOTOS.length)
-  } while (randomIndex === currentIndex)
-
-  return randomIndex
-}
 
 /**
  * A Polaroid-style portrait of Tofu, my cat.
@@ -44,6 +34,7 @@ export function TofuPolaroid({
 }: ComponentProps<typeof motion.div>) {
   const [photoIndex, setPhotoIndex] = useState(0)
   const [isDragging, setDragging] = useState(false)
+  const [isAnimating, setAnimating] = useState(false)
   const overlayOpacity = useMotionValue(0)
   const highlightOpacity = useMotionValue(1)
   const x = useMotionValue(0)
@@ -63,55 +54,58 @@ export function TofuPolaroid({
     setDragging(true)
   }, [])
 
-  const [isAnimating, setAnimating] = useState(false)
+  useEffect(() => {
+    if (isDragging) {
+      document.body.classList.add("grabbing")
 
-  useEffect(
-    () => {
-      if (isDragging) {
-        document.body.classList.add("grabbing")
+      const handlePointerUp = () => {
+        setDragging(false)
+        setPhotoIndex((index) => {
+          let randomIndex = index
 
-        const handlePointerUp = () => {
-          setDragging(false)
-          setPhotoIndex(getRandomPhotoIndex)
-
-          overlayOpacity.set(1)
-          animate(overlayOpacity, 0, { duration: 2, ease: "easeOut" })
-          highlightOpacity.set(0.1)
-          animate(highlightOpacity, 1, { duration: 2, ease: "easeOut" })
-
-          if ((x.get() === 0 && y.get() === 0) || isAnimating) {
-            x.stop()
-            x.set(0)
-            setAnimating(true)
-            animate(x, [0, -5, 5, -5, 5, 0], {
-              duration: 0.4,
-              ease: "easeInOut",
-              onComplete: () => setAnimating(false)
-            })
+          while (randomIndex === index) {
+            randomIndex = Math.floor(Math.random() * PHOTOS.length)
           }
-        }
 
-        document.addEventListener("pointerup", handlePointerUp)
+          return randomIndex
+        })
 
-        return () => {
-          document.body.classList.remove("grabbing")
-          document.removeEventListener("pointerup", handlePointerUp)
+        overlayOpacity.set(1)
+        animate(overlayOpacity, 0, { duration: 2, ease: "easeOut" })
+        highlightOpacity.set(0.1)
+        animate(highlightOpacity, 1, { duration: 2, ease: "easeOut" })
+
+        if ((x.get() === 0 && y.get() === 0) || isAnimating) {
+          x.stop()
+          x.set(0)
+          setAnimating(true)
+          animate(x, [0, -3, 3, -3, 3, 0], {
+            duration: 0.4,
+            ease: "easeInOut",
+            onComplete: () => setAnimating(false)
+          })
         }
       }
+
+      document.addEventListener("pointerup", handlePointerUp)
 
       return () => {
         document.body.classList.remove("grabbing")
+        document.removeEventListener("pointerup", handlePointerUp)
       }
-    },
-    [isDragging] // eslint-disable-line react-hooks/exhaustive-deps
-  )
+    }
+
+    return () => {
+      document.body.classList.remove("grabbing")
+    }
+  }, [isDragging, isAnimating])
 
   return (
     <motion.div
       aria-label="Tofu, my cat"
       className={clsx(
         className,
-        "absolute z-50 aspect-[328/400] cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
+        "absolute z-10 aspect-328/400 cursor-grab touch-none bg-white p-2 shadow-floaty will-change-transform"
       )}
       drag={!isAnimating}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -130,11 +124,11 @@ export function TofuPolaroid({
     >
       <div className="relative aspect-square w-full bg-gray-800">
         <motion.div
-          className="absolute inset-0 z-10 bg-gray-50"
+          className="absolute inset-0 z-1 bg-gray-50"
           style={{ opacity: overlayOpacity }}
         />
         <motion.div
-          className={clsx(styles.polaroidShadow, "absolute inset-0 z-10")}
+          className={clsx(styles.polaroidShadow, "absolute inset-0 z-1")}
           style={{ opacity: highlightOpacity }}
         />
         {PHOTOS.map((photo, index) => {

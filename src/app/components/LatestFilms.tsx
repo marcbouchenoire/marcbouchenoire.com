@@ -1,15 +1,10 @@
-"use client"
-
 import { clsx } from "clsx"
-import type { Transition, Variants } from "motion/react"
-import { AnimatePresence, motion } from "motion/react"
-import type { ComponentProps } from "react"
-import { useMemo } from "react"
-import useSWR from "swr"
-import type { Film } from "src/app/api/letterboxd/latest/get-latest-films"
+import { type ComponentProps, Suspense } from "react"
+import type { Film } from "src/app/data/get-latest-films"
+import { getLatestFilms } from "src/app/data/get-latest-films"
+import { FadedImage } from "src/components/FadedImage"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"
-import { json } from "src/utils/json"
 
 interface LatestFilmsProps extends ComponentProps<"div"> {
   /**
@@ -25,20 +20,6 @@ interface LatestFilmProps extends ComponentProps<"a"> {
   film?: Film
 }
 
-const variants: Variants = {
-  hidden: {
-    opacity: 0
-  },
-  visible: {
-    opacity: 1
-  }
-}
-
-const fade: Transition = {
-  ease: "easeInOut",
-  duration: 0.6
-}
-
 /**
  * Display a film from Letterboxd.
  *
@@ -48,24 +29,19 @@ const fade: Transition = {
  */
 function LatestFilm({ film, className, ...props }: LatestFilmProps) {
   const { date, poster, rating, title, year, url } = film ?? {}
-  const absoluteDate = useMemo(() => {
-    if (!date) return
-
-    return new Date(date)
-  }, [date])
 
   return (
     <a
       className={clsx(
         className,
-        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-lime-400/40"
+        "focusable flex w-fit min-w-0 max-w-full gap-4 rounded-sm pr-2 ring-offset-4 transition hover:opacity-60 focus-visible:ring-lime-500/40 dark:ring-offset-gray-900 dark:focus-visible:ring-lime-400/40"
       )}
       href={url}
       rel="noreferrer"
       target="_blank"
       {...props}
     >
-      <div className="highlight dark:highlight-invert relative aspect-[2/3] h-20 flex-none overflow-hidden rounded bg-gray-100 dark:bg-gray-800">
+      <div className="highlight dark:highlight-invert relative aspect-2/3 h-20 flex-none overflow-hidden rounded-sm bg-gray-100 dark:bg-gray-800">
         <svg
           className="absolute h-full w-full text-gray-300 dark:text-gray-600"
           role="presentation"
@@ -79,25 +55,17 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
             fillRule="evenodd"
           />
         </svg>
-        <AnimatePresence>
-          {poster && (
-            <motion.img
-              alt={title}
-              animate="visible"
-              className="absolute h-full w-full object-cover"
-              exit="hidden"
-              initial="hidden"
-              key={title}
-              loading="lazy"
-              src={poster}
-              transition={fade}
-              variants={variants}
-            />
-          )}
-        </AnimatePresence>
+        {poster && title && (
+          <FadedImage
+            alt={title}
+            className="absolute h-full w-full object-cover"
+            key={title}
+            src={poster}
+          />
+        )}
       </div>
       <div className="flex min-w-0 flex-col justify-center">
-        <small className="flex items-center text-2xs font-semibold uppercase leading-tight tracking-widest text-lime-500 dark:text-lime-400">
+        <small className="flex items-center font-semibold text-2xs text-lime-500 uppercase leading-tight tracking-widest dark:text-lime-400">
           <svg
             className="-ml-px mr-1 flex-none"
             height="20"
@@ -112,16 +80,18 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
               fillRule="evenodd"
             />
           </svg>
-          {absoluteDate ? (
+          {date ? (
             <RelativeDate
               className="truncate"
-              date={absoluteDate}
+              date={date}
               simplifyToday
               simplifyYesterday
             />
-          ) : null}
+          ) : (
+            <Skeleton className="w-16 bg-lime-500/20! dark:bg-lime-400/20!" />
+          )}
         </small>
-        <p className="mb-1.5 mt-1 flex items-center">
+        <p className="mt-1 mb-1.5 flex items-center">
           <span
             className="truncate font-semibold text-gray-700 dark:text-gray-100"
             title={title}
@@ -130,7 +100,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
           </span>{" "}
           {year && (
             <time
-              className="ml-1.5 inline-block flex-none translate-y-px rounded bg-gray-100 p-1 text-xs font-medium leading-none text-gray-500 dark:bg-gray-800 dark:text-gray-400"
+              className="ml-1.5 inline-block flex-none translate-y-px rounded-sm bg-gray-100 p-1 font-medium text-gray-500 text-xs leading-none dark:bg-gray-800 dark:text-gray-400"
               dateTime={String(year)}
             >
               {year}
@@ -140,7 +110,10 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
         <div className="flex items-center gap-1.5">
           <div
             aria-label={`${rating ?? 0} out of 5`}
-            className="relative -ml-px h-[20px] w-[96px]"
+            className={clsx(
+              "-ml-px relative h-[20px] w-[96px]",
+              !rating && "skeleton"
+            )}
             role="img"
             title={`${rating ?? 0} out of 5`}
           >
@@ -199,6 +172,20 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
   )
 }
 
+function LatestFilmsFallback({
+  limit
+}: Required<Pick<LatestFilmsProps, "limit">>) {
+  return Array.from({ length: limit }, (_, index) => <LatestFilm key={index} />)
+}
+
+async function LatestFilmsData({
+  limit
+}: Required<Pick<LatestFilmsProps, "limit">>) {
+  const films = await getLatestFilms(limit)
+
+  return films.map((film, index) => <LatestFilm film={film} key={index} />)
+}
+
 /**
  * Display the latest films I watched from Letterboxd.
  *
@@ -211,18 +198,11 @@ export function LatestFilms({
   className,
   ...props
 }: LatestFilmsProps) {
-  const { data: films } = useSWR<Film[]>(
-    `/api/letterboxd/latest?limit=${limit}`,
-    json
-  )
-
   return (
     <div className={clsx(className, "flex flex-col gap-6")} {...props}>
-      {films
-        ? films.map((film, index) => <LatestFilm film={film} key={index} />)
-        : Array.from({ length: limit }, (_, index) => (
-            <LatestFilm key={index} />
-          ))}
+      <Suspense fallback={<LatestFilmsFallback limit={limit} />}>
+        <LatestFilmsData limit={limit} />
+      </Suspense>
     </div>
   )
 }

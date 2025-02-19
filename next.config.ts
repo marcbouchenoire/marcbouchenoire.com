@@ -2,11 +2,11 @@ import type { NextConfig } from "next"
 
 const config: NextConfig = {
   trailingSlash: false,
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   experimental: {
-    inlineCss: true
+    inlineCss: true,
+    dynamicIO: true,
+    useCache: true,
+    ppr: true
   },
   logging: {
     fetches: {
@@ -54,7 +54,7 @@ const config: NextConfig = {
     return [
       {
         source: "/:path*",
-        destination: `/:path*`
+        destination: "/:path*"
       },
       {
         source: "/projects/symbolist/:path*",
