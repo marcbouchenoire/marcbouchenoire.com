@@ -11,8 +11,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "biome": "biome check --write --assists-enabled=true",
-    "ci": "biome lint --write && tsc --noEmit"
+    "test": "bun test",
+    "format": "biome check --write --assists-enabled=true",
+    "lint": "biome lint --write && tsc --noEmit"
   },
   "dependencies": {
     "@shikijs/transformers": "^2.3.2",
