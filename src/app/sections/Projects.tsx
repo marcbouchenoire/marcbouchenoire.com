@@ -67,7 +67,7 @@ export function Projects(props: ComponentProps<"section">) {
           </p>
           <a
             className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-symbolist px-2.5 py-2 font-medium text-white shadow-lg shadow-symbolist/10 transition selection:bg-white/30 hover:bg-symbolist/80 hover:shadow-symbolist/5 focus-visible:ring-symbolist/40 dark:bg-symbolist-dark dark:text-gray-900 dark:shadow-symbolist-dark/10 dark:focus-visible:ring-symbolist-dark/40 dark:hover:bg-symbolist-dark/80 dark:hover:shadow-symbolist-dark/5 dark:selection:bg-gray-900/30"
-            href="/projects/symbolist"
+            href="https://symbolist.marcbouchenoire.com"
           >
             Learn more
           </a>
@@ -132,7 +132,7 @@ export function Projects(props: ComponentProps<"section">) {
           </p>
           <a
             className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-typometer px-2.5 py-2 font-medium text-white shadow-lg shadow-typometer/10 transition selection:bg-white/30 hover:bg-typometer/80 hover:shadow-typometer/5 focus-visible:ring-typometer/40 dark:bg-typometer-dark dark:text-gray-900 dark:shadow-typometer-dark/10 dark:focus-visible:ring-typometer-dark/40 dark:hover:bg-typometer-dark/80 dark:hover:shadow-typometer-dark/5 dark:selection:bg-gray-900/30"
-            href="/projects/typometer"
+            href="https://typometer.marcbouchenoire.com"
           >
             Learn more
           </a>
@@ -183,7 +183,7 @@ export function Projects(props: ComponentProps<"section">) {
           </p>
           <a
             className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-dimmmensions px-2.5 py-2 font-medium text-white shadow-dimmmensions/10 shadow-lg transition selection:bg-white/30 hover:bg-dimmmensions/80 hover:shadow-dimmmensions/5 focus-visible:ring-dimmmensions/40 dark:bg-dimmmensions-dark dark:text-gray-900 dark:shadow-dimmmensions-dark/10 dark:focus-visible:ring-dimmmensions-dark/40 dark:hover:bg-dimmmensions-dark/80 dark:hover:shadow-dimmmensions-dark/5 dark:selection:bg-gray-900/30"
-            href="/projects/dimmmensions"
+            href="https://dimmmensions.marcbouchenoire.com"
           >
             Learn more
           </a>
