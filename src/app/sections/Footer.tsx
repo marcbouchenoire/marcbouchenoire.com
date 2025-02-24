@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process"
 import { clsx } from "clsx"
 import { unstable_cacheLife as cacheLife } from "next/cache"
 import { type ComponentProps, Suspense } from "react"
@@ -30,7 +31,7 @@ async function Year(props: ComponentProps<"time">) {
 function LatestCommit(props: ComponentProps<"span">) {
   const commit = process.env.VERCEL_GIT_COMMIT_SHA
     ? process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)
-    : String(Bun.spawnSync(["git", "rev-parse", "--short", "HEAD"]))
+    : execSync("git rev-parse --short HEAD").toString()
 
   return <span {...props}>#{commit}</span>
 }
