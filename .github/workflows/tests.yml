@@ -1,21 +1,19 @@
-name: CI
+name: Tests
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  main:
+  tests:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Bun
         uses: oven-sh/setup-bun@v2
         with:
