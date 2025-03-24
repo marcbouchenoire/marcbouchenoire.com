@@ -41,7 +41,7 @@
   --color-typometer-dark: oklch(79.71% 0.1339 211.53);
   --color-splatoon: oklch(65.02% 0.212 6.13);
   --color-splatoon-dark: oklch(72.14% 0.1701 1.81);
-  --color-frimousse: oklch(79.5% 0.184 86.047);
+  --color-frimousse: oklch(78.38% 0.1776 81.25);
   --color-frimousse-dark: oklch(85.74% 0.1406 86.047);
   --color-liveblocks: oklch(59.93% 0.2015 290.16);
   --color-liveblocks-dark: oklch(67.27% 0.17 292.55);
@@ -70,6 +70,8 @@
   --drop-shadow-phone: 0 1px 4px rgba(0, 0, 0, 0.06);
 
   --perspective-far: 1000px;
+
+  --breakpoint-xs: 30rem;
 }
 
 @utility focusable {
