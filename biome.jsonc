@@ -1,30 +1,50 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedProperties": "on"
+      }
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true
+    }
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
     "indentStyle": "space",
     "lineWidth": 80
   },
-  "organizeImports": { "enabled": true },
-  "assists": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "sortJsxProps": "on"
-      }
+  "html": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
     }
   },
   "linter": {
+    "domains": {
+      "next": "recommended",
+      "react": "recommended",
+      "test": "recommended"
+    },
     "enabled": true,
     "rules": {
-      "recommended": true,
       "correctness": {
-        "noUnusedImports": "error",
-        "noUnusedVariables": "error",
-        "noUnusedFunctionParameters": "error",
         "noUnknownFunction": "off",
         "noUnknownMediaFeatureName": "off",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
         "useExhaustiveDependencies": {
           "level": "error",
           "options": {
@@ -38,18 +58,13 @@
           }
         }
       },
-      "security": {
-        "noDangerouslySetInnerHtml": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "off",
-        "noArrayIndexKey": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off"
-      },
       "nursery": {
-        // "useSortedProperties": "error",
+        "noAwaitInLoop": "error",
+        "noDescendingSpecificity": "error",
+        "noDuplicateCustomProperties": "error",
+        "noDuplicateProperties": "error",
+        "noTsIgnore": "error",
+        "noUselessEscapeInString": "error",
         "useSortedClasses": {
           "fix": "safe",
           "level": "error",
@@ -57,24 +72,44 @@
             "functions": ["classNames", "clsx", "cn"]
           }
         }
+      },
+      "recommended": true,
+      "style": {
+        "noInferrableTypes": "error",
+        "noParameterAssign": "error",
+        "noRestrictedGlobals": "error",
+        "noUnusedTemplateLiteral": "error",
+        "noYodaExpression": "error",
+        "useAsConstAssertion": "error",
+        "useBlockStatements": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useConst": "error",
+        "useDefaultParameterLast": "error",
+        "useDefaultSwitchClause": "error",
+        "useExportType": "error",
+        "useForOf": "error",
+        "useImportType": "error",
+        "useNodejsImportProtocol": "error",
+        "useNumberNamespace": "error",
+        "useNumericLiterals": "error",
+        "useSelfClosingElements": "error",
+        "useShorthandArrayType": "error",
+        "useShorthandAssign": "error",
+        "useShorthandFunctionType": "error",
+        "useSingleCaseStatement": "error",
+        "useTemplate": "error",
+        "useThrowNewError": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noExplicitAny": "off"
       }
     }
   },
-  "javascript": {
-    "formatter": {
-      "semicolons": "asNeeded",
-      "trailingCommas": "none"
-    }
-  },
-  "css": {
-    "parser": {
-      "cssModules": true
-    }
-  },
   "vcs": {
-    "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": true,
-    "defaultBranch": "main"
+    "defaultBranch": "main",
+    "enabled": true,
+    "useIgnoreFile": true
   }
 }

@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import type { Metadata, Viewport } from "next"
-import { ThemeProvider } from "next-themes"
 import { Inter } from "next/font/google"
+import { ThemeProvider } from "next-themes"
 import type { PropsWithChildren } from "react"
 import { METADATA } from "src/metadata"
 import styles from "./layout.module.css"

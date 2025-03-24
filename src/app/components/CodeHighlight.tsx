@@ -8,7 +8,7 @@ import {
 } from "@shikijs/transformers"
 import clsx from "clsx"
 import dedent from "dedent"
-import type { CSSProperties, ComponentProps } from "react"
+import type { ComponentProps, CSSProperties } from "react"
 import { type BundledTheme, codeToHtml } from "shiki"
 import styles from "./CodeHighlight.module.css"
 
@@ -69,6 +69,7 @@ export async function CodeHighlight({
     <div
       {...props}
       className={clsx(className, styles.codeHighlight)}
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: This is safe with Shiki
       dangerouslySetInnerHTML={{ __html: html }}
       style={
         {

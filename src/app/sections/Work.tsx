@@ -1,5 +1,6 @@
 import { clsx } from "clsx"
 import Image from "next/image"
+import headsetReflections from "public/various/headset-reflections.png"
 import elementsFood from "public/work/elements/food.png"
 import elementsMusic from "public/work/elements/music.png"
 import framerMotion from "public/work/framer-motion/static.png"
@@ -208,19 +209,19 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
             </clipPath>
           </defs>
         </svg>
-        <img
+        <Image
+          alt="Headset reflections"
           aria-hidden
           className="pointer-events-none absolute z-1 h-full w-full mix-blend-overlay"
-          height="960"
-          src="/various/headset-reflections.png"
-          width="540"
+          src={headsetReflections}
+          width="420"
         />
-        <img
+        <Image
+          alt="Headset reflections"
           aria-hidden
           className="pointer-events-none absolute z-1 h-full w-full opacity-50"
-          height="960"
-          src="/various/headset-reflections.png"
-          width="540"
+          src={headsetReflections}
+          width="420"
         />
         {children}
       </div>

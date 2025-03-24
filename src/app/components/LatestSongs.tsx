@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { type ComponentProps, Suspense } from "react"
-import { type Song, getLatestSongs } from "src/app/data/get-latest-songs"
+import { getLatestSongs, type Song } from "src/app/data/get-latest-songs"
 import { FadedImage } from "src/components/FadedImage"
 import { RelativeDate } from "src/components/RelativeDate"
 import { Skeleton } from "src/components/Skeleton"

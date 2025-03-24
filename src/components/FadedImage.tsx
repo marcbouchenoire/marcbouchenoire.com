@@ -2,6 +2,7 @@
 
 import { clsx } from "clsx"
 import NextImage from "next/image"
+import type { ComponentProps, SyntheticEvent } from "react"
 import {
   useCallback,
   useEffect,
@@ -9,7 +10,6 @@ import {
   useRef,
   useState
 } from "react"
-import type { ComponentProps, SyntheticEvent } from "react"
 
 /**
  * An image that fades in when it loads.

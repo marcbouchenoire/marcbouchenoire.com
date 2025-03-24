@@ -77,7 +77,9 @@ export function useSystemTheme(): [ResolvedTheme, () => void] {
   }, [setTheme])
 
   useEffect(() => {
-    if (isSystemTheme) return
+    if (isSystemTheme) {
+      return
+    }
 
     const darkMediaQuery = getThemeMediaQuery("dark")
 

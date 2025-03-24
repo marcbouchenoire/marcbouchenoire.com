@@ -1,8 +1,8 @@
 "use client"
 
 import { clsx } from "clsx"
-import { useCallback, useState } from "react"
 import type { ChangeEvent, ComponentProps } from "react"
+import { useCallback, useState } from "react"
 
 interface CustomizableTitleSelectProps extends ComponentProps<"span"> {
   /**
