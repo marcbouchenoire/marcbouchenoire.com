@@ -6,7 +6,7 @@ import { ProjectCard, ProjectCardDate } from "src/app/components/ProjectCard"
 import { Skeleton } from "src/components/Skeleton"
 
 /**
- * A section displaying personal projects.
+ * A section displaying open source projects.
  *
  * @param props - A set of `section` props.
  */
@@ -15,10 +15,10 @@ export function Projects(props: ComponentProps<"section">) {
     <section {...props}>
       <div className="content">
         <h2 className="mb-2 font-bold text-gray-800 text-xl dark:text-white">
-          Projects
+          Open source
         </h2>
         <p className="max-w-[46ch] text-gray-500 leading-relaxed dark:text-gray-350">
-          A selection of personal—and often{" "}
+          A selection of{" "}
           <a
             className="link text-gray-800 dark:text-white"
             href="https://github.com/marcbouchenoire"
@@ -26,11 +26,111 @@ export function Projects(props: ComponentProps<"section">) {
             target="_blank"
           >
             open source
-          </a>
-          —projects.
+          </a>{" "}
+          projects.
         </p>
       </div>
       <div className="content mt-8 grid grid-cols-1 gap-5 content-md sm:grid-cols-2 sm:gap-8">
+        <GitHubProjectCard repository="liveblocks/frimousse">
+          <h3 className="mb-2 flex items-center gap-2 font-semibold text-frimousse dark:text-frimousse-dark">
+            <svg
+              aria-label="Frimousse"
+              className="inline-block size-4.5"
+              role="img"
+              viewBox="0 0 18 18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 0h14v2H2V0Zm0 16H0V2h2v14Zm14 0v2H2v-2h14Zm0 0h2V2h-2v14ZM7 5H5v2h2V5Zm4 0h2v2h-2V5Zm-5 6V9H4v2h2Zm6 0v2H6v-2h6Zm0 0h2V9h-2v2Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>Frimousse</span>
+          </h3>
+          <p className="text-gray-500 leading-relaxed dark:text-gray-350">
+            A lightweight, unstyled, and composable emoji picker for React.
+          </p>
+          <a
+            className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-frimousse px-2.5 py-2 font-medium text-white shadow-frimousse/10 shadow-lg transition selection:bg-white/30 hover:bg-frimousse/80 hover:shadow-frimousse/5 focus-visible:ring-frimousse/40 dark:bg-frimousse-dark dark:text-gray-900 dark:shadow-frimousse-dark/10 dark:focus-visible:ring-frimousse-dark/40 dark:hover:bg-frimousse-dark/80 dark:hover:shadow-frimousse-dark/5 dark:selection:bg-gray-900/30"
+            href="https://frimousse.liveblocks.io"
+          >
+            Learn more
+          </a>
+        </GitHubProjectCard>
+        <ProjectCard>
+          <div className="mb-8 flex items-center text-gray-400">
+            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs uppercase leading-tight tracking-widest">
+              <span className="flex items-center">
+                <svg
+                  className="-ml-px mr-1 flex-none"
+                  height="20"
+                  role="presentation"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  />
+                  <path
+                    clipRule="evenodd"
+                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                  />
+                </svg>
+                <Suspense fallback={<Skeleton className="h-[1.2em] w-16" />}>
+                  <ProjectCardDate date="2024-01-22" />
+                </Suspense>
+              </span>
+            </small>
+            <a
+              aria-label="View on GitHub"
+              className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-gray-600 dark:hover:text-gray-100"
+              href="https://github.com/raycast/extensions/tree/main/extensions/splatoon/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg
+                height="24"
+                role="presentation"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M12 2C6.475 2 2 6.47 2 11.988c0 4.42 2.862 8.153 6.838 9.476.5.087.687-.212.687-.474 0-.238-.013-1.024-.013-1.86C7 19.59 6.35 18.517 6.15 17.955c-.113-.287-.6-1.174-1.025-1.411-.35-.187-.85-.65-.013-.662.788-.012 1.35.724 1.538 1.024.9 1.51 2.338 1.086 2.912.824.088-.65.35-1.086.638-1.336-2.225-.25-4.55-1.111-4.55-4.931 0-1.087.387-1.986 1.025-2.685-.1-.25-.45-1.273.1-2.646 0 0 .837-.263 2.75 1.023a9.29 9.29 0 0 1 2.5-.337c.85 0 1.7.113 2.5.337 1.912-1.298 2.75-1.023 2.75-1.023.55 1.373.2 2.397.1 2.646.637.7 1.025 1.586 1.025 2.685 0 3.832-2.337 4.681-4.562 4.931.362.312.675.912.675 1.848 0 1.336-.013 2.41-.013 2.747 0 .262.188.574.688.474C19.137 20.141 22 16.395 22 11.988 22 6.47 17.525 2 12 2Z"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+          <div className="mt-auto">
+            <h3 className="mb-2 flex items-center gap-2 font-semibold text-splatoon dark:text-splatoon-dark">
+              <Image
+                alt="Splatoon"
+                className="size-5"
+                src={splatoon}
+                width="40"
+              />
+              <span>Splatoon</span>
+            </h3>
+            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
+              A Raycast extension to view Splatoon’s current&nbsp;schedules.
+            </p>
+            <a
+              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon px-2.5 py-2 font-medium text-white shadow-lg shadow-splatoon/10 transition selection:bg-white/30 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus-visible:ring-splatoon/40 dark:bg-splatoon-dark dark:text-gray-900 dark:shadow-splatoon-dark/10 dark:focus-visible:ring-splatoon-dark/40 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:selection:bg-gray-900/30"
+              href="https://www.raycast.com/marcbouchenoire/splatoon"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Learn more
+            </a>
+          </div>
+        </ProjectCard>
         <GitHubProjectCard repository="marcbouchenoire/symbolist">
           <h3 className="mb-2 font-semibold text-symbolist dark:text-symbolist-dark">
             <svg
@@ -188,79 +288,6 @@ export function Projects(props: ComponentProps<"section">) {
             Learn more
           </a>
         </GitHubProjectCard>
-        <ProjectCard>
-          <div className="mb-8 flex items-center text-gray-400">
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-16" />}>
-                  <ProjectCardDate date="2024-01-22" />
-                </Suspense>
-              </span>
-            </small>
-            <a
-              aria-label="View on GitHub"
-              className="focusable -m-1 ml-auto flex-none rounded-full p-1 transition hover:text-gray-600 dark:hover:text-gray-100"
-              href="https://github.com/raycast/extensions/tree/main/extensions/splatoon/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <svg
-                height="24"
-                role="presentation"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="M12 2C6.475 2 2 6.47 2 11.988c0 4.42 2.862 8.153 6.838 9.476.5.087.687-.212.687-.474 0-.238-.013-1.024-.013-1.86C7 19.59 6.35 18.517 6.15 17.955c-.113-.287-.6-1.174-1.025-1.411-.35-.187-.85-.65-.013-.662.788-.012 1.35.724 1.538 1.024.9 1.51 2.338 1.086 2.912.824.088-.65.35-1.086.638-1.336-2.225-.25-4.55-1.111-4.55-4.931 0-1.087.387-1.986 1.025-2.685-.1-.25-.45-1.273.1-2.646 0 0 .837-.263 2.75 1.023a9.29 9.29 0 0 1 2.5-.337c.85 0 1.7.113 2.5.337 1.912-1.298 2.75-1.023 2.75-1.023.55 1.373.2 2.397.1 2.646.637.7 1.025 1.586 1.025 2.685 0 3.832-2.337 4.681-4.562 4.931.362.312.675.912.675 1.848 0 1.336-.013 2.41-.013 2.747 0 .262.188.574.688.474C19.137 20.141 22 16.395 22 11.988 22 6.47 17.525 2 12 2Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
-          <div className="mt-auto">
-            <h3 className="mb-3 font-semibold text-splatoon dark:text-splatoon-dark">
-              <Image
-                alt="Splatoon"
-                className="h-[2.5em] w-[2.5em]"
-                src={splatoon}
-                width="40"
-              />
-            </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A Raycast extension to view Splatoon’s current&nbsp;schedules.
-            </p>
-            <a
-              className="focusable mt-4 flex cursor-pointer items-center justify-center rounded-md bg-splatoon px-2.5 py-2 font-medium text-white shadow-lg shadow-splatoon/10 transition selection:bg-white/30 hover:bg-splatoon/80 hover:shadow-splatoon/5 focus-visible:ring-splatoon/40 dark:bg-splatoon-dark dark:text-gray-900 dark:shadow-splatoon-dark/10 dark:focus-visible:ring-splatoon-dark/40 dark:hover:bg-splatoon-dark/80 dark:hover:shadow-splatoon-dark/5 dark:selection:bg-gray-900/30"
-              href="https://www.raycast.com/marcbouchenoire/splatoon"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Learn more
-            </a>
-          </div>
-        </ProjectCard>
         <GitHubProjectCard repository="marcbouchenoire/tsatsiki">
           <h3 className="mb-2 font-semibold text-lime-500 dark:text-lime-400">
             <svg
@@ -301,14 +328,6 @@ export function Projects(props: ComponentProps<"section">) {
           </h3>
           <p className="text-gray-500 leading-relaxed dark:text-gray-350">
             A Sketch plugin that integrates constraints to lay out&nbsp;layers.
-          </p>
-        </GitHubProjectCard>
-        <GitHubProjectCard repository="marcbouchenoire/sketch-maps">
-          <h3 className="mb-2 font-semibold text-amber-500 dark:text-amber-400">
-            Sketch Maps
-          </h3>
-          <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-            A Sketch plugin to fill layers with&nbsp;maps.
           </p>
         </GitHubProjectCard>
       </div>
