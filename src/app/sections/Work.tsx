@@ -329,22 +329,22 @@ export function Work(props: ComponentProps<"section">) {
               to{" "}
               <a
                 className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
+                href="https://liveblocks.io/docs/products/comments/hooks"
+                rel="noreferrer"
+                target="_blank"
+              >
+                hooks
+              </a>
+              ,{" "}
+              <a
+                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/styling-and-customization"
                 rel="noreferrer"
                 target="_blank"
               >
                 default styles
               </a>
-              , from{" "}
-              <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
-                href="https://liveblocks.io/docs/products/comments/hooks"
-                rel="noreferrer"
-                target="_blank"
-              >
-                hooks
-              </a>{" "}
-              to{" "}
+              ,{" "}
               <a
                 className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/primitives"
