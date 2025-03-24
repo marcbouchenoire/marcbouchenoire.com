@@ -42,16 +42,16 @@ export function Introduction({
         </p>
       </div>
       <div className="mt-11 mb-10 text-gray-500 dark:text-gray-350">
-        <p className="my-4 max-w-[64ch] leading-loose">
+        <p className="my-4 max-w-[64ch] text-pretty leading-loose">
           Designing and building{" "}
           <em className={clsx(styles.delightful, "cursor-text")}>
             <Characters>delightful</Characters>
           </em>{" "}
-          products, interactions, and&nbsp;APIs.
+          products, interactions, and APIs.
         </p>
-        <p className="my-4 max-w-[56ch] leading-loose">
+        <p className="my-4 max-w-[56ch] text-pretty leading-loose">
           I’m currently living in Nantes, France and working on collaborative
-          components—amongst other things—at&nbsp;
+          components—amongst other things—at{" "}
           <a
             className="group relative ml-[-0.05em] whitespace-nowrap pr-[0.2em] pl-[0.25em] font-medium text-liveblocks-alternate focus-visible:outline-hidden dark:text-liveblocks-alternate-dark"
             href="https://liveblocks.io/"

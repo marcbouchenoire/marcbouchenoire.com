@@ -1,14 +1,14 @@
 import { clsx } from "clsx"
 import Image from "next/image"
-import elementsFood from "public/visuals/elements/food.png"
-import elementsMusic from "public/visuals/elements/music.png"
-import framerMotion from "public/visuals/framer-motion/static.png"
-import liveblocksEmojiPicker from "public/visuals/liveblocks/emoji-picker.png"
-import liveblocksInbox from "public/visuals/liveblocks/inbox.png"
-import liveblocksMentionSuggestions from "public/visuals/liveblocks/mention-suggestions.png"
-import liveblocksThread from "public/visuals/liveblocks/thread.png"
-import masterThesis from "public/visuals/master/thesis.png"
-import masterVive from "public/visuals/master/vive.png"
+import elementsFood from "public/work/elements/food.png"
+import elementsMusic from "public/work/elements/music.png"
+import framerMotion from "public/work/framer-motion/static.png"
+import liveblocksEmojiPicker from "public/work/liveblocks/emoji-picker.png"
+import liveblocksInbox from "public/work/liveblocks/inbox.png"
+import liveblocksMentionSuggestions from "public/work/liveblocks/mention-suggestions.png"
+import liveblocksThread from "public/work/liveblocks/thread.png"
+import masterThesis from "public/work/master/thesis.png"
+import masterVive from "public/work/master/vive.png"
 import type { ComponentProps, ReactNode } from "react"
 import { withExternalCdn } from "src/utils/with-external-cdn"
 import {
@@ -30,8 +30,8 @@ interface BrowserProps extends Omit<ComponentProps<"div">, "title"> {
 }
 
 interface CodeProps
-  extends Omit<ComponentProps<"div">, "title">,
-    Pick<CodeHighlightProps, "code" | "lang"> {
+  extends Omit<ComponentProps<"div">, "title" | "children">,
+    Pick<CodeHighlightProps, "children" | "lang"> {
   /**
    * The window's current title.
    */
@@ -117,12 +117,12 @@ function Browser({
  * A code editor.
  *
  * @param props - A set of `div` props.
- * @param [props.title] - The window's current title.
- * @param [props.code] - The editor's content.
+ * @param [props.children] - The editor's content.
  * @param [props.lang] - The editor's language.
+ * @param [props.title] - The window's current title.
  * @param [props.className] - A list of one or more classes.
  */
-function Code({ title, code, lang, className, ...props }: CodeProps) {
+function Code({ children, lang, title, className, ...props }: CodeProps) {
   return (
     <div
       className={clsx(
@@ -144,10 +144,11 @@ function Code({ title, code, lang, className, ...props }: CodeProps) {
       <div className="flex-1">
         <CodeHighlight
           className={styles.codeHighlight}
-          code={code}
           lang={lang}
           themes="poimandres"
-        />
+        >
+          {children}
+        </CodeHighlight>
       </div>
     </div>
   )
@@ -262,27 +263,6 @@ function Book({ children, className, ...props }: ComponentProps<"div">) {
   )
 }
 
-const liveblocksPrimitivesCode = `
-import {
-  Composer,
-  Comment,
-} from "@liveblocks/react-comments/primitives"
-
-function CustomComposer(props) {
-  return (
-    <Composer.Form {...props}>
-      <Composer.Editor
-        components={{
-          Mention,
-          MentionSuggestions,
-          Link,
-        }}
-      />
-      <Composer.Submit>Create thread</Composer.Submit>
-    </Composer.Form>
-  );
-}`.trim()
-
 /**
  * A section displaying a selection of projects.
  *
@@ -292,15 +272,19 @@ export function Work(props: ComponentProps<"section">) {
   return (
     <section {...props}>
       <div className="content content-lg">
-        <div className="relative z-1 mb-5 flex flex-col rounded-lg bg-blue-500 shadow-blue-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-cyan-400/60 before:to-cyan-400/0 sm:mb-8 sm:flex-row lg:mb-10 dark:bg-blue-400 dark:shadow-blue-400/10 dark:before:from-cyan-300/60 dark:before:to-cyan-300/0">
+        <div
+          className={clsx(
+            "relative z-1 mb-5 flex flex-col rounded-lg bg-blue-500 shadow-blue-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-cyan-400/60 before:to-cyan-400/0 sm:mb-8 sm:flex-row lg:mb-10 dark:bg-blue-400 dark:shadow-blue-400/10 dark:before:from-cyan-300/60 dark:before:to-cyan-300/0",
+            "**:[a]:focusable **:[a]:rounded-xs **:[a]:font-medium **:[a]:underline **:[a]:decoration-2 **:[a]:decoration-blue-100/30 **:[a]:underline-offset-2 **:[a]:transition **:[a]:duration-100 **:[a]:hover:decoration-blue-100/50 **:[a]:focus-visible:ring-blue-100/30 **:[a]:dark:decoration-blue-900/20 **:[a]:dark:focus-visible:ring-blue-900/20 **:[a]:dark:hover:decoration-blue-900/40"
+          )}
+        >
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 sm:pr-10 dark:selection:bg-blue-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-blue-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-blue-900">
               Liveblocks
             </h3>
-            <p className="text-blue-100 leading-relaxed dark:text-blue-900/80">
+            <p className="text-pretty text-blue-100 leading-relaxed dark:text-blue-900/80">
               I started getting involved on the product engineering side with{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/devtools"
                 rel="noreferrer"
                 target="_blank"
@@ -309,7 +293,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , and it then became my primary side with{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/comments"
                 rel="noreferrer"
                 target="_blank"
@@ -319,7 +302,6 @@ export function Work(props: ComponentProps<"section">) {
               . I’m now focusing on the React layer of our opinionated products,
               from{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/default-components"
                 rel="noreferrer"
                 target="_blank"
@@ -328,7 +310,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               to{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/hooks"
                 rel="noreferrer"
                 target="_blank"
@@ -337,7 +318,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/styling-and-customization"
                 rel="noreferrer"
                 target="_blank"
@@ -346,7 +326,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/products/comments/primitives"
                 rel="noreferrer"
                 target="_blank"
@@ -355,7 +334,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Composer"
                 rel="noreferrer"
                 target="_blank"
@@ -364,7 +342,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://liveblocks.io/docs/api-reference/liveblocks-react-ui#Overrides"
                 rel="noreferrer"
                 target="_blank"
@@ -373,14 +350,13 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-blue-100/30 underline-offset-2 transition duration-100 hover:decoration-blue-100/50 focus-visible:ring-blue-100/30 dark:decoration-blue-900/20 dark:focus-visible:ring-blue-900/20 dark:hover:decoration-blue-900/40"
                 href="https://github.com/liveblocks/liveblocks/tree/main/packages/liveblocks-codemod"
                 rel="noreferrer"
                 target="_blank"
               >
                 codemods
               </a>
-              , and&nbsp;more.
+              , and more.
             </p>
           </div>
           <div className="sm:-mr-12 relative flex flex-1 items-center justify-center p-12 pt-8 pb-20 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -405,10 +381,31 @@ export function Work(props: ComponentProps<"section">) {
                 </div>
                 <Code
                   className="-rotate-z-6 pointer-events-auto absolute top-[20%] left-[6%] h-[60%] w-[52%] translate-x-[2%] rotate-x-16 rotate-y-18 text-[0.26rem] lg:top-[10%] lg:w-[52%] lg:text-[0.36rem]"
-                  code={liveblocksPrimitivesCode}
                   lang="tsx"
                   title="Primitives.tsx"
-                />
+                >
+                  {`
+                    import {
+                      Composer,
+                      Comment,
+                    } from "@liveblocks/react-comments/primitives"
+
+                    function CustomComposer(props) {
+                      return (
+                        <Composer.Form {...props}>
+                          <Composer.Editor
+                            components={{
+                              Mention,
+                              MentionSuggestions,
+                              Link,
+                            }}
+                          />
+                          <Composer.Submit>Create thread</Composer.Submit>
+                        </Composer.Form>
+                      );
+                    }
+                  `}
+                </Code>
                 <Browser
                   className="-rotate-y-20 pointer-events-auto absolute right-[4%] bottom-[-10%] w-[50%] translate-x-[-2%] rotate-x-16 rotate-z-8 lg:right-0 lg:bottom-[-20%] lg:w-[56%]"
                   popup
@@ -421,9 +418,9 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/liveblocks/devtools.jpg"
+                      poster="/work/liveblocks/devtools.jpg"
                       preload="metadata"
-                      src={withExternalCdn("/visuals/liveblocks/devtools.mp4")}
+                      src={withExternalCdn("/work/liveblocks/devtools.mp4")}
                       tabIndex={-1}
                     />
                   </div>
@@ -468,33 +465,27 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="relative my-5 flex flex-col rounded-lg bg-violet-500 shadow-violet-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-fuchsia-400/60 before:to-fuchsia-400/0 sm:my-8 sm:flex-row-reverse lg:my-10 dark:bg-violet-400 dark:shadow-violet-400/10 dark:before:from-fuchsia-300/60 dark:before:to-fuchsia-300/0">
+        <div
+          className={clsx(
+            "relative my-5 flex flex-col rounded-lg bg-violet-500 shadow-violet-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-fuchsia-400/60 before:to-fuchsia-400/0 sm:my-8 sm:flex-row-reverse lg:my-10 dark:bg-violet-400 dark:shadow-violet-400/10 dark:before:from-fuchsia-300/60 dark:before:to-fuchsia-300/0",
+            "**:[a]:focusable **:[a]:rounded-xs **:[a]:font-medium **:[a]:underline **:[a]:decoration-2 **:[a]:decoration-violet-100/30 **:[a]:underline-offset-2 **:[a]:transition **:[a]:duration-100 **:[a]:hover:decoration-violet-100/50 **:[a]:focus-visible:ring-violet-100/30 **:[a]:dark:decoration-violet-900/20 **:[a]:dark:focus-visible:ring-violet-900/20 **:[a]:dark:hover:decoration-violet-900/40"
+          )}
+        >
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 dark:selection:bg-violet-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-violet-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-violet-900">
               Liveblocks.io
             </h3>
-            <p className="text-violet-100 leading-relaxed dark:text-violet-900/80">
+            <p className="text-pretty text-violet-100 leading-relaxed dark:text-violet-900/80">
               Before focusing on the product engineering side of{" "}
-              <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
-                href="https://liveblocks.io"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a href="https://liveblocks.io" rel="noreferrer" target="_blank">
                 Liveblocks
               </a>
               , I was involved in many areas of{" "}
-              <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
-                href="https://liveblocks.io/"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a href="https://liveblocks.io/" rel="noreferrer" target="_blank">
                 liveblocks.io
               </a>
               . From refactoring{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
                 href="https://liveblocks.io/docs"
                 rel="noreferrer"
                 target="_blank"
@@ -503,7 +494,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               and{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
                 href="https://liveblocks.io/examples"
                 rel="noreferrer"
                 target="_blank"
@@ -512,7 +502,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               to live in{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
                 href="https://github.com/liveblocks/liveblocks"
                 rel="noreferrer"
                 target="_blank"
@@ -521,7 +510,6 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               , to building multiplayer landing pages,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
                 href="https://liveblocks.io/blog/how-to-build-undo-redo-in-a-multiplayer-environment"
                 rel="noreferrer"
                 target="_blank"
@@ -530,14 +518,13 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-violet-100/30 underline-offset-2 transition duration-100 hover:decoration-violet-100/50 focus-visible:ring-violet-100/30 dark:decoration-violet-900/20 dark:focus-visible:ring-violet-900/20 dark:hover:decoration-violet-900/40"
                 href="https://liveblocks.io/examples/collaborative-spreadsheet-advanced"
                 rel="noreferrer"
                 target="_blank"
               >
                 advanced examples
               </a>
-              , and&nbsp;more.
+              , and more.
             </p>
           </div>
           <div className="sm:-ml-12 relative flex flex-1 items-center justify-center p-12 pt-0 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -554,11 +541,9 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/liveblocks.io/product.jpg"
+                      poster="/work/liveblocks.io/product.jpg"
                       preload="metadata"
-                      src={withExternalCdn(
-                        "/visuals/liveblocks.io/product.mp4"
-                      )}
+                      src={withExternalCdn("/work/liveblocks.io/product.mp4")}
                       tabIndex={-1}
                     />
                   </div>
@@ -576,11 +561,9 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/liveblocks.io/marketing.jpg"
+                      poster="/work/liveblocks.io/marketing.jpg"
                       preload="metadata"
-                      src={withExternalCdn(
-                        "/visuals/liveblocks.io/marketing.mp4"
-                      )}
+                      src={withExternalCdn("/work/liveblocks.io/marketing.mp4")}
                       tabIndex={-1}
                     />
                   </div>
@@ -589,15 +572,19 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="relative mb-5 flex flex-col rounded-lg bg-sky-500 shadow-sky-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-cyan-400/80 before:to-cyan-400/0 sm:mb-8 sm:flex-row lg:mb-10 dark:bg-sky-400 dark:shadow-sky-400/10 dark:before:from-cyan-300/80 dark:before:to-cyan-300/0">
+        <div
+          className={clsx(
+            "relative mb-5 flex flex-col rounded-lg bg-sky-500 shadow-sky-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-cyan-400/80 before:to-cyan-400/0 sm:mb-8 sm:flex-row lg:mb-10 dark:bg-sky-400 dark:shadow-sky-400/10 dark:before:from-cyan-300/80 dark:before:to-cyan-300/0",
+            "**:[a]:focusable **:[a]:rounded-xs **:[a]:font-medium **:[a]:underline **:[a]:decoration-2 **:[a]:decoration-sky-100/30 **:[a]:underline-offset-2 **:[a]:transition **:[a]:duration-100 **:[a]:hover:decoration-sky-100/50 **:[a]:focus-visible:ring-sky-100/30 **:[a]:dark:decoration-sky-900/20 **:[a]:dark:focus-visible:ring-sky-900/20 **:[a]:dark:hover:decoration-sky-900/40"
+          )}
+        >
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 sm:pr-10 dark:selection:bg-sky-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-sky-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-sky-900">
               Framer.com
             </h3>
-            <p className="text-sky-100 leading-relaxed dark:text-sky-900/80">
+            <p className="text-pretty text-sky-100 leading-relaxed dark:text-sky-900/80">
               As part of the site team, I worked on various aspects of{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-sky-100/30 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:focus-visible:ring-sky-900/20 dark:hover:decoration-sky-900/40"
                 href="https://www.framer.com/"
                 rel="noreferrer"
                 target="_blank"
@@ -605,26 +592,15 @@ export function Work(props: ComponentProps<"section">) {
                 framer.com
               </a>
               . From rewriting it from the ground up using{" "}
-              <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-sky-100/30 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:focus-visible:ring-sky-900/20 dark:hover:decoration-sky-900/40"
-                href="https://nextjs.org/"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a href="https://nextjs.org/" rel="noreferrer" target="_blank">
                 Next.js
               </a>
               ,{" "}
-              <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-sky-100/30 underline-offset-2 transition duration-100 hover:decoration-sky-100/50 focus-visible:ring-sky-100/30 dark:decoration-sky-900/20 dark:focus-visible:ring-sky-900/20 dark:hover:decoration-sky-900/40"
-                href="https://www.sanity.io/"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a href="https://www.sanity.io/" rel="noreferrer" target="_blank">
                 Sanity
               </a>{" "}
               and SCSS modules, to building interactive landing pages, search
-              systems, custom hooks to orchestrate scroll animations,
-              and&nbsp;more.
+              systems, custom hooks to orchestrate scroll animations, and more.
             </p>
           </div>
           <div className="sm:-mr-12 lg:-mr-12 relative flex flex-1 items-center justify-center p-12 pt-0 pb-16 sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -640,9 +616,9 @@ export function Work(props: ComponentProps<"section">) {
                     loop
                     muted
                     playsInline
-                    poster="/visuals/framer.com/video.jpg"
+                    poster="/work/framer.com/video.jpg"
                     preload="metadata"
-                    src={withExternalCdn("/visuals/framer.com/video.mp4")}
+                    src={withExternalCdn("/work/framer.com/video.mp4")}
                     tabIndex={-1}
                   />
                 </div>
@@ -650,15 +626,19 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="relative my-5 flex flex-col rounded-lg bg-fuchsia-500 shadow-fuchsia-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-rose-400/60 before:to-rose-400/0 sm:my-8 sm:flex-row-reverse lg:my-10 dark:bg-fuchsia-400 dark:shadow-fuchsia-400/10 dark:before:from-rose-300/60 dark:before:to-rose-300/0">
+        <div
+          className={clsx(
+            "relative my-5 flex flex-col rounded-lg bg-fuchsia-500 shadow-fuchsia-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-rose-400/60 before:to-rose-400/0 sm:my-8 sm:flex-row-reverse lg:my-10 dark:bg-fuchsia-400 dark:shadow-fuchsia-400/10 dark:before:from-rose-300/60 dark:before:to-rose-300/0",
+            "**:[a]:focusable **:[a]:rounded-xs **:[a]:font-medium **:[a]:underline **:[a]:decoration-2 **:[a]:decoration-fuchsia-100/30 **:[a]:underline-offset-2 **:[a]:transition **:[a]:duration-100 **:[a]:hover:decoration-fuchsia-100/50 **:[a]:focus-visible:ring-fuchsia-100/30 **:[a]:dark:decoration-fuchsia-900/20 **:[a]:dark:focus-visible:ring-fuchsia-900/20 **:[a]:dark:hover:decoration-fuchsia-900/40"
+          )}
+        >
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 dark:selection:bg-fuchsia-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-fuchsia-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-fuchsia-900">
               Framer Motion
             </h3>
-            <p className="text-fuchsia-100 leading-relaxed dark:text-fuchsia-900/80">
+            <p className="text-pretty text-fuchsia-100 leading-relaxed dark:text-fuchsia-900/80">
               I worked on{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-fuchsia-100/30 underline-offset-2 transition duration-100 hover:decoration-fuchsia-100/50 focus-visible:ring-fuchsia-100/30 dark:decoration-fuchsia-900/20 dark:focus-visible:ring-fuchsia-900/20 dark:hover:decoration-fuchsia-900/40"
                 href="https://www.framer.com/motion"
                 rel="noreferrer"
                 target="_blank"
@@ -668,7 +648,7 @@ export function Work(props: ComponentProps<"section">) {
               ’s initial public release and its subsequent redesign. From
               drafting its branding to designing and building its landing page,
               using interactive examples to teach concepts like declarative
-              animations and&nbsp;gestures.
+              animations and gestures.
             </p>
           </div>
           <div className="sm:-ml-12 relative flex flex-1 items-center justify-center p-12 pt-0 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -714,9 +694,9 @@ export function Work(props: ComponentProps<"section">) {
                       loop
                       muted
                       playsInline
-                      poster="/visuals/framer-motion/video.jpg"
+                      poster="/work/framer-motion/video.jpg"
                       preload="metadata"
-                      src={withExternalCdn("/visuals/framer-motion/video.mp4")}
+                      src={withExternalCdn("/work/framer-motion/video.mp4")}
                       tabIndex={-1}
                     />
                   </div>
@@ -725,15 +705,19 @@ export function Work(props: ComponentProps<"section">) {
             </div>
           </div>
         </div>
-        <div className="relative mt-5 flex flex-col rounded-lg bg-orange-500 shadow-orange-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-yellow-400/60 before:to-yellow-400/0 sm:mt-8 sm:flex-row lg:mt-10 dark:bg-orange-300 dark:shadow-orange-400/10 dark:before:from-yellow-300/60 dark:before:to-yellow-300/0">
+        <div
+          className={clsx(
+            "relative mt-5 flex flex-col rounded-lg bg-orange-500 shadow-orange-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-yellow-400/60 before:to-yellow-400/0 sm:mt-8 sm:flex-row lg:mt-10 dark:bg-orange-300 dark:shadow-orange-400/10 dark:before:from-yellow-300/60 dark:before:to-yellow-300/0",
+            "**:[a]:focusable **:[a]:rounded-xs **:[a]:font-medium **:[a]:underline **:[a]:decoration-2 **:[a]:decoration-orange-100/30 **:[a]:underline-offset-2 **:[a]:transition **:[a]:duration-100 **:[a]:hover:decoration-orange-100/50 **:[a]:focus-visible:ring-orange-100/30 **:[a]:dark:decoration-orange-900/20 **:[a]:dark:focus-visible:ring-orange-900/20 **:[a]:dark:hover:decoration-orange-900/40"
+          )}
+        >
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 sm:pr-10 dark:selection:bg-orange-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-orange-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-orange-900">
               Sketch Elements
             </h3>
-            <p className="text-orange-100 leading-relaxed dark:text-orange-900/80">
+            <p className="text-pretty text-orange-100 leading-relaxed dark:text-orange-900/80">
               I designed Sketch Elements, a UI kit built with and distributed by{" "}
               <a
-                className="focusable rounded-xs font-medium underline decoration-2 decoration-orange-100/30 underline-offset-2 transition duration-100 hover:decoration-orange-100/50 focus-visible:ring-orange-100/30 dark:decoration-orange-900/20 dark:focus-visible:ring-orange-900/20 dark:hover:decoration-orange-900/40"
                 href="https://www.sketch.com/"
                 rel="noreferrer"
                 target="_blank"
@@ -742,7 +726,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>{" "}
               as a Library. It started out as a simple template to get started
               on a new iOS project but ended up heavily focusing on
-              customization, showcasing advanced Symbols use&nbsp;cases.
+              customization, showcasing advanced Symbols use cases.
             </p>
           </div>
           <div className="perspective-far max-sm:-mb-6 sm:-mr-12 relative z-2 flex flex-1 items-center justify-center sm:basis-1/3">
@@ -786,15 +770,15 @@ export function Work(props: ComponentProps<"section">) {
         </div>
         <div className="relative my-5 flex flex-col rounded-lg bg-rose-500 shadow-rose-500/10 shadow-xl before:absolute before:inset-0 before:z-0 before:rounded-[inherit] before:bg-linear-to-tl before:from-orange-400/60 before:to-orange-400/0 sm:my-8 sm:flex-row-reverse lg:my-10 dark:bg-rose-400 dark:shadow-rose-400/10 dark:before:from-orange-300/60 dark:before:to-orange-300/0">
           <div className="z-1 flex-1 p-8 selection:bg-white/30 sm:basis-1/2 sm:p-12 dark:selection:bg-rose-900/30">
-            <h3 className="mb-3 font-semibold text-lg text-white leading-none dark:text-rose-900">
+            <h3 className="mb-3 text-pretty font-semibold text-lg text-white leading-none dark:text-rose-900">
               Master’s degree
             </h3>
-            <p className="text-rose-100 leading-relaxed dark:text-rose-900/80">
-              During my master’s in interaction design, I&nbsp;worked on
-              language learning through the lens of immersive interfaces. My
-              thesis focused on language immersion and some of its ideas
-              resulted in a series of prototypes, exploring gestural
-              interactions and other aspects of spatial&nbsp;computing.
+            <p className="text-pretty text-rose-100 leading-relaxed dark:text-rose-900/80">
+              During my master’s in interaction design, I worked on language
+              learning through the lens of immersive interfaces. My thesis
+              focused on language immersion and some of its ideas resulted in a
+              series of prototypes, exploring gestural interactions and other
+              aspects of spatial computing.
             </p>
           </div>
           <div className="sm:-ml-12 relative flex flex-1 items-center justify-center p-12 pt-0 sm:aspect-auto sm:basis-1/3 sm:p-0 lg:basis-1/2">
@@ -806,9 +790,9 @@ export function Work(props: ComponentProps<"section">) {
                   loop
                   muted
                   playsInline
-                  poster="/visuals/master/headset.jpg"
+                  poster="/work/master/headset.jpg"
                   preload="metadata"
-                  src={withExternalCdn("/visuals/master/headset.mp4")}
+                  src={withExternalCdn("/work/master/headset.mp4")}
                   tabIndex={-1}
                 />
               </Headset>
@@ -830,9 +814,9 @@ export function Work(props: ComponentProps<"section">) {
                   loop
                   muted
                   playsInline
-                  poster="/visuals/master/phone.jpg"
+                  poster="/work/master/phone.jpg"
                   preload="metadata"
-                  src={withExternalCdn("/visuals/master/phone.mp4")}
+                  src={withExternalCdn("/work/master/phone.mp4")}
                   tabIndex={-1}
                 />
               </Phone>

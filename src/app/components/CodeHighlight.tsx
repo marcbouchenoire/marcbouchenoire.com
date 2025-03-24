@@ -1,25 +1,23 @@
 "use cache"
 
 import {
-  type TransformerNotationDiffOptions,
-  type TransformerNotationErrorLevelOptions,
-  type TransformerNotationHighlightOptions,
-  type TransformerNotationWordHighlightOptions,
   transformerNotationDiff,
   transformerNotationErrorLevel,
   transformerNotationHighlight,
   transformerNotationWordHighlight
 } from "@shikijs/transformers"
 import clsx from "clsx"
+import dedent from "dedent"
 import type { CSSProperties, ComponentProps } from "react"
 import { type BundledTheme, codeToHtml } from "shiki"
 import styles from "./CodeHighlight.module.css"
 
-export interface CodeHighlightProps extends ComponentProps<"div"> {
+export interface CodeHighlightProps
+  extends Omit<ComponentProps<"div">, "children"> {
   /**
    * The code to highlight.
    */
-  code: string
+  children: string
 
   /**
    * The code's language.
@@ -31,12 +29,6 @@ export interface CodeHighlightProps extends ComponentProps<"div"> {
    */
   themes?: BundledTheme | { light: BundledTheme; dark: BundledTheme }
 }
-
-type TransfomerOptions =
-  | TransformerNotationDiffOptions
-  | TransformerNotationErrorLevelOptions
-  | TransformerNotationHighlightOptions
-  | TransformerNotationWordHighlightOptions
 
 const TRIM_NEWLINES_REGEX = /^[\n\r]+|[\n\r]+$/g
 
@@ -50,19 +42,14 @@ const TRIM_NEWLINES_REGEX = /^[\n\r]+|[\n\r]+$/g
  * @param [props.className] - A list of one or more classes.
  */
 export async function CodeHighlight({
-  code,
+  children,
   lang,
-  themes = { light: "catppuccin-latte", dark: "catppuccin-mocha" },
+  themes = { light: "github-light", dark: "github-dark" },
   className,
   style,
   ...props
 }: CodeHighlightProps) {
-  // TODO: Remove after Shiki v3.0.0
-  const transformerOptions: TransfomerOptions = {
-    matchAlgorithm: "v3"
-  }
-
-  code = code.replaceAll(TRIM_NEWLINES_REGEX, "")
+  const code = dedent(children).replaceAll(TRIM_NEWLINES_REGEX, "")
   const html = await codeToHtml(code, {
     lang: lang ?? "",
     themes: {
@@ -71,10 +58,10 @@ export async function CodeHighlight({
     },
     defaultColor: false,
     transformers: [
-      transformerNotationDiff(transformerOptions),
-      transformerNotationErrorLevel(transformerOptions),
-      transformerNotationHighlight(transformerOptions),
-      transformerNotationWordHighlight(transformerOptions)
+      transformerNotationDiff(),
+      transformerNotationErrorLevel(),
+      transformerNotationHighlight(),
+      transformerNotationWordHighlight()
     ]
   })
 

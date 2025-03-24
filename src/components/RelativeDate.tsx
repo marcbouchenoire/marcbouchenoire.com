@@ -5,7 +5,7 @@ import type { ComponentProps } from "react"
 import { useMemo } from "react"
 import type { FormatRelativeDateOptions } from "src/utils/format-relative-date"
 import { formatRelativeDate } from "src/utils/format-relative-date"
-import { useHydrated } from "src/utils/use-hydrated"
+import { useMounted } from "src/utils/use-mounted"
 
 interface RelativeDateProps
   extends ComponentProps<"time">,
@@ -32,11 +32,11 @@ export function RelativeDate({
   simplifyYesterday,
   ...props
 }: RelativeDateProps) {
-  const isHydrated = useHydrated()
+  const isMounted = useMounted()
   const parsedDate = useMemo(() => new Date(date), [date])
   const normalizedDate = useMemo(() => parsedDate.toISOString(), [parsedDate])
   const formattedDate = useMemo(() => {
-    return isHydrated
+    return isMounted
       ? formatRelativeDate(parsedDate, {
           simplifyToday,
           simplifyTomorrow,
@@ -44,7 +44,7 @@ export function RelativeDate({
         })
       : format(parsedDate, "PPP")
   }, [
-    isHydrated,
+    isMounted,
     parsedDate,
     simplifyToday,
     simplifyTomorrow,

@@ -5,14 +5,14 @@ const getSnapshot = () => true
 const getServerSnapshot = () => false
 
 /**
- * Observe whether hydration is complete.
+ * Return whether the component is mounted.
  */
-export function useHydrated() {
-  const isHydrated = useSyncExternalStore(
+export function useMounted() {
+  const isMounted = useSyncExternalStore(
     subscribe,
     getSnapshot,
     getServerSnapshot
   )
 
-  return isHydrated
+  return isMounted
 }

@@ -8,11 +8,6 @@ const config: NextConfig = {
     useCache: true,
     ppr: true
   },
-  logging: {
-    fetches: {
-      fullUrl: true
-    }
-  },
   async redirects() {
     return [
       {

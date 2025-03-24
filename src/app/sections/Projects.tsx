@@ -1,3 +1,5 @@
+import { clsx } from "clsx"
+import { format } from "date-fns"
 import Image from "next/image"
 import alembic from "public/projects/alembic.png"
 import dimmmensionsDark from "public/projects/dimmmensions-dark.png"
@@ -15,6 +17,76 @@ import typometerLight from "public/projects/typometer-light.png"
 import { type ComponentProps, Suspense } from "react"
 import { Skeleton } from "src/components/Skeleton"
 import { GitHubStars } from "../components/GitHubStars"
+
+interface ProjectDetailsProps extends ComponentProps<"small"> {
+  date: string
+  repository?: string
+}
+
+function ProjectDetails({
+  date,
+  repository,
+  className,
+  ...props
+}: ProjectDetailsProps) {
+  const parsedDate = new Date(date)
+  const formattedDate = format(parsedDate, "MMMM yyyy")
+
+  return (
+    <small
+      className={clsx(
+        className,
+        "flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest"
+      )}
+      {...props}
+    >
+      <span className="flex items-center">
+        <svg
+          className="-ml-px mr-1 flex-none"
+          height="20"
+          role="presentation"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clipRule="evenodd"
+            d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+          <path
+            clipRule="evenodd"
+            d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+        <time dateTime={parsedDate.toISOString()}>{formattedDate}</time>
+      </span>
+      {repository ? (
+        <span className="flex items-center">
+          <svg
+            className="-ml-px mr-1 flex-none"
+            height="20"
+            role="presentation"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clipRule="evenodd"
+              d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
+              fill="currentColor"
+              fillRule="evenodd"
+            />
+          </svg>
+          <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
+            <GitHubStars repository={repository} />
+          </Suspense>
+        </span>
+      ) : null}
+    </small>
+  )
+}
 
 /**
  * A section displaying open source projects.
@@ -64,54 +136,13 @@ export function Projects(props: ComponentProps<"section">) {
               </svg>
               <span>Frimousse</span>
             </h3>
-            <p className="-mt-0.5 text-gray-500 leading-relaxed dark:text-gray-350">
-              A lightweight, unstyled, and composable emoji picker
-              for&nbsp;React.
+            <p className="-mt-0.5 text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A lightweight, unstyled, and composable emoji picker for React.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2025-03-20">March 2025</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="liveblocks/frimousse" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2025-03-20"
+              repository="liveblocks/frimousse"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -145,34 +176,10 @@ export function Projects(props: ComponentProps<"section">) {
               />
               <span>Splatoon</span>
             </h3>
-            <p className="-mt-0.5 text-gray-500 leading-relaxed dark:text-gray-350">
-              A Raycast extension to view Splatoon’s current&nbsp;schedules.
+            <p className="-mt-0.5 text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A Raycast extension to view Splatoon’s current schedules.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2024-01-22">January 2024</time>
-              </span>
-            </small>
+            <ProjectDetails date="2024-01-22" />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -244,53 +251,13 @@ export function Projects(props: ComponentProps<"section">) {
                 />
               </svg>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
               Measure text asynchronously.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2021-04-30">April 2021</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="marcbouchenoire/typometer" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2021-04-30"
+              repository="marcbouchenoire/typometer"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -345,53 +312,13 @@ export function Projects(props: ComponentProps<"section">) {
                 />
               </svg>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A collection of every symbol from SF&nbsp;Symbols.
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A collection of every symbol from SF Symbols.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2021-07-11">July 2021</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="marcbouchenoire/symbolist" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2021-07-11"
+              repository="marcbouchenoire/symbolist"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -459,53 +386,13 @@ export function Projects(props: ComponentProps<"section">) {
                 Archived
               </span>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A collection of dimensions from iOS and iPadOS&nbsp;devices.
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A collection of dimensions from iOS and iPadOS devices.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2021-04-15">April 2021</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="marcbouchenoire/dimmmensions" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2021-04-15"
+              repository="marcbouchenoire/dimmmensions"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -536,53 +423,10 @@ export function Projects(props: ComponentProps<"section">) {
                 Archived
               </span>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A Sketch plugin to extract a color palette from&nbsp;images.
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A Sketch plugin to extract a color palette from images.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2017-08-25">August 2017</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="awkward/alembic" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails date="2017-08-25" repository="awkward/alembic" />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -606,53 +450,13 @@ export function Projects(props: ComponentProps<"section">) {
                 Archived
               </span>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A Sketch plugin to fill layers with&nbsp;maps.
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A Sketch plugin to fill layers with maps.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2017-03-07">March 2017</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="marcbouchenoire/sketch-maps" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2017-03-07"
+              repository="marcbouchenoire/sketch-maps"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image
@@ -676,54 +480,13 @@ export function Projects(props: ComponentProps<"section">) {
                 Archived
               </span>
             </h3>
-            <p className="text-gray-500 leading-relaxed dark:text-gray-350">
-              A Sketch plugin that integrates constraints to lay
-              out&nbsp;layers.
+            <p className="text-pretty text-gray-500 leading-relaxed dark:text-gray-350">
+              A Sketch plugin that integrates constraints to lay out layers.
             </p>
-            <small className="mr-4 flex items-center gap-4 font-semibold text-2xs text-gray-400 uppercase leading-tight tracking-widest">
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-7 5a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                  <path
-                    clipRule="evenodd"
-                    d="M10 6a1 1 0 0 1 1 1v2.382l1.447.724a1 1 0 1 1-.894 1.788l-2-1A1 1 0 0 1 9 10V7a1 1 0 0 1 1-1Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <time dateTime="2015-09-18">September 2015</time>
-              </span>
-              <span className="flex items-center">
-                <svg
-                  className="-ml-px mr-1 flex-none"
-                  height="20"
-                  role="presentation"
-                  width="20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M10 3a1 1 0 0 1 .905.575l1.628 3.467 3.619.556a1 1 0 0 1 .563 1.687l-2.647 2.712.627 3.842a1 1 0 0 1-1.47 1.036L10 15.092l-3.224 1.783a1 1 0 0 1-1.47-1.036l.626-3.842-2.647-2.712a1 1 0 0 1 .563-1.687l3.62-.556 1.627-3.467A1 1 0 0 1 10 3Zm0 3.353-.949 2.021a1 1 0 0 1-.753.564l-2.224.342 1.642 1.68a1 1 0 0 1 .271.86l-.376 2.308 1.905-1.054a1 1 0 0 1 .968 0l1.905 1.054-.376-2.308a1 1 0 0 1 .271-.86l1.642-1.68-2.224-.342a1 1 0 0 1-.753-.564L10 6.354Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                  />
-                </svg>
-                <Suspense fallback={<Skeleton className="h-[1.2em] w-10" />}>
-                  <GitHubStars repository="marcbouchenoire/sketch-constraints" />
-                </Suspense>
-              </span>
-            </small>
+            <ProjectDetails
+              date="2015-09-18"
+              repository="marcbouchenoire/sketch-constraints"
+            />
           </div>
           <div className="highlight dark:highlight-invert relative aspect-16/10 h-18 xs:h-21 flex-none self-start overflow-hidden rounded-md">
             <Image

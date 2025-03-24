@@ -168,8 +168,4 @@
   select:not([disabled]) {
     @apply touch-manipulation;
   }
-
-  :not(pre) > code {
-    @apply relative mx-[0.4em] whitespace-nowrap text-sm font-semibold before:absolute before:inset-x-[-0.4em] before:bottom-[-0.3em] before:top-[-0.25em] before:-z-1 before:rounded-[0.4em] before:bg-gray-100 dark:before:bg-gray-750;
-  }
 }
