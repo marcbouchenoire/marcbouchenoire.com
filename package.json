@@ -33,7 +33,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.1",
     "@happy-dom/global-registrator": "^17.1.0",
-    "@tailwindcss/postcss": "^4.0.6",
+    "@tailwindcss/postcss": "^4.1.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -41,7 +41,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "postcss": "^8.5.2",
-    "tailwindcss": "^4.0.6",
+    "tailwindcss": "^4.1.2",
     "typescript": "^5.7.2"
   }
 }
