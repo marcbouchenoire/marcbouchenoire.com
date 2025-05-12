@@ -65,11 +65,9 @@ export function CustomizableTitle(props: ComponentProps<"span">) {
   return (
     <span {...props}>
       <CustomizableTitleSelect
-        options={["Design", "Product", "Interaction", "API"]}
+        options={["Design", "Product", "Interaction", "System", "API"]}
       />{" "}
-      <CustomizableTitleSelect
-        options={["Engineer", "Designer", "Crafter", "Connoisseur"]}
-      />
+      <CustomizableTitleSelect options={["Engineer", "Designer"]} />
     </span>
   )
 }
