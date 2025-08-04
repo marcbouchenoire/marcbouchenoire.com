@@ -54,7 +54,8 @@
   --color-lecolededesign: oklch(55.54% 0.2123 23.92);
   --color-lecolededesign-dark: oklch(63.62% 0.2216 21.38);
 
-  --font-sans: var(--font-inter, Inter), ui-sans-serif, system-ui, sans-serif,
+  --font-sans:
+    var(--font-inter, Inter), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --text-2xs: 0.65rem;

@@ -5,10 +5,7 @@
     "quickfix.biome": "explicit",
     "source.biome": "explicit",
     "source.fixAll.biome": "explicit",
-    "source.action.organizeImports.biome": "explicit",
-    "source.action.useSortedAttributes.biome": "explicit",
-    "source.action.useSortedKeys.biome": "explicit",
-    "source.action.useSortedProperties.biome": "explicit"
+    "source.organizeImports.biome": "explicit"
   },
   "files.exclude": {
     "node_modules": true

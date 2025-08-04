@@ -14,13 +14,15 @@
   @apply before:absolute before:inset-0 before:rounded-[inherit];
 
   &::before {
-    box-shadow: inset 1px 1px 8px rgb(255 255 255 / 80%), inset -1px -1px 8px
-      rgb(0 0 0 / 10%);
+    box-shadow:
+      inset 1px 1px 8px rgb(255 255 255 / 80%),
+      inset -1px -1px 8px rgb(0 0 0 / 10%);
   }
 
   :global(.dark) &::before {
-    box-shadow: inset 1px 1px 8px rgb(255 255 255 / 20%), inset -1px -1px 8px
-      rgb(0 0 0 / 80%);
+    box-shadow:
+      inset 1px 1px 8px rgb(255 255 255 / 20%),
+      inset -1px -1px 8px rgb(0 0 0 / 80%);
   }
 }
 
@@ -81,11 +83,8 @@
 }
 
 .bookPagesGradient {
-  background-image: linear-gradient(
-      180deg,
-      rgb(0 0 0 / 20%) 96%,
-      transparent 100%
-    ),
+  background-image:
+    linear-gradient(180deg, rgb(0 0 0 / 20%) 96%, transparent 100%),
     repeating-linear-gradient(
       transparent,
       transparent 1px,

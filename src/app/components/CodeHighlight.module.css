@@ -19,15 +19,15 @@
   }
 
   code {
-    counter-increment: step 0;
     counter-reset: step;
+    counter-increment: step 0;
 
     :global(.line)::before {
-      @apply inline-block text-right select-none text-current/40 mx-[1em];
+      width: var(--line-numbers-width);
 
       content: counter(step);
       counter-increment: step;
-      width: var(--line-numbers-width);
+      @apply inline-block text-right select-none text-current/40 mx-[1em];
     }
   }
 }

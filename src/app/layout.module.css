@@ -15,7 +15,8 @@
 }
 
 .auraRaysMask {
-  mask-image: linear-gradient(
+  mask-image:
+    linear-gradient(
       50deg,
       transparent 32%,
       #000 36%,
@@ -30,16 +31,26 @@
       rgb(0 0 0 / 75%) 66%,
       transparent 71%
     ), linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 60%));
-  mask-position: 60% 0%, 0% 0%;
-  mask-size: 300% auto, auto;
+  mask-position:
+    60% 0%,
+    0% 0%;
+  mask-size:
+    300% auto,
+    auto;
 
   @media (width >= theme(--breakpoint-sm)) {
-    mask-size: 200% auto, auto;
+    mask-size:
+      200% auto,
+      auto;
   }
 
   @media (width >= theme(--breakpoint-md)) {
-    mask-position: 50% 0%, 0% 0%;
-    mask-size: 110% auto, auto;
+    mask-position:
+      50% 0%,
+      0% 0%;
+    mask-size:
+      110% auto,
+      auto;
   }
 }
 

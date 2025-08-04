@@ -146,7 +146,7 @@ function LatestFilm({ film, className, ...props }: LatestFilmProps) {
             </svg>
           </div>
           {film?.rewatch ? (
-            <div aria-label="Rewatch" title="Rewatch">
+            <div aria-label="Rewatch" role="img" title="Rewatch">
               <svg
                 className="text-gray-400 dark:text-gray-500"
                 fill="none"

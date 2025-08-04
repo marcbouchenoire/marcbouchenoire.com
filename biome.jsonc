@@ -1,6 +1,13 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "lineWidth": 80
+  },
   "assist": {
+    "enabled": true,
     "actions": {
       "source": {
         "organizeImports": "on",
@@ -9,44 +16,18 @@
       }
     }
   },
-  "css": {
-    "parser": {
-      "cssModules": true
-    }
-  },
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": true,
-    "indentStyle": "space",
-    "lineWidth": 80
-  },
-  "html": {
-    "formatter": {
-      "enabled": true
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "semicolons": "asNeeded",
-      "trailingCommas": "none"
-    }
-  },
   "linter": {
-    "domains": {
-      "next": "recommended",
-      "react": "recommended",
-      "test": "recommended"
-    },
     "enabled": true,
     "rules": {
+      "recommended": true,
       "correctness": {
         "noUnknownFunction": "off",
         "noUnknownMediaFeatureName": "off",
-        "noUnusedFunctionParameters": "error",
-        "noUnusedImports": "error",
-        "noUnusedVariables": "error",
+        "noUnusedFunctionParameters": "on",
+        "noUnusedVariables": "on",
+        "noUnusedImports": "on",
         "useExhaustiveDependencies": {
-          "level": "error",
+          "level": "on",
           "options": {
             "hooks": [
               { "name": "useInitial", "stableResult": true },
@@ -58,58 +39,56 @@
           }
         }
       },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noUselessElse": "on",
+        "useCollapsedElseIf": "on",
+        "useCollapsedIf": "on",
+        "useTemplate": "off",
+        "useSelfClosingElements": "on",
+        "noDescendingSpecificity": "on",
+        "useImportType": "on"
+      },
+      "a11y": {
+        "useSemanticElements": "off",
+        "noAutofocus": "off"
+      },
       "nursery": {
-        "noAwaitInLoop": "error",
-        "noDescendingSpecificity": "error",
-        "noDuplicateCustomProperties": "error",
-        "noDuplicateProperties": "error",
-        "noTsIgnore": "error",
-        "noUselessEscapeInString": "error",
+        "noUnassignedVariables": "on",
         "useSortedClasses": {
           "fix": "safe",
-          "level": "error",
+          "level": "on",
           "options": {
             "functions": ["classNames", "clsx", "cn"]
           }
         }
-      },
-      "recommended": true,
-      "style": {
-        "noInferrableTypes": "error",
-        "noParameterAssign": "error",
-        "noRestrictedGlobals": "error",
-        "noUnusedTemplateLiteral": "error",
-        "noYodaExpression": "error",
-        "useAsConstAssertion": "error",
-        "useBlockStatements": "error",
-        "useConsistentBuiltinInstantiation": "error",
-        "useConst": "error",
-        "useDefaultParameterLast": "error",
-        "useDefaultSwitchClause": "error",
-        "useExportType": "error",
-        "useForOf": "error",
-        "useImportType": "error",
-        "useNodejsImportProtocol": "error",
-        "useNumberNamespace": "error",
-        "useNumericLiterals": "error",
-        "useSelfClosingElements": "error",
-        "useShorthandArrayType": "error",
-        "useShorthandAssign": "error",
-        "useShorthandFunctionType": "error",
-        "useSingleCaseStatement": "error",
-        "useTemplate": "error",
-        "useThrowNewError": "error"
-      },
-      "suspicious": {
-        "noArrayIndexKey": "off",
-        "noExplicitAny": "off"
       }
     }
   },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
+  "css": {
+    "parser": {
+      "cssModules": true
+    }
+  },
+  "html": {
+    "formatter": {
+      "enabled": true
+    }
+  },
   "vcs": {
-    "clientKind": "git",
-    "defaultBranch": "main",
     "enabled": true,
-    "useIgnoreFile": true
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
   }
 }

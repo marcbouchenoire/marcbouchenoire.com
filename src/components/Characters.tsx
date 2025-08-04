@@ -25,11 +25,8 @@ export function Characters({
   const characters = useMemo(() => [...children], [children])
 
   return (
-    <span
-      aria-label={children}
-      className={clsx(className, "whitespace-nowrap")}
-      {...props}
-    >
+    <span className={clsx(className, "whitespace-nowrap")} {...props}>
+      <span className="sr-only select-none">{children}</span>
       {characters.map((character, index) => (
         <span
           aria-hidden
