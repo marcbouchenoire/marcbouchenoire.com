@@ -176,6 +176,7 @@ function Phone({ direction, children, className, ...props }: PhoneProps) {
     >
       <div className="absolute top-[2.7%] bottom-[3.1%] drop-shadow-phone group-data-[direction=left]:right-[5.4%] group-data-[direction=right]:right-[6.35%] group-data-[direction=left]:left-[6.35%] group-data-[direction=right]:left-[5.4%]">
         <svg className="absolute" height={0} role="presentation" width={0}>
+          {/** biome-ignore lint/correctness/useUniqueElementIds: The mask is not dynamic */}
           <clipPath clipPathUnits="objectBoundingBox" id="phone-mask">
             <path d="M0.779,0.011 V0.011 c0,0.011,-0.019,0.026,-0.062,0.026 h-0.432 C0.241,0.037,0.222,0.022,0.222,0.011 v0 c0,-0.005,0,-0.011,-0.02,-0.011 H0.116 C0.043,0,0,0.02,0,0.053 v0.893 C0,0.98,0.043,1,0.116,1 h0.769 C0.957,1,1,0.98,1,0.947 V0.053 C1,0.02,0.957,0,0.884,0 h-0.085 C0.779,0,0.779,0.005,0.779,0.011" />
           </clipPath>
@@ -204,6 +205,7 @@ function Headset({ children, className, ...props }: ComponentProps<"div">) {
       <div className="absolute inset-0 [clip-path:url(#headset-mask)]">
         <svg height={0} role="presentation" width={0}>
           <defs>
+            {/** biome-ignore lint/correctness/useUniqueElementIds: The mask is not dynamic */}
             <clipPath clipPathUnits="objectBoundingBox" id="headset-mask">
               <path d="M0.299217 0.016482C0.198539 0.033167 0.089533 0.07584 0.035864 0.243777C-0.023752 0.428302 -0.006564 0.706696 0.06955 0.866579C0.145208 1.02629 0.270395 1.03794 0.365784 0.92305C0.401042 0.873963 0.448941 0.789116 0.5 0.789116C0.551067 0.789116 0.598965 0.874015 0.634216 0.92305C0.725134 1.03794 0.850321 1.02629 0.925979 0.866579C1.00035 0.706699 1.01941 0.428299 0.964219 0.243777C0.912177 0.075841 0.800367 0.033168 0.70014 0.016482C0.567707 -0.005477 0.431516 -0.005477 0.299217 0.016482Z" />
             </clipPath>

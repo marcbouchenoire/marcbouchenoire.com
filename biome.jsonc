@@ -41,7 +41,9 @@
       },
       "suspicious": {
         "noExplicitAny": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noUnassignedVariables": "on",
+        "noUnknownAtRules": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -58,7 +60,6 @@
         "noAutofocus": "off"
       },
       "nursery": {
-        "noUnassignedVariables": "on",
         "useSortedClasses": {
           "fix": "safe",
           "level": "on",
