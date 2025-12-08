@@ -22,7 +22,6 @@
       "recommended": true,
       "correctness": {
         "noUnknownFunction": "off",
-        "noUnknownMediaFeatureName": "off",
         "noUnusedFunctionParameters": "on",
         "noUnusedVariables": "on",
         "noUnusedImports": "on",
@@ -42,8 +41,7 @@
       "suspicious": {
         "noExplicitAny": "off",
         "noArrayIndexKey": "off",
-        "noUnassignedVariables": "on",
-        "noUnknownAtRules": "off"
+        "noUnassignedVariables": "on"
       },
       "style": {
         "noNonNullAssertion": "off",
@@ -78,7 +76,8 @@
   },
   "css": {
     "parser": {
-      "cssModules": true
+      "cssModules": true,
+      "tailwindDirectives": true
     }
   },
   "html": {
