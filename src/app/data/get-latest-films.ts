@@ -2,7 +2,7 @@
 
 import { XMLParser } from "fast-xml-parser"
 import { decode } from "html-entities"
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 
 const LETTERBOXD_USERNAME = "marcbouchenoire"
 const LETTERBOXD_URL = "https://letterboxd.com"

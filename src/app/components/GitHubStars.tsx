@@ -1,6 +1,6 @@
 "use cache"
 
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 import type { ComponentProps } from "react"
 import { getRepository } from "src/app/data/get-repository"
 

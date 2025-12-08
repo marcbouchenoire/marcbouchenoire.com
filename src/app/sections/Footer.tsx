@@ -1,6 +1,6 @@
 import { execSync } from "node:child_process"
 import { clsx } from "clsx"
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 import { type ComponentProps, Suspense } from "react"
 import { RandomEmoji } from "src/components/RandomEmoji"
 

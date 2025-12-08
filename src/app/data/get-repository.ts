@@ -1,6 +1,6 @@
 "use cache"
 
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 
 const GITHUB_API = "https://api.github.com"
 

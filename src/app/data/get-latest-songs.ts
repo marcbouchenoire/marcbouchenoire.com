@@ -1,6 +1,6 @@
 "use cache"
 
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 
 const LASTFM_API = "https://ws.audioscrobbler.com/2.0"
 const LASTFM_USERNAME = "marcbouchenoire"

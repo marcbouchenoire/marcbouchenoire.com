@@ -5,17 +5,23 @@
     "declarations.d.ts",
     "next.config.ts",
     "src",
-    "test"
+    "test",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "preserve",
-    "lib": ["dom", "esnext"],
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
@@ -29,7 +35,9 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "types": ["bun"],
+    "types": [
+      "bun"
+    ],
     "plugins": [
       {
         "name": "next"

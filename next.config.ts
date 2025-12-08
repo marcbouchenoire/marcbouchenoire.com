@@ -2,11 +2,12 @@ import type { NextConfig } from "next"
 
 const config: NextConfig = {
   trailingSlash: false,
+  cacheComponents: true,
+  images: {
+    qualities: [75, 95]
+  },
   experimental: {
-    inlineCss: true,
-    dynamicIO: true,
-    useCache: true,
-    ppr: true
+    inlineCss: true
   },
   async redirects() {
     return [

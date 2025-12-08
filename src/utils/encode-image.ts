@@ -1,7 +1,7 @@
 "use cache"
 
 import { toBase64 } from "fast-base64/js"
-import { unstable_cacheLife as cacheLife } from "next/cache"
+import { cacheLife } from "next/cache"
 
 /**
  * Fetch an image and encode it as a base64 data URI.
