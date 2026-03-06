@@ -351,7 +351,7 @@ export function Work(props: ComponentProps<"section">) {
               </a>
               ,{" "}
               <a
-                href="https://github.com/liveblocks/liveblocks/tree/main/packages/liveblocks-codemod"
+                href="https://github.com/liveblocks/liveblocks/tree/main/tools/liveblocks-codemod"
                 rel="noreferrer"
                 target="_blank"
               >
