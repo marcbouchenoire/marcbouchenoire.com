@@ -57,10 +57,7 @@ export function Footer({ className, ...props }: ComponentProps<"footer">) {
           <RandomEmoji />{" "}
           <Suspense>
             <Year className="hidden sm:inline" />
-          </Suspense>{" "}
-          <span className="text-gray-300 dark:text-gray-600">—</span> he
-          <span className="text-gray-300 dark:text-gray-600">/</span>
-          they
+          </Suspense>
         </span>
         <a
           className="link ml-auto inline-flex items-center gap-1.5"
